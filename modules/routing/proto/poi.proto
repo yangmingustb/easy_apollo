@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package apollo.routing;
+
+import "modules/routing/proto/routing.proto";
+
+message Landmark {
+  // name 可以是lane id
+  optional string name = 1;
+  repeated LaneWaypoint waypoint = 2;
+  optional string parking_space_id = 3 [deprecated = true];
+  optional apollo.routing.ParkingInfo parking_info = 4;
+}
+
+message POI {
+  repeated Landmark landmark = 1;
+}

@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package apollo;
+
+
+message DisplayConfig {
+  optional double hmap_window_resolution = 1;
+  optional double virtual_obs_speed = 2;
+  optional double main_window_resolution = 3;
+  optional double control_window_resolution = 4;
+}

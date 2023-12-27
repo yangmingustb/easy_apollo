@@ -1,0 +1,4 @@
+hmap_window_resolution: 20.0
+virtual_obs_speed: 3
+main_window_resolution: 0.1
+control_window_resolution: 0.008

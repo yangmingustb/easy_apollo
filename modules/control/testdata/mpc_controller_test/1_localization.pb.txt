@@ -1,0 +1,33 @@
+header {
+  timestamp_sec: 1178408221.7
+  module_name: "localization"
+  sequence_num: 717699
+}
+pose {
+  position {
+    position_x: -123.13666043742973
+    position_y: 364.35546687249285
+    position_z: -31.420322706922889
+  }
+  orientation {
+    orientation_qx: 0.0055477773475503213
+    orientation_qy: -0.0038590037118573272
+    orientation_qz: -0.990379842317655
+    orientation_qw: -0.13821034037911459
+  }
+  linear_velocity {
+    linear_velocity_x: 0.00087471447426956314
+    linear_velocity_y: -0.0012088329450176513
+    linear_velocity_z: -0.0012369063243036489
+  }
+  linear_acceleration {
+    linear_acceleration_x: -0.016531577551598127
+    linear_acceleration_y: -0.018844718168206657
+    linear_acceleration_z: -0.046939246111843365
+  }
+  angular_velocity {
+    angular_velocity_x: 0.001327747667490114
+    angular_velocity_y: -1.6716219241558373e-05
+    angular_velocity_z: 0.0004012993134012201
+  }
+}

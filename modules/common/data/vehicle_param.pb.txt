@@ -1,0 +1,29 @@
+vehicle_param {
+  front_edge_to_center: 3.705
+  back_edge_to_center: 0.995
+  left_edge_to_center: 1.03
+  right_edge_to_center: 1.03
+
+  length: 4.786
+  width: 1.935
+  height: 1.685
+  min_turn_radius: 5.05386147161
+  max_acceleration: 0.5
+  max_deceleration: -6.0
+  max_steer_angle: 8.81
+  max_steer_angle_rate: 1.57
+  steer_ratio: 15.7
+  wheel_base: 2.92
+  wheel_rolling_radius: 0.33
+  max_abs_speed_when_stopped: 0.2
+  brake_deadzone: 14.5
+  throttle_deadzone: 15.7
+
+  steering_latency_param {
+    dead_time: 0.1;
+    rise_time: 0.15;
+    peak_time: 0.2;
+    settling_time: 0.25;
+  }
+}
+

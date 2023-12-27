@@ -1,0 +1,62 @@
+# 1. Flags in this file should be defined in common/configs/config_gflags.h
+# 2. To use it, add the following line into your command line arguments or
+#    already-in-use flagfile:
+#        --flagfile=modules/common/data/global_flagfile.txt
+# 3. To override the flag values, you must set it after this file, as all Flags
+#    are evaluated strictly in order.
+
+--vehicle_config_path=./../modules/common/data/vehicle_param.pb.txt
+
+# --log_dir=/apollo/data/log
+
+# --use_navigation_mode=false
+
+# --map_dir=./../data/shuiku_double_lane
+# --map_dir=./../data/sanhuan
+# --map_dir=./../data/sanhuan_mymap
+# --map_dir=./../data/sanhuan_back
+# --map_dir=./../data/sanhuan_forward
+# --map_dir=./../data/shuiku_double_lane_dead_end
+# --map_dir=./../data/shuiku_forward
+# --map_dir=./../data/borregas_ave
+# --map_dir=./../data/g2_g3
+
+# --map_dir=./../data/g2_sanhuan
+# --map_dir=./../data/yuanqu
+# --map_dir=./../data/jiapulin_9_20_double
+# --map_dir=./../data/jiapuling_intersection
+# --map_dir=./../data/shuiku_backward
+# --map_dir=./../data/gaoxin_dadao
+# --map_dir=./../data/NOA_forward_12_11_no_line_label
+# --map_dir=./../data/NOA_backward_12_11_no_line_label
+# --map_dir=./../data/NOA_forward_12_13
+# --map_dir=./../data/NOA_backward_12_13
+
+# --map_dir=./../data/NOA_forward_12_13_with_ramp
+--map_dir=./../data/NOA_backward_12_13_with_ramp
+
+# --use_sim_time=false
+
+# --use_cyber_time=true
+
+# --map_dir=/apollo/modules/map/data/san_mateo
+
+# --map_dir=/apollo/modules/map/data/borregas_ave
+
+# --map_dir=/apollo/modules/map/data/demo
+
+# --map_dir=/apollo/modules/map/data/borregas_ave
+
+# --map_dir=/apollo/modules/map/data/demo
+
+# --map_dir=/apollo/modules/map/data/borregas_ave
+
+# --map_dir=/apollo/modules/map/data/demo
+
+# --map_dir=/apollo/modules/map/data/borregas_ave
+
+--replay_mode=false
+# --replay_mode=true
+
+--use_bev_perception=true
+# --use_bev_perception=false

@@ -1,0 +1,32 @@
+syntax = "proto2";
+
+package apollo.cyber.proto;
+
+enum RunMode {
+  MODE_REALITY = 0;
+  MODE_SIMULATION = 1;
+}
+
+enum ClockMode {
+  MODE_CYBER = 0;
+  MODE_MOCK = 1;
+}
+
+enum DebugMode
+{
+    none = 0;
+    singleframe_step_forward = 1;
+    pause = 2;
+    
+};
+
+// 调试消息，如果是pause，那么所有进程会停止运行，方便分析最近一帧发生了什么
+message DebugMsg
+{
+  optional DebugMode debug_mode = 1 [default = none];
+}
+
+message RunModeConf {
+  optional RunMode run_mode = 1 [default = MODE_REALITY];
+  optional ClockMode clock_mode = 2 [default = MODE_CYBER];
+}

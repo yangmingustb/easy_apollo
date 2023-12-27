@@ -1,0 +1,90 @@
+# # Prerequisites
+# *.d
+
+# # Compiled Object files
+# *.slo
+# *.lo
+# *.o
+# *.obj
+
+# # Precompiled Headers
+# *.gch
+# *.pch
+
+# # Compiled Dynamic libraries
+# *.so
+# *.dylib
+# *.dll
+
+# # Fortran module files
+# *.mod
+# *.smod
+
+# # Compiled Static libraries
+# *.lai
+# *.la
+# *.a
+# *.lib
+
+# # Executables
+# *.exe
+# *.out
+# *.app
+
+*.pyc
+
+build/
+*.css
+*.tar.gz
+site/
+.vscode
+
+devel/*
+
+data/2*
+data/E*
+data/F*
+data/G*
+data/h*
+data/j*
+data/T*
+data/l*
+data/*
+
+install/bin/*
+install/e*
+install/data/log/*
+install/etc/*
+install/include/*
+install/lib/*
+install/logs/*
+install/share/*
+
+install-x86/*
+third_party/a*
+third_party/C*
+third_party/e*
+third_party/F*
+third_party/g*
+third_party/n*
+third_party/O*
+third_party/o*
+third_party/p*
+third_party/R*
+third_party/P*
+third_party/l*
+third_party/tf2/*
+third_party/civetweb/*
+third_party/install/*
+third_party/tf2/*
+third_party/civetweb/*
+third_party/civetwe*
+third_party/matplotlib-cpp*
+
+
+.catkin_workspace
+cmake-build*
+.idea*
+
+apollo_docs/*
+
