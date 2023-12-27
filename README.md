@@ -1,6 +1,7 @@
 # easy apollo
 
 这个仓库yangming开发, 早期的软件版本依赖apollo 7.0, 完全使用cmake 编译，不再依赖docker.
+开发这个仓库，期望可以一键安装和部署apollo，更容易使用
 
 # 主要更新
 * 编译规则使用cmake；
