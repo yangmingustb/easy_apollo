@@ -160,6 +160,9 @@ rviz是一个很方便的选择，但是依赖ros开发。剩下的包括：osg,
 
 ![](docs/path_debug.png)
 
+dreamview
+
+![](docs/dreamview.png)
 
 ## 基本架构
 
