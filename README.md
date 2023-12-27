@@ -1,4 +1,4 @@
-# easyapollo
+# easy apollo
 
 这个仓库yangming开发, 早期的软件版本依赖apollo 7.0, 完全使用cmake 编译，不再依赖docker.
 
@@ -6,11 +6,14 @@
 * 编译规则使用cmake；
 * 程序运行不再依赖docker，而是可以直接在ubuntu 18/20运行；
 * 适配c++17；
-* 增加快速碰撞检测系统，gjk/epa/bvh，由张玉博士、我在2019-2020年开发，可以参考(https://arxiv.org/abs/2011.09117)
+* 增加快速碰撞检测系统，gjk/epa/bvh，由张玉博士、我在2019-2020年开发，可以参考(https://arxiv.org/abs/2011.09117);
 * 增加2d的交互界面，用来实时调试系统状态；
-* 增加仿真底盘，用来测试决策规划控制
-* 增加path decision调试工具
-* 增加speed decision调试工具
+* 增加仿真底盘，用来测试决策规划控制;
+* 增加path decision调试工具;
+* 增加speed decision调试工具;
+* 增加record解析脚本；
+* 增加log文件解析脚本；
+* 通过cyber rt c++/python版本，实时订阅cyber 消息，并且完成解析，可以实时分析问题或者单步调试问题；
 
 # 软件依赖
 基本库：
@@ -26,9 +29,7 @@
 5. git
 6. canlib
 7. python，3.6， ubuntu 20.04是3.8，ubuntu 18.04是3.6，
-1. matplotlib-cpp，用来显示速度规划结果。经过初次使用，缺少必要的API，以后迁移到matplot++。matplot++, cv-plot都经过尝试，发现很奇怪的编译错误，无法使用。retired，需要删除对应链接
 1. opengl
-1. ~~libvtk7-dev， opencv3d依赖这个 ，retired,需要删除对应链接~~
 
 
 
@@ -76,9 +77,6 @@ protoc -I=./ --python_out=./ ./modules/control/proto/*.proto
 4. opencv 4.2,
 使用4.2会存在和proj4的链接冲突。源码安装4.2.0,opencv依赖gdal，gdal依赖proj4，所以，只需要安装opencv即可。
 
-5. torch,1.7.0-2, ubuntu1804测试使用这个版本没有问题。但是对于ubuntu2004，使用release 版本，在src编译成static 库时，运行时一直报错，找不到cpu，debug了1天了，没有任何进展，不知道为何自动驾驶系统因为torch不能运行。模型是gpu模型，加载到cpu中应该没有问题。cpu字符串检查一直在运行时报错。
-6. torch-2.0.1, ubuntu2004测试使用这个版本.预测模块和planning模块会依赖 torch，然而torch可以编译通过，但是也是运行报错
-   2.0.1不行。
 1. torch,1.10.0测试，在ubuntu2004上可以编译，可以加载模型，可以使用静态库链接torch，simulator可以正常运行。 
 
 1. ad_rss_lib,1.1.0
@@ -96,12 +94,6 @@ protoc -I=./ --python_out=./ ./modules/control/proto/*.proto
    
 # 环境配置
 * 到github下载源码
-* 到网盘下载对应的3个库
-
-![auto system framework](./doc/wangpan.png)
-
-* 将这3个库替换掉源码中的文件夹
-![auto system framework](./doc/code_orgnization.png)
 
 * 安装其他库
 ```
@@ -116,7 +108,6 @@ bash install_dependence.sh
 * 编译
 
 ```
-source install/setup.bash
 mkdir build
 
 
@@ -134,26 +125,9 @@ cd build
 
 ```
 
-
-
-# todo
-* ~~第三方依赖，改成源码安装，这样方便移植，可以安装到install目录下；~~
-* ~~apollo编译比较慢，为了时间性能，可以改成独立的静态库，各个模块单独编译；~~
-* protobuf文件，编译生成xxx.pb.h文件到build/中，每次编译可以选择生成新的xxx.pb.h文件，
-而不是将xxx.pb.h文件拷贝到源码中，将xxx.pb.h拷贝到源码的方式不便于程序的拓展，
-也许未来需要修改xxx.proto文件；
-* 三维可视化，常见的API包括：open scene graph，opencv 3d, open3d, rviz。
-* ~~进程之间的通信，可以使用apollo cyber rt。~~
-* ~~回放系统,包含状态记录，状态播放，最好参考apollo实现；~~
-* ~~cmakelist之间的包含和链接关系需要整理~~；
-* ~~可以使用apollo 团队录制的hmap，他们的地图更加精细，也可以进行仿真测试；~~
-* ~~本地录制地图，不是精细地图，也可以进行仿真测试~~；
-
-* ~~横向debug工具：plot所有path bounday，plot path, plot 决策结果~~
-* ~~纵向debug工具：plot所有st bounday，plot s-t, plot v-t, plot acc-t,~~
-
 # 日志系统
 日志系统参考了google log和apollo log的封装，可以非常简单的记录每一个模块的日志
+![](docs/log_parser.png)
 
 # 参数模块
 * 使用protobuf格式作为参数，读取xxx.pb.txt文件即可；
@@ -167,6 +141,9 @@ apollo 7.0使用protobuf格式作为消息格式
 rviz是一个很方便的选择，但是依赖ros开发。剩下的包括：osg, opencv viz, open3d。opencv viz和open 3d是比较活跃的社区，
 而这2个库我都没有使用过，暂时选择opencv viz开发。
 
+
+![](docs/viz2d.png)
+
 * opencv viz3d,维护者较少，不推荐；
 * rviz依赖ros，不推荐；
 * open 3d，todo
@@ -175,68 +152,18 @@ rviz是一个很方便的选择，但是依赖ros开发。剩下的包括：osg,
 * opengl：正在使用，install_opengl.sh
 
 * speed planning debug tool: matplot
+
+![](docs/speed_debug.png)
+
 * path planning debug tool: opencv
 
 
+![](docs/path_debug.png)
+
 
 ## 基本架构
-auto自动驾驶系统 1.0
-![auto system framework](./resource/auto_system_framework.jpg)
 
 
-planning模块 1.0
-![planning framework](./resource/planner_framework.png)
-
-
-## planning 模块
-input：
-
-output:
-
-## 核心功能
-自动驾驶系统的目标：安全、平顺、稳定、灵活、精准
-
-1. path
-   1. lane change
-      * obstacle阻挡
-      * 跟着routing 优先级而产生换道，
-   2. lane borrow
-      * obstacle阻挡,引起lane borrow
-      * 道路宽度不足,引起lane borrow
-   3. lane keep  
-      * 车道内avoid obstacle
-   4. pull over
-
-车道决策、障碍物决策是核心。
-车道决策中：如何处理lane change、lane borrrow；
-障碍物决策中：如何处理静态障碍物决策、动态障碍物决策；
-
-2. speed
-   1. start up，如何生成起步速度曲线
-   2. stop
-      * 到达终点，如何做到停车
-      * 红灯，如何做到停车
-      * 静态obstacle，如何停车
-   3. yield
-      * 动态obstacle，如何避让
-   4. speed down
-      * 弯道，如何调整速度
-   1. car-following
-      * 如何做到速度follow
-   1. overtake or yield
-      * 如何完成超车、yiled决策
-
-对于速度规划而言，障碍物决策是核心。
-
-3. ref line
-   1. length
-   2. 平滑度
-   3. 拼接
-4. control
-   1. 稳定
-   2. 精准
-
-现在依赖apollo 7.0的程序，为了熟悉整个框架，可以从一个个案例入手，看程序内部是如何计算，从而满足驾驶期望的。经过一个个案例的研究，会整体把握apollo 7.0，便于后续的升级、迭代。
 
 apollo轨迹规划的压力都在纵向这边，原因如下：
 * 因为横向对于动态障碍物几乎不考虑，静态障碍物几乎都nudge，存在安全性问题；
@@ -255,27 +182,29 @@ apollo轨迹规划的压力都在纵向这边，原因如下：
 
 # 实车
 
-车辆行驶时，通过can 订阅底盘，通过can发送控制指令，地平线征程5通过串口传输感知数据，
-立得定位器通过串口传输定位数据。
+车辆行驶时，通过can 订阅底盘，通过can发送控制指令
 
 启动系统：
 ```
 cd build
-source set_env.sh
 ./launch_real.sh
 
 ```
 
 # 仿真
-仿真程序是一个简单的仿真，不包含车辆动力学、摩擦力学，是简单的自行车模型，输入是自行车模型的
+仿真包括：
+* 底盘虚拟仿真
+* 交通灯仿真
+* 障碍物仿真
+
+仿真底盘是一个简单的仿真，不包含车辆动力学、摩擦力学，是简单的自行车模型，输入是自行车模型的
 前轮转角、加速度，输出是前轮转角、速度、加速度、车辆朝向、车辆位置。该模型是零延时模型，意味着
 在输入来临时，车辆可以立马达到输入状态，不存在任何延时。
 
-仿真程序运行步骤：
+仿真环境运行步骤：
 
 ```
 cd build
-source set_env.sh
 ./launch_simulator.sh
 
 ```
@@ -343,19 +272,10 @@ replay时，可以加速、暂停、步进
 
 
 
-# 坐标系
-
-地图坐标系：东北坐标系，[-pi, pi)
-
-IMU坐标系，右前坐标系
-
-车辆坐标系，右前坐标系
-
 
 # 编译
 ```
 # source这一步需要优化
-source install/setup.bash
 mkdir build
 
 1. 方法一
@@ -388,18 +308,21 @@ run --vehicle_config_path=./../modules/common/data/vehicle_param.pb.txt --map_di
 
 # 版本号
 
-对于一个三个级别的版本号：1.1.1
+**Apollo 7.0:**
 
-组件包括：planning, prediction, perception, 等等
-* 如果整个组件有新的设计、重构，比如planning组件从基于规则的方式变成基于学习的方式，那么一级版本号可以增加到2.0.0；
-* 如果组件中的一个子模块出现新的设计，新feature的增加或者子模块重构，比如planning组件中增加lane decision模块，那么二级版本号可以增加：1.2.0；
-* 如果是一些bug修复，或者小逻辑的改动，那么三级版本号可以增加；
+
+![](docs/demo_guide/images/Apollo_7_0.png)
+
+根据年份来设置版本号，例如2023.12
 
 # 参考
 * lanelet2
 * apollo
 * opendrive
 * autoware
+* bullet
+* box2d
+* fcl
 
 
 # 编程风格
@@ -438,41 +361,7 @@ run --vehicle_config_path=./../modules/common/data/vehicle_param.pb.txt --map_di
    # Footer用来关闭 Issue或以BREAKING CHANGE开头，后面是对变动的描述、
    #       以及变动理由和迁移方法
    ```
-# commit统计
 
-
-# 目标
-
-* 第一阶段目标：自动驾驶系统雏形搭建，具备基本的自动驾驶能力，达到科目三的水平
-1. ~~以笔记本为运算设备，可以在实车上运行系统;~~
-1. 可以正常跑圈，车辆速度平顺，巡航速度达到20km/h
-2. 可以精准停车，
-3. 车辆保持在车道中心附近行驶；
-1. 轨迹跟踪精度高，这里要求控制模块精准，底盘延时低；
-1. 方向盘、速度控制要平顺、稳定；
-
-* 第二阶段目标：lane follow场景有基本的交互能力，达到新手司机的水平
-1. 可以减速避障；
-1. 可以调整方向盘避障；
-1. 合理、安全、平顺地换道:
-   * 路由引起的变道；
-   * 障碍物引起的变道；
-2. 合理、安全、平顺地避障行驶，可以是减速、或者调整方向盘避障；
-
-
-* 第三阶段目标：开始支持多个场景，能够理解交通规则和交通标志，在多个场景下有复杂交互能力，朝老司机进化
-1. 开始支持多个场景、功能
-1. 无保护路口可以安全平顺行驶；
-1. dead end可以安全、合理行驶；
-1. u型弯可以合理掉头
-1. 狭窄区域可以安全平顺行驶；
-1. 可以和红绿灯交互
-1. 可以靠边停车；
-1. 可以车位停车；
-1. 可以出库行驶
-1. 这个阶段是最复杂的阶段，也是代码开发量最大的阶段，需要处理红绿灯、路口、u型弯、靠边停车、出库入库，
-需要和交通环境完成智能交互，需要处理各种末端场景，是最考验自动驾驶系统水平的一个阶段。对于车辆演示，
-前两个阶段就基本可以完成任务。对于量产车辆，第三阶段一定要跨过去。
 
 
 

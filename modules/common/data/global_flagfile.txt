@@ -32,8 +32,8 @@
 # --map_dir=./../data/NOA_forward_12_13
 # --map_dir=./../data/NOA_backward_12_13
 
-# --map_dir=./../data/NOA_forward_12_13_with_ramp
---map_dir=./../data/NOA_backward_12_13_with_ramp
+--map_dir=./../data/NOA_forward_12_13_with_ramp
+# --map_dir=./../data/NOA_backward_12_13_with_ramp
 
 # --use_sim_time=false
 
