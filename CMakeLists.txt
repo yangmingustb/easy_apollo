@@ -79,14 +79,14 @@ include_directories(${THIRD_LIB_DIR}/nlohmann_json/include)
 # set(DEP_LIBS ${DEP_LIBS} fastrtps fastcdr tinyxml2)
 
 #gflags
-include_directories(install/include)
-link_directories(install/lib)
+include_directories(${THIRD_LIB_DIR}/gflags/include)
+link_directories(${THIRD_LIB_DIR}/gflags/lib)
 # set(DEP_LIBS ${DEP_LIBS} gflags)
 # pkg_check_modules(Gflags REQUIRED gflags)
 
 #glog
-# include_directories(${THIRD_LIB_DIR}/glog/include)
-# link_directories(${THIRD_LIB_DIR}/glog/lib)
+include_directories(${THIRD_LIB_DIR}/glog/include)
+link_directories(${THIRD_LIB_DIR}/glog/lib)
 # set(DEP_LIBS ${DEP_LIBS} glog)
 find_package(glog REQUIRED)
 

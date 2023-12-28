@@ -1,13 +1,20 @@
 set -e
 
-cd /tmp
-rm -rf gflags
+CURRENT_PATH=$(cd $(dirname $0) && pwd)
 
-git clone --depth 1 git@github.com:gflags/gflags.git
+INSTALL_PREFIX="$CURRENT_PATH/../third_party/install/gflags"
+
+
+cd $CURRENT_PATH
+cd ..
+cd third_party
+
+git clone --depth 1 --branch v2.2.0 git@github.com:gflags/gflags.git
 
 cd gflags && mkdir build && cd build
 
-cmake ..  -DBUILD_SHARED_LIBS=ON
+CXXFLAGS="-fPIC" cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -DBUILD_SHARED_LIBS=ON ..
+
 make
 sudo make install
 
