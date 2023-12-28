@@ -1,0 +1,1 @@
+sudo apt-get install -y libncurses5-dev
