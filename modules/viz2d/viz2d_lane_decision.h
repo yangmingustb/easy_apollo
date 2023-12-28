@@ -10,11 +10,11 @@
 namespace apollo
 {
 int viz_draw_lane_decision(planning::DecisionResult *decisions,
-                           viz2d_image *uviz, const Pose2D*veh_pose,
+                           viz2d_image *viz2d, const Pose2D*veh_pose,
                            const planning::ADCTrajectory &traj);
 
 int viz_draw_lane_borrow_decision(const planning::LaneBorrowStatus &decision,
-                                  viz2d_image *uviz,
+                                  viz2d_image *viz2d,
                                   const Pose2D*veh_pose,
                                   const planning::path_boundary_type path_type);
 }

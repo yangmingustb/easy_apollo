@@ -17,7 +17,7 @@
 
 namespace apollo
 {
-int viz2d_draw_crosswalk(viz2d_image *uviz, const Pose2D*base_pose,
+int viz2d_draw_crosswalk(viz2d_image *viz2d, const Pose2D*base_pose,
                         viz2d_color color_index, double dist_thresh,
                         int line_width);
 
@@ -29,17 +29,17 @@ int viz2d_draw_apollo_polygon(viz2d_image *image_handle,
                              const Pose2D*base_pose,
                              viz2d_color color_index, int32_t thickness);
 
-int viz2d_draw_hdmap(viz2d_image *uviz, const Pose2D*base_pose,
+int viz2d_draw_hdmap(viz2d_image *viz2d, const Pose2D*base_pose,
                     bool draw_full_map);
 
-int viz2d_draw_simple_hdmap(viz2d_image *uviz, const Pose2D*base_pose);
+int viz2d_draw_simple_hdmap(viz2d_image *viz2d, const Pose2D*base_pose);
 
 int viz2d_draw_hdmap_lane_boudary(const hdmap::LaneBoundary &bound,
                                  const Pose2D*base_pose, double sin_theta,
-                                 double cos_theta, viz2d_image *uviz);
+                                 double cos_theta, viz2d_image *viz2d);
 
-int viz2d_draw_full_simple_hdmap(viz2d_image *uviz,
+int viz2d_draw_full_simple_hdmap(viz2d_image *viz2d,
                                 const Pose2D*base_pose);
 
-int get_hdmap_base_for_uviz(Pose2D *base_pose);
+int get_hdmap_center_base(Pose2D *base_pose);
 }

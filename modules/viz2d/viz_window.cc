@@ -39,7 +39,7 @@ void main_window2d_init(viz2d_color background_color)
     origin_column_index = columns / 4;
     // origin_column_index = columns / 4 * 3;
 
-    ret = viz2d_init_image_handle(&main_window_, &font, window_name,
+    ret = viz2d_init_window(&main_window_, &font, window_name,
                                  columns, rows, origin_column_index,
                                  origin_row_index, resolution,
                                  background_color);
@@ -74,7 +74,7 @@ void hmap_window2d_init()
     origin_row_index = rows / 2;
     origin_column_index = columns / 2;
 
-    ret = viz2d_init_image_handle(&hmap_window_, &font, window_name, columns, rows,
+    ret = viz2d_init_window(&hmap_window_, &font, window_name, columns, rows,
                                  origin_column_index, origin_row_index,
                                  resolution, viz2d_colors_black);
 }
@@ -95,7 +95,7 @@ void control_viz2d_init()
     origin_row_index = rows / 2;
     origin_column_index = columns / 6;
 
-    ret = viz2d_init_image_handle(&control_window_, &font, window_name, columns,
+    ret = viz2d_init_window(&control_window_, &font, window_name, columns,
                                  rows, origin_column_index, origin_row_index,
                                  resolution, viz2d_colors_white);
 }
@@ -105,7 +105,7 @@ void control_viz2d_init()
 
 
 
-int viz2d_draw_system_state(viz2d_image *uviz, const SystemState &states,
+int viz2d_draw_system_state(viz2d_image *viz2d, const SystemState &states,
                            const Pose2D*base_pose)
 {
     CvPoint point1, point2;
@@ -123,7 +123,7 @@ int viz2d_draw_system_state(viz2d_image *uviz, const SystemState &states,
     viz2d_color text_color_index = viz2d_colors_white;
     viz2d_color unkown_color_index = viz2d_colors_banana_yelow;
 
-    if (base_pose == nullptr || uviz == nullptr)
+    if (base_pose == nullptr || viz2d == nullptr)
     {
         return -1;
     }
@@ -144,15 +144,15 @@ int viz2d_draw_system_state(viz2d_image *uviz, const SystemState &states,
     CvFont windows_font;
     int circle_size = 8;
 
-    columns = uviz->columns;
-    rows = uviz->rows;
-    origin_row_index = uviz->origin_row_index;
-    origin_column_index = uviz->origin_column_index;
-    img = uviz->image;
+    columns = viz2d->columns;
+    rows = viz2d->rows;
+    origin_row_index = viz2d->origin_row_index;
+    origin_column_index = viz2d->origin_column_index;
+    img = viz2d->image;
     origin.x = origin_column_index;
     origin.y = origin_row_index;
 
-    viz2d_get_cvfont(&windows_font, &(uviz->font));
+    viz2d_get_cvfont(&windows_font, &(viz2d->font));
 
     center.x = 800;
     center.y = 20;
@@ -172,7 +172,7 @@ int viz2d_draw_system_state(viz2d_image *uviz, const SystemState &states,
         {
             color = unkown_color;
         }
-        cvCircle(uviz->image, center, circle_size, color, -1, CV_AA, 0);
+        cvCircle(viz2d->image, center, circle_size, color, -1, CV_AA, 0);
 
         // text
         text_center = center;
@@ -181,7 +181,7 @@ int viz2d_draw_system_state(viz2d_image *uviz, const SystemState &states,
         text = get_module_name((ModuleName)i);
         if (text != nullptr)
         {
-            cvPutText(uviz->image, text, text_center, &windows_font,
+            cvPutText(viz2d->image, text, text_center, &windows_font,
                       text_color);
         }
 
@@ -192,7 +192,7 @@ int viz2d_draw_system_state(viz2d_image *uviz, const SystemState &states,
 
 }
 
-int viz2d_draw_rtk_state(viz2d_image *uviz,
+int viz2d_draw_rtk_state(viz2d_image *viz2d,
                         const localization::LocalizationEstimate &localization,
                         const Pose2D*base_pose)
 {
@@ -211,7 +211,7 @@ int viz2d_draw_rtk_state(viz2d_image *uviz,
     viz2d_color text_color_index = viz2d_colors_white;
     viz2d_color unkown_color_index = viz2d_colors_banana_yelow;
 
-    if (base_pose == nullptr || uviz == nullptr)
+    if (base_pose == nullptr || viz2d == nullptr)
     {
         return -1;
     }
@@ -232,15 +232,15 @@ int viz2d_draw_rtk_state(viz2d_image *uviz,
     CvFont windows_font;
     int circle_size = 8;
 
-    columns = uviz->columns;
-    rows = uviz->rows;
-    origin_row_index = uviz->origin_row_index;
-    origin_column_index = uviz->origin_column_index;
-    img = uviz->image;
+    columns = viz2d->columns;
+    rows = viz2d->rows;
+    origin_row_index = viz2d->origin_row_index;
+    origin_column_index = viz2d->origin_column_index;
+    img = viz2d->image;
     origin.x = origin_column_index;
     origin.y = origin_row_index;
 
-    viz2d_get_cvfont(&windows_font, &(uviz->font));
+    viz2d_get_cvfont(&windows_font, &(viz2d->font));
 
     center.x = 800;
     center.y = 220;
@@ -254,7 +254,7 @@ int viz2d_draw_rtk_state(viz2d_image *uviz,
         color = success_color;
     }
 
-    cvCircle(uviz->image, center, circle_size, color, -1, CV_AA, 0);
+    cvCircle(viz2d->image, center, circle_size, color, -1, CV_AA, 0);
 
     // text
     text_center = center;
@@ -263,13 +263,13 @@ int viz2d_draw_rtk_state(viz2d_image *uviz,
     text = "rtk status";
     if (text != nullptr)
     {
-        cvPutText(uviz->image, text, text_center, &windows_font, text_color);
+        cvPutText(viz2d->image, text, text_center, &windows_font, text_color);
     }
 
     return 0;
 }
 
-int viz2d_draw_pause_state(viz2d_image *uviz,
+int viz2d_draw_pause_state(viz2d_image *viz2d,
                           const apollo::RunningTimeDebug &debug)
 {
     CvPoint point1, point2;
@@ -287,7 +287,7 @@ int viz2d_draw_pause_state(viz2d_image *uviz,
     viz2d_color text_color_index = viz2d_colors_white;
     viz2d_color unkown_color_index = viz2d_colors_banana_yelow;
 
-    if (uviz == nullptr)
+    if (viz2d == nullptr)
     {
         return -1;
     }
@@ -308,15 +308,15 @@ int viz2d_draw_pause_state(viz2d_image *uviz,
     CvFont windows_font;
     int circle_size = 8;
 
-    columns = uviz->columns;
-    rows = uviz->rows;
-    origin_row_index = uviz->origin_row_index;
-    origin_column_index = uviz->origin_column_index;
-    img = uviz->image;
+    columns = viz2d->columns;
+    rows = viz2d->rows;
+    origin_row_index = viz2d->origin_row_index;
+    origin_column_index = viz2d->origin_column_index;
+    img = viz2d->image;
     origin.x = origin_column_index;
     origin.y = origin_row_index;
 
-    viz2d_get_cvfont(&windows_font, &(uviz->font));
+    viz2d_get_cvfont(&windows_font, &(viz2d->font));
 
     center.x = 1000;
     center.y = 20;
@@ -329,7 +329,7 @@ int viz2d_draw_pause_state(viz2d_image *uviz,
     {
         color = success_color;
     }
-    cvCircle(uviz->image, center, circle_size, color, -1, CV_AA, 0);
+    cvCircle(viz2d->image, center, circle_size, color, -1, CV_AA, 0);
 
     // text
     text_center = center;
@@ -338,13 +338,13 @@ int viz2d_draw_pause_state(viz2d_image *uviz,
     text = "pause state";
     if (text != nullptr)
     {
-        cvPutText(uviz->image, text, text_center, &windows_font, text_color);
+        cvPutText(viz2d->image, text, text_center, &windows_font, text_color);
     }
 
     return 0;
 }
 
-int viz2d_draw_drive_mode(viz2d_image *uviz,
+int viz2d_draw_drive_mode(viz2d_image *viz2d,
                          const apollo::canbus::Chassis::DrivingMode &mode)
 {
     CvPoint point1, point2;
@@ -362,7 +362,7 @@ int viz2d_draw_drive_mode(viz2d_image *uviz,
     viz2d_color text_color_index = viz2d_colors_white;
     viz2d_color unkown_color_index = viz2d_colors_banana_yelow;
 
-    if (uviz == nullptr)
+    if (viz2d == nullptr)
     {
         return -1;
     }
@@ -383,15 +383,15 @@ int viz2d_draw_drive_mode(viz2d_image *uviz,
     CvFont windows_font;
     int circle_size = 8;
 
-    columns = uviz->columns;
-    rows = uviz->rows;
-    origin_row_index = uviz->origin_row_index;
-    origin_column_index = uviz->origin_column_index;
-    img = uviz->image;
+    columns = viz2d->columns;
+    rows = viz2d->rows;
+    origin_row_index = viz2d->origin_row_index;
+    origin_column_index = viz2d->origin_column_index;
+    img = viz2d->image;
     origin.x = origin_column_index;
     origin.y = origin_row_index;
 
-    viz2d_get_cvfont(&windows_font, &(uviz->font));
+    viz2d_get_cvfont(&windows_font, &(viz2d->font));
 
     center.x = 1000;
     center.y = 40;
@@ -406,7 +406,7 @@ int viz2d_draw_drive_mode(viz2d_image *uviz,
         color = success_color;
         text = "Auto mode";
     }
-    cvCircle(uviz->image, center, circle_size, color, -1, CV_AA, 0);
+    cvCircle(viz2d->image, center, circle_size, color, -1, CV_AA, 0);
 
     // text
     text_center = center;
@@ -414,13 +414,13 @@ int viz2d_draw_drive_mode(viz2d_image *uviz,
 
     if (text != nullptr)
     {
-        cvPutText(uviz->image, text, text_center, &windows_font, text_color);
+        cvPutText(viz2d->image, text, text_center, &windows_font, text_color);
     }
 
     return 0;
 }
 
-int viz2d_draw_run_mode(viz2d_image *uviz,
+int viz2d_draw_run_mode(viz2d_image *viz2d,
                        const apollo::ApolloRunMode &mode)
 {
     CvPoint point1, point2;
@@ -438,7 +438,7 @@ int viz2d_draw_run_mode(viz2d_image *uviz,
     viz2d_color text_color_index = viz2d_colors_white;
     viz2d_color unkown_color_index = viz2d_colors_banana_yelow;
 
-    if (uviz == nullptr)
+    if (viz2d == nullptr)
     {
         return -1;
     }
@@ -459,21 +459,21 @@ int viz2d_draw_run_mode(viz2d_image *uviz,
     CvFont windows_font;
     int circle_size = 8;
 
-    columns = uviz->columns;
-    rows = uviz->rows;
-    origin_row_index = uviz->origin_row_index;
-    origin_column_index = uviz->origin_column_index;
-    img = uviz->image;
+    columns = viz2d->columns;
+    rows = viz2d->rows;
+    origin_row_index = viz2d->origin_row_index;
+    origin_column_index = viz2d->origin_column_index;
+    img = viz2d->image;
     origin.x = origin_column_index;
     origin.y = origin_row_index;
 
-    viz2d_get_cvfont(&windows_font, &(uviz->font));
+    viz2d_get_cvfont(&windows_font, &(viz2d->font));
 
     center.x = 1200;
     center.y = 20;
 
     color = success_color;
-    cvCircle(uviz->image, center, circle_size, color, -1, CV_AA, 0);
+    cvCircle(viz2d->image, center, circle_size, color, -1, CV_AA, 0);
 
     // text
     text_center = center;
@@ -482,13 +482,13 @@ int viz2d_draw_run_mode(viz2d_image *uviz,
     text = get_run_mode_name(mode);
     if (text != nullptr)
     {
-        cvPutText(uviz->image, text, text_center, &windows_font, text_color);
+        cvPutText(viz2d->image, text, text_center, &windows_font, text_color);
     }
 
     return 0;
 }
 
-int viz2d_draw_localization_time(viz2d_image *uviz, double time_stamp)
+int viz2d_draw_localization_time(viz2d_image *viz2d, double time_stamp)
 {
     CvPoint point1, point2;
     std::size_t i, feasible_size;
@@ -504,7 +504,7 @@ int viz2d_draw_localization_time(viz2d_image *uviz, double time_stamp)
     viz2d_color text_color_index = viz2d_colors_white;
     viz2d_color unkown_color_index = viz2d_colors_banana_yelow;
 
-    if (uviz == nullptr)
+    if (viz2d == nullptr)
     {
         return -1;
     }
@@ -523,15 +523,15 @@ int viz2d_draw_localization_time(viz2d_image *uviz, double time_stamp)
     CvFont windows_font;
     int circle_size = 8;
 
-    columns = uviz->columns;
-    rows = uviz->rows;
-    origin_row_index = uviz->origin_row_index;
-    origin_column_index = uviz->origin_column_index;
-    img = uviz->image;
+    columns = viz2d->columns;
+    rows = viz2d->rows;
+    origin_row_index = viz2d->origin_row_index;
+    origin_column_index = viz2d->origin_column_index;
+    img = viz2d->image;
     origin.x = origin_column_index;
     origin.y = origin_row_index;
 
-    viz2d_get_cvfont(&windows_font, &(uviz->font));
+    viz2d_get_cvfont(&windows_font, &(viz2d->font));
 
     center.x = 1400;
     center.y = 20;
@@ -541,18 +541,18 @@ int viz2d_draw_localization_time(viz2d_image *uviz, double time_stamp)
 
     cyber::Time t1(time_stamp);
 
-    cvPutText(uviz->image, t1.ToString().c_str(), text_center, &windows_font,
+    cvPutText(viz2d->image, t1.ToString().c_str(), text_center, &windows_font,
               text_color);
 
     return 0;
 }
 
-int viz2d_draw_replay_info(viz2d_image *uviz, int64_t ratio)
+int viz2d_draw_replay_info(viz2d_image *viz2d, int64_t ratio)
 {
     CvScalar replay_finish_color;
     CvScalar replay_todo_color;
 
-    if (uviz == nullptr)
+    if (viz2d == nullptr)
     {
         return -1;
     }
@@ -596,15 +596,15 @@ int viz2d_draw_replay_info(viz2d_image *uviz, int64_t ratio)
 
     int line_width = 10;
 
-    cvLine(uviz->image, start, mid, replay_finish_color, line_width, CV_AA, 0);
+    cvLine(viz2d->image, start, mid, replay_finish_color, line_width, CV_AA, 0);
 
-    cvLine(uviz->image, mid, end, replay_todo_color, line_width, CV_AA, 0);
+    cvLine(viz2d->image, mid, end, replay_todo_color, line_width, CV_AA, 0);
 
     return 0;
 }
 
 
-int viz2d_draw_chassis_feedback(viz2d_image *uviz, double v, double wheel)
+int viz2d_draw_chassis_feedback(viz2d_image *viz2d, double v, double wheel)
 {
     CvPoint point1, point2;
     std::size_t i, feasible_size;
@@ -613,7 +613,7 @@ int viz2d_draw_chassis_feedback(viz2d_image *uviz, double v, double wheel)
 
     viz2d_color text_color_index = viz2d_colors_white;
 
-    if (uviz == nullptr)
+    if (viz2d == nullptr)
     {
         return -1;
     }
@@ -627,15 +627,15 @@ int viz2d_draw_chassis_feedback(viz2d_image *uviz, double v, double wheel)
     CvFont windows_font;
     int circle_size = 8;
 
-    columns = uviz->columns;
-    rows = uviz->rows;
-    origin_row_index = uviz->origin_row_index;
-    origin_column_index = uviz->origin_column_index;
-    img = uviz->image;
+    columns = viz2d->columns;
+    rows = viz2d->rows;
+    origin_row_index = viz2d->origin_row_index;
+    origin_column_index = viz2d->origin_column_index;
+    img = viz2d->image;
     origin.x = origin_column_index;
     origin.y = origin_row_index;
 
-    viz2d_get_cvfont(&windows_font, &(uviz->font));
+    viz2d_get_cvfont(&windows_font, &(viz2d->font));
 
     center.x = 100;
     center.y = 20;
@@ -653,7 +653,7 @@ int viz2d_draw_chassis_feedback(viz2d_image *uviz, double v, double wheel)
         sprintf(str, "chassis info: speed: %.4f m/s, steer: %.4f", v, wheel);
     }
 
-    cvPutText(uviz->image, str, text_center, &windows_font, text_color);
+    cvPutText(viz2d->image, str, text_center, &windows_font, text_color);
 
 
     // fill box
@@ -661,7 +661,7 @@ int viz2d_draw_chassis_feedback(viz2d_image *uviz, double v, double wheel)
     box_center.x = columns / 2;
     box_center.y = rows - 80;
 
-    viz_draw_box_in_cv_frame(uviz, &box_center, 150, 800,
+    viz_draw_box_in_cv_frame(viz2d, &box_center, 150, 800,
                              viz2d_colors_black_gray, true);
 
     // speed value
@@ -675,7 +675,7 @@ int viz2d_draw_chassis_feedback(viz2d_image *uviz, double v, double wheel)
     windows_font.hscale = 1.5;
     windows_font.vscale = 1.5;
     windows_font.thickness = 2.0;
-    cvPutText(uviz->image, str, text_center, &windows_font, text_color);
+    cvPutText(viz2d->image, str, text_center, &windows_font, text_color);
 
     // speed unit
     text_center.x = columns / 2 - 220;
@@ -684,7 +684,7 @@ int viz2d_draw_chassis_feedback(viz2d_image *uviz, double v, double wheel)
     windows_font.hscale = 1.0;
     windows_font.vscale = 1.0;
     windows_font.thickness = 1.0;
-    cvPutText(uviz->image, str, text_center, &windows_font, text_color);
+    cvPutText(viz2d->image, str, text_center, &windows_font, text_color);
 
     // wheel
 
@@ -703,7 +703,7 @@ int viz2d_draw_chassis_feedback(viz2d_image *uviz, double v, double wheel)
     windows_font.hscale = 1.5;
     windows_font.vscale = 1.5;
     windows_font.thickness = 2.0;
-    cvPutText(uviz->image, str, text_center, &windows_font, text_color);
+    cvPutText(viz2d->image, str, text_center, &windows_font, text_color);
 
     // speed unit
     text_center.y += 50;
@@ -711,12 +711,12 @@ int viz2d_draw_chassis_feedback(viz2d_image *uviz, double v, double wheel)
     windows_font.hscale = 1.0;
     windows_font.vscale = 1.0;
     windows_font.thickness = 1.0;
-    cvPutText(uviz->image, str, text_center, &windows_font, text_color);
+    cvPutText(viz2d->image, str, text_center, &windows_font, text_color);
 
     return 0;
 }
 
-int viz2d_draw_control_commond_info(viz2d_image *uviz, double acc,
+int viz2d_draw_control_commond_info(viz2d_image *viz2d, double acc,
                                    double wheel)
 {
     CvPoint point1, point2;
@@ -726,7 +726,7 @@ int viz2d_draw_control_commond_info(viz2d_image *uviz, double acc,
 
     viz2d_color text_color_index = viz2d_colors_white;
 
-    if (uviz == nullptr)
+    if (viz2d == nullptr)
     {
         return -1;
     }
@@ -740,15 +740,15 @@ int viz2d_draw_control_commond_info(viz2d_image *uviz, double acc,
     CvFont windows_font;
     int circle_size = 8;
 
-    columns = uviz->columns;
-    rows = uviz->rows;
-    origin_row_index = uviz->origin_row_index;
-    origin_column_index = uviz->origin_column_index;
-    img = uviz->image;
+    columns = viz2d->columns;
+    rows = viz2d->rows;
+    origin_row_index = viz2d->origin_row_index;
+    origin_column_index = viz2d->origin_column_index;
+    img = viz2d->image;
     origin.x = origin_column_index;
     origin.y = origin_row_index;
 
-    viz2d_get_cvfont(&windows_font, &(uviz->font));
+    viz2d_get_cvfont(&windows_font, &(viz2d->font));
 
     center.x = 100;
     center.y = 40;
@@ -766,7 +766,7 @@ int viz2d_draw_control_commond_info(viz2d_image *uviz, double acc,
         sprintf(str, "commond info: acc: %.4f m/s, steer: %.4f", acc, wheel);
     }
 
-    cvPutText(uviz->image, str, text_center, &windows_font, text_color);
+    cvPutText(viz2d->image, str, text_center, &windows_font, text_color);
 
     // acc
 
@@ -785,14 +785,14 @@ int viz2d_draw_control_commond_info(viz2d_image *uviz, double acc,
     windows_font.hscale = 1.5;
     windows_font.vscale = 1.5;
     windows_font.thickness = 2.0;
-    cvPutText(uviz->image, str, text_center, &windows_font, text_color);
+    cvPutText(viz2d->image, str, text_center, &windows_font, text_color);
 
     text_center.y += 50;
     sprintf(str, " m/s^2");
     windows_font.hscale = 1.0;
     windows_font.vscale = 1.0;
     windows_font.thickness = 1.0;
-    cvPutText(uviz->image, str, text_center, &windows_font, text_color);
+    cvPutText(viz2d->image, str, text_center, &windows_font, text_color);
 
     return 0;
 }
@@ -809,7 +809,7 @@ static double calc_turn_radius(double lfr, double steering)
 }
 
 // right turn is negative
-int viz2d_draw_front_wheel_state(viz2d_image *uviz, const Pose2D*veh_pose,
+int viz2d_draw_front_wheel_state(viz2d_image *viz2d, const Pose2D*veh_pose,
                                 double wheel_base, double steering,
                                 viz2d_color text_color_index)
 {
@@ -870,7 +870,7 @@ int viz2d_draw_front_wheel_state(viz2d_image *uviz, const Pose2D*veh_pose,
         end_point.x = center_point.x + radius * apollo_cos(end_theta);
         end_point.y = center_point.y + radius * apollo_sin(end_theta);
 
-        viz2d_draw_line(uviz, &start_point, &end_point, veh_pose,
+        viz2d_draw_line(viz2d, &start_point, &end_point, veh_pose,
                        text_color_index, 2);
 
         start_point = end_point;

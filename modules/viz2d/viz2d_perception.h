@@ -21,10 +21,10 @@ namespace apollo
 
 int viz_draw_traffic_lights(perception::TrafficLightDetection *lights,
                             const Pose2D*veh_pose,
-                            viz2d_image *uviz);
+                            viz2d_image *viz2d);
 
 int viz_draw_traffic_light(hdmap::SignalInfoConstPtr signal_info,
-                           const Pose2D*veh_pose, viz2d_image *uviz,
+                           const Pose2D*veh_pose, viz2d_image *viz2d,
                            viz2d_color color_index, int radius);
 
 int update_obs_list_pose_by_heading(perception::PerceptionObstacles *obs_list,

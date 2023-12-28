@@ -5,7 +5,7 @@
 namespace apollo
 {
 int viz2d_draw_prediction(
-        viz2d_image *uviz,
+        viz2d_image *viz2d,
         const std::vector<std::vector<cv::Point2d> > &obstacle_list,
         const Pose2D*base_pose, viz2d_color color_index,
         int line_width);

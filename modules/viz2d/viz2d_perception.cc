@@ -7,7 +7,7 @@ namespace apollo
 {
 
 int viz_draw_traffic_light(hdmap::SignalInfoConstPtr signal_info,
-                           const Pose2D*veh_pose, viz2d_image *uviz,
+                           const Pose2D*veh_pose, viz2d_image *viz2d,
                            viz2d_color color_index, int radius)
 {
     const hdmap::Signal &signal = signal_info->signal();
@@ -16,7 +16,7 @@ int viz_draw_traffic_light(hdmap::SignalInfoConstPtr signal_info,
 
     int box_width = radius * 2 + 8;
 
-    double box_width_m = box_width * uviz->resolution;
+    double box_width_m = box_width * viz2d->resolution;
 
     for (size_t i = 0; i < signal.subsignal_size(); i++)
     {
@@ -25,10 +25,10 @@ int viz_draw_traffic_light(hdmap::SignalInfoConstPtr signal_info,
         center.x = sub_signal.location().x();
         center.y = sub_signal.location().y();
 
-        viz_draw_filled_box(uviz, &center, box_width_m, viz2d_colors_black,
+        viz_draw_filled_box(viz2d, &center, box_width_m, viz2d_colors_black,
                             veh_pose);
 
-        viz2d_draw_circle_wrapper(uviz, &center, veh_pose, color_index, radius,
+        viz2d_draw_circle_wrapper(viz2d, &center, veh_pose, color_index, radius,
                                  true);
     }
 
@@ -41,7 +41,7 @@ int viz_draw_traffic_light(hdmap::SignalInfoConstPtr signal_info,
 
     CvFont windows_font;
 
-    viz2d_get_cvfont(&windows_font, &(uviz->font));
+    viz2d_get_cvfont(&windows_font, &(viz2d->font));
 
 
     const hdmap::Subsignal &sub_signal = signal.subsignal(0);
@@ -51,9 +51,9 @@ int viz_draw_traffic_light(hdmap::SignalInfoConstPtr signal_info,
 
     cvt_pos_global_to_local(&text_center, &center, veh_pose);
 
-    viz2d_get_index(uviz, &text_pos, text_center.x, text_center.y);
+    viz2d_get_index(viz2d, &text_pos, text_center.x, text_center.y);
 
-    cvPutText(uviz->image, signal.id().id().c_str(), text_pos, &windows_font,
+    cvPutText(viz2d->image, signal.id().id().c_str(), text_pos, &windows_font,
               text_color);
 
     return 0;
@@ -61,7 +61,7 @@ int viz_draw_traffic_light(hdmap::SignalInfoConstPtr signal_info,
 
 int viz_draw_traffic_lights(perception::TrafficLightDetection *lights,
                             const Pose2D*veh_pose,
-                            viz2d_image *uviz)
+                            viz2d_image *viz2d)
 {
 
     if(lights == nullptr)
@@ -119,7 +119,7 @@ int viz_draw_traffic_lights(perception::TrafficLightDetection *lights,
                     break;
             }
 
-            viz_draw_traffic_light(traffic_light_info_ptr, veh_pose, uviz,
+            viz_draw_traffic_light(traffic_light_info_ptr, veh_pose, viz2d,
                                    color_index, radius);
         }
     }
@@ -429,7 +429,7 @@ int draw_obs_list(std::shared_ptr<perception::PerceptionObstacles> &obs_list,
             AWARN << "obs point size is more than 12";
         }
 
-        viz2d_local_planner_draw_polygon(window, &obs_global,
+        viz2d_draw_polygon(window, &obs_global,
                                         &base_pose, viz2d_colors_black);
     }
 
@@ -494,7 +494,7 @@ int draw_obs_list(perception::PerceptionObstacles *obs_list,
             AWARN << "obs point size is more than 12";
         }
 
-        viz2d_local_planner_draw_polygon(window, &obs_global,
+        viz2d_draw_polygon(window, &obs_global,
                                         &base_pose, viz2d_colors_yellow);
 
         center.x = obs.position().x();

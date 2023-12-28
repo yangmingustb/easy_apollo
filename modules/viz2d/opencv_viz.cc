@@ -99,7 +99,7 @@ int viz2d_draw_xy_axis(viz2d_image *img_handle)
     return 1;
 }
 
-int viz2d_init_image_handle(viz2d_image *img_handle,
+int viz2d_init_window(viz2d_image *img_handle,
                            const viz2d_font_setting *font,
                            const char *win_name, int columns, int rows,
                            int origin_column_index, int origin_row_index,
@@ -196,7 +196,7 @@ int viz2d_get_index(viz2d_image *img_handle, CvPoint *index, double x,
     return 1;
 }
 
-int viz2d_clear_image(viz2d_image *img_handle)
+int viz2d_init_in_per_frame(viz2d_image *img_handle)
 {
 
     cvSet(img_handle->image, CVUI_SCALAR(img_handle->background_color), 0);
@@ -204,7 +204,7 @@ int viz2d_clear_image(viz2d_image *img_handle)
     return 1;
 }
 
-int viz2d_shutdown(viz2d_image *img_handle)
+int viz2d_release(viz2d_image *img_handle)
 {
     cvReleaseImage(&(img_handle->image));
     cvDestroyWindow(img_handle->win_name);
@@ -212,7 +212,7 @@ int viz2d_shutdown(viz2d_image *img_handle)
     return 1;
 }
 
-int viz2d_start(viz2d_image *img_handle)
+int viz2d_init_image(viz2d_image *img_handle)
 {
     int ret;
 
@@ -220,12 +220,12 @@ int viz2d_start(viz2d_image *img_handle)
     img_handle->image =
             cvCreateImage(cvSize(img_handle->columns, img_handle->rows), 8, 3);
 
-    ret = viz2d_clear_image(img_handle);
+    ret = viz2d_init_in_per_frame(img_handle);
 
     return 1;
 }
 
-int viz2d_display(viz2d_image *img_handle)
+int viz2d_show_result_in_per_frame(viz2d_image *img_handle)
 {
 
     cvShowImage(img_handle->win_name, img_handle->image);
@@ -355,46 +355,6 @@ int viz2d_draw_arrow(viz2d_image *img_handle, const Pose2D*ego_pose,
     return 1;
 }
 
-// int
-// viz2d_save_ogm_to_pgm(const char *log_filename, const ogm_map_t *ogm)
-// {
-//     IplImage* img;
-//     int width, height;
-//     int i, j, param;
-
-//     uos_check_log_ret(UOS_MOD_PLANNER_BASE, (nullptr != log_filename) &&
-//             (nullptr != ogm), "input pointer can not be nullptr!\n", 0);
-//     uos_check_log_ret(UOS_MOD_PLANNER_BASE,
-//             is_ogm_valid(ogm),
-//             "input ogm map is invalid!\n", 0);
-
-//     width = ogm->meta.width;
-//     height = ogm->meta.height;
-//     img = cvCreateImage(cvSize(width, height), IPL_DEPTH_8U, 1);
-//     for (j = 0; j < height; j++)
-//     {
-//         for (i = 0; i < width; i++)
-//         {
-//             if (is_ogm_status_passible(ogm->map[j][i]))
-//             {
-//                 CV_IMAGE_ELEM(img, uchar, j, i) = 0;
-//             }
-//             else CV_IMAGE_ELEM(img, uchar, j, i) = 255;
-//         }
-//     }
-
-//     param = 1;
-//     cvSaveImage(log_filename, img, &param);
-
-//     return 1;
-// }
-
-int viz2d_draw_polygon(viz2d_image *image_handle, const Polygon2D *polygon,
-                      const Pose2D*base_pose, viz2d_color color_index)
-{
-    return viz2d_draw_polygon_with_thickness(image_handle, polygon, base_pose,
-                                            color_index, 1);
-}
 
 int viz2d_draw_polygon_with_thickness(viz2d_image *image_handle,
                                      const Polygon2D *polygon,
@@ -437,7 +397,7 @@ int viz2d_draw_polygon_with_thickness(viz2d_image *image_handle,
     return 1;
 }
 
-int viz2d_local_planner_draw_filled_polygon(viz2d_image *uviz,
+int viz2d_draw_filled_polygon(viz2d_image *viz2d,
                                            const Polygon2D *polygon,
                                            viz2d_color color,
                                            const Pose2D*base_pose_global)
@@ -456,16 +416,16 @@ int viz2d_local_planner_draw_filled_polygon(viz2d_image *uviz,
     for (i = 0; i < polygon->vertex_num; i++)
     {
         uos_pt = local_poly.vertexes[i];
-        viz2d_get_index(uviz, &points[i], uos_pt.x, uos_pt.y);
+        viz2d_get_index(viz2d, &points[i], uos_pt.x, uos_pt.y);
     }
     size = polygon->vertex_num;
     viz2d_get_color(&vcolor, color);
-    cvFillConvexPoly(uviz->image, points, size, vcolor, CV_AA, 0);
+    cvFillConvexPoly(viz2d->image, points, size, vcolor, CV_AA, 0);
 
     return 1;
 }
 
-int viz_draw_filled_box(viz2d_image *uviz, const Position2D *center,
+int viz_draw_filled_box(viz2d_image *viz2d, const Position2D *center,
                         double width, viz2d_color color,
                         const Pose2D*base_pose_global)
 {
@@ -504,35 +464,35 @@ int viz_draw_filled_box(viz2d_image *uviz, const Position2D *center,
 
     tmp.x = local_center.x + width / 2;
     tmp.y = local_center.y + width / 2;
-    viz2d_get_index(uviz, &points[0], tmp.x, tmp.y);
+    viz2d_get_index(viz2d, &points[0], tmp.x, tmp.y);
 
     tmp.x = local_center.x + width / 2;
     tmp.y = local_center.y - width / 2;
-    viz2d_get_index(uviz, &points[1], tmp.x, tmp.y);
+    viz2d_get_index(viz2d, &points[1], tmp.x, tmp.y);
 
     tmp.x = local_center.x - width / 2;
     tmp.y = local_center.y - width / 2;
-    viz2d_get_index(uviz, &points[2], tmp.x, tmp.y);
+    viz2d_get_index(viz2d, &points[2], tmp.x, tmp.y);
 
     tmp.x = local_center.x - width / 2;
     tmp.y = local_center.y + width / 2;
-    viz2d_get_index(uviz, &points[3], tmp.x, tmp.y);
+    viz2d_get_index(viz2d, &points[3], tmp.x, tmp.y);
 
 
     viz2d_get_color(&internal_color, color);
     viz2d_get_color(&line_color, viz2d_colors_gray);
 
-    cvFillConvexPoly(uviz->image, points, 4, internal_color, CV_AA, 0);
+    cvFillConvexPoly(viz2d->image, points, 4, internal_color, CV_AA, 0);
 
     for (size_t i = 0; i < 4; i++)
     {
         if (i == 3)
         {
-            cvLine(uviz->image, points[i], points[0], line_color, 1, CV_AA, 0);
+            cvLine(viz2d->image, points[i], points[0], line_color, 1, CV_AA, 0);
         }
         else
         {
-            cvLine(uviz->image, points[i], points[i + 1], line_color, 1, CV_AA,
+            cvLine(viz2d->image, points[i], points[i + 1], line_color, 1, CV_AA,
                    0);
         }
     }
@@ -628,14 +588,14 @@ int viz_draw_local_text(viz2d_image *viz, Position2D *local_text_center,
     return 0;
 }
 
-int viz_draw_text_relative_to_cv_coordinate(viz2d_image *uviz,
+int viz_draw_text_relative_to_cv_coordinate(viz2d_image *viz2d,
                                             const std::string &str,
                                             viz2d_color color,
                                             CvPoint text_center)
 {
     CvScalar text_color;
 
-    if (uviz == nullptr)
+    if (viz2d == nullptr)
     {
         return -1;
     }
@@ -644,9 +604,9 @@ int viz_draw_text_relative_to_cv_coordinate(viz2d_image *uviz,
 
     CvFont windows_font;
 
-    viz2d_get_cvfont(&windows_font, &(uviz->font));
+    viz2d_get_cvfont(&windows_font, &(viz2d->font));
 
-    cvPutText(uviz->image, str.c_str(), text_center, &windows_font, text_color);
+    cvPutText(viz2d->image, str.c_str(), text_center, &windows_font, text_color);
 
     return 0;
 }

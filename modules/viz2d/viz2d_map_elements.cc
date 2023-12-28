@@ -36,7 +36,7 @@ int viz2d_draw_apollo_polygon(viz2d_image *image_handle,
     return 0;
 }
 
-int viz2d_draw_crosswalk(viz2d_image *uviz, const Pose2D*base_pose,
+int viz2d_draw_crosswalk(viz2d_image *viz2d, const Pose2D*base_pose,
                         viz2d_color color_index, double dist_thresh,
                         int line_width)
 {
@@ -79,7 +79,7 @@ int viz2d_draw_crosswalk(viz2d_image *uviz, const Pose2D*base_pose,
             continue;
         }
 
-        viz2d_draw_apollo_polygon(uviz, poly, base_pose, color_index,
+        viz2d_draw_apollo_polygon(viz2d, poly, base_pose, color_index,
                                  line_width);
     }
     
@@ -88,7 +88,7 @@ int viz2d_draw_crosswalk(viz2d_image *uviz, const Pose2D*base_pose,
 }
 
 
-int viz2d_draw_hdmap(viz2d_image *uviz, const Pose2D*base_pose,
+int viz2d_draw_hdmap(viz2d_image *viz2d, const Pose2D*base_pose,
                     bool draw_full_map)
 {
     Position2D lane_line_start, lane_line_end_pt;
@@ -168,7 +168,7 @@ int viz2d_draw_hdmap(viz2d_image *uviz, const Pose2D*base_pose,
             lane_line_end_pt.x = line_global.x;
             lane_line_end_pt.y = line_global.y;
 
-            viz2d_draw_line(uviz, &lane_line_start, &lane_line_end_pt, base_pose,
+            viz2d_draw_line(viz2d, &lane_line_start, &lane_line_end_pt, base_pose,
                            viz2d_colors_gray, 2);
 
             // right start
@@ -189,7 +189,7 @@ int viz2d_draw_hdmap(viz2d_image *uviz, const Pose2D*base_pose,
             lane_line_end_pt.x = line_global.x;
             lane_line_end_pt.y = line_global.y;
 
-            viz2d_draw_line(uviz, &lane_line_start, &lane_line_end_pt, base_pose,
+            viz2d_draw_line(viz2d, &lane_line_start, &lane_line_end_pt, base_pose,
                            viz2d_colors_gray, 2);
         }
     }
@@ -197,7 +197,7 @@ int viz2d_draw_hdmap(viz2d_image *uviz, const Pose2D*base_pose,
     return 0;
 }
 
-int viz2d_draw_full_simple_hdmap(viz2d_image *uviz,
+int viz2d_draw_full_simple_hdmap(viz2d_image *viz2d,
                                 const Pose2D*base_pose)
 {
     Position2D lane_line_start, lane_line_end_pt;
@@ -235,9 +235,9 @@ int viz2d_draw_full_simple_hdmap(viz2d_image *uviz,
         const hdmap::LaneBoundary &right = lane_ptr->lane().right_boundary();
 
         viz2d_draw_hdmap_lane_boudary(left, base_pose, sin_theta, cos_theta,
-                                     uviz);
+                                     viz2d);
         viz2d_draw_hdmap_lane_boudary(right, base_pose, sin_theta, cos_theta,
-                                     uviz);
+                                     viz2d);
     }
 
     return 0;
@@ -245,7 +245,7 @@ int viz2d_draw_full_simple_hdmap(viz2d_image *uviz,
 
 int viz2d_draw_hdmap_lane_boudary(const hdmap::LaneBoundary &bound,
                                  const Pose2D*base_pose, double sin_theta,
-                                 double cos_theta, viz2d_image *uviz)
+                                 double cos_theta, viz2d_image *viz2d)
 {
     Position2D line_local_start, line_global_start;
     Position2D line_local_end, line_global_end;
@@ -285,27 +285,27 @@ int viz2d_draw_hdmap_lane_boudary(const hdmap::LaneBoundary &bound,
 
                 if (type == apollo::hdmap::LaneBoundaryType_Type_SOLID_WHITE)
                 {
-                    viz2d_draw_local_line(uviz, &line_local_start,
+                    viz2d_draw_local_line(viz2d, &line_local_start,
                                          &line_local_end, viz2d_colors_gray,
                                          line_width);
                 }
                 else if (type ==
                          apollo::hdmap::LaneBoundaryType_Type_SOLID_YELLOW)
                 {
-                    viz2d_draw_local_line(uviz, &line_local_start,
+                    viz2d_draw_local_line(viz2d, &line_local_start,
                                          &line_local_end, viz2d_colors_orange,
                                          line_width);
                 }
                 else if (type ==
                          apollo::hdmap::LaneBoundaryType_Type_DOTTED_WHITE)
                 {
-                    viz2d_draw_local_dash_line(uviz, &line_local_start,
+                    viz2d_draw_local_dash_line(viz2d, &line_local_start,
                                               &line_local_end, viz2d_colors_gray,
                                               line_width);
                 }
                 else
                 {
-                    viz2d_draw_local_dash_line(uviz, &line_local_start,
+                    viz2d_draw_local_dash_line(viz2d, &line_local_start,
                                               &line_local_end,
                                               viz2d_colors_orange, line_width);
                 }
@@ -345,13 +345,13 @@ int viz2d_draw_hdmap_lane_boudary(const hdmap::LaneBoundary &bound,
                 if (type == apollo::hdmap::LaneBoundaryType_Type_SOLID_YELLOW ||
                     type == apollo::hdmap::LaneBoundaryType_Type_DOUBLE_YELLOW)
                 {
-                    viz2d_draw_local_line(uviz, &line_local_start,
+                    viz2d_draw_local_line(viz2d, &line_local_start,
                                          &line_local_end, viz2d_colors_orange,
                                          line_width);
                 }
                 else
                 {
-                    viz2d_draw_local_line(uviz, &line_local_start,
+                    viz2d_draw_local_line(viz2d, &line_local_start,
                                          &line_local_end, viz2d_colors_gray,
                                          line_width);
                 }
@@ -431,12 +431,12 @@ int viz2d_draw_hdmap_lane_boudary(const hdmap::LaneBoundary &bound,
             cv_end = &boundary_point.at(i + 1);
             if (type == apollo::hdmap::LaneBoundaryType_Type_DOTTED_WHITE)
             {
-                viz2d_draw_local_dash_line(uviz, cv_start, cv_end,
+                viz2d_draw_local_dash_line(viz2d, cv_start, cv_end,
                                           viz2d_colors_gray, line_width);
             }
             else if (type == apollo::hdmap::LaneBoundaryType_Type_DOTTED_YELLOW)
             {
-                viz2d_draw_local_dash_line(uviz, cv_start, cv_end,
+                viz2d_draw_local_dash_line(viz2d, cv_start, cv_end,
                                           viz2d_colors_orange, line_width);
             }
         }
@@ -445,7 +445,7 @@ int viz2d_draw_hdmap_lane_boudary(const hdmap::LaneBoundary &bound,
     return 0;
 }
 
-int viz2d_draw_simple_hdmap(viz2d_image *uviz, const Pose2D*base_pose)
+int viz2d_draw_simple_hdmap(viz2d_image *viz2d, const Pose2D*base_pose)
 {
     Position2D lane_line_start, lane_line_end_pt;
 
@@ -495,16 +495,15 @@ int viz2d_draw_simple_hdmap(viz2d_image *uviz, const Pose2D*base_pose)
         // AINFO <<" id " << lane_ptr->id().DebugString();
         // AINFO <<" point size " << lane_ptr->points().size();
         viz2d_draw_hdmap_lane_boudary(left, base_pose, sin_theta, cos_theta,
-                                     uviz);
+                                     viz2d);
         viz2d_draw_hdmap_lane_boudary(right, base_pose, sin_theta, cos_theta,
-                                     uviz);
+                                     viz2d);
     }
 
     return 0;
 }
 
-
-int get_hdmap_base_for_uviz(Pose2D*base_pose)
+int get_hdmap_center_base(Pose2D *base_pose)
 {
     const apollo::hdmap::HDMap *hdmap_;
 
