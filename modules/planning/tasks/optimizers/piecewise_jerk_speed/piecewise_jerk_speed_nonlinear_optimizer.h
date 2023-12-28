@@ -33,33 +33,6 @@ namespace apollo
 namespace planning
 {
 
-struct speed_lattice_cost
-{
-    // start point info
-    double start_point_lon_gap;
-    double start_point_time_headway;
-
-    // end point info
-    double end_point_lon_gap;
-    double end_point_time_headway;
-
-    // close point info
-    double min_lon_gap;
-    double min_time_headway;
-
-
-    double sampling_acc;
-    double sampling_time;
-    
-    double speed_limit;
-
-    double time_headway_cost;
-    double sampling_acc_cost;
-
-    double total_cost;
-};
-
-
 // nlp优化，how:
 // 关于曲率限速，是生成speed limit好，还是放到优化模型中处理？先生成speed
 // limit,再作为nlp 的speed bound.
@@ -81,28 +54,6 @@ public:
     int record_nlp_info();
 
     int record_constraints();
-
-    int speed_lattice_process(SpeedData* const speed_data,
-                              const double speed_limit);
-
-    int estimate_min_lon_gap_for_follow_decision(
-            speed_lattice_cost* speed_cost, const Obstacle& obstacle,
-            const SpeedData& adc_speed_data);
-
-    double estimate_speed_limit_cost(const SpeedData& adc_speed_data);
-
-    int post_process(SpeedData* const speed_data);
-
-    bool check_constant_speed_profile_is_nice(
-            const SpeedData& speed_data, const speed_lattice_cost& speed_cost);
-
-    bool check_speed_up_profile_is_nice(const SpeedData& speed_data,
-                                        const speed_lattice_cost& speed_cost);
-
-    bool check_speed_down_profile_is_nice(const SpeedData& speed_data,
-                                        const speed_lattice_cost& speed_cost);
-
-    void debug_speed_lattice_profile(const speed_lattice_cost &cost);
 
 private:
     common::Status Process(const PathData& path_data,
@@ -138,11 +89,6 @@ private:
             std::vector<double>* velocity, std::vector<double>* acceleration,
             PiecewiseJerkSpeedProblem& piecewise_jerk_problem);
 
-    common::Status smooth_lattice_by_qp(
-            SpeedData* const speed_data, std::vector<double>* distance,
-            std::vector<double>* velocity, std::vector<double>* acceleration,
-            PiecewiseJerkSpeedProblem& piecewise_jerk_problem);
-
     /**
      * @brief  限速、巡航速度，弯道限速，如何处理：
      *                     J =  f
@@ -171,9 +117,6 @@ private:
     void get_obs_lon_state(double* s, const double obs_init_v,
                            const double obs_init_s, const double time);
 
-    int is_follow_state_valid(double* time_headway, double* ttc,
-                              const double ego_s, const double ego_v,
-                              const double obs_s, const double obs_v);
 
     // st problem dimensions
     double delta_t_ = 0.0;
