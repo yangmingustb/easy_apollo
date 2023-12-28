@@ -67,8 +67,8 @@ include_directories(${THIRD_LIB_DIR}/osqp/include)
 link_directories(${THIRD_LIB_DIR}/osqp/lib)
 # set(DEP_LIBS ${DEP_LIBS} osqp qdldl)
 
-#nlohmann_json
-include_directories(${THIRD_LIB_DIR}/nlohmann_json/include)
+#json
+include_directories(${THIRD_LIB_DIR}/json/include)
 
 #fastrtps
 # include_directories(${THIRD_LIB_DIR}/fastrtps/include)

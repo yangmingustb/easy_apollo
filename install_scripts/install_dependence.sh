@@ -45,3 +45,5 @@ bash ${SCRIPT_DIR}/install_ad_rss_lib.sh
 bash ${SCRIPT_DIR}/install_eigen.sh
 
 bash ${SCRIPT_DIR}/install_libtorch.sh
+
+bash ${SCRIPT_DIR}/install_json.sh
