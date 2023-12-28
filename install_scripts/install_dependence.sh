@@ -41,3 +41,5 @@ bash ${SCRIPT_DIR}/install_opencv.sh
 bash ${SCRIPT_DIR}/install_abseil.sh
 
 bash ${SCRIPT_DIR}/install_ad_rss_lib.sh
+
+bash ${SCRIPT_DIR}/install_eigen.sh
