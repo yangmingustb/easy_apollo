@@ -13,9 +13,9 @@ set -e
 # rm -rf opencv
 # git clone --depth 1 --branch 4.2.0 git@github.com:opencv/opencv.git
 # cd opencv && mkdir build && cd build
-# cmake .. -DCMAKE_INSTALL_PREFIX=~/jimu-auto/third_party/install/opencv -DCMAKE_BUILD_TYPE=Release
+# cmake .. -DCMAKE_INSTALL_PREFIX=~/easy_apollo/third_party/install/opencv -DCMAKE_BUILD_TYPE=Release
 
-# cmake .. -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules/ -DCMAKE_INSTALL_PREFIX=~/jimu-auto/third_party/install/opencv -DCMAKE_BUILD_TYPE=Release
+# cmake .. -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules/ -DCMAKE_INSTALL_PREFIX=~/easy_apollo/third_party/install/opencv -DCMAKE_BUILD_TYPE=Release
 
 
 sudo apt-get install -y libgtk2.0-dev

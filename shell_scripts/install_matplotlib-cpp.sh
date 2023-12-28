@@ -12,7 +12,7 @@ sudo apt-get install -y python-numpy
 # cd matplotlib-cpp
 # mkdir build && cd build
 
-# cmake .. -DCMAKE_INSTALL_PREFIX=~/jimu-auto/third_party/install/matplotlib-cpp
+# cmake .. -DCMAKE_INSTALL_PREFIX=~/easy_apollo/third_party/install/matplotlib-cpp
 
 # make -j$(nproc)
 # make install

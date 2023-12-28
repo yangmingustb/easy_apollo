@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(jimu_auto)
+project(easy_apollo)
 
 #amba
 #SET(AMBA_PLATFORM 0)

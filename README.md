@@ -112,7 +112,7 @@ bash install_dependence.sh
 mkdir build
 
 
-<!-- 在jimu_auto 目录下，运行脚本文件 -->
+<!-- 在easy_apollo 目录下，运行脚本文件 -->
 ./x86_compile.sh
 
 ```
@@ -218,7 +218,7 @@ cd build
 
 python 版本
 ```
-cd jimu/
+cd easy_apollo/
 
 
 source set_python_env.bash
@@ -289,7 +289,7 @@ cmake ..
 make -j8
 make install
 
-2. 方法二，在jimu_auto 目录下，运行
+2. 方法二，在easy_apollo 目录下，运行
 ./x86_compile.sh
 
 

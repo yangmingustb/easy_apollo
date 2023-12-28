@@ -16,7 +16,7 @@ git clone --depth=1 git@github.com:alandefreitas/matplotplusplus.git
 
 cd matplotplusplus && mkdir build && cd build
 
-cmake .. -DCMAKE_INSTALL_PREFIX=~/jimu-auto/third_party/install/matplot++ -DMATPLOTPP_BUILD_EXAMPLES=OFF -DMATPLOTPP_BUILD_SHARED_LIBS=ON -DMATPLOTPP_BUILD_TESTS=OFF -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
+cmake .. -DCMAKE_INSTALL_PREFIX=~/easy_apollo/third_party/install/matplot++ -DMATPLOTPP_BUILD_EXAMPLES=OFF -DMATPLOTPP_BUILD_SHARED_LIBS=ON -DMATPLOTPP_BUILD_TESTS=OFF -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON
 
 make -j$(nproc)
 make install

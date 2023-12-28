@@ -73,8 +73,7 @@ Status VehicleStateProvider::Update(
         vehicle_state_.set_gear(canbus::Chassis::GEAR_NONE);
     }
 
-    // apollo: 速度来自imu, acc来自imu
-    // jimu: 速度来自chassis, acc来自imu
+    // apollo: 速度来自imu/chassis, acc来自imu
     if (chassis.has_speed_mps())
     {
         vehicle_state_.set_linear_velocity(chassis.speed_mps());
