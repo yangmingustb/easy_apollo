@@ -85,7 +85,7 @@ protoc -I=./ --python_out=./ ./modules/control/proto/*.proto
 1. fastrtps,1.5.0
 1. fast cdr,1.0.7
 1. abseil, 20200225.2
-1. nlohmann_json,3.8.0
+1. json,3.8.0
 1. civetweb
 1. poco,1.9.0
 1. pcl
