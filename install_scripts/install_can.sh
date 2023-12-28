@@ -17,6 +17,10 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd ${CURRENT_DIR}
 cd ..
 cd third_party
+
+wget https://canlandbucket.s3-eu-west-1.amazonaws.com/productionResourcesFiles/80d12245-be7c-4540-9401-24db07dc8988/linuxcan.tar.gz
+
+tar -xzf linuxcan.tar.gz
 cd linuxcan
 
 make -j6
