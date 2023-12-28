@@ -5,7 +5,7 @@ INSTALL_SPACE="build"
 
 cd ${SCRIPT_DIR}  
 cd ${INSTALL_SPACE}
-source ./../install/setup.bash 
+source ./setup.bash 
 # source ${INSTALL_SPACE}/set_env.bash
 # source ${INSTALL_SPACE}/setup.bash
 
