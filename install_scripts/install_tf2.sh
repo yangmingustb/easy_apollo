@@ -7,10 +7,26 @@
 
 # ## How to build
 
+set -e
+
+CURRENT_PATH=$(cd $(dirname $0) && pwd)
+
+cd ${CURRENT_PATH}
+cd ..
+cd third_party
+
+cd tf2
+rm -rf build
 mkdir build && cd build
-cmake .. -DBUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=/usr/local/tf2
-make -j$(nproc)
+
+
+cmake .. -DCMAKE_INSTALL_PREFIX=../../install/tf2 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=17 -DBUILD_TESTS=OFF
+
+make -j6
+
 sudo make install
+    
+
 
 ## gtest support for tf2-apollo
 
