@@ -80,6 +80,7 @@ third_party/tf2/*
 third_party/civetweb/*
 third_party/civetwe*
 third_party/matplotlib-cpp*
+third_party/fast-rtps-1.5.0-1/*
 
 
 .catkin_workspace
