@@ -99,7 +99,7 @@ protoc -I=./ --python_out=./ ./modules/control/proto/*.proto
 * 安装其他库
 ```
 
-cd shell_scripts
+cd install_scripts
 
 bash install_dependence.sh
 

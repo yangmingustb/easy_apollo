@@ -113,7 +113,7 @@ include_directories(/usr/include/python3.6)
 
 #ad_rss_lib
 include_directories(${THIRD_LIB_DIR}/ad_rss_lib/include)
-include_directories(${THIRD_LIB_DIR}/ad_rss_lib/include/ad_rss)
+# include_directories(${THIRD_LIB_DIR}/ad_rss_lib/include/ad_rss)
 link_directories(${THIRD_LIB_DIR}/ad_rss_lib/lib)
 # set(DEP_LIBS ${DEP_LIBS} ad-rss)
 #set(ad-rss-lib_DIR ${THIRD_LIB_DIR}/ad_rss_lib/lib/cmake/ad-rss-lib)

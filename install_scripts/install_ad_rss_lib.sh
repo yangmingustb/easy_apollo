@@ -22,3 +22,6 @@ cmake .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=./../../install/ad_rss_li
 make -j6
 make install
 
+cd ..
+cp -r ./src/situation ./../install/ad_rss_lib/include/ad_rss
+
