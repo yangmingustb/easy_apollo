@@ -22,21 +22,22 @@ endif(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
 find_package(Threads REQUIRED)
 find_package(PkgConfig REQUIRED)
 
-# set(THIRD_LIB_DIR ${CMAKE_HOME_DIRECTORY}/install)
+find_package(fastrtps)
 
-# include_directories(${THIRD_LIB_DIR}/fastrtps/include)
-# include_directories(${THIRD_LIB_DIR}/Fast-CDR/include)
-# link_directories(${THIRD_LIB_DIR}/fastrtps/lib)
-# link_directories(${THIRD_LIB_DIR}/Fast-CDR/lib)
+# set(FASTRTPS_DIR ${CMAKE_HOME_DIRECTORY}/third_party/install)
+set(THIRD_LIB_DIR ${CMAKE_HOME_DIRECTORY}/third_party/install)
 
-find_package(fastrtps REQUIRED)
-find_package(fastcdr REQUIRED)
+# include_directories(${FASTRTPS_DIR}/fastrtps/include)
+# link_directories(${FASTRTPS_DIR}/fastrtps/lib)
+
+# find_package(fastrtps REQUIRED)
+# find_package(fastcdr REQUIRED)
+
 find_package(Poco REQUIRED COMPONENTS Foundation)
 
 #gflags
-# include_directories(${THIRD_LIB_DIR}/gflags/include)
-# link_directories(${THIRD_LIB_DIR}/gflags/lib)
-# set(DEP_LIBS ${DEP_LIBS} gflags)
+include_directories(${THIRD_LIB_DIR}/gflags/include)
+link_directories(${THIRD_LIB_DIR}/gflags/lib)
 
 #glog
 # include_directories(${THIRD_LIB_DIR}/glog/include)
@@ -47,7 +48,8 @@ find_package(glog REQUIRED)
 # find_package(Python REQUIRED COMPONENTS Interpreter Development)
 # pkg_check_modules(Python REQUIRED python3)
 find_package(Protobuf REQUIRED)
-pkg_check_modules(Gflags REQUIRED gflags)
+
+# pkg_check_modules(Gflags REQUIRED gflags)
 
 set(Python_VERSION "${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}")
 set(Python_VERSION "${Python_VERSION}")
@@ -57,8 +59,8 @@ set(CYBER_PYTHON_PROTOBUF_PATH "lib/python${Python_VERSION}/site-packages/cyber/
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${fastcdr_INCLUDE_DIR}
-    ${fastrtps_INCLUDE_DIR}
+    # ${fastcdr_INCLUDE_DIR}
+    ${fastrtps_INCLUDE_DIRS}
     ${Protobuf_INCLUDE_DIRS}
     # ${Python_INCLUDE_DIRS}
     ${Glog_INCLUDE_DIRS}
@@ -66,8 +68,8 @@ include_directories(
 )
 
 link_directories(
-    ${fastcdr_LIB_DIR}
-    ${fastrtps_LIB_DIR}
+    # ${fastcdr_LIB_DIR}
+    ${fastrtps_LIB_DIRS}
     ${Protobuf_LIBRARIES_DIRS}
     ${Glog_LIBRARY_DIRS}
     ${Gflags_LIBRARY_DIRS}
@@ -130,16 +132,20 @@ file(GLOB CYBER_SRCS
 #   LIST(APPEND ALL_PROTO_HDRS ${PROTO_HDRS})
 # ENDFOREACH()
 
-aux_source_directory("proto/" CYBER_PROTO_SRCS)
+aux_source_directory("./proto" CYBER_PROTO_SRCS)
 
 list(FILTER CYBER_SRCS EXCLUDE REGEX .*test[.]cc)
 
-# message("cyber source: ${CYBER_SRCS}")
+message("==========================")
+message("cyber source: ${CYBER_PROTO_SRCS}")
 
 add_library(cyber SHARED
   ${CYBER_PROTO_SRCS}
   # ${ALL_PROTO_SRCS}
   ${CYBER_SRCS}
+)
+target_include_directories(cyber PUBLIC
+                                  ${fastrtps_INCLUDE_DIRS}
 )
 
 target_link_libraries(cyber PUBLIC
@@ -148,8 +154,9 @@ target_link_libraries(cyber PUBLIC
     ${Protobuf_LIBRARIES}
     ${Poco_LIBRARIES}
     glog
-    fastrtps
-    fastcdr
+    ${fastrtps_LIBRARIES}
+    
+    # fastcdr
     atomic
     uuid
     gflags

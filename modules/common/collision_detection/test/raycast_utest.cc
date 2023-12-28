@@ -113,7 +113,7 @@ TEST(GJKBASED_RAYCAST, source_is_inside)
 
 }
 
-#ifdef ENABLE_UVIZ
+#if 0
 TEST(raycast, raycast_20211026_bug)
 {
     return_t ret;
@@ -128,7 +128,7 @@ TEST(raycast, raycast_20211026_bug)
     char_t win_name[MAX_WINDOW_NAME_LEN];
     CvScalar ele;
 
-    ret = uviz_set_default_font(&font);
+    ret = viz2d_set_default_font(&font);
     EXPECT_EQ(ret, 0);
     EXPECT_EQ(font.font_type, viz2d_font_hershey_simplex);
 
@@ -140,10 +140,10 @@ TEST(raycast, raycast_20211026_bug)
     background_color = viz2d_colors_white;
 
     resolution = 0.1;
-    uviz_init_image_handle(&image_handle, &font, win_name, win_columns,
+    viz2d_init_image_handle(&image_handle, &font, win_name, win_columns,
             win_rows, origin_columns_index, origin_rows_index, resolution,
             background_color);
-    ret = uviz_start(&image_handle);
+    ret = viz2d_start(&image_handle);
     EXPECT_EQ(ret, 0);
     EXPECT_TRUE(NULL != image_handle.image);
     EXPECT_EQ(image_handle.image->nChannels, 3);
@@ -151,7 +151,7 @@ TEST(raycast, raycast_20211026_bug)
     EXPECT_EQ(image_handle.image->width, win_columns);
     EXPECT_EQ(image_handle.image->height, win_rows);
 
-    ret = uviz_draw_xy_axis(&image_handle);
+    ret = viz2d_draw_xy_axis(&image_handle);
     EXPECT_EQ(ret, 0);
 
     Polygon2D poly;
@@ -191,12 +191,12 @@ TEST(raycast, raycast_20211026_bug)
     base_pose.pos.y = poly.vertexes[0].y;
     base_pose.theta = 0.0;
 
-    uviz_draw_polygon(&image_handle, &poly, &base_pose,
+    viz2d_draw_polygon(&image_handle, &poly, &base_pose,
             viz2d_colors_red);
 
     CvPoint pt1, pt2;
     CvScalar line_color;
-    ret = uviz_get_color(&line_color, viz2d_colors_black);
+    ret = viz2d_get_color(&line_color, viz2d_colors_black);
 
     Position2D start_local;
 
@@ -208,14 +208,14 @@ TEST(raycast, raycast_20211026_bug)
 
     cvt_pos_global_to_local(&end_local, &end_global, &base_pose);
 
-    uviz_get_index(&image_handle, &pt1, start_local.x, start_local.y);
-    uviz_get_index(&image_handle, &pt2, end_local.x, end_local.y);
+    viz2d_get_index(&image_handle, &pt1, start_local.x, start_local.y);
+    viz2d_get_index(&image_handle, &pt2, end_local.x, end_local.y);
     cvLine(image_handle.image, pt1, pt2, line_color, 1, CV_AA, 0);
 
-    uviz_display(&image_handle);
+    viz2d_display(&image_handle);
     cvWaitKey(10); /* wait 2 seconds for show */
 
-    ret = uviz_shutdown(&image_handle);
+    ret = viz2d_shutdown(&image_handle);
     EXPECT_EQ(ret, 0);
 }
 

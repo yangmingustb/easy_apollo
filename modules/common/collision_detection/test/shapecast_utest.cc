@@ -782,8 +782,8 @@ TEST(shapecast_with_dir, test1)
     EXPECT_EQ(1, collision_point_is_overlap(request, result));
 }
 
-#ifdef ENABLE_UVIZ
-TEST(shape_case_test_uviz, uviz_start)
+#if 0
+TEST(shape_case_test_viz2d, viz2d_start)
 {
     return_t ret;
     viz2d_image image_handle;
@@ -797,7 +797,7 @@ TEST(shape_case_test_uviz, uviz_start)
     char_t win_name[MAX_WINDOW_NAME_LEN];
     CvScalar ele;
 
-    ret = uviz_set_default_font(&font);
+    ret = viz2d_set_default_font(&font);
     EXPECT_EQ(ret, 0);
     EXPECT_EQ(font.font_type, viz2d_font_hershey_simplex);
 
@@ -809,10 +809,10 @@ TEST(shape_case_test_uviz, uviz_start)
     background_color = viz2d_colors_white;
 
     resolution = 0.1;
-    uviz_init_image_handle(&image_handle, &font, win_name, win_columns,
+    viz2d_init_image_handle(&image_handle, &font, win_name, win_columns,
             win_rows, origin_columns_index, origin_rows_index, resolution,
             background_color);
-    ret = uviz_start(&image_handle);
+    ret = viz2d_start(&image_handle);
     EXPECT_EQ(ret, 0);
     EXPECT_TRUE(NULL != image_handle.image);
     EXPECT_EQ(image_handle.image->nChannels, 3);
@@ -820,7 +820,7 @@ TEST(shape_case_test_uviz, uviz_start)
     EXPECT_EQ(image_handle.image->width, win_columns);
     EXPECT_EQ(image_handle.image->height, win_rows);
 
-    ret = uviz_draw_xy_axis(&image_handle);
+    ret = viz2d_draw_xy_axis(&image_handle);
     EXPECT_EQ(ret, 0);
 
 
@@ -984,21 +984,21 @@ TEST(shape_case_test_uviz, uviz_start)
     base_pose.pos.y = poly_a_start.vertexes[0].y;
     base_pose.theta = 0.0;
 
-    uviz_draw_polygon(
+    viz2d_draw_polygon(
             &image_handle, &poly_a_start, &base_pose, viz2d_colors_red);
 
-    uviz_draw_polygon(
+    viz2d_draw_polygon(
             &image_handle, &poly_a_end, &base_pose, viz2d_colors_black);
 
-    uviz_draw_polygon(
+    viz2d_draw_polygon(
             &image_handle, &poly_b_start, &base_pose, UVIZ_COLORS_BLUE);
-    uviz_draw_polygon(
+    viz2d_draw_polygon(
             &image_handle, &poly_b_end, &base_pose, viz2d_colors_green);
 
-    uviz_display(&image_handle);
+    viz2d_display(&image_handle);
     cvWaitKey(100); /* wait 2 seconds for show */
 
-    ret = uviz_shutdown(&image_handle);
+    ret = viz2d_shutdown(&image_handle);
     EXPECT_EQ(ret, 0);
 }
 

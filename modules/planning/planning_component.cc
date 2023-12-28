@@ -647,7 +647,7 @@ int PlanningComponent::release()
 {
     if (FLAGS_debug_path)
     {
-        viz2d_shutdown(debug_window2d_);
+        viz2d_release(debug_window2d_);
     }
 
     return 0;
@@ -659,7 +659,7 @@ int PlanningComponent::debug_path_in_viz()
     {
         return 0;
     }
-    viz2d_clear_image(debug_window2d_);
+    viz2d_init_in_per_frame(debug_window2d_);
 
     init_path_flag();
 
@@ -674,11 +674,11 @@ int PlanningComponent::debug_path_in_viz()
 
     viz2d_draw_xy_axis(debug_window2d_);
 
-    viz2d_local_planner_draw_polygon(debug_window2d_, &veh_global_polygon, &veh_global_pose,
+    viz2d_draw_polygon(debug_window2d_, &veh_global_polygon, &veh_global_pose,
                                     viz2d_colors_green);
 
     // hdmap
-    // viz2d_draw_hdmap(uviz, &veh_global_pose, false);
+    // viz2d_draw_hdmap(viz2d, &veh_global_pose, false);
     viz2d_draw_simple_hdmap(debug_window2d_, &veh_global_pose);
 
     // route
@@ -691,7 +691,7 @@ int PlanningComponent::debug_path_in_viz()
 
     // nodes_2_vec(routing, points_enu);
 
-    // viz2d_draw_route(uviz, points_enu, &veh_global_pose, viz2d_colors_gray,
+    // viz2d_draw_route(viz2d, points_enu, &veh_global_pose, viz2d_colors_gray,
     //                 1);
 
     // apollo perception
@@ -735,7 +735,7 @@ int PlanningComponent::debug_path_in_viz()
         //     const DiscretizedPath &history_path =
         //             history_frame1->current_frame_planned_path();
 
-        //     viz2d_draw_path(uviz, history_path, &veh_global_pose,
+        //     viz2d_draw_path(viz2d, history_path, &veh_global_pose,
         //                    viz2d_colors_red, 1);
 
         //     AINFO << "histroy 1";
@@ -749,7 +749,7 @@ int PlanningComponent::debug_path_in_viz()
         //     const DiscretizedPath &history_path =
         //             history_frame2->current_frame_planned_path();
 
-        //     viz2d_draw_path(uviz, history_path, &veh_global_pose,
+        //     viz2d_draw_path(viz2d, history_path, &veh_global_pose,
         //                    viz2d_colors_black, 1);
 
         //     AINFO << "histroy 2";
@@ -762,14 +762,14 @@ int PlanningComponent::debug_path_in_viz()
         //     const DiscretizedPath &history_path =
         //             history_frame4->current_frame_planned_path();
 
-        //     viz2d_draw_path(uviz, history_path, &veh_global_pose,
+        //     viz2d_draw_path(viz2d, history_path, &veh_global_pose,
         //                    VIZ2d_COLORS_BLUE, 1);
 
         //     AINFO << "histroy 2";
         // }
     }
 
-    viz2d_display(debug_window2d_);
+    viz2d_show_result_in_per_frame(debug_window2d_);
 
     return 0;
 }
@@ -785,7 +785,7 @@ int PlanningComponent::debug_path_init()
 
     debug_window2d_ = get_main_window2d();
 
-    viz2d_start(debug_window2d_);
+    viz2d_init_image(debug_window2d_);
 
     veh_local_polygon = init_adv_box(
             apollo::common::VehicleConfigHelper::GetConfig().vehicle_param());
