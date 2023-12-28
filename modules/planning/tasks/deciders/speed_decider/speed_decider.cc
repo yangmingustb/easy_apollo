@@ -91,118 +91,6 @@ common::Status SpeedDecider::Execute(Frame* frame,
 
     record_constraints(reference_line_info);
 
-    // 识别是否在car follow scenario
-
-    bool has_follow_decision = false;
-    bool is_only_following_decision = true;
-    double following_min_s = 200.0;
-    std::string following_obs_id;
-
-    double stopping_min_s = 200.0;
-    std::string stop_obs_id;
-
-    for (const auto* obstacle :
-         reference_line_info->path_decision()->obstacles().Items())
-    {
-#if debug_speed_decider
-        AINFO << obstacle->DebugString();
-
-#endif
-
-        if (obstacle->IsVirtual())
-        {
-            continue;
-        }
-
-        if (obstacle->LongitudinalDecision().has_stop())
-        {
-            is_only_following_decision = false;
-
-            if (obstacle->path_st_boundary().min_s() < stopping_min_s)
-            {
-                stopping_min_s = obstacle->path_st_boundary().min_s();
-                stop_obs_id = obstacle->Id();
-            }
-        }
-
-        if (obstacle->LongitudinalDecision().has_overtake() ||
-            obstacle->LongitudinalDecision().has_yield())
-        {
-            is_only_following_decision = false;
-        }
-
-        if (obstacle->LongitudinalDecision().has_follow())
-        {
-            has_follow_decision = true;
-
-            if (obstacle->path_st_boundary().min_s() < following_min_s)
-            {
-                following_min_s = obstacle->path_st_boundary().min_s();
-                following_obs_id = obstacle->Id();
-            }
-        }
-    }
-
-#if debug_speed_decider
-    AINFO << "is car follow scenario " << has_follow_decision;
-
-#endif
-
-    SpeedDecision speed_decision;
-    speed_decision.Clear();
-
-    if (has_follow_decision && is_only_following_decision)
-    {
-        speed_decision.set_type(INTERACTION_SECENERIO_FOLLOW);
-
-        reference_line_info->set_close_following_obstacle(following_obs_id);
-
-        // update time headway
-
-        double time_headway;
-
-        double adc_speed = reference_line_info->get_veh_linear_velocity();
-        if (adc_speed < 0.1)
-        {
-            time_headway = 1000.0;
-        }
-        else
-        {
-            time_headway = following_min_s / adc_speed;
-        }
-
-        speed_decision.set_time_headway(time_headway);
-
-        Obstacle* close_following_obs =
-                reference_line_info->get_mutable_close_following_obstacle();
-
-        if (close_following_obs != nullptr)
-        {
-
-           close_following_obs->set_time_of_headway(time_headway);
-
-           double ttc = 1000.0;
-
-           if (close_following_obs->speed() < adc_speed && adc_speed > 0.1)
-           {
-               ttc = following_min_s /
-                     (adc_speed - close_following_obs->speed());
-           }
-
-           close_following_obs->set_time_to_collision(ttc);
-           speed_decision.set_ttc(ttc);
-        }
-
-        reference_line_info->set_speed_decision(speed_decision);
-
-        AINFO << "print_adc_time_headway:"
-              << "(" << time_headway << ","
-              << ")";
-    }
-    else
-    {
-        reference_line_info->clear_following_obstacle();
-    }
 
     return Status::OK();
 }
@@ -635,9 +523,6 @@ Status SpeedDecider::MakeObjectDecision(const SpeedData& speed_profile,
                           << ", obs id: " << obstacle->Id()
                           << ", st curve is below";
 
-                    // will be retired if bev perception fix reverse obs
-                    continue;
-
                     ObjectDecisionType stop_decision;
 
                     if (create_stop_decision_for_reverse_obs(*mutable_obstacle,
@@ -710,8 +595,6 @@ Status SpeedDecider::MakeObjectDecision(const SpeedData& speed_profile,
                           << ", obs id: " << obstacle->Id()
                           << ", st curve is cross";
 
-                    // will be retired if bev perception fix reverse obs
-                    continue;
 
                     ObjectDecisionType stop_decision;
 
