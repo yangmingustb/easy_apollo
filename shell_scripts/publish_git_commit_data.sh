@@ -26,4 +26,4 @@
 
 #git checkout pr105 
 
-python gitstats ./../jimu-auto ./jimu
+python gitstats ./../easy_apollo ./easy_apollo
