@@ -9,6 +9,7 @@ bash ${SCRIPT_DIR}/install_g++.sh
 bash ${SCRIPT_DIR}/install_git.sh
 bash ${SCRIPT_DIR}/install_poco.sh
 
+bash ${SCRIPT_DIR}/install_gtest.sh
 
 bash ${SCRIPT_DIR}/install_protobuf.sh
 

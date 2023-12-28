@@ -91,8 +91,9 @@ link_directories(install/lib)
 find_package(glog REQUIRED)
 
 #gtest
-include_directories(${THIRD_LIB_DIR}/gtest/include)
-link_directories(${THIRD_LIB_DIR}/gtest/lib)
+# find_package(gtest REQUIRED)
+include_directories(${THIRD_LIB_DIR}/googletest/include)
+link_directories(${THIRD_LIB_DIR}/googletest/lib)
 
 #torch
 set(Torch_DIR ${THIRD_LIB_DIR}/libtorch_cpu/share/cmake/Torch)
