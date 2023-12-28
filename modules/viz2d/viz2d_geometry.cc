@@ -3,7 +3,7 @@
 namespace apollo
 {
     
-int viz2d_draw_local_dash_line(viz2d_image *uviz, const Position2D *start,
+int viz2d_draw_local_dash_line(viz2d_image *viz2d, const Position2D *start,
                               const Position2D *end,
                               viz2d_color color_index, int width)
 {
@@ -25,9 +25,9 @@ int viz2d_draw_local_dash_line(viz2d_image *uviz, const Position2D *start,
         next.x = (start->x + end->x) / 2;
         next.y = (start->y + end->y) / 2;
 
-        viz2d_get_index(uviz, &pt1, start->x, start->y);
-        viz2d_get_index(uviz, &pt2, next.x, next.y);
-        cvLine(uviz->image, pt1, pt2, color, width, CV_AA, 0);
+        viz2d_get_index(viz2d, &pt1, start->x, start->y);
+        viz2d_get_index(viz2d, &pt2, next.x, next.y);
+        cvLine(viz2d->image, pt1, pt2, color, width, CV_AA, 0);
     }
     else
     {
@@ -45,9 +45,9 @@ int viz2d_draw_local_dash_line(viz2d_image *uviz, const Position2D *start,
             next.x = start->x + (12 * i + 6) * dir.x();
             next.y = start->y + (12 * i + 6) * dir.y();
 
-            viz2d_get_index(uviz, &pt1, start->x, start->y);
-            viz2d_get_index(uviz, &pt2, next.x, next.y);
-            cvLine(uviz->image, pt1, pt2, color, width, CV_AA, 0);
+            viz2d_get_index(viz2d, &pt1, start->x, start->y);
+            viz2d_get_index(viz2d, &pt2, next.x, next.y);
+            cvLine(viz2d->image, pt1, pt2, color, width, CV_AA, 0);
         }
     }
 
@@ -56,7 +56,7 @@ int viz2d_draw_local_dash_line(viz2d_image *uviz, const Position2D *start,
 
 
 
-int viz2d_local_planner_draw_polygon(viz2d_image *uviz,
+int viz2d_draw_polygon(viz2d_image *viz2d,
                                     const Polygon2D *poly,
                                     const Pose2D*ref_pose,
                                     viz2d_color color_index)
@@ -83,18 +83,18 @@ int viz2d_local_planner_draw_polygon(viz2d_image *uviz,
 
     for (i = 0; i < poly->vertex_num; i++)
     {
-        viz2d_get_index(uviz, &pt1, poly_pts_local[i].x, poly_pts_local[i].y);
+        viz2d_get_index(viz2d, &pt1, poly_pts_local[i].x, poly_pts_local[i].y);
         viz2d_get_index(
-                uviz, &pt2,
+                viz2d, &pt2,
                 poly_pts_local[(i == poly->vertex_num - 1) ? 0 : i + 1].x,
                 poly_pts_local[(i == poly->vertex_num - 1) ? 0 : i + 1].y);
-        cvLine(uviz->image, pt1, pt2, color, 1, CV_AA, 0);
+        cvLine(viz2d->image, pt1, pt2, color, 1, CV_AA, 0);
     }
 
     return 1;
 }
 
-int cv_draw_polygon(viz2d_image *uviz,
+int cv_draw_polygon(viz2d_image *viz2d,
                                     const Polygon2D *poly,
                                     const Pose2D*ref_pose,
                                     viz2d_color color_index,
@@ -122,18 +122,18 @@ int cv_draw_polygon(viz2d_image *uviz,
 
     for (i = 0; i < poly->vertex_num; i++)
     {
-        viz2d_get_index(uviz, &pt1, poly_pts_local[i].x, poly_pts_local[i].y);
+        viz2d_get_index(viz2d, &pt1, poly_pts_local[i].x, poly_pts_local[i].y);
         viz2d_get_index(
-                uviz, &pt2,
+                viz2d, &pt2,
                 poly_pts_local[(i == poly->vertex_num - 1) ? 0 : i + 1].x,
                 poly_pts_local[(i == poly->vertex_num - 1) ? 0 : i + 1].y);
-        cvLine(uviz->image, pt1, pt2, color, width, CV_AA, 0);
+        cvLine(viz2d->image, pt1, pt2, color, width, CV_AA, 0);
     }
 
     return 1;
 }
 
-int viz2d_draw_line(viz2d_image *uviz, const Position2D *start,
+int viz2d_draw_line(viz2d_image *viz2d, const Position2D *start,
                    const Position2D *end, const Pose2D*ref_pose,
                    viz2d_color color_index, int width)
 {
@@ -148,14 +148,14 @@ int viz2d_draw_line(viz2d_image *uviz, const Position2D *start,
     cvt_pos_global_to_local(&poly_pts_local[0], start, ref_pose);
     cvt_pos_global_to_local(&poly_pts_local[1], end, ref_pose);
 
-    viz2d_get_index(uviz, &pt1, poly_pts_local[0].x, poly_pts_local[0].y);
-    viz2d_get_index(uviz, &pt2, poly_pts_local[1].x, poly_pts_local[1].y);
-    cvLine(uviz->image, pt1, pt2, color, width, CV_AA, 0);
+    viz2d_get_index(viz2d, &pt1, poly_pts_local[0].x, poly_pts_local[0].y);
+    viz2d_get_index(viz2d, &pt2, poly_pts_local[1].x, poly_pts_local[1].y);
+    cvLine(viz2d->image, pt1, pt2, color, width, CV_AA, 0);
 
     return 0;
 }
 
-int viz2d_draw_local_line(viz2d_image *uviz, const Position2D *start,
+int viz2d_draw_local_line(viz2d_image *viz2d, const Position2D *start,
                          const Position2D *end, viz2d_color color_index,
                          int width)
 {
@@ -171,9 +171,9 @@ int viz2d_draw_local_line(viz2d_image *uviz, const Position2D *start,
 
     if (dist < 6)
     {
-        viz2d_get_index(uviz, &pt1, start->x, start->y);
-        viz2d_get_index(uviz, &pt2, end->x, end->y);
-        cvLine(uviz->image, pt1, pt2, color, width, CV_AA, 0);
+        viz2d_get_index(viz2d, &pt1, start->x, start->y);
+        viz2d_get_index(viz2d, &pt2, end->x, end->y);
+        cvLine(viz2d->image, pt1, pt2, color, width, CV_AA, 0);
         return 0;
     }
 
@@ -198,9 +198,9 @@ int viz2d_draw_local_line(viz2d_image *uviz, const Position2D *start,
         next.x = cur.x + 2 * dir.x();
         next.y = cur.y + 2 * dir.y();
 
-        viz2d_get_index(uviz, &pt1, cur.x, cur.y);
-        viz2d_get_index(uviz, &pt2, next.x, next.y);
-        cvLine(uviz->image, pt1, pt2, color, width, CV_AA, 0);
+        viz2d_get_index(viz2d, &pt1, cur.x, cur.y);
+        viz2d_get_index(viz2d, &pt2, next.x, next.y);
+        cvLine(viz2d->image, pt1, pt2, color, width, CV_AA, 0);
 
         cur = next;
         accumalte_dist += 2.0;
@@ -208,15 +208,15 @@ int viz2d_draw_local_line(viz2d_image *uviz, const Position2D *start,
 
     if (accumalte_dist < dist)
     {
-        viz2d_get_index(uviz, &pt1, cur.x, cur.y);
-        viz2d_get_index(uviz, &pt2, end->x, end->y);
-        cvLine(uviz->image, pt1, pt2, color, width, CV_AA, 0);
+        viz2d_get_index(viz2d, &pt1, cur.x, cur.y);
+        viz2d_get_index(viz2d, &pt2, end->x, end->y);
+        cvLine(viz2d->image, pt1, pt2, color, width, CV_AA, 0);
     }
 
     return 0;
 }
 
-int viz2d_draw_direction(viz2d_image *uviz, const Pose2D*start,
+int viz2d_draw_direction(viz2d_image *viz2d, const Pose2D*start,
                         double len, const Pose2D*ref_pose,
                         viz2d_color color_index, int width)
 {
@@ -226,7 +226,7 @@ int viz2d_draw_direction(viz2d_image *uviz, const Pose2D*start,
 
     end.theta = start->theta;
 
-    viz2d_draw_line(uviz, &start->pos, &end.pos, ref_pose, color_index, width);
+    viz2d_draw_line(viz2d, &start->pos, &end.pos, ref_pose, color_index, width);
 
     // left
     Position2D local;
@@ -237,7 +237,7 @@ int viz2d_draw_direction(viz2d_image *uviz, const Pose2D*start,
 
     cvt_pos_local_to_global(&global, &local, &end);
 
-    viz2d_draw_line(uviz, &end.pos, &global, ref_pose, color_index, width);
+    viz2d_draw_line(viz2d, &end.pos, &global, ref_pose, color_index, width);
 
     //right
 
@@ -246,12 +246,12 @@ int viz2d_draw_direction(viz2d_image *uviz, const Pose2D*start,
 
     cvt_pos_local_to_global(&global, &local, &end);
 
-    viz2d_draw_line(uviz, &end.pos, &global, ref_pose, color_index, width);
+    viz2d_draw_line(viz2d, &end.pos, &global, ref_pose, color_index, width);
 
     return 0;
 }
 
-int viz2d_draw_circle_wrapper(viz2d_image *uviz,
+int viz2d_draw_circle_wrapper(viz2d_image *viz2d,
                              const Position2D *circle_center,
                              const Pose2D*base_pose,
                              viz2d_color color_index, int radius,
@@ -261,7 +261,7 @@ int viz2d_draw_circle_wrapper(viz2d_image *uviz,
     CvPoint cv_center;
     CvScalar color;
 
-    if (circle_center == nullptr || base_pose == nullptr || uviz == nullptr)
+    if (circle_center == nullptr || base_pose == nullptr || viz2d == nullptr)
     {
         return -1;
     }
@@ -272,19 +272,19 @@ int viz2d_draw_circle_wrapper(viz2d_image *uviz,
 
     cvt_pos_global_to_local(&local, circle_center, base_pose);
 
-    ret = viz2d_get_index(uviz, &cv_center, local.x, local.y);
+    ret = viz2d_get_index(viz2d, &cv_center, local.x, local.y);
 
     int thickness = 1;
     if (filled)
     {
         thickness = -1;
     }
-    cvCircle(uviz->image, cv_center, radius, color, thickness, CV_AA, 0);
+    cvCircle(viz2d->image, cv_center, radius, color, thickness, CV_AA, 0);
     return 0;
 }
 
 int viz2d_draw_grid(
-        viz2d_image *uviz,
+        viz2d_image *viz2d,
         double left ,double right, double front, double back,
         const Pose2D*base_pose, viz2d_color color_index, int line_width)
 {
@@ -294,7 +294,7 @@ int viz2d_draw_grid(
     double truncated_dist;
     CvScalar color;
 
-    if (base_pose == nullptr || uviz == nullptr)
+    if (base_pose == nullptr || viz2d == nullptr)
     {
         return -1;
     }
@@ -316,11 +316,11 @@ int viz2d_draw_grid(
 
     while (left_point.y < front)
     {
-        ret = viz2d_get_index(uviz, &point1, left_point.x, left_point.y);
+        ret = viz2d_get_index(viz2d, &point1, left_point.x, left_point.y);
 
-        ret = viz2d_get_index(uviz, &point2, right_point.x, right_point.y);
+        ret = viz2d_get_index(viz2d, &point2, right_point.x, right_point.y);
 
-        cvLine(uviz->image, point1, point2, color, line_width, CV_AA, 0);
+        cvLine(viz2d->image, point1, point2, color, line_width, CV_AA, 0);
 
         left_point.y += delta_y;
         right_point.y+= delta_y;
@@ -339,11 +339,11 @@ int viz2d_draw_grid(
 
     while (front_point.x < right)
     {
-        ret = viz2d_get_index(uviz, &point1, front_point.x, front_point.y);
+        ret = viz2d_get_index(viz2d, &point1, front_point.x, front_point.y);
 
-        ret = viz2d_get_index(uviz, &point2, back_point.x, back_point.y);
+        ret = viz2d_get_index(viz2d, &point2, back_point.x, back_point.y);
 
-        cvLine(uviz->image, point1, point2, color, line_width, CV_AA, 0);
+        cvLine(viz2d->image, point1, point2, color, line_width, CV_AA, 0);
 
         front_point.x+= delta_x;
         back_point.x += delta_x;
@@ -352,7 +352,7 @@ int viz2d_draw_grid(
     return 1;
 }
 
-int viz_draw_virtual_wall(Pose2D*wall_pose, viz2d_image *uviz,
+int viz_draw_virtual_wall(Pose2D*wall_pose, viz2d_image *viz2d,
                           const Pose2D*veh_pose, int perception_id,
                           viz2d_color wall_color)
 {
@@ -398,13 +398,13 @@ int viz_draw_virtual_wall(Pose2D*wall_pose, viz2d_image *uviz,
     cvt_local_polygon_to_global(&stop_wall_global, &stop_wall_local,
                                 wall_pose);
 
-    viz2d_local_planner_draw_filled_polygon(uviz, &stop_wall_global, wall_color,
+    viz2d_draw_filled_polygon(viz2d, &stop_wall_global, wall_color,
                                            veh_pose);
 
     return 0;
 }
 
-int viz_draw_box_in_cv_frame(viz2d_image *uviz, const CvPoint *center,
+int viz_draw_box_in_cv_frame(viz2d_image *viz2d, const CvPoint *center,
                              double height, double length,
                              viz2d_color color, bool fill)
 {
@@ -458,18 +458,18 @@ int viz_draw_box_in_cv_frame(viz2d_image *uviz, const CvPoint *center,
     if (fill)
     {
         viz2d_get_color(&box_fill_color, viz2d_colors_black_gray);
-        cvFillConvexPoly(uviz->image, points, 4, box_fill_color, CV_AA, 0);
+        cvFillConvexPoly(viz2d->image, points, 4, box_fill_color, CV_AA, 0);
     }
 
     for (size_t i = 0; i < 4; i++)
     {
         if (i == 3)
         {
-            cvLine(uviz->image, points[i], points[0], line_color, 1, CV_AA, 0);
+            cvLine(viz2d->image, points[i], points[0], line_color, 1, CV_AA, 0);
         }
         else
         {
-            cvLine(uviz->image, points[i], points[i + 1], line_color, 1, CV_AA,
+            cvLine(viz2d->image, points[i], points[i + 1], line_color, 1, CV_AA,
                    0);
         }
     }

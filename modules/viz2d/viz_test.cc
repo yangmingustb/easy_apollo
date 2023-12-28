@@ -6,7 +6,7 @@
 
 using namespace apollo;
 
-TEST(test_uviz, viz2d_start)
+TEST(test_viz2d, viz2d_init_image)
 {
     int ret;
     viz2d_image image_handle;
@@ -34,24 +34,24 @@ TEST(test_uviz, viz2d_start)
     resolution = 0;
     background_color = viz2d_colors_white;
 
-    ret = viz2d_init_image_handle(&image_handle, &font, win_name, win_columns,
+    ret = viz2d_init_window(&image_handle, &font, win_name, win_columns,
                                  win_rows, origin_columns_index,
                                  origin_rows_index, resolution,
                                  background_color);
     EXPECT_EQ(ret, 0);
 
     strncpy(win_name, "viz2d_test", MAX_WINDOW_NAME_LEN);
-    ret = viz2d_init_image_handle(&image_handle, &font, win_name, win_columns,
+    ret = viz2d_init_window(&image_handle, &font, win_name, win_columns,
                                  win_rows, origin_columns_index,
                                  origin_rows_index, resolution,
                                  background_color);
     EXPECT_EQ(ret, 0);
 
     resolution = 0.05;
-    viz2d_init_image_handle(&image_handle, &font, win_name, win_columns,
+    viz2d_init_window(&image_handle, &font, win_name, win_columns,
                            win_rows, origin_columns_index, origin_rows_index,
                            resolution, background_color);
-    ret = viz2d_start(&image_handle);
+    ret = viz2d_init_image(&image_handle);
     EXPECT_EQ(ret, 1);
     EXPECT_TRUE(nullptr != image_handle.image);
     EXPECT_EQ(image_handle.image->nChannels, 3);
@@ -72,14 +72,14 @@ TEST(test_uviz, viz2d_start)
             EXPECT_EQ(255, R);
         }
     }
-    viz2d_display(&image_handle);
+    viz2d_show_result_in_per_frame(&image_handle);
     cvWaitKey(2000); /* wait 2 seconds for show */
-    ret = viz2d_shutdown(&image_handle);
+    ret = viz2d_release(&image_handle);
     EXPECT_EQ(ret, 1);
     EXPECT_TRUE(nullptr == image_handle.image);
 }
 
-TEST(test_uviz, viz2d_get_index)
+TEST(test_viz2d, viz2d_get_index)
 {
     int ret;
     viz2d_image image_handle;
@@ -105,13 +105,13 @@ TEST(test_uviz, viz2d_get_index)
     resolution = 0.05;
     background_color = viz2d_colors_white;
 
-    ret = viz2d_init_image_handle(&image_handle, &font, win_name, win_columns,
+    ret = viz2d_init_window(&image_handle, &font, win_name, win_columns,
                                  win_rows, origin_columns_index,
                                  origin_rows_index, resolution,
                                  background_color);
     EXPECT_EQ(ret, 1);
 
-    ret = viz2d_start(&image_handle);
+    ret = viz2d_init_image(&image_handle);
     EXPECT_EQ(ret, 1);
 
     ego_frame_x = 0.0;
@@ -135,12 +135,12 @@ TEST(test_uviz, viz2d_get_index)
     EXPECT_EQ(120, point_index.x);
     EXPECT_EQ(0, point_index.y);
 
-    ret = viz2d_shutdown(&image_handle);
+    ret = viz2d_release(&image_handle);
     EXPECT_EQ(ret, 1);
     EXPECT_TRUE(nullptr == image_handle.image);
 }
 
-TEST(test_uviz, multiply_image_windows)
+TEST(test_viz2d, multiply_image_windows)
 {
     int ret;
     viz2d_image image_handle[3];
@@ -163,21 +163,21 @@ TEST(test_uviz, multiply_image_windows)
 
     for (i = 0; i < 3; i++)
     {
-        ret = viz2d_init_image_handle(
+        ret = viz2d_init_window(
                 &image_handle[i], &font, win_name[i], win_columns[i],
                 win_rows[i], origin_columns_index[i], origin_rows_index[i],
                 resolution, background_color);
         EXPECT_EQ(ret, 1);
-        ret = viz2d_start(&image_handle[i]);
+        ret = viz2d_init_image(&image_handle[i]);
         EXPECT_EQ(ret, 1);
     }
 
-    for (i = 0; i < 3; i++) viz2d_display(&image_handle[i]);
+    for (i = 0; i < 3; i++) viz2d_show_result_in_per_frame(&image_handle[i]);
     cvWaitKey(3000);
 
     for (i = 0; i < 3; i++)
     {
-        ret = viz2d_shutdown(&image_handle[i]);
+        ret = viz2d_release(&image_handle[i]);
         EXPECT_EQ(ret, 1);
         EXPECT_TRUE(nullptr == image_handle[i].image);
     }

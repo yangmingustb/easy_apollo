@@ -15,17 +15,17 @@
 
 namespace apollo
 {
-int viz2d_draw_route(viz2d_image *uviz,
+int viz2d_draw_route(viz2d_image *viz2d,
                     const std::vector<cv::Vec2d> &ref_line,
                     const Pose2D*base_pose, viz2d_color color_index,
                     int line_width);
 
-int viz2d_draw_route2(viz2d_image *uviz,
+int viz2d_draw_route2(viz2d_image *viz2d,
                      const std::vector<apollo::hdmap::Path> &route_path_list_,
                      const Pose2D*base_pose, viz2d_color color_index,
                      int line_width);
 
-int viz2d_draw_route(viz2d_image *uviz,
+int viz2d_draw_route(viz2d_image *viz2d,
                     const std::vector<apollo::hdmap::MapPathPoint> &ref_line,
                     const Pose2D*base_pose, viz2d_color color_index,
                     int line_width);

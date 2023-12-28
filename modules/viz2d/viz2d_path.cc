@@ -19,7 +19,7 @@ int init_path_flag()
 
 int draw_path_boundary(const ReferenceLine &ref_line,
                        const planning::PathBoundary &bound,
-                       viz2d_image *uviz, const Pose2D*base_pose,
+                       viz2d_image *viz2d, const Pose2D*base_pose,
                        viz2d_color color_index)
 {
     const std::vector<std::pair<double, double>> &boundary = bound.boundary();
@@ -60,7 +60,7 @@ int draw_path_boundary(const ReferenceLine &ref_line,
         cvt_pos_global_to_local_fast(&local, &global, base_pose, sin_theta,
                                      cos_theta);
 
-        viz2d_draw_circle(uviz, local.x, local.y, radius, color_index, -1);
+        viz2d_draw_circle(viz2d, local.x, local.y, radius, color_index, -1);
 
         sl_right.set_s(cur_s);
         sl_right.set_l(boundary[i].first);
@@ -73,27 +73,27 @@ int draw_path_boundary(const ReferenceLine &ref_line,
         cvt_pos_global_to_local_fast(&local, &global, base_pose, sin_theta,
                                      cos_theta);
 
-        viz2d_draw_circle(uviz, local.x, local.y, radius, color_index, -1);
+        viz2d_draw_circle(viz2d, local.x, local.y, radius, color_index, -1);
     }
     
 
     return 0;
 }
 
-int draw_path_flag(viz2d_color color_index, viz2d_image *uviz,
+int draw_path_flag(viz2d_color color_index, viz2d_image *viz2d,
                    const char *str)
 {
     CvScalar text_color;
 
     CvFont windows_font;
 
-    viz2d_get_cvfont(&windows_font, &(uviz->font));
+    viz2d_get_cvfont(&windows_font, &(viz2d->font));
 
     // text
 
     viz2d_get_color(&text_color, color_index);
 
-    cvPutText(uviz->image, str, path_flag_text_center, &windows_font,
+    cvPutText(viz2d->image, str, path_flag_text_center, &windows_font,
               text_color);
 
     path_flag_text_center.y += path_flag_text_center_delta_y;
@@ -102,7 +102,7 @@ int draw_path_flag(viz2d_color color_index, viz2d_image *uviz,
 }
 
 int draw_ref_line_path_boundarys(
-        viz2d_image *uviz,
+        viz2d_image *viz2d,
         const apollo::planning::ReferenceLineInfo &ref_line_info,
         const Pose2D*base_pose)
 {
@@ -157,9 +157,9 @@ int draw_ref_line_path_boundarys(
                 break;
         }
 
-        draw_path_boundary(ref_line, boundary[i], uviz, base_pose, color_index);
+        draw_path_boundary(ref_line, boundary[i], viz2d, base_pose, color_index);
 
-        draw_path_flag(color_index, uviz, str);
+        draw_path_flag(color_index, viz2d, str);
     }
 
     const std::vector<planning::PathData> &path_list =
@@ -207,10 +207,10 @@ int draw_ref_line_path_boundarys(
                 break;
         }
 
-        viz2d_draw_path(uviz, path.discretized_path(), base_pose, color_index,
+        viz2d_draw_path(viz2d, path.discretized_path(), base_pose, color_index,
                        1);
 
-        draw_path_flag(color_index, uviz, path_flag.c_str());
+        draw_path_flag(color_index, viz2d, path_flag.c_str());
     }
     
 
@@ -218,7 +218,7 @@ int draw_ref_line_path_boundarys(
 }
 
 // 需要debug path起点的位置
-int viz2d_draw_path(viz2d_image *uviz,
+int viz2d_draw_path(viz2d_image *viz2d,
                    const apollo::planning::DiscretizedPath &lateral_path,
                    const Pose2D*base_pose, viz2d_color color_index,
                    int line_width)
@@ -230,7 +230,7 @@ int viz2d_draw_path(viz2d_image *uviz,
     CvScalar color;
     CvScalar circle_color;
 
-    if (base_pose == nullptr || uviz == nullptr)
+    if (base_pose == nullptr || viz2d == nullptr)
     {
         return -1;
     }
@@ -259,13 +259,13 @@ int viz2d_draw_path(viz2d_image *uviz,
 
         cvt_pos_global_to_local_fast(&local_pose, &global_pose, base_pose,
                                      sin_theta, cos_theta);
-        ret = viz2d_get_index(uviz, &point1, local_pose.x, local_pose.y);
+        ret = viz2d_get_index(viz2d, &point1, local_pose.x, local_pose.y);
 
         // draw planning start point
         s = lateral_path.at(i).s();
         if (std::fabs(s) < 0.01)
         {
-            cvCircle(uviz->image, point1, 5, circle_color, -1, CV_AA, 0);
+            cvCircle(viz2d->image, point1, 5, circle_color, -1, CV_AA, 0);
         }
 
         global_pose.x = lateral_path.at(i + 1).x();
@@ -274,15 +274,15 @@ int viz2d_draw_path(viz2d_image *uviz,
         cvt_pos_global_to_local_fast(&local_pose, &global_pose, base_pose,
                                      sin_theta, cos_theta);
 
-        ret = viz2d_get_index(uviz, &point2, local_pose.x, local_pose.y);
+        ret = viz2d_get_index(viz2d, &point2, local_pose.x, local_pose.y);
 
-        cvLine(uviz->image, point1, point2, color, line_width, CV_AA, 0);
+        cvLine(viz2d->image, point1, point2, color, line_width, CV_AA, 0);
     }
 
     return 1;
 }
 
-int draw_ref_line(viz2d_color color_index, viz2d_image *uviz,
+int draw_ref_line(viz2d_color color_index, viz2d_image *viz2d,
                   const ReferenceLine &ref_line, const Pose2D*base_pose)
 {
     const ReferencePoint *start, *end;
@@ -307,7 +307,7 @@ int draw_ref_line(viz2d_color color_index, viz2d_image *uviz,
 
         cvt_pos_global_to_local(&local, &global, base_pose);
 
-        viz2d_get_index(uviz, &point1, local.x, local.y);
+        viz2d_get_index(viz2d, &point1, local.x, local.y);
 
         // draw end
         global.x = end->x();
@@ -315,22 +315,22 @@ int draw_ref_line(viz2d_color color_index, viz2d_image *uviz,
 
         cvt_pos_global_to_local(&local, &global, base_pose);
 
-        viz2d_get_index(uviz, &point2, local.x, local.y);
+        viz2d_get_index(viz2d, &point2, local.x, local.y);
 
-        cvLine(uviz->image, point1, point2, color, 1, CV_AA, 0);
+        cvLine(viz2d->image, point1, point2, color, 1, CV_AA, 0);
     }
 
     return 0;
 }
 
 int viz2d_draw_ref_line_info(
-        viz2d_image *uviz,
+        viz2d_image *viz2d,
         const std::list<apollo::planning::ReferenceLineInfo> &ref_lines,
         const Pose2D*base_pose)
 {
     int ret;
 
-    if (base_pose == nullptr || uviz == nullptr)
+    if (base_pose == nullptr || viz2d == nullptr)
     {
         return -1;
     }
@@ -347,7 +347,7 @@ int viz2d_draw_ref_line_info(
         // AINFO << ref_line_info.GetCandidatePathBoundaries().size();
         // AINFO << ref_line_info.GetCandidatePathData().size();
 
-        draw_ref_line_path_boundarys(uviz, ref_line_info, base_pose);
+        draw_ref_line_path_boundarys(viz2d, ref_line_info, base_pose);
 
         if (ref_line_info.IsDrivable())
         {
@@ -358,17 +358,17 @@ int viz2d_draw_ref_line_info(
             color_index = viz2d_colors_gray;
         }
 
-        draw_ref_line(color_index, uviz, ref_line_info.reference_line(),
+        draw_ref_line(color_index, viz2d, ref_line_info.reference_line(),
                       base_pose);
         const std::string &str = "ref_line_" + ref_line_info.Lanes().Id();
 
-        draw_path_flag(color_index, uviz, str.c_str());
+        draw_path_flag(color_index, viz2d, str.c_str());
     }
 
     return 1;
 }
 
-int cv_draw_trajectory(viz2d_image *uviz,
+int cv_draw_trajectory(viz2d_image *viz2d,
                        const planning::ADCTrajectory *traj,
                        viz2d_color color_index, const Pose2D*veh_pose,
                        bool is_global_pose)
@@ -396,7 +396,7 @@ int cv_draw_trajectory(viz2d_image *uviz,
 
         cvt_pose_global_to_local(&local_pose, &global_pose, &base_pose);
 
-        ret = viz2d_get_index(uviz, &point1, local_pose.pos.x, local_pose.pos.y);
+        ret = viz2d_get_index(viz2d, &point1, local_pose.pos.x, local_pose.pos.y);
 
         global_pose.pos.x = traj->trajectory_point(i + 1).path_point().x();
         global_pose.pos.y = traj->trajectory_point(i + 1).path_point().y();
@@ -405,17 +405,17 @@ int cv_draw_trajectory(viz2d_image *uviz,
 
         cvt_pose_global_to_local(&local_pose, &global_pose, &base_pose);
 
-        ret = viz2d_get_index(uviz, &point2, local_pose.pos.x, local_pose.pos.y);
+        ret = viz2d_get_index(viz2d, &point2, local_pose.pos.x, local_pose.pos.y);
 
-        cvLine(uviz->image, point1, point2, color, 1, CV_AA, 0);
+        cvLine(viz2d->image, point1, point2, color, 1, CV_AA, 0);
     }
 
     return 1;
 }
 
 
-int viz2d_local_planner_draw_trajectory(
-        viz2d_image *uviz, const std::vector<cv::Vec<double, 10> > &traj,
+int viz2d_draw_global_trajectory(
+        viz2d_image *viz2d, const std::vector<cv::Vec<double, 10> > &traj,
         const Pose2D*base_pose, viz2d_color color_index,
         const Polygon2D *veh_local_polygon)
 {
@@ -434,7 +434,7 @@ int viz2d_local_planner_draw_trajectory(
     traj_local_polygon.vertexes[2].y = -0.05;
     traj_local_polygon.vertexes[3].y = -0.05;
 
-    if (traj.size() == 0 || base_pose == nullptr || uviz == nullptr)
+    if (traj.size() == 0 || base_pose == nullptr || viz2d == nullptr)
     {
         return -1;
     }
@@ -452,8 +452,8 @@ int viz2d_local_planner_draw_trajectory(
         cvt_local_polygon_to_global(&global_polygon, veh_local_polygon,
                                     &global_pose);
 
-        viz2d_local_planner_draw_filled_polygon(
-                uviz, &global_polygon, viz2d_colors_dodgerblue1, base_pose);
+        viz2d_draw_filled_polygon(
+                viz2d, &global_polygon, viz2d_colors_dodgerblue1, base_pose);
     }
 
     for (i = 0; i < traj.size() - 1; i++)
@@ -463,23 +463,23 @@ int viz2d_local_planner_draw_trajectory(
         global_pose.theta = traj[i][5];
 
         cvt_pose_global_to_local(&local_pose, &global_pose, base_pose);
-        ret = viz2d_get_index(uviz, &point1, local_pose.pos.x, local_pose.pos.y);
+        ret = viz2d_get_index(viz2d, &point1, local_pose.pos.x, local_pose.pos.y);
 
         global_pose.pos.x = traj[i + 1][3];
         global_pose.pos.y = traj[i + 1][4];
         global_pose.theta = traj[i + 1][5];
 
         cvt_pose_global_to_local(&local_pose, &global_pose, base_pose);
-        ret = viz2d_get_index(uviz, &point2, local_pose.pos.x, local_pose.pos.y);
+        ret = viz2d_get_index(viz2d, &point2, local_pose.pos.x, local_pose.pos.y);
 
-        cvLine(uviz->image, point1, point2, color, 2, CV_AA, 0);
+        cvLine(viz2d->image, point1, point2, color, 2, CV_AA, 0);
     }
 
     return 1;
 }
 
 
-int viz2d_draw_ref_line(viz2d_image *uviz,
+int viz2d_draw_ref_line(viz2d_image *viz2d,
                        const std::list<planning::ReferenceLine> *ref_lines,
                        const Pose2D*base_pose, viz2d_color color_index)
 {
@@ -489,7 +489,7 @@ int viz2d_draw_ref_line(viz2d_image *uviz,
     double truncated_dist;
     CvScalar color;
 
-    if (ref_lines == nullptr || base_pose == nullptr || uviz == nullptr)
+    if (ref_lines == nullptr || base_pose == nullptr || viz2d == nullptr)
     {
         return -1;
     }
@@ -524,7 +524,7 @@ int viz2d_draw_ref_line(viz2d_image *uviz,
 
             cvt_pos_global_to_local(&local, &global, base_pose);
 
-            ret = viz2d_get_index(uviz, &point1, local.x, local.y);
+            ret = viz2d_get_index(viz2d, &point1, local.x, local.y);
 
             // draw end
             global.x = end->x();
@@ -532,9 +532,9 @@ int viz2d_draw_ref_line(viz2d_image *uviz,
 
             cvt_pos_global_to_local(&local, &global, base_pose);
 
-            ret = viz2d_get_index(uviz, &point2, local.x, local.y);
+            ret = viz2d_get_index(viz2d, &point2, local.x, local.y);
 
-            cvLine(uviz->image, point1, point2, color, 2, CV_AA, 0);
+            cvLine(viz2d->image, point1, point2, color, 2, CV_AA, 0);
         }
     }
 
@@ -542,7 +542,7 @@ int viz2d_draw_ref_line(viz2d_image *uviz,
 }
 
 int viz2d_draw_ref_line_info(
-        viz2d_image *uviz,
+        viz2d_image *viz2d,
         const apollo::planning::ReferenceLineInfo *ref_line_info,
         const Pose2D*base_pose, viz2d_color color_index)
 {

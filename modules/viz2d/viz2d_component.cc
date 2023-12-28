@@ -147,14 +147,14 @@ int viz2d_component::init()
     main_window_ = get_main_window2d();
     hmap_window_ = get_hmap_window2d();
 
-    viz2d_start(main_window_);
-    viz2d_start(hmap_window_);
+    viz2d_init_image(main_window_);
+    viz2d_init_image(hmap_window_);
 
     vehicle_config = apollo::common::VehicleConfigHelper::GetConfig();
 
     veh_local_polygon = init_adv_box(vehicle_config.vehicle_param());
 
-    get_hdmap_base_for_uviz(&hmap_base_pose);
+    get_hdmap_center_base(&hmap_base_pose);
 
     wheel_base = vehicle_config.vehicle_param().wheel_base();
 
@@ -207,8 +207,8 @@ int viz2d_component::init()
 
 int viz2d_component::close()
 {
-    viz2d_shutdown(main_window_);
-    viz2d_shutdown(hmap_window_);
+    viz2d_release(main_window_);
+    viz2d_release(hmap_window_);
 
     return 0;
 }
@@ -509,8 +509,8 @@ int viz2d_component::data_tanslate(double max_steering_wheel_angle_,
 
 int viz2d_component::process(double max_steering_wheel_angle_)
 {
-    viz2d_clear_image(main_window_);
-    viz2d_clear_image(hmap_window_);
+    viz2d_init_in_per_frame(main_window_);
+    viz2d_init_in_per_frame(hmap_window_);
 
     apollo::planning::DiscretizedPath lateral_path_;
     trajectory_points.clear();
@@ -528,7 +528,7 @@ int viz2d_component::process(double max_steering_wheel_angle_)
     // draw planning
 
     AINFO << "traj size " << trajectory_points.size();
-    viz2d_local_planner_draw_trajectory(main_window_, trajectory_points,
+    viz2d_draw_global_trajectory(main_window_, trajectory_points,
                                        &veh_global_pose, viz2d_colors_orange,
                                        &veh_local_polygon);
 
@@ -549,19 +549,19 @@ int viz2d_component::process(double max_steering_wheel_angle_)
     cvt_local_polygon_to_global(&safe_adc_global_polygon,
                                 &safe_adc_local_polygon, &veh_global_pose);
 
-    viz2d_local_planner_draw_polygon(main_window_, &safe_adc_global_polygon,
+    viz2d_draw_polygon(main_window_, &safe_adc_global_polygon,
                                     &veh_global_pose, viz2d_colors_orange);
 
     // hdmap
-    // viz2d_draw_hdmap(uviz, &veh_global_pose, false);
+    // viz2d_draw_hdmap(viz2d, &veh_global_pose, false);
     viz2d_draw_simple_hdmap(main_window_, &veh_global_pose);
 
     // draw full hmap in map window
-    // viz2d_draw_hdmap(hmap_uviz, &hmap_base_pose, true);
+    // viz2d_draw_hdmap(hmap_viz2d, &hmap_base_pose, true);
     viz2d_draw_full_simple_hdmap(hmap_window_, &hmap_base_pose);
 
     int ret;
-    // ret = viz2d_draw_route(uviz, routing_points_, &veh_global_pose,
+    // ret = viz2d_draw_route(viz2d, routing_points_, &veh_global_pose,
     //                       viz2d_colors_green, 2);
     ret = viz2d_draw_route2(main_window_, route_path_list_, &veh_global_pose,
                           viz2d_colors_green, 2);
@@ -585,7 +585,7 @@ int viz2d_component::process(double max_steering_wheel_angle_)
     // draw route in hmap window
     viz2d_draw_route2(hmap_window_, route_path_list_, &hmap_base_pose,
                     viz2d_colors_cyan, 3);
-    // viz2d_draw_route(hmap_uviz, routing_points_, &hmap_base_pose,
+    // viz2d_draw_route(hmap_viz2d, routing_points_, &hmap_base_pose,
     //                 viz2d_colors_cyan, 3);
 
     // draw vehicle position in map window
@@ -958,8 +958,8 @@ int viz2d_component::process(double max_steering_wheel_angle_)
         lane_borrow_manual_writer_->Write(lane_borrow_manual_);
     }
 
-    viz2d_display(main_window_);
-    viz2d_display(hmap_window_);
+    viz2d_show_result_in_per_frame(main_window_);
+    viz2d_show_result_in_per_frame(hmap_window_);
 
     return 0;
 }

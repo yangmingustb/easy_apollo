@@ -137,28 +137,15 @@ struct viz2d_image
  * notice: use only inline { #ifdef ENABLE_viz2d ... #endif }, so better to
  * wrap it in a header(.h) file to use it!
  */
-extern int viz2d_get_color(CvScalar *cvColor, viz2d_color color_index);
+int viz2d_get_color(CvScalar *cvColor, viz2d_color color_index);
 
 /*
  * Get the opencv font for cvPuttext from internal font setting
  */
-extern int viz2d_get_cvfont(CvFont *cvfont,
+int viz2d_get_cvfont(CvFont *cvfont,
                            const viz2d_font_setting *font_setting);
 
-/*
- * Initialize the image handle with params, call it before viz2d_start
- *
- * \param[in\out]  image_handle     image handle
- * \param[in]  font                 font
- * \param[in]  win_name             window's name
- * \param[in]  columns              columns of the image windows
- * \param[in]  rows                 rows of the image windows
- * \param[in]  origin_column_index  origin's x coordinate in the image pixel
- * frame \param[in]  origin_row_index     origin's y coordinate in the image
- * pixel frame \param[in]  resolution           image resolution \param[in]
- * background_color     background color of the image windows \return 1 or 0
- */
-extern int viz2d_init_image_handle(viz2d_image *img_handle,
+int viz2d_init_window(viz2d_image *img_handle,
                                   const viz2d_font_setting *font,
                                   const char *win_name, int columns, int rows,
                                   int origin_column_index, int origin_row_index,
@@ -168,119 +155,55 @@ extern int viz2d_init_image_handle(viz2d_image *img_handle,
 /*
  * Set default font
  */
-extern int viz2d_set_default_font(viz2d_font_setting *font);
+int viz2d_set_default_font(viz2d_font_setting *font);
 
 /*
  * Reset the display background
  */
-extern int viz2d_clear_image(viz2d_image *img_handle);
+int viz2d_init_in_per_frame(viz2d_image *img_handle);
 
 /*
  * Release window gui and image resources
  * called by the planner framework loop
  */
-extern int viz2d_shutdown(viz2d_image *img_handle);
+int viz2d_release(viz2d_image *img_handle);
 
 /*
  * Create window and images for visualization
  */
-extern int viz2d_start(viz2d_image *img_handle);
+int viz2d_init_image(viz2d_image *img_handle);
 
 /*
  * Display the image
  */
-extern int viz2d_display(viz2d_image *img_handle);
+int viz2d_show_result_in_per_frame(viz2d_image *img_handle);
 
 /*
  * Draw xy axises
  */
-extern int viz2d_draw_xy_axis(viz2d_image *img_handle);
+int viz2d_draw_xy_axis(viz2d_image *img_handle);
 
 
-extern int viz2d_draw_arrow(viz2d_image *img_handle,
+int viz2d_draw_arrow(viz2d_image *img_handle,
                            const Pose2D*ego_pose,
                            viz2d_color color_index);
 
-/*
- * Get image pixel coordinate according to coordinate in ego frame
- *
- * \param[in]  img_handle  image handle
- * \param[in]  index       pixel coordinate
- * \param[in]  x           x coordinate in ego frame
- * \param[in]  y           y coordinate in ego frame
- * \return 1 or 0
- */
-extern int viz2d_get_index(viz2d_image *img_handle, CvPoint *index,
+int viz2d_get_index(viz2d_image *img_handle, CvPoint *index,
                           double x, double y);
 
-/*
- * Draw line according to coordinate in ego frame
- *
- * \param[in]  img_handle  image handle
- * \param[in]  x1           x1 coordinate in ego frame
- * \param[in]  y1           y1 coordinate in ego frame
- * \param[in]  x2           x2 coordinate in ego frame
- * \param[in]  y2           y2 coordinate in ego frame
- * \param[in]  thickness    line thickness
- * \param[in]  color_index  line color
- * \return 1 or 0
- */
-extern int viz2d_draw_line(viz2d_image *image_handle, double x1, double y1,
+int viz2d_draw_line(viz2d_image *image_handle, double x1, double y1,
                           double x2, double y2, int thickness,
                           viz2d_color color_index);
 
-/*
- * \param[in]  image_handle image handle
- * \param[in]  x            x coordinate of centre point of circle
- * \param[in]  y            y coordinate of centre point of circle
- * \param[in]  radius       radius of circle
- * fill : -1, fill, 1 not fill
- * \param[in]  color_index  drawing color
- */
-extern int viz2d_draw_circle(viz2d_image *img_handle, double x, double y,
+int viz2d_draw_circle(viz2d_image *img_handle, double x, double y,
                             double radius, viz2d_color color_index,
                             int fill);
 
-/*
- * Draw text according to position in ego frame
- *
- * \param[in]  img_handle        image handle
- * \param[in]  description       text format specifier
- * \param[in]  var               value number text
- * \param[in]  width_percentage  text position x
- * \param[in]  height_percentage text position y
- * \param[in]  color_index       text color
- * \return 1 or 0
- */
-extern int viz2d_draw_int_var_text(viz2d_image *img_handle,
+int viz2d_draw_int_var_text(viz2d_image *img_handle,
                                   const char *description, int var,
                                   double width_percentage,
                                   double height_percentage,
                                   viz2d_color color_index);
-
-// /*
-//  * \param[in]  img_handle  image handle
-//  * \param[in]  ego_pose    pose in ego frame
-//  * \param[in]  vehicle     vehicle params
-//  * \param[in]  color_index drawing color
-//  * \return 1 or 0
-//  */
-// extern int
-// viz2d_draw_footprint(viz2d_image *img_handle,
-//                     const Pose2D*ego_pose,
-//                     const vehicle_params_t *vehicle,
-//                     viz2d_color color_index);
-
-// /*
-//  * Save ogm map to pgm format image file using opencv API.
-//  *
-//  * \param[in]  log_filename  file name
-//  * \param[in]  ogm           ogm map
-//  * \return 1 or 0
-//  */
-// extern int
-// viz2d_save_ogm_to_pgm(const char *log_filename,
-//                      const ogm_map_t *ogm);
 
 int viz2d_draw_polygon_with_thickness(viz2d_image *image_handle,
                                      const Polygon2D *polygon,
@@ -288,10 +211,7 @@ int viz2d_draw_polygon_with_thickness(viz2d_image *image_handle,
                                      viz2d_color color_index,
                                      int32_t thickness);
 
-int viz2d_draw_polygon(viz2d_image *image_handle, const Polygon2D *polygon,
-                      const Pose2D*base_pose, viz2d_color color_index);
-
-int viz2d_local_planner_draw_filled_polygon(viz2d_image *viz2d,
+int viz2d_draw_filled_polygon(viz2d_image *viz2d,
                                            const Polygon2D *polygon,
                                            viz2d_color color,
                                            const Pose2D*base_pose_global);

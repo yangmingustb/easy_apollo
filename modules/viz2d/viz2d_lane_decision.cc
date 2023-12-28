@@ -4,7 +4,7 @@
 namespace apollo
 {
 int viz_draw_lane_decision(planning::DecisionResult *decisions,
-                           viz2d_image *uviz, const Pose2D*veh_pose,
+                           viz2d_image *viz2d, const Pose2D*veh_pose,
                            const planning::ADCTrajectory &traj)
 {
     if (decisions == nullptr)
@@ -14,7 +14,7 @@ int viz_draw_lane_decision(planning::DecisionResult *decisions,
 
     if (decisions->has_lane_borrow_decider())
     {
-        viz_draw_lane_borrow_decision(decisions->lane_borrow_decider(), uviz,
+        viz_draw_lane_borrow_decision(decisions->lane_borrow_decider(), viz2d,
                                       veh_pose, traj.path_type());
     }
 
@@ -23,7 +23,7 @@ int viz_draw_lane_decision(planning::DecisionResult *decisions,
 }
 
 int viz_draw_lane_borrow_decision(const planning::LaneBorrowStatus &decision,
-                                  viz2d_image *uviz,
+                                  viz2d_image *viz2d,
                                   const Pose2D*veh_pose,
                                   const planning::path_boundary_type path_type)
 {
@@ -48,7 +48,7 @@ int viz_draw_lane_borrow_decision(const planning::LaneBorrowStatus &decision,
         text += "false";
     }
 
-    viz_draw_text_relative_to_cv_coordinate(uviz, text, viz2d_colors_white,
+    viz_draw_text_relative_to_cv_coordinate(viz2d, text, viz2d_colors_white,
                                             text_center);
 
 
@@ -56,7 +56,7 @@ int viz_draw_lane_borrow_decision(const planning::LaneBorrowStatus &decision,
     text_center.y += text_y_step;
 
     text = planning::path_boundary_type_Name(path_type);
-    viz_draw_text_relative_to_cv_coordinate(uviz, text, viz2d_colors_white,
+    viz_draw_text_relative_to_cv_coordinate(viz2d, text, viz2d_colors_white,
                                             text_center);
 
     // static obs id
@@ -71,7 +71,7 @@ int viz_draw_lane_borrow_decision(const planning::LaneBorrowStatus &decision,
     {
         text = "blocking obs id: none ";
     }
-    viz_draw_text_relative_to_cv_coordinate(uviz, text, viz2d_colors_white,
+    viz_draw_text_relative_to_cv_coordinate(viz2d, text, viz2d_colors_white,
                                             text_center);
 
     // update time
@@ -90,7 +90,7 @@ int viz_draw_lane_borrow_decision(const planning::LaneBorrowStatus &decision,
     }
 
     text_center.y += text_y_step;
-    viz_draw_text_relative_to_cv_coordinate(uviz, text, viz2d_colors_white,
+    viz_draw_text_relative_to_cv_coordinate(viz2d, text, viz2d_colors_white,
                                             text_center);
 
     // update reason
@@ -104,7 +104,7 @@ int viz_draw_lane_borrow_decision(const planning::LaneBorrowStatus &decision,
         text = "none lane borrow";
     }
     text_center.y += text_y_step;
-    viz_draw_text_relative_to_cv_coordinate(uviz, text, viz2d_colors_white,
+    viz_draw_text_relative_to_cv_coordinate(viz2d, text, viz2d_colors_white,
                                             text_center);
 
     // update lane borrow stage
@@ -118,7 +118,7 @@ int viz_draw_lane_borrow_decision(const planning::LaneBorrowStatus &decision,
         text = "No lane borrow stage";
     }
     text_center.y += text_y_step;
-    viz_draw_text_relative_to_cv_coordinate(uviz, text, viz2d_colors_white,
+    viz_draw_text_relative_to_cv_coordinate(viz2d, text, viz2d_colors_white,
                                             text_center);
 
     return 0;

@@ -4,7 +4,7 @@ namespace apollo
 {
 
 int viz2d_draw_prediction(
-        viz2d_image *uviz,
+        viz2d_image *viz2d,
         const std::vector<std::vector<cv::Point2d> > &obstacle_list,
         const Pose2D*base_pose, viz2d_color color_index, int line_width)
 {
@@ -14,7 +14,7 @@ int viz2d_draw_prediction(
     double truncated_dist;
     CvScalar color;
 
-    if (obstacle_list.size() == 0 || base_pose == nullptr || uviz == nullptr)
+    if (obstacle_list.size() == 0 || base_pose == nullptr || viz2d == nullptr)
     {
         return -1;
     }
@@ -33,16 +33,16 @@ int viz2d_draw_prediction(
             global_pose.y = obs_traj[i].y;
 
             cvt_pos_global_to_local(&local_pose, &global_pose, base_pose);
-            ret = viz2d_get_index(uviz, &point1, local_pose.x, local_pose.y);
+            ret = viz2d_get_index(viz2d, &point1, local_pose.x, local_pose.y);
 
             // next point
             global_pose.x = obs_traj[i + 1].x;
             global_pose.y = obs_traj[i + 1].y;
 
             cvt_pos_global_to_local(&local_pose, &global_pose, base_pose);
-            ret = viz2d_get_index(uviz, &point2, local_pose.x, local_pose.y);
+            ret = viz2d_get_index(viz2d, &point2, local_pose.x, local_pose.y);
 
-            cvLine(uviz->image, point1, point2, color, line_width, CV_AA, 0);
+            cvLine(viz2d->image, point1, point2, color, line_width, CV_AA, 0);
         }
     }
 

@@ -6,7 +6,7 @@
 namespace apollo
 {
 int viz_draw_decision_list(planning::DecisionResult *decisions,
-                           viz2d_image *uviz, const Pose2D*veh_pose)
+                           viz2d_image *viz2d, const Pose2D*veh_pose)
 {
     if (decisions == nullptr)
     {
@@ -15,13 +15,13 @@ int viz_draw_decision_list(planning::DecisionResult *decisions,
 
     if (decisions->has_main_decision())
     {
-        viz_draw_main_decision_result(decisions->mutable_main_decision(), uviz,
+        viz_draw_main_decision_result(decisions->mutable_main_decision(), viz2d,
                                       veh_pose);
     }
 
     if (decisions->has_object_decision())
     {
-        viz_draw_common_decision_list(decisions->object_decision(), uviz,
+        viz_draw_common_decision_list(decisions->object_decision(), viz2d,
                                       veh_pose);
     }
 
@@ -29,10 +29,10 @@ int viz_draw_decision_list(planning::DecisionResult *decisions,
 }
 
 int viz_draw_common_decision_list(
-        const planning::ObjectDecisions &decision_list, viz2d_image *uviz,
+        const planning::ObjectDecisions &decision_list, viz2d_image *viz2d,
         const Pose2D*veh_pose)
 {
-    if (veh_pose == nullptr || uviz == nullptr)
+    if (veh_pose == nullptr || viz2d == nullptr)
     {
         return 0;
     }
@@ -47,7 +47,7 @@ int viz_draw_common_decision_list(
             const planning::ObjectDecisionType &type =
                     decision.object_decision(j);
 
-            viz_draw_common_decision(type, uviz, veh_pose, perception_id);
+            viz_draw_common_decision(type, viz2d, veh_pose, perception_id);
         }
     }
 
@@ -55,29 +55,29 @@ int viz_draw_common_decision_list(
 }
 
 int viz_draw_common_decision(const planning::ObjectDecisionType &decision,
-                             viz2d_image *uviz, const Pose2D*veh_pose,
+                             viz2d_image *viz2d, const Pose2D*veh_pose,
                              int perception_id)
 {
     if (decision.has_stop())
     {
-        viz_draw_stop_decision(decision.stop(), uviz, veh_pose, perception_id);
+        viz_draw_stop_decision(decision.stop(), viz2d, veh_pose, perception_id);
     }
     else if (decision.has_ignore())
     {
     }
     else if (decision.has_follow())
     {
-        viz_draw_follow_decision(decision.follow(), uviz, veh_pose,
+        viz_draw_follow_decision(decision.follow(), viz2d, veh_pose,
                                  perception_id);
     }
     else if (decision.has_yield())
     {
-        viz_draw_yield_decision(decision.yield(), uviz, veh_pose,
+        viz_draw_yield_decision(decision.yield(), viz2d, veh_pose,
                                 perception_id);
     }
     else if (decision.has_overtake())
     {
-        viz_draw_overtake_decision(decision.overtake(), uviz, veh_pose,
+        viz_draw_overtake_decision(decision.overtake(), viz2d, veh_pose,
                                    perception_id);
     }
     else if (decision.has_nudge())
@@ -91,12 +91,12 @@ int viz_draw_common_decision(const planning::ObjectDecisionType &decision,
 }
 
 int viz_draw_main_decision_result(planning::MainDecision *decision,
-                                  viz2d_image *uviz,
+                                  viz2d_image *viz2d,
                                   const Pose2D*veh_pose)
 {
     if (decision->has_stop())
     {
-        // viz_draw_main_stop_decision(decision->mutable_stop(), uviz, veh_pose);
+        // viz_draw_main_stop_decision(decision->mutable_stop(), viz2d, veh_pose);
     }
     else if (decision->has_change_lane())
     {
@@ -124,7 +124,7 @@ int viz_draw_main_decision_result(planning::MainDecision *decision,
 }
 
 int viz_draw_main_stop_decision(planning::MainStop *decision,
-                                viz2d_image *uviz, const Pose2D*veh_pose)
+                                viz2d_image *viz2d, const Pose2D*veh_pose)
 {
     const common::PointENU &stop_point = decision->stop_point();
 
@@ -146,7 +146,7 @@ int viz_draw_main_stop_decision(planning::MainStop *decision,
             break;
     }
 
-    viz_draw_virtual_wall(&stop_pose, uviz, veh_pose, 0, wall_color);
+    viz_draw_virtual_wall(&stop_pose, viz2d, veh_pose, 0, wall_color);
 
     // draw stop reason
     if (decision->has_reason())
@@ -155,7 +155,7 @@ int viz_draw_main_stop_decision(planning::MainStop *decision,
 
         cvt_pos_global_to_local(&text_pos_local, &stop_pose.pos, veh_pose);
 
-        viz_draw_local_text(uviz, &text_pos_local, decision->reason(),
+        viz_draw_local_text(viz2d, &text_pos_local, decision->reason(),
                             viz2d_colors_cyan);
     }
 
@@ -163,7 +163,7 @@ int viz_draw_main_stop_decision(planning::MainStop *decision,
 }
 
 int viz_draw_stop_decision(const planning::ObjectStop &decision,
-                           viz2d_image *uviz, const Pose2D*veh_pose,
+                           viz2d_image *viz2d, const Pose2D*veh_pose,
                            int perception_id)
 {
     const common::PointENU &stop_point = decision.stop_point();
@@ -186,7 +186,7 @@ int viz_draw_stop_decision(const planning::ObjectStop &decision,
             break;
     }
 
-    viz_draw_virtual_wall(&stop_pose, uviz, veh_pose, perception_id,
+    viz_draw_virtual_wall(&stop_pose, viz2d, veh_pose, perception_id,
                           wall_color);
 
     // draw stop reason
@@ -197,13 +197,13 @@ int viz_draw_stop_decision(const planning::ObjectStop &decision,
 
     cvt_pos_global_to_local(&text_pos_local, &stop_pose.pos, veh_pose);
 
-    viz_draw_local_text(uviz, &text_pos_local, text, viz2d_colors_cyan);
+    viz_draw_local_text(viz2d, &text_pos_local, text, viz2d_colors_cyan);
 
     return 0;
 }
 
 int viz_draw_follow_decision(const planning::ObjectFollow &decision,
-                             viz2d_image *uviz, const Pose2D*veh_pose,
+                             viz2d_image *viz2d, const Pose2D*veh_pose,
                              int perception_id)
 {
     const common::PointENU &stop_point = decision.fence_point();
@@ -217,7 +217,7 @@ int viz_draw_follow_decision(const planning::ObjectFollow &decision,
 
     wall_color = viz2d_colors_green;
 
-    viz_draw_virtual_wall(&stop_pose, uviz, veh_pose, perception_id,
+    viz_draw_virtual_wall(&stop_pose, viz2d, veh_pose, perception_id,
                           wall_color);
 
     // draw stop reason
@@ -227,13 +227,13 @@ int viz_draw_follow_decision(const planning::ObjectFollow &decision,
 
     cvt_pos_global_to_local(&text_pos_local, &stop_pose.pos, veh_pose);
 
-    viz_draw_local_text(uviz, &text_pos_local, text, viz2d_colors_cyan);
+    viz_draw_local_text(viz2d, &text_pos_local, text, viz2d_colors_cyan);
 
     return 0;
 }
 
 int viz_draw_yield_decision(const planning::ObjectYield &decision,
-                            viz2d_image *uviz, const Pose2D*veh_pose,
+                            viz2d_image *viz2d, const Pose2D*veh_pose,
                             int perception_id)
 {
     const common::PointENU &stop_point = decision.fence_point();
@@ -247,7 +247,7 @@ int viz_draw_yield_decision(const planning::ObjectYield &decision,
 
     wall_color = viz2d_colors_yellow;
 
-    viz_draw_virtual_wall(&stop_pose, uviz, veh_pose, perception_id,
+    viz_draw_virtual_wall(&stop_pose, viz2d, veh_pose, perception_id,
                           wall_color);
 
     // draw stop reason
@@ -257,13 +257,13 @@ int viz_draw_yield_decision(const planning::ObjectYield &decision,
 
     cvt_pos_global_to_local(&text_pos_local, &stop_pose.pos, veh_pose);
 
-    viz_draw_local_text(uviz, &text_pos_local, text, viz2d_colors_cyan);
+    viz_draw_local_text(viz2d, &text_pos_local, text, viz2d_colors_cyan);
 
     return 0;
 }
 
 int viz_draw_overtake_decision(const planning::ObjectOvertake &decision,
-                               viz2d_image *uviz, const Pose2D*veh_pose,
+                               viz2d_image *viz2d, const Pose2D*veh_pose,
                                int perception_id)
 {
     const common::PointENU &stop_point = decision.fence_point();
@@ -277,7 +277,7 @@ int viz_draw_overtake_decision(const planning::ObjectOvertake &decision,
 
     wall_color = viz2d_colors_pink;
 
-    viz_draw_virtual_wall(&stop_pose, uviz, veh_pose, perception_id,
+    viz_draw_virtual_wall(&stop_pose, viz2d, veh_pose, perception_id,
                           wall_color);
 
     // draw stop reason
@@ -287,12 +287,12 @@ int viz_draw_overtake_decision(const planning::ObjectOvertake &decision,
 
     cvt_pos_global_to_local(&text_pos_local, &stop_pose.pos, veh_pose);
 
-    viz_draw_local_text(uviz, &text_pos_local, text, viz2d_colors_cyan);
+    viz_draw_local_text(viz2d, &text_pos_local, text, viz2d_colors_cyan);
 
     return 0;
 }
 
-int viz_draw_dynamic_scenerio_type(viz2d_image *uviz,
+int viz_draw_dynamic_scenerio_type(viz2d_image *viz2d,
                                    const Pose2D*veh_pose,
                                    const planning::SpeedDecision &decision)
 {
@@ -317,7 +317,7 @@ int viz_draw_dynamic_scenerio_type(viz2d_image *uviz,
         text = "no dynamic scenario";
     }
 
-    viz_draw_text_relative_to_cv_coordinate(uviz, text, viz2d_colors_white,
+    viz_draw_text_relative_to_cv_coordinate(viz2d, text, viz2d_colors_white,
                                             text_center);
 
     // acc
@@ -330,7 +330,7 @@ int viz_draw_dynamic_scenerio_type(viz2d_image *uviz,
     {
         text = "acc: none ";
     }
-    viz_draw_text_relative_to_cv_coordinate(uviz, text, viz2d_colors_white,
+    viz_draw_text_relative_to_cv_coordinate(viz2d, text, viz2d_colors_white,
                                             text_center);
 
     // thd
@@ -343,7 +343,7 @@ int viz_draw_dynamic_scenerio_type(viz2d_image *uviz,
     {
         text = "thd: none";
     }
-    viz_draw_text_relative_to_cv_coordinate(uviz, text, viz2d_colors_white,
+    viz_draw_text_relative_to_cv_coordinate(viz2d, text, viz2d_colors_white,
                                             text_center);
 
     // ttc
@@ -356,7 +356,7 @@ int viz_draw_dynamic_scenerio_type(viz2d_image *uviz,
     {
         text = "ttc: none";
     }
-    viz_draw_text_relative_to_cv_coordinate(uviz, text, viz2d_colors_white,
+    viz_draw_text_relative_to_cv_coordinate(viz2d, text, viz2d_colors_white,
                                             text_center);
 
 
