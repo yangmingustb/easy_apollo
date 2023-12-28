@@ -26,7 +26,11 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd ${CURRENT_DIR}
 cd ..
 cd third_party
+
+git clone --depth 1 --branch 4.2.0 git@github.com:opencv/opencv.git
+
 cd opencv
+
 rm -rf build
 mkdir build && cd build
 

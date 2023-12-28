@@ -37,3 +37,5 @@ bash ${SCRIPT_DIR}/install_ipopt.sh
 bash ${SCRIPT_DIR}/install_opengl.sh
 
 bash ${SCRIPT_DIR}/install_opencv.sh
+
+bash ${SCRIPT_DIR}/install_abseil.sh
