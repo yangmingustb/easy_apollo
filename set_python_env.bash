@@ -30,8 +30,11 @@ LD_LIBRARY_PATH+=":$PWD/third_party/install/libtorch_cpu/lib"
 
 LD_LIBRARY_PATH+=":$PWD/third_party/install/proj4/lib"
 LD_LIBRARY_PATH+=":$PWD/third_party/install/opencv/lib"
-LD_LIBRARY_PATH+=":$PWD/third_party/install/horizon_ai/lib"
-LD_LIBRARY_PATH+=":$PWD/install/lib"
+LD_LIBRARY_PATH+=":$PWD/third_party/install/googletest/lib"
+LD_LIBRARY_PATH+=":$PWD/third_party/install/glog/lib"
+LD_LIBRARY_PATH+=":$PWD/third_party/install/gflags/lib"
+LD_LIBRARY_PATH+=":$PWD/third_party/install/fastrtps/lib"
+
 LD_LIBRARY_PATH+=":$PWD/build/lib"
 
 echo $LD_LIBRARY_PATH

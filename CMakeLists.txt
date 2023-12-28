@@ -194,7 +194,7 @@ target_link_libraries(apollo INTERFACE
 add_subdirectory(test)
 
 
-configure_file("setup.bash.in" "${CMAKE_BINARY_DIR}/setup.bash" @ONLY)
+configure_file("setup.bash" "${CMAKE_BINARY_DIR}/setup.bash" @ONLY)
 install(FILES ${CMAKE_BINARY_DIR}/setup.bash
   DESTINATION .
 )
