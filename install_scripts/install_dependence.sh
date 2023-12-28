@@ -49,3 +49,5 @@ bash ${SCRIPT_DIR}/install_libtorch.sh
 bash ${SCRIPT_DIR}/install_json.sh
 
 bash ${SCRIPT_DIR}/install_osqp.sh
+
+bash ${SCRIPT_DIR}/install_tf2.sh
