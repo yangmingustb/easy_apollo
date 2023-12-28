@@ -73,10 +73,9 @@ third_party/p*
 third_party/R*
 third_party/P*
 third_party/l*
-third_party/tf2/*
+third_party/tf2/build/*
 third_party/civetweb/*
 third_party/install/*
-third_party/tf2/*
 third_party/civetweb/*
 third_party/civetwe*
 third_party/matplotlib-cpp*
