@@ -20,7 +20,7 @@
 基本库：
 1. ubuntu 18.04/20.04 (不要尝试2204，各种编译不了的问题)
 1. eigen 3.3.7 （可以使用脚本安装）
-1. google test 1.7.0
+1. google test 1.10.0
 1. glog 0.50 （apt install）
 1. benchmark 1.6.0
 1. c++ 17

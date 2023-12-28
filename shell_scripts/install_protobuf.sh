@@ -65,7 +65,7 @@ install_protobuf()
     #export CC=/usr/local/bin/gcc
     #export CXX=/usr/local/bin/g++
     ./configure --prefix=/usr/local --with-pic  # default is /usr/local
-    make -j4
+    make -j6
     sudo make install
     # Some of the headers won't be installed by default using configure script, we do it manually
     cd src/google/protobuf/stubs && sudo cp -r *.h /usr/local/include/google/protobuf/stubs/ && cd -
