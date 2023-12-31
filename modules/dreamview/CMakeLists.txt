@@ -19,7 +19,7 @@ file(GLOB VIZ_PROTO_FILES
 
 )
 
-add_library(apollo_dreamview_proto  SHARED  ${VIZ_PROTO_FILES})
+add_library(apollo_dreamview_proto  STATIC  ${VIZ_PROTO_FILES})
 target_include_directories(apollo_dreamview_proto PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
         )

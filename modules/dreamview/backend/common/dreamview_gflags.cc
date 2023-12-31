@@ -167,7 +167,7 @@ DEFINE_string(resource_rtk_record_path, "/apollo/data/log",
 DEFINE_string(cyber_recorder_stop_command, "pkill -9 cyber_recorder",
               "stop play recorder");
 
-DEFINE_string(vehicles_config_path, "/apollo/modules/calibration/data",
+DEFINE_string(vehicles_config_path, "./../modules/calibration/data",
               "Vehicles config path.");
 
 DEFINE_bool(
@@ -203,7 +203,7 @@ DEFINE_string(dv_hmi_modes_config_path,
 DEFINE_string(dv_plus_hmi_modes_config_path,
               "/apollo/modules/dreamview_plus/conf/hmi_modes",
               "Dreamview Plus HMI modes config path.");
-DEFINE_string(maps_data_path, "/apollo/modules/map/data", "Maps data path.");
+DEFINE_string(maps_data_path, "./../modules/map/data", "Maps data path.");
 DEFINE_string(global_components_config_path,
               "/apollo/modules/dreamview/conf/global_components_config.pb.txt",
               "Global components config path.");

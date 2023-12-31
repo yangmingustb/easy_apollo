@@ -117,6 +117,19 @@ file(GLOB apollo_planning_tuning "tuning/*.cc"
 
 set(BUILD_TYPE "STATIC")
 
+
+
+add_library(planning_proto  STATIC  ${apollo_planning_proto})
+target_include_directories(planning_proto PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        )
+target_link_libraries(planning_proto PUBLIC
+                                         ${PROTOBUF_LIBRARIES}
+                                         apollo_common
+                                         common_proto
+                                         apollo_dreamview_proto
+                                         )
+
 add_library(apollo_planning  ${BUILD_TYPE}                       
                                         navi_planning.cc
                                         on_lane_planning.cc
@@ -136,7 +149,6 @@ add_library(apollo_planning  ${BUILD_TYPE}
 
                                         ${apollo_planning_tuning}
                                         ${apollo_planning_openspace}
-                                        ${apollo_planning_proto}
                                         ${apollo_planning_learning}
                                         )
 target_include_directories(apollo_planning PUBLIC
@@ -150,6 +162,7 @@ target_link_libraries(apollo_planning PUBLIC
                                          apollo_map
                                          apollo_routing
                                          apollo_dreamview_proto
+                                         planning_proto
 
                                          ${OpenCV_LIBRARIES}
 
@@ -181,6 +194,8 @@ target_link_libraries(planning_component_main PUBLIC
 
 install(
 TARGETS 
+apollo_planning
+        planning_proto
         planning_component_main
 LIBRARY DESTINATION lib
 ARCHIVE DESTINATION lib

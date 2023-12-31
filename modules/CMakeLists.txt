@@ -9,7 +9,7 @@ add_subdirectory(audio)
 add_subdirectory(canbus)
 add_subdirectory(common)
 add_subdirectory(control)
-add_subdirectory(dreamview)
+
 add_subdirectory(drivers)
 add_subdirectory(localization)
 add_subdirectory(map)
@@ -25,6 +25,8 @@ add_subdirectory(v2x)
 add_subdirectory(chassis)
 add_subdirectory(viz2d)
 add_subdirectory(common_msgs)
+
+add_subdirectory(dreamview)
 # add_subdirectory(tools)
 
-add_subdirectory(dreamview_plus)
+# add_subdirectory(dreamview_plus)

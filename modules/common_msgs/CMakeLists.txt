@@ -12,7 +12,7 @@ file(GLOB MSGS_PROTO_FILES
 
 )
 
-add_library(common_msgs_proto  SHARED  ${MSGS_PROTO_FILES})
+add_library(common_msgs_proto  STATIC  ${MSGS_PROTO_FILES})
 target_include_directories(common_msgs_proto PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
         )
@@ -21,6 +21,7 @@ target_link_libraries(common_msgs_proto PUBLIC
                                          apollo_common
                                          common_proto
                                          apollo_map
+                                         planning_proto
                                          )
 
 install(TARGETS 

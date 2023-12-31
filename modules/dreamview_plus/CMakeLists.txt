@@ -29,6 +29,7 @@ target_link_libraries(dreamview2_proto PUBLIC
                                          apollo_map
                                          apollo_monitor
                                          apollo_dreamview_proto
+                                         common_msgs_proto
                                          )
 
 
