@@ -58,6 +58,23 @@ target_link_libraries(fuel_monitor PUBLIC
 )
 
 # lib
+add_library(dv_map  ${BUILD_TYPE}  
+backend/map/map_service.cc
+
+
+
+)
+target_include_directories(dv_map PUBLIC
+${CMAKE_CURRENT_SOURCE_DIR}
+)
+target_link_libraries(dv_map PUBLIC
+					${PROTOBUF_LIBRARIES}
+					apollo_common
+					apollo_map
+					apollo_dreamview_proto
+)
+
+# lib
 add_library(apollo_hmi  ${BUILD_TYPE}  
 backend/hmi/hmi_worker.cc
 backend/hmi/hmi.cc
@@ -75,21 +92,131 @@ target_link_libraries(apollo_hmi PUBLIC
 					apollo_map
 					apollo_dreamview_proto
                     fuel_monitor
+                    apollo_control
 )
 
 
 # lib
-file(GLOB VIZ_FILES 
+file(GLOB dreamview_common_file
     "backend/common/*.cc"
     "backend/common/util/*.cc"
+)
+
+list(FILTER dreamview_common_file EXCLUDE REGEX .*test[.]cc)
+
+message("dreamview source: ${dreamview_common_file}")
+
+add_library(dreamview_common  ${BUILD_TYPE}
+      ${dreamview_common_file}
+        )
+target_include_directories(dreamview_common PUBLIC
+${CMAKE_CURRENT_SOURCE_DIR}
+)
+target_link_libraries(dreamview_common PUBLIC
+					apollo_common
+					apollo_dreamview_proto
+)
+
+# lib
+add_library(dv_handlers  ${BUILD_TYPE}  
+backend/handlers/image_handler.cc
+backend/handlers/proto_handler.cc
+backend/handlers/websocket_handler.cc
+
+
+
+)
+target_include_directories(dv_handlers PUBLIC
+${CMAKE_CURRENT_SOURCE_DIR}
+)
+target_link_libraries(dv_handlers PUBLIC
+					${PROTOBUF_LIBRARIES}
+					apollo_common
+					apollo_map
+					apollo_dreamview_proto
+                    ${civetweb_LIBRARIES}
+)
+
+
+# lib
+add_library(dv_pcu  ${BUILD_TYPE}  
+backend/perception_camera_updater/perception_camera_updater.cc
+
+
+
+)
+target_include_directories(dv_pcu PUBLIC
+${CMAKE_CURRENT_SOURCE_DIR}
+)
+target_link_libraries(dv_pcu PUBLIC
+					${PROTOBUF_LIBRARIES}
+					apollo_common
+					apollo_map
+					apollo_dreamview_proto
+)
+
+# lib
+add_library(dv_plugins  ${BUILD_TYPE}  
+backend/plugins/plugin_manager.cc
+
+
+
+)
+target_include_directories(dv_plugins PUBLIC
+${CMAKE_CURRENT_SOURCE_DIR}
+)
+target_link_libraries(dv_plugins PUBLIC
+					${PROTOBUF_LIBRARIES}
+					apollo_common
+					apollo_map
+					apollo_dreamview_proto
+)
+
+# lib
+add_library(dv_simulation_world  ${BUILD_TYPE}  
+backend/simulation_world/simulation_world_service.cc
+backend/simulation_world/simulation_world_updater.cc
+
+
+
+)
+target_include_directories(dv_simulation_world PUBLIC
+${CMAKE_CURRENT_SOURCE_DIR}
+)
+target_link_libraries(dv_simulation_world PUBLIC
+					${PROTOBUF_LIBRARIES}
+					apollo_common
+					apollo_map
+					apollo_dreamview_proto
+                    apollo_storytelling
+)
+
+# lib
+add_library(dv_point_cloud  ${BUILD_TYPE}  
+backend/point_cloud/point_cloud_updater.cc
+
+
+
+)
+target_include_directories(dv_point_cloud PUBLIC
+${CMAKE_CURRENT_SOURCE_DIR}
+)
+target_link_libraries(dv_point_cloud PUBLIC
+					${PROTOBUF_LIBRARIES}
+					apollo_common
+					apollo_map
+					apollo_dreamview_proto
+)
+
+# lib
+file(GLOB VIZ_FILES 
     # "backend/fuel_monitor/*.cc"
-    "backend/handlers/*.cc"
+    # "backend/handlers/*.cc"
     # "backend/hmi/*.cc"
-    "backend/map/*.cc"
-    "backend/perception_camera_updater/*.cc"
-    "backend/point_cloud/*.cc"
+    # "backend/perception_camera_updater/*.cc"
+    # "backend/point_cloud/*.cc"
     "backend/sim_control/*.cc"
-    "backend/simulation_world/*.cc"
+    # "backend/simulation_world/*.cc"
 
     "backend/sim_control_manager/*.cc"
     "backend/sim_control_manager/proto/*.cc"
@@ -117,8 +244,13 @@ target_link_libraries(apollo_dreamview_lib PUBLIC
 					apollo_common
 					apollo_map
 					apollo_dreamview_proto
-                    apollo_hmi
+                    dreamview_common
                     fuel_monitor
+                    dv_map
+                    dv_handlers
+                    dv_pcu
+                    dv_simulation_world
+                    dv_point_cloud
                     ${PCL_LIBRARIES}
                     ${civetweb_LIBRARIES}
                     libcivetweb-cpp.so
@@ -154,6 +286,7 @@ target_link_libraries(dreamview_main PUBLIC
                     apollo_storytelling
                     localization_pose
                     apollo_perception
+                    apollo_hmi
 )
 
 
@@ -165,7 +298,14 @@ install(TARGETS
         dreamview_main
         apollo_hmi
         fuel_monitor
-        
+        dreamview_common
+        dv_map
+        dv_handlers
+        dv_pcu
+        dv_plugins
+        dv_simulation_world
+        dv_point_cloud
+
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}

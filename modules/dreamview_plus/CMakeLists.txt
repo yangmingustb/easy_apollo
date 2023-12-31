@@ -92,14 +92,14 @@ target_link_libraries(dreamview2_lib PUBLIC
 					apollo_common
 					apollo_map
 					apollo_dreamview_proto
-                    apollo_dreamview_lib
 					dreamview2_proto
-                    dreamview2_hmi
+                    
                     ${PCL_LIBRARIES}
                     ${civetweb_LIBRARIES}
                     libcivetweb-cpp.so
                     libcivetweb.so
 
+                    cyber
                     gnss_driver
                     apollo_drivers
                     audio_proto
@@ -107,6 +107,14 @@ target_link_libraries(dreamview2_lib PUBLIC
                     # yaml-cpp
                     task_manager
                     fuel_monitor
+                    dreamview_common
+                    dv_map
+                    dv_handlers
+                    dv_pcu
+                    dv_plugins
+                    dv_simulation_world
+                    dv_point_cloud
+                    apollo_dreamview_lib
 )
 
 # exe
@@ -121,6 +129,8 @@ target_link_libraries(dreamview2_main PUBLIC
 					dreamview2_lib
 					apollo_dreamview_proto
 					dreamview2_proto
+                    dreamview2_hmi
+                    apollo_dreamview_lib
 
                     apollo_monitor
                     apollo_planning
