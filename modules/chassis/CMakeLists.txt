@@ -38,7 +38,6 @@ add_executable(virtual_chassis_component_main
 target_link_libraries(virtual_chassis_component_main PUBLIC
                                                 opencv_wrapper
                                                 auto_virtual_chassis
-                                                # ${TORCH_LIBRARIES}
                                                 pthread
                                                 )
 

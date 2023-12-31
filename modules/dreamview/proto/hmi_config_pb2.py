@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto2',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n(modules/dreamview/proto/hmi_config.proto\x12\x10\x61pollo.dreamview\"\xc0\x02\n\tHMIConfig\x12\x35\n\x05modes\x18\x01 \x03(\x0b\x32&.apollo.dreamview.HMIConfig.ModesEntry\x12\x33\n\x04maps\x18\x02 \x03(\x0b\x32%.apollo.dreamview.HMIConfig.MapsEntry\x12;\n\x08vehicles\x18\x03 \x03(\x0b\x32).apollo.dreamview.HMIConfig.VehiclesEntry\x1a,\n\nModesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a+\n\tMapsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a/\n\rVehiclesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"}\n\x0bVehicleData\x12:\n\ndata_files\x18\x01 \x03(\x0b\x32&.apollo.dreamview.VehicleData.DataFile\x1a\x32\n\x08\x44\x61taFile\x12\x13\n\x0bsource_path\x18\x01 \x01(\t\x12\x11\n\tdest_path\x18\x02 \x01(\t*\xb1\x01\n\tHMIAction\x12\x08\n\x04NONE\x10\x00\x12\x0e\n\nSETUP_MODE\x10\x01\x12\x0e\n\nRESET_MODE\x10\x02\x12\x13\n\x0f\x45NTER_AUTO_MODE\x10\x03\x12\r\n\tDISENGAGE\x10\x04\x12\x0f\n\x0b\x43HANGE_MODE\x10\x05\x12\x0e\n\nCHANGE_MAP\x10\x06\x12\x12\n\x0e\x43HANGE_VEHICLE\x10\x07\x12\x10\n\x0cSTART_MODULE\x10\x08\x12\x0f\n\x0bSTOP_MODULE\x10\t'
+  serialized_pb=b'\n(modules/dreamview/proto/hmi_config.proto\x12\x10\x61pollo.dreamview\"\xc0\x02\n\tHMIConfig\x12\x35\n\x05modes\x18\x01 \x03(\x0b\x32&.apollo.dreamview.HMIConfig.ModesEntry\x12\x33\n\x04maps\x18\x02 \x03(\x0b\x32%.apollo.dreamview.HMIConfig.MapsEntry\x12;\n\x08vehicles\x18\x03 \x03(\x0b\x32).apollo.dreamview.HMIConfig.VehiclesEntry\x1a,\n\nModesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a+\n\tMapsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a/\n\rVehiclesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"}\n\x0bVehicleData\x12:\n\ndata_files\x18\x01 \x03(\x0b\x32&.apollo.dreamview.VehicleData.DataFile\x1a\x32\n\x08\x44\x61taFile\x12\x13\n\x0bsource_path\x18\x01 \x01(\t\x12\x11\n\tdest_path\x18\x02 \x01(\t*\xb4\x04\n\tHMIAction\x12\x08\n\x04NONE\x10\x00\x12\x0e\n\nSETUP_MODE\x10\x01\x12\x0e\n\nRESET_MODE\x10\x02\x12\x13\n\x0f\x45NTER_AUTO_MODE\x10\x03\x12\r\n\tDISENGAGE\x10\x04\x12\x0f\n\x0b\x43HANGE_MODE\x10\x05\x12\x0e\n\nCHANGE_MAP\x10\x06\x12\x12\n\x0e\x43HANGE_VEHICLE\x10\x07\x12\x10\n\x0cSTART_MODULE\x10\x08\x12\x0f\n\x0bSTOP_MODULE\x10\t\x12\x13\n\x0f\x43HANGE_SCENARIO\x10\n\x12\x17\n\x13\x43HANGE_SCENARIO_SET\x10\x0b\x12\x12\n\x0eLOAD_SCENARIOS\x10\x0c\x12\x17\n\x13\x44\x45LETE_SCENARIO_SET\x10\r\x12\x17\n\x13LOAD_DYNAMIC_MODELS\x10\x0e\x12\x18\n\x14\x43HANGE_DYNAMIC_MODEL\x10\x0f\x12\x18\n\x14\x44\x45LETE_DYNAMIC_MODEL\x10\x10\x12\x11\n\rCHANGE_RECORD\x10\x11\x12\x11\n\rDELETE_RECORD\x10\x12\x12\x10\n\x0cLOAD_RECORDS\x10\x13\x12\x0f\n\x0bSTOP_RECORD\x10\x14\x12\x14\n\x10\x43HANGE_OPERATION\x10\x15\x12\x17\n\x13\x44\x45LETE_VEHICLE_CONF\x10\x16\x12\x13\n\x0f\x44\x45LETE_V2X_CONF\x10\x17\x12\x0e\n\nDELETE_MAP\x10\x18\x12\x14\n\x10LOAD_RTK_RECORDS\x10\x19\x12\x15\n\x11\x43HANGE_RTK_RECORD\x10\x1a\x12\x0f\n\x0bLOAD_RECORD\x10\x1b'
 )
 
 _HMIACTION = _descriptor.EnumDescriptor(
@@ -80,11 +80,101 @@ _HMIACTION = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CHANGE_SCENARIO', index=10, number=10,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CHANGE_SCENARIO_SET', index=11, number=11,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='LOAD_SCENARIOS', index=12, number=12,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='DELETE_SCENARIO_SET', index=13, number=13,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='LOAD_DYNAMIC_MODELS', index=14, number=14,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CHANGE_DYNAMIC_MODEL', index=15, number=15,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='DELETE_DYNAMIC_MODEL', index=16, number=16,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CHANGE_RECORD', index=17, number=17,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='DELETE_RECORD', index=18, number=18,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='LOAD_RECORDS', index=19, number=19,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='STOP_RECORD', index=20, number=20,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CHANGE_OPERATION', index=21, number=21,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='DELETE_VEHICLE_CONF', index=22, number=22,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='DELETE_V2X_CONF', index=23, number=23,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='DELETE_MAP', index=24, number=24,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='LOAD_RTK_RECORDS', index=25, number=25,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CHANGE_RTK_RECORD', index=26, number=26,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='LOAD_RECORD', index=27, number=27,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
   serialized_start=513,
-  serialized_end=690,
+  serialized_end=1077,
 )
 _sym_db.RegisterEnumDescriptor(_HMIACTION)
 
@@ -99,6 +189,24 @@ CHANGE_MAP = 6
 CHANGE_VEHICLE = 7
 START_MODULE = 8
 STOP_MODULE = 9
+CHANGE_SCENARIO = 10
+CHANGE_SCENARIO_SET = 11
+LOAD_SCENARIOS = 12
+DELETE_SCENARIO_SET = 13
+LOAD_DYNAMIC_MODELS = 14
+CHANGE_DYNAMIC_MODEL = 15
+DELETE_DYNAMIC_MODEL = 16
+CHANGE_RECORD = 17
+DELETE_RECORD = 18
+LOAD_RECORDS = 19
+STOP_RECORD = 20
+CHANGE_OPERATION = 21
+DELETE_VEHICLE_CONF = 22
+DELETE_V2X_CONF = 23
+DELETE_MAP = 24
+LOAD_RTK_RECORDS = 25
+CHANGE_RTK_RECORD = 26
+LOAD_RECORD = 27
 
 
 

@@ -673,5 +673,14 @@ size_t MapService::CalculateMapHash(const MapElementIds &ids) const
     return hash_function(ids.DebugString());
 }
 
+bool MapService::PointIsValid(const double x, const double y) const {
+  MapElementIds ids;
+  PointENU point;
+  point.set_x(x);
+  point.set_y(y);
+  CollectMapElementIds(point, 20, &ids);
+  return (ids.ByteSizeLong() != 0);
+}
+
 }  // namespace dreamview
 }  // namespace apollo

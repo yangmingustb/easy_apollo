@@ -29,6 +29,7 @@ target_link_libraries(apollo_dreamview_proto PUBLIC
                                          common_proto
                                          apollo_map
                                          apollo_monitor
+                                         common_msgs_proto
                                          )
 
 
@@ -80,6 +81,7 @@ target_link_libraries(apollo_hmi PUBLIC
 # lib
 file(GLOB VIZ_FILES 
     "backend/common/*.cc"
+    "backend/common/util/*.cc"
     # "backend/fuel_monitor/*.cc"
     "backend/handlers/*.cc"
     # "backend/hmi/*.cc"
@@ -88,7 +90,13 @@ file(GLOB VIZ_FILES
     "backend/point_cloud/*.cc"
     "backend/sim_control/*.cc"
     "backend/simulation_world/*.cc"
-    # "backend/teleop/*.cc"
+
+    "backend/sim_control_manager/*.cc"
+    "backend/sim_control_manager/proto/*.cc"
+    "backend/sim_control_manager/common/*.cc"
+    "backend/sim_control_manager/core/*.cc"
+    "backend/sim_control_manager/dynamic_model/perfect_control/*.cc"
+    "backend/sim_control_manager/dynamic_model/perfect_control/*.cc"
 
 
 )

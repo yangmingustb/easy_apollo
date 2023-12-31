@@ -162,7 +162,7 @@ target_link_libraries(apollo_planning PUBLIC
                                         
                                         ad-rss
                                         osqp
-                                        ${PYTHON_LIBRARIES}
+                                        # ${PYTHON_LIBRARIES}
                                         fast_collision_detection
                                         
                                         )

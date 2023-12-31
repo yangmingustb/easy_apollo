@@ -33,9 +33,11 @@
 #include <google/protobuf/map.h>  // IWYU pragma: export
 #include <google/protobuf/map_entry.h>
 #include <google/protobuf/map_field_inl.h>
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "modules/common/proto/header.pb.h"
 #include "modules/monitor/proto/system_status.pb.h"
+#include "modules/common/proto/geometry.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto
@@ -51,7 +53,7 @@ struct TableStruct_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[12]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -63,27 +65,935 @@ namespace dreamview {
 class HMIStatus;
 class HMIStatusDefaultTypeInternal;
 extern HMIStatusDefaultTypeInternal _HMIStatus_default_instance_;
+class HMIStatus_GlobalComponentsEntry_DoNotUse;
+class HMIStatus_GlobalComponentsEntry_DoNotUseDefaultTypeInternal;
+extern HMIStatus_GlobalComponentsEntry_DoNotUseDefaultTypeInternal _HMIStatus_GlobalComponentsEntry_DoNotUse_default_instance_;
 class HMIStatus_ModulesEntry_DoNotUse;
 class HMIStatus_ModulesEntry_DoNotUseDefaultTypeInternal;
 extern HMIStatus_ModulesEntry_DoNotUseDefaultTypeInternal _HMIStatus_ModulesEntry_DoNotUse_default_instance_;
+class HMIStatus_ModulesLockEntry_DoNotUse;
+class HMIStatus_ModulesLockEntry_DoNotUseDefaultTypeInternal;
+extern HMIStatus_ModulesLockEntry_DoNotUseDefaultTypeInternal _HMIStatus_ModulesLockEntry_DoNotUse_default_instance_;
 class HMIStatus_MonitoredComponentsEntry_DoNotUse;
 class HMIStatus_MonitoredComponentsEntry_DoNotUseDefaultTypeInternal;
 extern HMIStatus_MonitoredComponentsEntry_DoNotUseDefaultTypeInternal _HMIStatus_MonitoredComponentsEntry_DoNotUse_default_instance_;
 class HMIStatus_OtherComponentsEntry_DoNotUse;
 class HMIStatus_OtherComponentsEntry_DoNotUseDefaultTypeInternal;
 extern HMIStatus_OtherComponentsEntry_DoNotUseDefaultTypeInternal _HMIStatus_OtherComponentsEntry_DoNotUse_default_instance_;
+class HMIStatus_RecordsEntry_DoNotUse;
+class HMIStatus_RecordsEntry_DoNotUseDefaultTypeInternal;
+extern HMIStatus_RecordsEntry_DoNotUseDefaultTypeInternal _HMIStatus_RecordsEntry_DoNotUse_default_instance_;
+class HMIStatus_ScenarioSetEntry_DoNotUse;
+class HMIStatus_ScenarioSetEntry_DoNotUseDefaultTypeInternal;
+extern HMIStatus_ScenarioSetEntry_DoNotUseDefaultTypeInternal _HMIStatus_ScenarioSetEntry_DoNotUse_default_instance_;
+class LoadRecordInfo;
+class LoadRecordInfoDefaultTypeInternal;
+extern LoadRecordInfoDefaultTypeInternal _LoadRecordInfo_default_instance_;
+class RecordStatus;
+class RecordStatusDefaultTypeInternal;
+extern RecordStatusDefaultTypeInternal _RecordStatus_default_instance_;
+class ScenarioInfo;
+class ScenarioInfoDefaultTypeInternal;
+extern ScenarioInfoDefaultTypeInternal _ScenarioInfo_default_instance_;
+class ScenarioSet;
+class ScenarioSetDefaultTypeInternal;
+extern ScenarioSetDefaultTypeInternal _ScenarioSet_default_instance_;
 }  // namespace dreamview
 }  // namespace apollo
 PROTOBUF_NAMESPACE_OPEN
 template<> ::apollo::dreamview::HMIStatus* Arena::CreateMaybeMessage<::apollo::dreamview::HMIStatus>(Arena*);
+template<> ::apollo::dreamview::HMIStatus_GlobalComponentsEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::dreamview::HMIStatus_GlobalComponentsEntry_DoNotUse>(Arena*);
 template<> ::apollo::dreamview::HMIStatus_ModulesEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::dreamview::HMIStatus_ModulesEntry_DoNotUse>(Arena*);
+template<> ::apollo::dreamview::HMIStatus_ModulesLockEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::dreamview::HMIStatus_ModulesLockEntry_DoNotUse>(Arena*);
 template<> ::apollo::dreamview::HMIStatus_MonitoredComponentsEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::dreamview::HMIStatus_MonitoredComponentsEntry_DoNotUse>(Arena*);
 template<> ::apollo::dreamview::HMIStatus_OtherComponentsEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::dreamview::HMIStatus_OtherComponentsEntry_DoNotUse>(Arena*);
+template<> ::apollo::dreamview::HMIStatus_RecordsEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::dreamview::HMIStatus_RecordsEntry_DoNotUse>(Arena*);
+template<> ::apollo::dreamview::HMIStatus_ScenarioSetEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::dreamview::HMIStatus_ScenarioSetEntry_DoNotUse>(Arena*);
+template<> ::apollo::dreamview::LoadRecordInfo* Arena::CreateMaybeMessage<::apollo::dreamview::LoadRecordInfo>(Arena*);
+template<> ::apollo::dreamview::RecordStatus* Arena::CreateMaybeMessage<::apollo::dreamview::RecordStatus>(Arena*);
+template<> ::apollo::dreamview::ScenarioInfo* Arena::CreateMaybeMessage<::apollo::dreamview::ScenarioInfo>(Arena*);
+template<> ::apollo::dreamview::ScenarioSet* Arena::CreateMaybeMessage<::apollo::dreamview::ScenarioSet>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace apollo {
 namespace dreamview {
 
+enum PlayRecordStatus : int {
+  RUNNING = 0,
+  PAUSED = 1,
+  CLOSED = 2
+};
+bool PlayRecordStatus_IsValid(int value);
+constexpr PlayRecordStatus PlayRecordStatus_MIN = RUNNING;
+constexpr PlayRecordStatus PlayRecordStatus_MAX = CLOSED;
+constexpr int PlayRecordStatus_ARRAYSIZE = PlayRecordStatus_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* PlayRecordStatus_descriptor();
+template<typename T>
+inline const std::string& PlayRecordStatus_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, PlayRecordStatus>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function PlayRecordStatus_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    PlayRecordStatus_descriptor(), enum_t_value);
+}
+inline bool PlayRecordStatus_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, PlayRecordStatus* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<PlayRecordStatus>(
+    PlayRecordStatus_descriptor(), name, value);
+}
+enum HMIModeOperation : int {
+  None = 0,
+  SIM_DEBUG = 1,
+  Sim_Control = 2,
+  Auto_Drive = 3,
+  TRACE = 4,
+  Scenario_Sim = 5,
+  Record = 6,
+  Waypoint_Follow = 7
+};
+bool HMIModeOperation_IsValid(int value);
+constexpr HMIModeOperation HMIModeOperation_MIN = None;
+constexpr HMIModeOperation HMIModeOperation_MAX = Waypoint_Follow;
+constexpr int HMIModeOperation_ARRAYSIZE = HMIModeOperation_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* HMIModeOperation_descriptor();
+template<typename T>
+inline const std::string& HMIModeOperation_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, HMIModeOperation>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function HMIModeOperation_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    HMIModeOperation_descriptor(), enum_t_value);
+}
+inline bool HMIModeOperation_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, HMIModeOperation* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<HMIModeOperation>(
+    HMIModeOperation_descriptor(), name, value);
+}
+enum LoadRecordStatus : int {
+  NOT_LOAD = 1,
+  LOADING = 2,
+  LOADED = 3
+};
+bool LoadRecordStatus_IsValid(int value);
+constexpr LoadRecordStatus LoadRecordStatus_MIN = NOT_LOAD;
+constexpr LoadRecordStatus LoadRecordStatus_MAX = LOADED;
+constexpr int LoadRecordStatus_ARRAYSIZE = LoadRecordStatus_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* LoadRecordStatus_descriptor();
+template<typename T>
+inline const std::string& LoadRecordStatus_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, LoadRecordStatus>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function LoadRecordStatus_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    LoadRecordStatus_descriptor(), enum_t_value);
+}
+inline bool LoadRecordStatus_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, LoadRecordStatus* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<LoadRecordStatus>(
+    LoadRecordStatus_descriptor(), name, value);
+}
 // ===================================================================
+
+class ScenarioInfo PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:apollo.dreamview.ScenarioInfo) */ {
+ public:
+  inline ScenarioInfo() : ScenarioInfo(nullptr) {}
+  virtual ~ScenarioInfo();
+
+  ScenarioInfo(const ScenarioInfo& from);
+  ScenarioInfo(ScenarioInfo&& from) noexcept
+    : ScenarioInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline ScenarioInfo& operator=(const ScenarioInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ScenarioInfo& operator=(ScenarioInfo&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const ScenarioInfo& default_instance();
+
+  static inline const ScenarioInfo* internal_default_instance() {
+    return reinterpret_cast<const ScenarioInfo*>(
+               &_ScenarioInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(ScenarioInfo& a, ScenarioInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ScenarioInfo* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ScenarioInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ScenarioInfo* New() const final {
+    return CreateMaybeMessage<ScenarioInfo>(nullptr);
+  }
+
+  ScenarioInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ScenarioInfo>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const ScenarioInfo& from);
+  void MergeFrom(const ScenarioInfo& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ScenarioInfo* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "apollo.dreamview.ScenarioInfo";
+  }
+  protected:
+  explicit ScenarioInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto);
+    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kScenarioIdFieldNumber = 1,
+    kScenarioNameFieldNumber = 2,
+    kMapNameFieldNumber = 3,
+    kStartPointFieldNumber = 4,
+    kEndPointFieldNumber = 5,
+  };
+  // optional string scenario_id = 1;
+  bool has_scenario_id() const;
+  private:
+  bool _internal_has_scenario_id() const;
+  public:
+  void clear_scenario_id();
+  const std::string& scenario_id() const;
+  void set_scenario_id(const std::string& value);
+  void set_scenario_id(std::string&& value);
+  void set_scenario_id(const char* value);
+  void set_scenario_id(const char* value, size_t size);
+  std::string* mutable_scenario_id();
+  std::string* release_scenario_id();
+  void set_allocated_scenario_id(std::string* scenario_id);
+  private:
+  const std::string& _internal_scenario_id() const;
+  void _internal_set_scenario_id(const std::string& value);
+  std::string* _internal_mutable_scenario_id();
+  public:
+
+  // optional string scenario_name = 2;
+  bool has_scenario_name() const;
+  private:
+  bool _internal_has_scenario_name() const;
+  public:
+  void clear_scenario_name();
+  const std::string& scenario_name() const;
+  void set_scenario_name(const std::string& value);
+  void set_scenario_name(std::string&& value);
+  void set_scenario_name(const char* value);
+  void set_scenario_name(const char* value, size_t size);
+  std::string* mutable_scenario_name();
+  std::string* release_scenario_name();
+  void set_allocated_scenario_name(std::string* scenario_name);
+  private:
+  const std::string& _internal_scenario_name() const;
+  void _internal_set_scenario_name(const std::string& value);
+  std::string* _internal_mutable_scenario_name();
+  public:
+
+  // optional string map_name = 3;
+  bool has_map_name() const;
+  private:
+  bool _internal_has_map_name() const;
+  public:
+  void clear_map_name();
+  const std::string& map_name() const;
+  void set_map_name(const std::string& value);
+  void set_map_name(std::string&& value);
+  void set_map_name(const char* value);
+  void set_map_name(const char* value, size_t size);
+  std::string* mutable_map_name();
+  std::string* release_map_name();
+  void set_allocated_map_name(std::string* map_name);
+  private:
+  const std::string& _internal_map_name() const;
+  void _internal_set_map_name(const std::string& value);
+  std::string* _internal_mutable_map_name();
+  public:
+
+  // optional .apollo.common.Point2D start_point = 4;
+  bool has_start_point() const;
+  private:
+  bool _internal_has_start_point() const;
+  public:
+  void clear_start_point();
+  const ::apollo::common::Point2D& start_point() const;
+  ::apollo::common::Point2D* release_start_point();
+  ::apollo::common::Point2D* mutable_start_point();
+  void set_allocated_start_point(::apollo::common::Point2D* start_point);
+  private:
+  const ::apollo::common::Point2D& _internal_start_point() const;
+  ::apollo::common::Point2D* _internal_mutable_start_point();
+  public:
+  void unsafe_arena_set_allocated_start_point(
+      ::apollo::common::Point2D* start_point);
+  ::apollo::common::Point2D* unsafe_arena_release_start_point();
+
+  // optional .apollo.common.Point2D end_point = 5;
+  bool has_end_point() const;
+  private:
+  bool _internal_has_end_point() const;
+  public:
+  void clear_end_point();
+  const ::apollo::common::Point2D& end_point() const;
+  ::apollo::common::Point2D* release_end_point();
+  ::apollo::common::Point2D* mutable_end_point();
+  void set_allocated_end_point(::apollo::common::Point2D* end_point);
+  private:
+  const ::apollo::common::Point2D& _internal_end_point() const;
+  ::apollo::common::Point2D* _internal_mutable_end_point();
+  public:
+  void unsafe_arena_set_allocated_end_point(
+      ::apollo::common::Point2D* end_point);
+  ::apollo::common::Point2D* unsafe_arena_release_end_point();
+
+  // @@protoc_insertion_point(class_scope:apollo.dreamview.ScenarioInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scenario_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scenario_name_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr map_name_;
+  ::apollo::common::Point2D* start_point_;
+  ::apollo::common::Point2D* end_point_;
+  friend struct ::TableStruct_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ScenarioSet PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:apollo.dreamview.ScenarioSet) */ {
+ public:
+  inline ScenarioSet() : ScenarioSet(nullptr) {}
+  virtual ~ScenarioSet();
+
+  ScenarioSet(const ScenarioSet& from);
+  ScenarioSet(ScenarioSet&& from) noexcept
+    : ScenarioSet() {
+    *this = ::std::move(from);
+  }
+
+  inline ScenarioSet& operator=(const ScenarioSet& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ScenarioSet& operator=(ScenarioSet&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const ScenarioSet& default_instance();
+
+  static inline const ScenarioSet* internal_default_instance() {
+    return reinterpret_cast<const ScenarioSet*>(
+               &_ScenarioSet_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(ScenarioSet& a, ScenarioSet& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ScenarioSet* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ScenarioSet* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ScenarioSet* New() const final {
+    return CreateMaybeMessage<ScenarioSet>(nullptr);
+  }
+
+  ScenarioSet* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ScenarioSet>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const ScenarioSet& from);
+  void MergeFrom(const ScenarioSet& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ScenarioSet* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "apollo.dreamview.ScenarioSet";
+  }
+  protected:
+  explicit ScenarioSet(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto);
+    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kScenariosFieldNumber = 2,
+    kScenarioSetNameFieldNumber = 1,
+  };
+  // repeated .apollo.dreamview.ScenarioInfo scenarios = 2;
+  int scenarios_size() const;
+  private:
+  int _internal_scenarios_size() const;
+  public:
+  void clear_scenarios();
+  ::apollo::dreamview::ScenarioInfo* mutable_scenarios(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::apollo::dreamview::ScenarioInfo >*
+      mutable_scenarios();
+  private:
+  const ::apollo::dreamview::ScenarioInfo& _internal_scenarios(int index) const;
+  ::apollo::dreamview::ScenarioInfo* _internal_add_scenarios();
+  public:
+  const ::apollo::dreamview::ScenarioInfo& scenarios(int index) const;
+  ::apollo::dreamview::ScenarioInfo* add_scenarios();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::apollo::dreamview::ScenarioInfo >&
+      scenarios() const;
+
+  // optional string scenario_set_name = 1;
+  bool has_scenario_set_name() const;
+  private:
+  bool _internal_has_scenario_set_name() const;
+  public:
+  void clear_scenario_set_name();
+  const std::string& scenario_set_name() const;
+  void set_scenario_set_name(const std::string& value);
+  void set_scenario_set_name(std::string&& value);
+  void set_scenario_set_name(const char* value);
+  void set_scenario_set_name(const char* value, size_t size);
+  std::string* mutable_scenario_set_name();
+  std::string* release_scenario_set_name();
+  void set_allocated_scenario_set_name(std::string* scenario_set_name);
+  private:
+  const std::string& _internal_scenario_set_name() const;
+  void _internal_set_scenario_set_name(const std::string& value);
+  std::string* _internal_mutable_scenario_set_name();
+  public:
+
+  // @@protoc_insertion_point(class_scope:apollo.dreamview.ScenarioSet)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::apollo::dreamview::ScenarioInfo > scenarios_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scenario_set_name_;
+  friend struct ::TableStruct_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RecordStatus PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:apollo.dreamview.RecordStatus) */ {
+ public:
+  inline RecordStatus() : RecordStatus(nullptr) {}
+  virtual ~RecordStatus();
+
+  RecordStatus(const RecordStatus& from);
+  RecordStatus(RecordStatus&& from) noexcept
+    : RecordStatus() {
+    *this = ::std::move(from);
+  }
+
+  inline RecordStatus& operator=(const RecordStatus& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RecordStatus& operator=(RecordStatus&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const RecordStatus& default_instance();
+
+  static inline const RecordStatus* internal_default_instance() {
+    return reinterpret_cast<const RecordStatus*>(
+               &_RecordStatus_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(RecordStatus& a, RecordStatus& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RecordStatus* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RecordStatus* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RecordStatus* New() const final {
+    return CreateMaybeMessage<RecordStatus>(nullptr);
+  }
+
+  RecordStatus* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RecordStatus>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const RecordStatus& from);
+  void MergeFrom(const RecordStatus& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RecordStatus* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "apollo.dreamview.RecordStatus";
+  }
+  protected:
+  explicit RecordStatus(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto);
+    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCurrentRecordIdFieldNumber = 1,
+    kCurrTimeSFieldNumber = 4,
+    kPlayRecordStatusFieldNumber = 2,
+  };
+  // optional string current_record_id = 1 [default = ""];
+  bool has_current_record_id() const;
+  private:
+  bool _internal_has_current_record_id() const;
+  public:
+  void clear_current_record_id();
+  const std::string& current_record_id() const;
+  void set_current_record_id(const std::string& value);
+  void set_current_record_id(std::string&& value);
+  void set_current_record_id(const char* value);
+  void set_current_record_id(const char* value, size_t size);
+  std::string* mutable_current_record_id();
+  std::string* release_current_record_id();
+  void set_allocated_current_record_id(std::string* current_record_id);
+  private:
+  const std::string& _internal_current_record_id() const;
+  void _internal_set_current_record_id(const std::string& value);
+  std::string* _internal_mutable_current_record_id();
+  public:
+
+  // optional double curr_time_s = 4 [default = 0];
+  bool has_curr_time_s() const;
+  private:
+  bool _internal_has_curr_time_s() const;
+  public:
+  void clear_curr_time_s();
+  double curr_time_s() const;
+  void set_curr_time_s(double value);
+  private:
+  double _internal_curr_time_s() const;
+  void _internal_set_curr_time_s(double value);
+  public:
+
+  // optional .apollo.dreamview.PlayRecordStatus play_record_status = 2 [default = CLOSED];
+  bool has_play_record_status() const;
+  private:
+  bool _internal_has_play_record_status() const;
+  public:
+  void clear_play_record_status();
+  ::apollo::dreamview::PlayRecordStatus play_record_status() const;
+  void set_play_record_status(::apollo::dreamview::PlayRecordStatus value);
+  private:
+  ::apollo::dreamview::PlayRecordStatus _internal_play_record_status() const;
+  void _internal_set_play_record_status(::apollo::dreamview::PlayRecordStatus value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:apollo.dreamview.RecordStatus)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_record_id_;
+  double curr_time_s_;
+  int play_record_status_;
+  friend struct ::TableStruct_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto;
+};
+// -------------------------------------------------------------------
+
+class LoadRecordInfo PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:apollo.dreamview.LoadRecordInfo) */ {
+ public:
+  inline LoadRecordInfo() : LoadRecordInfo(nullptr) {}
+  virtual ~LoadRecordInfo();
+
+  LoadRecordInfo(const LoadRecordInfo& from);
+  LoadRecordInfo(LoadRecordInfo&& from) noexcept
+    : LoadRecordInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline LoadRecordInfo& operator=(const LoadRecordInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline LoadRecordInfo& operator=(LoadRecordInfo&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const LoadRecordInfo& default_instance();
+
+  static inline const LoadRecordInfo* internal_default_instance() {
+    return reinterpret_cast<const LoadRecordInfo*>(
+               &_LoadRecordInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(LoadRecordInfo& a, LoadRecordInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(LoadRecordInfo* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(LoadRecordInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline LoadRecordInfo* New() const final {
+    return CreateMaybeMessage<LoadRecordInfo>(nullptr);
+  }
+
+  LoadRecordInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<LoadRecordInfo>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const LoadRecordInfo& from);
+  void MergeFrom(const LoadRecordInfo& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(LoadRecordInfo* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "apollo.dreamview.LoadRecordInfo";
+  }
+  protected:
+  explicit LoadRecordInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto);
+    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRecordFilePathFieldNumber = 3,
+    kTotalTimeSFieldNumber = 2,
+    kDownloadStatusFieldNumber = 4,
+    kLoadRecordStatusFieldNumber = 1,
+  };
+  // optional string record_file_path = 3 [default = ""];
+  bool has_record_file_path() const;
+  private:
+  bool _internal_has_record_file_path() const;
+  public:
+  void clear_record_file_path();
+  const std::string& record_file_path() const;
+  void set_record_file_path(const std::string& value);
+  void set_record_file_path(std::string&& value);
+  void set_record_file_path(const char* value);
+  void set_record_file_path(const char* value, size_t size);
+  std::string* mutable_record_file_path();
+  std::string* release_record_file_path();
+  void set_allocated_record_file_path(std::string* record_file_path);
+  private:
+  const std::string& _internal_record_file_path() const;
+  void _internal_set_record_file_path(const std::string& value);
+  std::string* _internal_mutable_record_file_path();
+  public:
+
+  // optional double total_time_s = 2 [default = 0];
+  bool has_total_time_s() const;
+  private:
+  bool _internal_has_total_time_s() const;
+  public:
+  void clear_total_time_s();
+  double total_time_s() const;
+  void set_total_time_s(double value);
+  private:
+  double _internal_total_time_s() const;
+  void _internal_set_total_time_s(double value);
+  public:
+
+  // optional int32 download_status = 4 [default = 0];
+  bool has_download_status() const;
+  private:
+  bool _internal_has_download_status() const;
+  public:
+  void clear_download_status();
+  ::PROTOBUF_NAMESPACE_ID::int32 download_status() const;
+  void set_download_status(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_download_status() const;
+  void _internal_set_download_status(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // optional .apollo.dreamview.LoadRecordStatus load_record_status = 1 [default = NOT_LOAD];
+  bool has_load_record_status() const;
+  private:
+  bool _internal_has_load_record_status() const;
+  public:
+  void clear_load_record_status();
+  ::apollo::dreamview::LoadRecordStatus load_record_status() const;
+  void set_load_record_status(::apollo::dreamview::LoadRecordStatus value);
+  private:
+  ::apollo::dreamview::LoadRecordStatus _internal_load_record_status() const;
+  void _internal_set_load_record_status(::apollo::dreamview::LoadRecordStatus value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:apollo.dreamview.LoadRecordInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr record_file_path_;
+  double total_time_s_;
+  ::PROTOBUF_NAMESPACE_ID::int32 download_status_;
+  int load_record_status_;
+  friend struct ::TableStruct_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto;
+};
+// -------------------------------------------------------------------
 
 class HMIStatus_ModulesEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<HMIStatus_ModulesEntry_DoNotUse, 
     std::string, bool,
@@ -113,7 +1023,7 @@ public:
   private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
     ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto);
-    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto.file_level_metadata[0];
+    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto.file_level_metadata[4];
   }
 
   public:
@@ -149,7 +1059,7 @@ public:
   private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
     ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto);
-    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto.file_level_metadata[1];
+    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto.file_level_metadata[5];
   }
 
   public:
@@ -185,7 +1095,151 @@ public:
   private:
   static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
     ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto);
-    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto.file_level_metadata[2];
+    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto.file_level_metadata[6];
+  }
+
+  public:
+};
+
+// -------------------------------------------------------------------
+
+class HMIStatus_ScenarioSetEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<HMIStatus_ScenarioSetEntry_DoNotUse, 
+    std::string, ::apollo::dreamview::ScenarioSet,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<HMIStatus_ScenarioSetEntry_DoNotUse, 
+    std::string, ::apollo::dreamview::ScenarioSet,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> SuperType;
+  HMIStatus_ScenarioSetEntry_DoNotUse();
+  explicit HMIStatus_ScenarioSetEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const HMIStatus_ScenarioSetEntry_DoNotUse& other);
+  static const HMIStatus_ScenarioSetEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const HMIStatus_ScenarioSetEntry_DoNotUse*>(&_HMIStatus_ScenarioSetEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+#ifndef NDEBUG
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+       s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "apollo.dreamview.HMIStatus.ScenarioSetEntry.key");
+#else
+    (void) s;
+#endif
+    return true;
+ }
+  static bool ValidateValue(void*) { return true; }
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto);
+    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto.file_level_metadata[7];
+  }
+
+  public:
+};
+
+// -------------------------------------------------------------------
+
+class HMIStatus_RecordsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<HMIStatus_RecordsEntry_DoNotUse, 
+    std::string, ::apollo::dreamview::LoadRecordInfo,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<HMIStatus_RecordsEntry_DoNotUse, 
+    std::string, ::apollo::dreamview::LoadRecordInfo,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> SuperType;
+  HMIStatus_RecordsEntry_DoNotUse();
+  explicit HMIStatus_RecordsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const HMIStatus_RecordsEntry_DoNotUse& other);
+  static const HMIStatus_RecordsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const HMIStatus_RecordsEntry_DoNotUse*>(&_HMIStatus_RecordsEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+#ifndef NDEBUG
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+       s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "apollo.dreamview.HMIStatus.RecordsEntry.key");
+#else
+    (void) s;
+#endif
+    return true;
+ }
+  static bool ValidateValue(void*) { return true; }
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto);
+    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto.file_level_metadata[8];
+  }
+
+  public:
+};
+
+// -------------------------------------------------------------------
+
+class HMIStatus_GlobalComponentsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<HMIStatus_GlobalComponentsEntry_DoNotUse, 
+    std::string, ::apollo::monitor::Component,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<HMIStatus_GlobalComponentsEntry_DoNotUse, 
+    std::string, ::apollo::monitor::Component,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> SuperType;
+  HMIStatus_GlobalComponentsEntry_DoNotUse();
+  explicit HMIStatus_GlobalComponentsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const HMIStatus_GlobalComponentsEntry_DoNotUse& other);
+  static const HMIStatus_GlobalComponentsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const HMIStatus_GlobalComponentsEntry_DoNotUse*>(&_HMIStatus_GlobalComponentsEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+#ifndef NDEBUG
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+       s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "apollo.dreamview.HMIStatus.GlobalComponentsEntry.key");
+#else
+    (void) s;
+#endif
+    return true;
+ }
+  static bool ValidateValue(void*) { return true; }
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto);
+    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto.file_level_metadata[9];
+  }
+
+  public:
+};
+
+// -------------------------------------------------------------------
+
+class HMIStatus_ModulesLockEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<HMIStatus_ModulesLockEntry_DoNotUse, 
+    std::string, bool,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BOOL> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<HMIStatus_ModulesLockEntry_DoNotUse, 
+    std::string, bool,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BOOL> SuperType;
+  HMIStatus_ModulesLockEntry_DoNotUse();
+  explicit HMIStatus_ModulesLockEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const HMIStatus_ModulesLockEntry_DoNotUse& other);
+  static const HMIStatus_ModulesLockEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const HMIStatus_ModulesLockEntry_DoNotUse*>(&_HMIStatus_ModulesLockEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+#ifndef NDEBUG
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+       s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "apollo.dreamview.HMIStatus.ModulesLockEntry.key");
+#else
+    (void) s;
+#endif
+    return true;
+ }
+  static bool ValidateValue(void*) { return true; }
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto);
+    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto.file_level_metadata[10];
   }
 
   public:
@@ -241,7 +1295,7 @@ class HMIStatus PROTOBUF_FINAL :
                &_HMIStatus_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    11;
 
   friend void swap(HMIStatus& a, HMIStatus& b) {
     a.Swap(&b);
@@ -319,13 +1373,33 @@ class HMIStatus PROTOBUF_FINAL :
     kModulesFieldNumber = 8,
     kMonitoredComponentsFieldNumber = 9,
     kOtherComponentsFieldNumber = 13,
+    kScenarioSetFieldNumber = 15,
+    kDynamicModelsFieldNumber = 18,
+    kRecordsFieldNumber = 21,
+    kOperationsFieldNumber = 25,
+    kGlobalComponentsFieldNumber = 29,
+    kModulesLockFieldNumber = 31,
+    kRtkRecordsFieldNumber = 33,
     kCurrentModeFieldNumber = 3,
     kCurrentMapFieldNumber = 5,
     kCurrentVehicleFieldNumber = 7,
     kDockerImageFieldNumber = 10,
     kPassengerMsgFieldNumber = 12,
+    kCurrentScenarioSetIdFieldNumber = 16,
+    kCurrentScenarioIdFieldNumber = 17,
+    kCurrentDynamicModelFieldNumber = 19,
+    kCurrentRecordIdFieldNumber = 20,
+    kCurrentCameraSensorChannelFieldNumber = 23,
+    kCurrentPointCloudChannelFieldNumber = 24,
+    kCurrentLayoutFieldNumber = 27,
+    kCurrentRtkRecordIdFieldNumber = 34,
     kHeaderFieldNumber = 1,
+    kCurrentRecordStatusFieldNumber = 28,
     kUtmZoneIdFieldNumber = 11,
+    kCurrentVehicleTypeFieldNumber = 22,
+    kCurrentOperationFieldNumber = 26,
+    kExpectedModulesFieldNumber = 30,
+    kBackendShutdownFieldNumber = 32,
   };
   // repeated string modes = 2;
   int modes_size() const;
@@ -450,6 +1524,139 @@ class HMIStatus PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::ComponentStatus >*
       mutable_other_components();
 
+  // map<string, .apollo.dreamview.ScenarioSet> scenario_set = 15;
+  int scenario_set_size() const;
+  private:
+  int _internal_scenario_set_size() const;
+  public:
+  void clear_scenario_set();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::ScenarioSet >&
+      _internal_scenario_set() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::ScenarioSet >*
+      _internal_mutable_scenario_set();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::ScenarioSet >&
+      scenario_set() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::ScenarioSet >*
+      mutable_scenario_set();
+
+  // repeated string dynamic_models = 18;
+  int dynamic_models_size() const;
+  private:
+  int _internal_dynamic_models_size() const;
+  public:
+  void clear_dynamic_models();
+  const std::string& dynamic_models(int index) const;
+  std::string* mutable_dynamic_models(int index);
+  void set_dynamic_models(int index, const std::string& value);
+  void set_dynamic_models(int index, std::string&& value);
+  void set_dynamic_models(int index, const char* value);
+  void set_dynamic_models(int index, const char* value, size_t size);
+  std::string* add_dynamic_models();
+  void add_dynamic_models(const std::string& value);
+  void add_dynamic_models(std::string&& value);
+  void add_dynamic_models(const char* value);
+  void add_dynamic_models(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& dynamic_models() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_dynamic_models();
+  private:
+  const std::string& _internal_dynamic_models(int index) const;
+  std::string* _internal_add_dynamic_models();
+  public:
+
+  // map<string, .apollo.dreamview.LoadRecordInfo> records = 21;
+  int records_size() const;
+  private:
+  int _internal_records_size() const;
+  public:
+  void clear_records();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::LoadRecordInfo >&
+      _internal_records() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::LoadRecordInfo >*
+      _internal_mutable_records();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::LoadRecordInfo >&
+      records() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::LoadRecordInfo >*
+      mutable_records();
+
+  // repeated .apollo.dreamview.HMIModeOperation operations = 25;
+  int operations_size() const;
+  private:
+  int _internal_operations_size() const;
+  public:
+  void clear_operations();
+  private:
+  ::apollo::dreamview::HMIModeOperation _internal_operations(int index) const;
+  void _internal_add_operations(::apollo::dreamview::HMIModeOperation value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>* _internal_mutable_operations();
+  public:
+  ::apollo::dreamview::HMIModeOperation operations(int index) const;
+  void set_operations(int index, ::apollo::dreamview::HMIModeOperation value);
+  void add_operations(::apollo::dreamview::HMIModeOperation value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>& operations() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>* mutable_operations();
+
+  // map<string, .apollo.monitor.Component> global_components = 29;
+  int global_components_size() const;
+  private:
+  int _internal_global_components_size() const;
+  public:
+  void clear_global_components();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >&
+      _internal_global_components() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >*
+      _internal_mutable_global_components();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >&
+      global_components() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >*
+      mutable_global_components();
+
+  // map<string, bool> modules_lock = 31;
+  int modules_lock_size() const;
+  private:
+  int _internal_modules_lock_size() const;
+  public:
+  void clear_modules_lock();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, bool >&
+      _internal_modules_lock() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, bool >*
+      _internal_mutable_modules_lock();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, bool >&
+      modules_lock() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, bool >*
+      mutable_modules_lock();
+
+  // repeated string rtk_records = 33;
+  int rtk_records_size() const;
+  private:
+  int _internal_rtk_records_size() const;
+  public:
+  void clear_rtk_records();
+  const std::string& rtk_records(int index) const;
+  std::string* mutable_rtk_records(int index);
+  void set_rtk_records(int index, const std::string& value);
+  void set_rtk_records(int index, std::string&& value);
+  void set_rtk_records(int index, const char* value);
+  void set_rtk_records(int index, const char* value, size_t size);
+  std::string* add_rtk_records();
+  void add_rtk_records(const std::string& value);
+  void add_rtk_records(std::string&& value);
+  void add_rtk_records(const char* value);
+  void add_rtk_records(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& rtk_records() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_rtk_records();
+  private:
+  const std::string& _internal_rtk_records(int index) const;
+  std::string* _internal_add_rtk_records();
+  public:
+
   // optional string current_mode = 3;
   bool has_current_mode() const;
   private:
@@ -550,6 +1757,166 @@ class HMIStatus PROTOBUF_FINAL :
   std::string* _internal_mutable_passenger_msg();
   public:
 
+  // optional string current_scenario_set_id = 16 [default = ""];
+  bool has_current_scenario_set_id() const;
+  private:
+  bool _internal_has_current_scenario_set_id() const;
+  public:
+  void clear_current_scenario_set_id();
+  const std::string& current_scenario_set_id() const;
+  void set_current_scenario_set_id(const std::string& value);
+  void set_current_scenario_set_id(std::string&& value);
+  void set_current_scenario_set_id(const char* value);
+  void set_current_scenario_set_id(const char* value, size_t size);
+  std::string* mutable_current_scenario_set_id();
+  std::string* release_current_scenario_set_id();
+  void set_allocated_current_scenario_set_id(std::string* current_scenario_set_id);
+  private:
+  const std::string& _internal_current_scenario_set_id() const;
+  void _internal_set_current_scenario_set_id(const std::string& value);
+  std::string* _internal_mutable_current_scenario_set_id();
+  public:
+
+  // optional string current_scenario_id = 17 [default = ""];
+  bool has_current_scenario_id() const;
+  private:
+  bool _internal_has_current_scenario_id() const;
+  public:
+  void clear_current_scenario_id();
+  const std::string& current_scenario_id() const;
+  void set_current_scenario_id(const std::string& value);
+  void set_current_scenario_id(std::string&& value);
+  void set_current_scenario_id(const char* value);
+  void set_current_scenario_id(const char* value, size_t size);
+  std::string* mutable_current_scenario_id();
+  std::string* release_current_scenario_id();
+  void set_allocated_current_scenario_id(std::string* current_scenario_id);
+  private:
+  const std::string& _internal_current_scenario_id() const;
+  void _internal_set_current_scenario_id(const std::string& value);
+  std::string* _internal_mutable_current_scenario_id();
+  public:
+
+  // optional string current_dynamic_model = 19;
+  bool has_current_dynamic_model() const;
+  private:
+  bool _internal_has_current_dynamic_model() const;
+  public:
+  void clear_current_dynamic_model();
+  const std::string& current_dynamic_model() const;
+  void set_current_dynamic_model(const std::string& value);
+  void set_current_dynamic_model(std::string&& value);
+  void set_current_dynamic_model(const char* value);
+  void set_current_dynamic_model(const char* value, size_t size);
+  std::string* mutable_current_dynamic_model();
+  std::string* release_current_dynamic_model();
+  void set_allocated_current_dynamic_model(std::string* current_dynamic_model);
+  private:
+  const std::string& _internal_current_dynamic_model() const;
+  void _internal_set_current_dynamic_model(const std::string& value);
+  std::string* _internal_mutable_current_dynamic_model();
+  public:
+
+  // optional string current_record_id = 20 [default = ""];
+  bool has_current_record_id() const;
+  private:
+  bool _internal_has_current_record_id() const;
+  public:
+  void clear_current_record_id();
+  const std::string& current_record_id() const;
+  void set_current_record_id(const std::string& value);
+  void set_current_record_id(std::string&& value);
+  void set_current_record_id(const char* value);
+  void set_current_record_id(const char* value, size_t size);
+  std::string* mutable_current_record_id();
+  std::string* release_current_record_id();
+  void set_allocated_current_record_id(std::string* current_record_id);
+  private:
+  const std::string& _internal_current_record_id() const;
+  void _internal_set_current_record_id(const std::string& value);
+  std::string* _internal_mutable_current_record_id();
+  public:
+
+  // optional string current_camera_sensor_channel = 23;
+  bool has_current_camera_sensor_channel() const;
+  private:
+  bool _internal_has_current_camera_sensor_channel() const;
+  public:
+  void clear_current_camera_sensor_channel();
+  const std::string& current_camera_sensor_channel() const;
+  void set_current_camera_sensor_channel(const std::string& value);
+  void set_current_camera_sensor_channel(std::string&& value);
+  void set_current_camera_sensor_channel(const char* value);
+  void set_current_camera_sensor_channel(const char* value, size_t size);
+  std::string* mutable_current_camera_sensor_channel();
+  std::string* release_current_camera_sensor_channel();
+  void set_allocated_current_camera_sensor_channel(std::string* current_camera_sensor_channel);
+  private:
+  const std::string& _internal_current_camera_sensor_channel() const;
+  void _internal_set_current_camera_sensor_channel(const std::string& value);
+  std::string* _internal_mutable_current_camera_sensor_channel();
+  public:
+
+  // optional string current_point_cloud_channel = 24;
+  bool has_current_point_cloud_channel() const;
+  private:
+  bool _internal_has_current_point_cloud_channel() const;
+  public:
+  void clear_current_point_cloud_channel();
+  const std::string& current_point_cloud_channel() const;
+  void set_current_point_cloud_channel(const std::string& value);
+  void set_current_point_cloud_channel(std::string&& value);
+  void set_current_point_cloud_channel(const char* value);
+  void set_current_point_cloud_channel(const char* value, size_t size);
+  std::string* mutable_current_point_cloud_channel();
+  std::string* release_current_point_cloud_channel();
+  void set_allocated_current_point_cloud_channel(std::string* current_point_cloud_channel);
+  private:
+  const std::string& _internal_current_point_cloud_channel() const;
+  void _internal_set_current_point_cloud_channel(const std::string& value);
+  std::string* _internal_mutable_current_point_cloud_channel();
+  public:
+
+  // optional string current_layout = 27;
+  bool has_current_layout() const;
+  private:
+  bool _internal_has_current_layout() const;
+  public:
+  void clear_current_layout();
+  const std::string& current_layout() const;
+  void set_current_layout(const std::string& value);
+  void set_current_layout(std::string&& value);
+  void set_current_layout(const char* value);
+  void set_current_layout(const char* value, size_t size);
+  std::string* mutable_current_layout();
+  std::string* release_current_layout();
+  void set_allocated_current_layout(std::string* current_layout);
+  private:
+  const std::string& _internal_current_layout() const;
+  void _internal_set_current_layout(const std::string& value);
+  std::string* _internal_mutable_current_layout();
+  public:
+
+  // optional string current_rtk_record_id = 34 [default = ""];
+  bool has_current_rtk_record_id() const;
+  private:
+  bool _internal_has_current_rtk_record_id() const;
+  public:
+  void clear_current_rtk_record_id();
+  const std::string& current_rtk_record_id() const;
+  void set_current_rtk_record_id(const std::string& value);
+  void set_current_rtk_record_id(std::string&& value);
+  void set_current_rtk_record_id(const char* value);
+  void set_current_rtk_record_id(const char* value, size_t size);
+  std::string* mutable_current_rtk_record_id();
+  std::string* release_current_rtk_record_id();
+  void set_allocated_current_rtk_record_id(std::string* current_rtk_record_id);
+  private:
+  const std::string& _internal_current_rtk_record_id() const;
+  void _internal_set_current_rtk_record_id(const std::string& value);
+  std::string* _internal_mutable_current_rtk_record_id();
+  public:
+
   // optional .apollo.common.Header header = 1;
   bool has_header() const;
   private:
@@ -568,6 +1935,24 @@ class HMIStatus PROTOBUF_FINAL :
       ::apollo::common::Header* header);
   ::apollo::common::Header* unsafe_arena_release_header();
 
+  // optional .apollo.dreamview.RecordStatus current_record_status = 28;
+  bool has_current_record_status() const;
+  private:
+  bool _internal_has_current_record_status() const;
+  public:
+  void clear_current_record_status();
+  const ::apollo::dreamview::RecordStatus& current_record_status() const;
+  ::apollo::dreamview::RecordStatus* release_current_record_status();
+  ::apollo::dreamview::RecordStatus* mutable_current_record_status();
+  void set_allocated_current_record_status(::apollo::dreamview::RecordStatus* current_record_status);
+  private:
+  const ::apollo::dreamview::RecordStatus& _internal_current_record_status() const;
+  ::apollo::dreamview::RecordStatus* _internal_mutable_current_record_status();
+  public:
+  void unsafe_arena_set_allocated_current_record_status(
+      ::apollo::dreamview::RecordStatus* current_record_status);
+  ::apollo::dreamview::RecordStatus* unsafe_arena_release_current_record_status();
+
   // optional int32 utm_zone_id = 11;
   bool has_utm_zone_id() const;
   private:
@@ -579,6 +1964,58 @@ class HMIStatus PROTOBUF_FINAL :
   private:
   ::PROTOBUF_NAMESPACE_ID::int32 _internal_utm_zone_id() const;
   void _internal_set_utm_zone_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // optional sint32 current_vehicle_type = 22;
+  bool has_current_vehicle_type() const;
+  private:
+  bool _internal_has_current_vehicle_type() const;
+  public:
+  void clear_current_vehicle_type();
+  ::PROTOBUF_NAMESPACE_ID::int32 current_vehicle_type() const;
+  void set_current_vehicle_type(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_current_vehicle_type() const;
+  void _internal_set_current_vehicle_type(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // optional .apollo.dreamview.HMIModeOperation current_operation = 26;
+  bool has_current_operation() const;
+  private:
+  bool _internal_has_current_operation() const;
+  public:
+  void clear_current_operation();
+  ::apollo::dreamview::HMIModeOperation current_operation() const;
+  void set_current_operation(::apollo::dreamview::HMIModeOperation value);
+  private:
+  ::apollo::dreamview::HMIModeOperation _internal_current_operation() const;
+  void _internal_set_current_operation(::apollo::dreamview::HMIModeOperation value);
+  public:
+
+  // optional uint32 expected_modules = 30 [default = 0];
+  bool has_expected_modules() const;
+  private:
+  bool _internal_has_expected_modules() const;
+  public:
+  void clear_expected_modules();
+  ::PROTOBUF_NAMESPACE_ID::uint32 expected_modules() const;
+  void set_expected_modules(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_expected_modules() const;
+  void _internal_set_expected_modules(::PROTOBUF_NAMESPACE_ID::uint32 value);
+  public:
+
+  // optional bool backend_shutdown = 32 [default = false];
+  bool has_backend_shutdown() const;
+  private:
+  bool _internal_has_backend_shutdown() const;
+  public:
+  void clear_backend_shutdown();
+  bool backend_shutdown() const;
+  void set_backend_shutdown(bool value);
+  private:
+  bool _internal_backend_shutdown() const;
+  void _internal_set_backend_shutdown(bool value);
   public:
 
   // @@protoc_insertion_point(class_scope:apollo.dreamview.HMIStatus)
@@ -608,13 +2045,49 @@ class HMIStatus PROTOBUF_FINAL :
       std::string, ::apollo::monitor::ComponentStatus,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> other_components_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      HMIStatus_ScenarioSetEntry_DoNotUse,
+      std::string, ::apollo::dreamview::ScenarioSet,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> scenario_set_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> dynamic_models_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      HMIStatus_RecordsEntry_DoNotUse,
+      std::string, ::apollo::dreamview::LoadRecordInfo,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> records_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int> operations_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      HMIStatus_GlobalComponentsEntry_DoNotUse,
+      std::string, ::apollo::monitor::Component,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> global_components_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      HMIStatus_ModulesLockEntry_DoNotUse,
+      std::string, bool,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BOOL> modules_lock_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> rtk_records_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_mode_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_map_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_vehicle_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr docker_image_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr passenger_msg_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_scenario_set_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_scenario_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_dynamic_model_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_record_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_camera_sensor_channel_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_point_cloud_channel_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_layout_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_rtk_record_id_;
   ::apollo::common::Header* header_;
+  ::apollo::dreamview::RecordStatus* current_record_status_;
   ::PROTOBUF_NAMESPACE_ID::int32 utm_zone_id_;
+  ::PROTOBUF_NAMESPACE_ID::int32 current_vehicle_type_;
+  int current_operation_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 expected_modules_;
+  bool backend_shutdown_;
   friend struct ::TableStruct_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto;
 };
 // ===================================================================
@@ -626,6 +2099,807 @@ class HMIStatus PROTOBUF_FINAL :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// ScenarioInfo
+
+// optional string scenario_id = 1;
+inline bool ScenarioInfo::_internal_has_scenario_id() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool ScenarioInfo::has_scenario_id() const {
+  return _internal_has_scenario_id();
+}
+inline void ScenarioInfo::clear_scenario_id() {
+  scenario_id_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& ScenarioInfo::scenario_id() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.ScenarioInfo.scenario_id)
+  return _internal_scenario_id();
+}
+inline void ScenarioInfo::set_scenario_id(const std::string& value) {
+  _internal_set_scenario_id(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.ScenarioInfo.scenario_id)
+}
+inline std::string* ScenarioInfo::mutable_scenario_id() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.ScenarioInfo.scenario_id)
+  return _internal_mutable_scenario_id();
+}
+inline const std::string& ScenarioInfo::_internal_scenario_id() const {
+  return scenario_id_.Get();
+}
+inline void ScenarioInfo::_internal_set_scenario_id(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  scenario_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void ScenarioInfo::set_scenario_id(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  scenario_id_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.ScenarioInfo.scenario_id)
+}
+inline void ScenarioInfo::set_scenario_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  scenario_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.ScenarioInfo.scenario_id)
+}
+inline void ScenarioInfo::set_scenario_id(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  scenario_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.ScenarioInfo.scenario_id)
+}
+inline std::string* ScenarioInfo::_internal_mutable_scenario_id() {
+  _has_bits_[0] |= 0x00000001u;
+  return scenario_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* ScenarioInfo::release_scenario_id() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.ScenarioInfo.scenario_id)
+  if (!_internal_has_scenario_id()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return scenario_id_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void ScenarioInfo::set_allocated_scenario_id(std::string* scenario_id) {
+  if (scenario_id != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  scenario_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scenario_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.ScenarioInfo.scenario_id)
+}
+
+// optional string scenario_name = 2;
+inline bool ScenarioInfo::_internal_has_scenario_name() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool ScenarioInfo::has_scenario_name() const {
+  return _internal_has_scenario_name();
+}
+inline void ScenarioInfo::clear_scenario_name() {
+  scenario_name_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& ScenarioInfo::scenario_name() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.ScenarioInfo.scenario_name)
+  return _internal_scenario_name();
+}
+inline void ScenarioInfo::set_scenario_name(const std::string& value) {
+  _internal_set_scenario_name(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.ScenarioInfo.scenario_name)
+}
+inline std::string* ScenarioInfo::mutable_scenario_name() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.ScenarioInfo.scenario_name)
+  return _internal_mutable_scenario_name();
+}
+inline const std::string& ScenarioInfo::_internal_scenario_name() const {
+  return scenario_name_.Get();
+}
+inline void ScenarioInfo::_internal_set_scenario_name(const std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  scenario_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void ScenarioInfo::set_scenario_name(std::string&& value) {
+  _has_bits_[0] |= 0x00000002u;
+  scenario_name_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.ScenarioInfo.scenario_name)
+}
+inline void ScenarioInfo::set_scenario_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000002u;
+  scenario_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.ScenarioInfo.scenario_name)
+}
+inline void ScenarioInfo::set_scenario_name(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000002u;
+  scenario_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.ScenarioInfo.scenario_name)
+}
+inline std::string* ScenarioInfo::_internal_mutable_scenario_name() {
+  _has_bits_[0] |= 0x00000002u;
+  return scenario_name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* ScenarioInfo::release_scenario_name() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.ScenarioInfo.scenario_name)
+  if (!_internal_has_scenario_name()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  return scenario_name_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void ScenarioInfo::set_allocated_scenario_name(std::string* scenario_name) {
+  if (scenario_name != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  scenario_name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scenario_name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.ScenarioInfo.scenario_name)
+}
+
+// optional string map_name = 3;
+inline bool ScenarioInfo::_internal_has_map_name() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool ScenarioInfo::has_map_name() const {
+  return _internal_has_map_name();
+}
+inline void ScenarioInfo::clear_map_name() {
+  map_name_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline const std::string& ScenarioInfo::map_name() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.ScenarioInfo.map_name)
+  return _internal_map_name();
+}
+inline void ScenarioInfo::set_map_name(const std::string& value) {
+  _internal_set_map_name(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.ScenarioInfo.map_name)
+}
+inline std::string* ScenarioInfo::mutable_map_name() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.ScenarioInfo.map_name)
+  return _internal_mutable_map_name();
+}
+inline const std::string& ScenarioInfo::_internal_map_name() const {
+  return map_name_.Get();
+}
+inline void ScenarioInfo::_internal_set_map_name(const std::string& value) {
+  _has_bits_[0] |= 0x00000004u;
+  map_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void ScenarioInfo::set_map_name(std::string&& value) {
+  _has_bits_[0] |= 0x00000004u;
+  map_name_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.ScenarioInfo.map_name)
+}
+inline void ScenarioInfo::set_map_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000004u;
+  map_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.ScenarioInfo.map_name)
+}
+inline void ScenarioInfo::set_map_name(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000004u;
+  map_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.ScenarioInfo.map_name)
+}
+inline std::string* ScenarioInfo::_internal_mutable_map_name() {
+  _has_bits_[0] |= 0x00000004u;
+  return map_name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* ScenarioInfo::release_map_name() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.ScenarioInfo.map_name)
+  if (!_internal_has_map_name()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000004u;
+  return map_name_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void ScenarioInfo::set_allocated_map_name(std::string* map_name) {
+  if (map_name != nullptr) {
+    _has_bits_[0] |= 0x00000004u;
+  } else {
+    _has_bits_[0] &= ~0x00000004u;
+  }
+  map_name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), map_name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.ScenarioInfo.map_name)
+}
+
+// optional .apollo.common.Point2D start_point = 4;
+inline bool ScenarioInfo::_internal_has_start_point() const {
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  PROTOBUF_ASSUME(!value || start_point_ != nullptr);
+  return value;
+}
+inline bool ScenarioInfo::has_start_point() const {
+  return _internal_has_start_point();
+}
+inline const ::apollo::common::Point2D& ScenarioInfo::_internal_start_point() const {
+  const ::apollo::common::Point2D* p = start_point_;
+  return p != nullptr ? *p : reinterpret_cast<const ::apollo::common::Point2D&>(
+      ::apollo::common::_Point2D_default_instance_);
+}
+inline const ::apollo::common::Point2D& ScenarioInfo::start_point() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.ScenarioInfo.start_point)
+  return _internal_start_point();
+}
+inline void ScenarioInfo::unsafe_arena_set_allocated_start_point(
+    ::apollo::common::Point2D* start_point) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(start_point_);
+  }
+  start_point_ = start_point;
+  if (start_point) {
+    _has_bits_[0] |= 0x00000008u;
+  } else {
+    _has_bits_[0] &= ~0x00000008u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:apollo.dreamview.ScenarioInfo.start_point)
+}
+inline ::apollo::common::Point2D* ScenarioInfo::release_start_point() {
+  _has_bits_[0] &= ~0x00000008u;
+  ::apollo::common::Point2D* temp = start_point_;
+  start_point_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::apollo::common::Point2D* ScenarioInfo::unsafe_arena_release_start_point() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.ScenarioInfo.start_point)
+  _has_bits_[0] &= ~0x00000008u;
+  ::apollo::common::Point2D* temp = start_point_;
+  start_point_ = nullptr;
+  return temp;
+}
+inline ::apollo::common::Point2D* ScenarioInfo::_internal_mutable_start_point() {
+  _has_bits_[0] |= 0x00000008u;
+  if (start_point_ == nullptr) {
+    auto* p = CreateMaybeMessage<::apollo::common::Point2D>(GetArena());
+    start_point_ = p;
+  }
+  return start_point_;
+}
+inline ::apollo::common::Point2D* ScenarioInfo::mutable_start_point() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.ScenarioInfo.start_point)
+  return _internal_mutable_start_point();
+}
+inline void ScenarioInfo::set_allocated_start_point(::apollo::common::Point2D* start_point) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(start_point_);
+  }
+  if (start_point) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(start_point)->GetArena();
+    if (message_arena != submessage_arena) {
+      start_point = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, start_point, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000008u;
+  } else {
+    _has_bits_[0] &= ~0x00000008u;
+  }
+  start_point_ = start_point;
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.ScenarioInfo.start_point)
+}
+
+// optional .apollo.common.Point2D end_point = 5;
+inline bool ScenarioInfo::_internal_has_end_point() const {
+  bool value = (_has_bits_[0] & 0x00000010u) != 0;
+  PROTOBUF_ASSUME(!value || end_point_ != nullptr);
+  return value;
+}
+inline bool ScenarioInfo::has_end_point() const {
+  return _internal_has_end_point();
+}
+inline const ::apollo::common::Point2D& ScenarioInfo::_internal_end_point() const {
+  const ::apollo::common::Point2D* p = end_point_;
+  return p != nullptr ? *p : reinterpret_cast<const ::apollo::common::Point2D&>(
+      ::apollo::common::_Point2D_default_instance_);
+}
+inline const ::apollo::common::Point2D& ScenarioInfo::end_point() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.ScenarioInfo.end_point)
+  return _internal_end_point();
+}
+inline void ScenarioInfo::unsafe_arena_set_allocated_end_point(
+    ::apollo::common::Point2D* end_point) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(end_point_);
+  }
+  end_point_ = end_point;
+  if (end_point) {
+    _has_bits_[0] |= 0x00000010u;
+  } else {
+    _has_bits_[0] &= ~0x00000010u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:apollo.dreamview.ScenarioInfo.end_point)
+}
+inline ::apollo::common::Point2D* ScenarioInfo::release_end_point() {
+  _has_bits_[0] &= ~0x00000010u;
+  ::apollo::common::Point2D* temp = end_point_;
+  end_point_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::apollo::common::Point2D* ScenarioInfo::unsafe_arena_release_end_point() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.ScenarioInfo.end_point)
+  _has_bits_[0] &= ~0x00000010u;
+  ::apollo::common::Point2D* temp = end_point_;
+  end_point_ = nullptr;
+  return temp;
+}
+inline ::apollo::common::Point2D* ScenarioInfo::_internal_mutable_end_point() {
+  _has_bits_[0] |= 0x00000010u;
+  if (end_point_ == nullptr) {
+    auto* p = CreateMaybeMessage<::apollo::common::Point2D>(GetArena());
+    end_point_ = p;
+  }
+  return end_point_;
+}
+inline ::apollo::common::Point2D* ScenarioInfo::mutable_end_point() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.ScenarioInfo.end_point)
+  return _internal_mutable_end_point();
+}
+inline void ScenarioInfo::set_allocated_end_point(::apollo::common::Point2D* end_point) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(end_point_);
+  }
+  if (end_point) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(end_point)->GetArena();
+    if (message_arena != submessage_arena) {
+      end_point = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, end_point, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000010u;
+  } else {
+    _has_bits_[0] &= ~0x00000010u;
+  }
+  end_point_ = end_point;
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.ScenarioInfo.end_point)
+}
+
+// -------------------------------------------------------------------
+
+// ScenarioSet
+
+// optional string scenario_set_name = 1;
+inline bool ScenarioSet::_internal_has_scenario_set_name() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool ScenarioSet::has_scenario_set_name() const {
+  return _internal_has_scenario_set_name();
+}
+inline void ScenarioSet::clear_scenario_set_name() {
+  scenario_set_name_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& ScenarioSet::scenario_set_name() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.ScenarioSet.scenario_set_name)
+  return _internal_scenario_set_name();
+}
+inline void ScenarioSet::set_scenario_set_name(const std::string& value) {
+  _internal_set_scenario_set_name(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.ScenarioSet.scenario_set_name)
+}
+inline std::string* ScenarioSet::mutable_scenario_set_name() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.ScenarioSet.scenario_set_name)
+  return _internal_mutable_scenario_set_name();
+}
+inline const std::string& ScenarioSet::_internal_scenario_set_name() const {
+  return scenario_set_name_.Get();
+}
+inline void ScenarioSet::_internal_set_scenario_set_name(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  scenario_set_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void ScenarioSet::set_scenario_set_name(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  scenario_set_name_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.ScenarioSet.scenario_set_name)
+}
+inline void ScenarioSet::set_scenario_set_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  scenario_set_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.ScenarioSet.scenario_set_name)
+}
+inline void ScenarioSet::set_scenario_set_name(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  scenario_set_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.ScenarioSet.scenario_set_name)
+}
+inline std::string* ScenarioSet::_internal_mutable_scenario_set_name() {
+  _has_bits_[0] |= 0x00000001u;
+  return scenario_set_name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* ScenarioSet::release_scenario_set_name() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.ScenarioSet.scenario_set_name)
+  if (!_internal_has_scenario_set_name()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return scenario_set_name_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void ScenarioSet::set_allocated_scenario_set_name(std::string* scenario_set_name) {
+  if (scenario_set_name != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  scenario_set_name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scenario_set_name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.ScenarioSet.scenario_set_name)
+}
+
+// repeated .apollo.dreamview.ScenarioInfo scenarios = 2;
+inline int ScenarioSet::_internal_scenarios_size() const {
+  return scenarios_.size();
+}
+inline int ScenarioSet::scenarios_size() const {
+  return _internal_scenarios_size();
+}
+inline void ScenarioSet::clear_scenarios() {
+  scenarios_.Clear();
+}
+inline ::apollo::dreamview::ScenarioInfo* ScenarioSet::mutable_scenarios(int index) {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.ScenarioSet.scenarios)
+  return scenarios_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::apollo::dreamview::ScenarioInfo >*
+ScenarioSet::mutable_scenarios() {
+  // @@protoc_insertion_point(field_mutable_list:apollo.dreamview.ScenarioSet.scenarios)
+  return &scenarios_;
+}
+inline const ::apollo::dreamview::ScenarioInfo& ScenarioSet::_internal_scenarios(int index) const {
+  return scenarios_.Get(index);
+}
+inline const ::apollo::dreamview::ScenarioInfo& ScenarioSet::scenarios(int index) const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.ScenarioSet.scenarios)
+  return _internal_scenarios(index);
+}
+inline ::apollo::dreamview::ScenarioInfo* ScenarioSet::_internal_add_scenarios() {
+  return scenarios_.Add();
+}
+inline ::apollo::dreamview::ScenarioInfo* ScenarioSet::add_scenarios() {
+  // @@protoc_insertion_point(field_add:apollo.dreamview.ScenarioSet.scenarios)
+  return _internal_add_scenarios();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::apollo::dreamview::ScenarioInfo >&
+ScenarioSet::scenarios() const {
+  // @@protoc_insertion_point(field_list:apollo.dreamview.ScenarioSet.scenarios)
+  return scenarios_;
+}
+
+// -------------------------------------------------------------------
+
+// RecordStatus
+
+// optional string current_record_id = 1 [default = ""];
+inline bool RecordStatus::_internal_has_current_record_id() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool RecordStatus::has_current_record_id() const {
+  return _internal_has_current_record_id();
+}
+inline void RecordStatus::clear_current_record_id() {
+  current_record_id_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& RecordStatus::current_record_id() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.RecordStatus.current_record_id)
+  return _internal_current_record_id();
+}
+inline void RecordStatus::set_current_record_id(const std::string& value) {
+  _internal_set_current_record_id(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.RecordStatus.current_record_id)
+}
+inline std::string* RecordStatus::mutable_current_record_id() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.RecordStatus.current_record_id)
+  return _internal_mutable_current_record_id();
+}
+inline const std::string& RecordStatus::_internal_current_record_id() const {
+  return current_record_id_.Get();
+}
+inline void RecordStatus::_internal_set_current_record_id(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  current_record_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void RecordStatus::set_current_record_id(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  current_record_id_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.RecordStatus.current_record_id)
+}
+inline void RecordStatus::set_current_record_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  current_record_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.RecordStatus.current_record_id)
+}
+inline void RecordStatus::set_current_record_id(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  current_record_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.RecordStatus.current_record_id)
+}
+inline std::string* RecordStatus::_internal_mutable_current_record_id() {
+  _has_bits_[0] |= 0x00000001u;
+  return current_record_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* RecordStatus::release_current_record_id() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.RecordStatus.current_record_id)
+  if (!_internal_has_current_record_id()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return current_record_id_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void RecordStatus::set_allocated_current_record_id(std::string* current_record_id) {
+  if (current_record_id != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  current_record_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), current_record_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.RecordStatus.current_record_id)
+}
+
+// optional .apollo.dreamview.PlayRecordStatus play_record_status = 2 [default = CLOSED];
+inline bool RecordStatus::_internal_has_play_record_status() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool RecordStatus::has_play_record_status() const {
+  return _internal_has_play_record_status();
+}
+inline void RecordStatus::clear_play_record_status() {
+  play_record_status_ = 2;
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline ::apollo::dreamview::PlayRecordStatus RecordStatus::_internal_play_record_status() const {
+  return static_cast< ::apollo::dreamview::PlayRecordStatus >(play_record_status_);
+}
+inline ::apollo::dreamview::PlayRecordStatus RecordStatus::play_record_status() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.RecordStatus.play_record_status)
+  return _internal_play_record_status();
+}
+inline void RecordStatus::_internal_set_play_record_status(::apollo::dreamview::PlayRecordStatus value) {
+  assert(::apollo::dreamview::PlayRecordStatus_IsValid(value));
+  _has_bits_[0] |= 0x00000004u;
+  play_record_status_ = value;
+}
+inline void RecordStatus::set_play_record_status(::apollo::dreamview::PlayRecordStatus value) {
+  _internal_set_play_record_status(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.RecordStatus.play_record_status)
+}
+
+// optional double curr_time_s = 4 [default = 0];
+inline bool RecordStatus::_internal_has_curr_time_s() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool RecordStatus::has_curr_time_s() const {
+  return _internal_has_curr_time_s();
+}
+inline void RecordStatus::clear_curr_time_s() {
+  curr_time_s_ = 0;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline double RecordStatus::_internal_curr_time_s() const {
+  return curr_time_s_;
+}
+inline double RecordStatus::curr_time_s() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.RecordStatus.curr_time_s)
+  return _internal_curr_time_s();
+}
+inline void RecordStatus::_internal_set_curr_time_s(double value) {
+  _has_bits_[0] |= 0x00000002u;
+  curr_time_s_ = value;
+}
+inline void RecordStatus::set_curr_time_s(double value) {
+  _internal_set_curr_time_s(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.RecordStatus.curr_time_s)
+}
+
+// -------------------------------------------------------------------
+
+// LoadRecordInfo
+
+// optional .apollo.dreamview.LoadRecordStatus load_record_status = 1 [default = NOT_LOAD];
+inline bool LoadRecordInfo::_internal_has_load_record_status() const {
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool LoadRecordInfo::has_load_record_status() const {
+  return _internal_has_load_record_status();
+}
+inline void LoadRecordInfo::clear_load_record_status() {
+  load_record_status_ = 1;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline ::apollo::dreamview::LoadRecordStatus LoadRecordInfo::_internal_load_record_status() const {
+  return static_cast< ::apollo::dreamview::LoadRecordStatus >(load_record_status_);
+}
+inline ::apollo::dreamview::LoadRecordStatus LoadRecordInfo::load_record_status() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.LoadRecordInfo.load_record_status)
+  return _internal_load_record_status();
+}
+inline void LoadRecordInfo::_internal_set_load_record_status(::apollo::dreamview::LoadRecordStatus value) {
+  assert(::apollo::dreamview::LoadRecordStatus_IsValid(value));
+  _has_bits_[0] |= 0x00000008u;
+  load_record_status_ = value;
+}
+inline void LoadRecordInfo::set_load_record_status(::apollo::dreamview::LoadRecordStatus value) {
+  _internal_set_load_record_status(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.LoadRecordInfo.load_record_status)
+}
+
+// optional double total_time_s = 2 [default = 0];
+inline bool LoadRecordInfo::_internal_has_total_time_s() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool LoadRecordInfo::has_total_time_s() const {
+  return _internal_has_total_time_s();
+}
+inline void LoadRecordInfo::clear_total_time_s() {
+  total_time_s_ = 0;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline double LoadRecordInfo::_internal_total_time_s() const {
+  return total_time_s_;
+}
+inline double LoadRecordInfo::total_time_s() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.LoadRecordInfo.total_time_s)
+  return _internal_total_time_s();
+}
+inline void LoadRecordInfo::_internal_set_total_time_s(double value) {
+  _has_bits_[0] |= 0x00000002u;
+  total_time_s_ = value;
+}
+inline void LoadRecordInfo::set_total_time_s(double value) {
+  _internal_set_total_time_s(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.LoadRecordInfo.total_time_s)
+}
+
+// optional string record_file_path = 3 [default = ""];
+inline bool LoadRecordInfo::_internal_has_record_file_path() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool LoadRecordInfo::has_record_file_path() const {
+  return _internal_has_record_file_path();
+}
+inline void LoadRecordInfo::clear_record_file_path() {
+  record_file_path_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& LoadRecordInfo::record_file_path() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.LoadRecordInfo.record_file_path)
+  return _internal_record_file_path();
+}
+inline void LoadRecordInfo::set_record_file_path(const std::string& value) {
+  _internal_set_record_file_path(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.LoadRecordInfo.record_file_path)
+}
+inline std::string* LoadRecordInfo::mutable_record_file_path() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.LoadRecordInfo.record_file_path)
+  return _internal_mutable_record_file_path();
+}
+inline const std::string& LoadRecordInfo::_internal_record_file_path() const {
+  return record_file_path_.Get();
+}
+inline void LoadRecordInfo::_internal_set_record_file_path(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  record_file_path_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void LoadRecordInfo::set_record_file_path(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  record_file_path_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.LoadRecordInfo.record_file_path)
+}
+inline void LoadRecordInfo::set_record_file_path(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  record_file_path_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.LoadRecordInfo.record_file_path)
+}
+inline void LoadRecordInfo::set_record_file_path(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  record_file_path_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.LoadRecordInfo.record_file_path)
+}
+inline std::string* LoadRecordInfo::_internal_mutable_record_file_path() {
+  _has_bits_[0] |= 0x00000001u;
+  return record_file_path_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* LoadRecordInfo::release_record_file_path() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.LoadRecordInfo.record_file_path)
+  if (!_internal_has_record_file_path()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return record_file_path_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void LoadRecordInfo::set_allocated_record_file_path(std::string* record_file_path) {
+  if (record_file_path != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  record_file_path_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), record_file_path,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.LoadRecordInfo.record_file_path)
+}
+
+// optional int32 download_status = 4 [default = 0];
+inline bool LoadRecordInfo::_internal_has_download_status() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool LoadRecordInfo::has_download_status() const {
+  return _internal_has_download_status();
+}
+inline void LoadRecordInfo::clear_download_status() {
+  download_status_ = 0;
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 LoadRecordInfo::_internal_download_status() const {
+  return download_status_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 LoadRecordInfo::download_status() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.LoadRecordInfo.download_status)
+  return _internal_download_status();
+}
+inline void LoadRecordInfo::_internal_set_download_status(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000004u;
+  download_status_ = value;
+}
+inline void LoadRecordInfo::set_download_status(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_download_status(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.LoadRecordInfo.download_status)
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -636,7 +2910,7 @@ class HMIStatus PROTOBUF_FINAL :
 
 // optional .apollo.common.Header header = 1;
 inline bool HMIStatus::_internal_has_header() const {
-  bool value = (_has_bits_[0] & 0x00000020u) != 0;
+  bool value = (_has_bits_[0] & 0x00002000u) != 0;
   PROTOBUF_ASSUME(!value || header_ != nullptr);
   return value;
 }
@@ -659,14 +2933,14 @@ inline void HMIStatus::unsafe_arena_set_allocated_header(
   }
   header_ = header;
   if (header) {
-    _has_bits_[0] |= 0x00000020u;
+    _has_bits_[0] |= 0x00002000u;
   } else {
-    _has_bits_[0] &= ~0x00000020u;
+    _has_bits_[0] &= ~0x00002000u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:apollo.dreamview.HMIStatus.header)
 }
 inline ::apollo::common::Header* HMIStatus::release_header() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00002000u;
   ::apollo::common::Header* temp = header_;
   header_ = nullptr;
   if (GetArena() != nullptr) {
@@ -676,13 +2950,13 @@ inline ::apollo::common::Header* HMIStatus::release_header() {
 }
 inline ::apollo::common::Header* HMIStatus::unsafe_arena_release_header() {
   // @@protoc_insertion_point(field_release:apollo.dreamview.HMIStatus.header)
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00002000u;
   ::apollo::common::Header* temp = header_;
   header_ = nullptr;
   return temp;
 }
 inline ::apollo::common::Header* HMIStatus::_internal_mutable_header() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00002000u;
   if (header_ == nullptr) {
     auto* p = CreateMaybeMessage<::apollo::common::Header>(GetArena());
     header_ = p;
@@ -705,9 +2979,9 @@ inline void HMIStatus::set_allocated_header(::apollo::common::Header* header) {
       header = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, header, submessage_arena);
     }
-    _has_bits_[0] |= 0x00000020u;
+    _has_bits_[0] |= 0x00002000u;
   } else {
-    _has_bits_[0] &= ~0x00000020u;
+    _has_bits_[0] &= ~0x00002000u;
   }
   header_ = header;
   // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.HMIStatus.header)
@@ -1284,7 +3558,7 @@ inline void HMIStatus::set_allocated_docker_image(std::string* docker_image) {
 
 // optional int32 utm_zone_id = 11;
 inline bool HMIStatus::_internal_has_utm_zone_id() const {
-  bool value = (_has_bits_[0] & 0x00000040u) != 0;
+  bool value = (_has_bits_[0] & 0x00008000u) != 0;
   return value;
 }
 inline bool HMIStatus::has_utm_zone_id() const {
@@ -1292,7 +3566,7 @@ inline bool HMIStatus::has_utm_zone_id() const {
 }
 inline void HMIStatus::clear_utm_zone_id() {
   utm_zone_id_ = 0;
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 HMIStatus::_internal_utm_zone_id() const {
   return utm_zone_id_;
@@ -1302,7 +3576,7 @@ inline ::PROTOBUF_NAMESPACE_ID::int32 HMIStatus::utm_zone_id() const {
   return _internal_utm_zone_id();
 }
 inline void HMIStatus::_internal_set_utm_zone_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00008000u;
   utm_zone_id_ = value;
 }
 inline void HMIStatus::set_utm_zone_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
@@ -1409,9 +3683,1111 @@ HMIStatus::mutable_other_components() {
   return _internal_mutable_other_components();
 }
 
+// map<string, .apollo.dreamview.ScenarioSet> scenario_set = 15;
+inline int HMIStatus::_internal_scenario_set_size() const {
+  return scenario_set_.size();
+}
+inline int HMIStatus::scenario_set_size() const {
+  return _internal_scenario_set_size();
+}
+inline void HMIStatus::clear_scenario_set() {
+  scenario_set_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::ScenarioSet >&
+HMIStatus::_internal_scenario_set() const {
+  return scenario_set_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::ScenarioSet >&
+HMIStatus::scenario_set() const {
+  // @@protoc_insertion_point(field_map:apollo.dreamview.HMIStatus.scenario_set)
+  return _internal_scenario_set();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::ScenarioSet >*
+HMIStatus::_internal_mutable_scenario_set() {
+  return scenario_set_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::ScenarioSet >*
+HMIStatus::mutable_scenario_set() {
+  // @@protoc_insertion_point(field_mutable_map:apollo.dreamview.HMIStatus.scenario_set)
+  return _internal_mutable_scenario_set();
+}
+
+// optional string current_scenario_set_id = 16 [default = ""];
+inline bool HMIStatus::_internal_has_current_scenario_set_id() const {
+  bool value = (_has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool HMIStatus::has_current_scenario_set_id() const {
+  return _internal_has_current_scenario_set_id();
+}
+inline void HMIStatus::clear_current_scenario_set_id() {
+  current_scenario_set_id_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline const std::string& HMIStatus::current_scenario_set_id() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.current_scenario_set_id)
+  return _internal_current_scenario_set_id();
+}
+inline void HMIStatus::set_current_scenario_set_id(const std::string& value) {
+  _internal_set_current_scenario_set_id(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.current_scenario_set_id)
+}
+inline std::string* HMIStatus::mutable_current_scenario_set_id() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.HMIStatus.current_scenario_set_id)
+  return _internal_mutable_current_scenario_set_id();
+}
+inline const std::string& HMIStatus::_internal_current_scenario_set_id() const {
+  return current_scenario_set_id_.Get();
+}
+inline void HMIStatus::_internal_set_current_scenario_set_id(const std::string& value) {
+  _has_bits_[0] |= 0x00000020u;
+  current_scenario_set_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void HMIStatus::set_current_scenario_set_id(std::string&& value) {
+  _has_bits_[0] |= 0x00000020u;
+  current_scenario_set_id_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.HMIStatus.current_scenario_set_id)
+}
+inline void HMIStatus::set_current_scenario_set_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000020u;
+  current_scenario_set_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.HMIStatus.current_scenario_set_id)
+}
+inline void HMIStatus::set_current_scenario_set_id(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000020u;
+  current_scenario_set_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.HMIStatus.current_scenario_set_id)
+}
+inline std::string* HMIStatus::_internal_mutable_current_scenario_set_id() {
+  _has_bits_[0] |= 0x00000020u;
+  return current_scenario_set_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* HMIStatus::release_current_scenario_set_id() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.HMIStatus.current_scenario_set_id)
+  if (!_internal_has_current_scenario_set_id()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000020u;
+  return current_scenario_set_id_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void HMIStatus::set_allocated_current_scenario_set_id(std::string* current_scenario_set_id) {
+  if (current_scenario_set_id != nullptr) {
+    _has_bits_[0] |= 0x00000020u;
+  } else {
+    _has_bits_[0] &= ~0x00000020u;
+  }
+  current_scenario_set_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), current_scenario_set_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.HMIStatus.current_scenario_set_id)
+}
+
+// optional string current_scenario_id = 17 [default = ""];
+inline bool HMIStatus::_internal_has_current_scenario_id() const {
+  bool value = (_has_bits_[0] & 0x00000040u) != 0;
+  return value;
+}
+inline bool HMIStatus::has_current_scenario_id() const {
+  return _internal_has_current_scenario_id();
+}
+inline void HMIStatus::clear_current_scenario_id() {
+  current_scenario_id_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline const std::string& HMIStatus::current_scenario_id() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.current_scenario_id)
+  return _internal_current_scenario_id();
+}
+inline void HMIStatus::set_current_scenario_id(const std::string& value) {
+  _internal_set_current_scenario_id(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.current_scenario_id)
+}
+inline std::string* HMIStatus::mutable_current_scenario_id() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.HMIStatus.current_scenario_id)
+  return _internal_mutable_current_scenario_id();
+}
+inline const std::string& HMIStatus::_internal_current_scenario_id() const {
+  return current_scenario_id_.Get();
+}
+inline void HMIStatus::_internal_set_current_scenario_id(const std::string& value) {
+  _has_bits_[0] |= 0x00000040u;
+  current_scenario_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void HMIStatus::set_current_scenario_id(std::string&& value) {
+  _has_bits_[0] |= 0x00000040u;
+  current_scenario_id_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.HMIStatus.current_scenario_id)
+}
+inline void HMIStatus::set_current_scenario_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000040u;
+  current_scenario_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.HMIStatus.current_scenario_id)
+}
+inline void HMIStatus::set_current_scenario_id(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000040u;
+  current_scenario_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.HMIStatus.current_scenario_id)
+}
+inline std::string* HMIStatus::_internal_mutable_current_scenario_id() {
+  _has_bits_[0] |= 0x00000040u;
+  return current_scenario_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* HMIStatus::release_current_scenario_id() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.HMIStatus.current_scenario_id)
+  if (!_internal_has_current_scenario_id()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000040u;
+  return current_scenario_id_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void HMIStatus::set_allocated_current_scenario_id(std::string* current_scenario_id) {
+  if (current_scenario_id != nullptr) {
+    _has_bits_[0] |= 0x00000040u;
+  } else {
+    _has_bits_[0] &= ~0x00000040u;
+  }
+  current_scenario_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), current_scenario_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.HMIStatus.current_scenario_id)
+}
+
+// repeated string dynamic_models = 18;
+inline int HMIStatus::_internal_dynamic_models_size() const {
+  return dynamic_models_.size();
+}
+inline int HMIStatus::dynamic_models_size() const {
+  return _internal_dynamic_models_size();
+}
+inline void HMIStatus::clear_dynamic_models() {
+  dynamic_models_.Clear();
+}
+inline std::string* HMIStatus::add_dynamic_models() {
+  // @@protoc_insertion_point(field_add_mutable:apollo.dreamview.HMIStatus.dynamic_models)
+  return _internal_add_dynamic_models();
+}
+inline const std::string& HMIStatus::_internal_dynamic_models(int index) const {
+  return dynamic_models_.Get(index);
+}
+inline const std::string& HMIStatus::dynamic_models(int index) const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.dynamic_models)
+  return _internal_dynamic_models(index);
+}
+inline std::string* HMIStatus::mutable_dynamic_models(int index) {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.HMIStatus.dynamic_models)
+  return dynamic_models_.Mutable(index);
+}
+inline void HMIStatus::set_dynamic_models(int index, const std::string& value) {
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.dynamic_models)
+  dynamic_models_.Mutable(index)->assign(value);
+}
+inline void HMIStatus::set_dynamic_models(int index, std::string&& value) {
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.dynamic_models)
+  dynamic_models_.Mutable(index)->assign(std::move(value));
+}
+inline void HMIStatus::set_dynamic_models(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  dynamic_models_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.HMIStatus.dynamic_models)
+}
+inline void HMIStatus::set_dynamic_models(int index, const char* value, size_t size) {
+  dynamic_models_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.HMIStatus.dynamic_models)
+}
+inline std::string* HMIStatus::_internal_add_dynamic_models() {
+  return dynamic_models_.Add();
+}
+inline void HMIStatus::add_dynamic_models(const std::string& value) {
+  dynamic_models_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:apollo.dreamview.HMIStatus.dynamic_models)
+}
+inline void HMIStatus::add_dynamic_models(std::string&& value) {
+  dynamic_models_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:apollo.dreamview.HMIStatus.dynamic_models)
+}
+inline void HMIStatus::add_dynamic_models(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  dynamic_models_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:apollo.dreamview.HMIStatus.dynamic_models)
+}
+inline void HMIStatus::add_dynamic_models(const char* value, size_t size) {
+  dynamic_models_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:apollo.dreamview.HMIStatus.dynamic_models)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+HMIStatus::dynamic_models() const {
+  // @@protoc_insertion_point(field_list:apollo.dreamview.HMIStatus.dynamic_models)
+  return dynamic_models_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+HMIStatus::mutable_dynamic_models() {
+  // @@protoc_insertion_point(field_mutable_list:apollo.dreamview.HMIStatus.dynamic_models)
+  return &dynamic_models_;
+}
+
+// optional string current_dynamic_model = 19;
+inline bool HMIStatus::_internal_has_current_dynamic_model() const {
+  bool value = (_has_bits_[0] & 0x00000080u) != 0;
+  return value;
+}
+inline bool HMIStatus::has_current_dynamic_model() const {
+  return _internal_has_current_dynamic_model();
+}
+inline void HMIStatus::clear_current_dynamic_model() {
+  current_dynamic_model_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline const std::string& HMIStatus::current_dynamic_model() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.current_dynamic_model)
+  return _internal_current_dynamic_model();
+}
+inline void HMIStatus::set_current_dynamic_model(const std::string& value) {
+  _internal_set_current_dynamic_model(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.current_dynamic_model)
+}
+inline std::string* HMIStatus::mutable_current_dynamic_model() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.HMIStatus.current_dynamic_model)
+  return _internal_mutable_current_dynamic_model();
+}
+inline const std::string& HMIStatus::_internal_current_dynamic_model() const {
+  return current_dynamic_model_.Get();
+}
+inline void HMIStatus::_internal_set_current_dynamic_model(const std::string& value) {
+  _has_bits_[0] |= 0x00000080u;
+  current_dynamic_model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void HMIStatus::set_current_dynamic_model(std::string&& value) {
+  _has_bits_[0] |= 0x00000080u;
+  current_dynamic_model_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.HMIStatus.current_dynamic_model)
+}
+inline void HMIStatus::set_current_dynamic_model(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000080u;
+  current_dynamic_model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.HMIStatus.current_dynamic_model)
+}
+inline void HMIStatus::set_current_dynamic_model(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000080u;
+  current_dynamic_model_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.HMIStatus.current_dynamic_model)
+}
+inline std::string* HMIStatus::_internal_mutable_current_dynamic_model() {
+  _has_bits_[0] |= 0x00000080u;
+  return current_dynamic_model_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* HMIStatus::release_current_dynamic_model() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.HMIStatus.current_dynamic_model)
+  if (!_internal_has_current_dynamic_model()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000080u;
+  return current_dynamic_model_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void HMIStatus::set_allocated_current_dynamic_model(std::string* current_dynamic_model) {
+  if (current_dynamic_model != nullptr) {
+    _has_bits_[0] |= 0x00000080u;
+  } else {
+    _has_bits_[0] &= ~0x00000080u;
+  }
+  current_dynamic_model_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), current_dynamic_model,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.HMIStatus.current_dynamic_model)
+}
+
+// optional string current_record_id = 20 [default = ""];
+inline bool HMIStatus::_internal_has_current_record_id() const {
+  bool value = (_has_bits_[0] & 0x00000100u) != 0;
+  return value;
+}
+inline bool HMIStatus::has_current_record_id() const {
+  return _internal_has_current_record_id();
+}
+inline void HMIStatus::clear_current_record_id() {
+  current_record_id_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline const std::string& HMIStatus::current_record_id() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.current_record_id)
+  return _internal_current_record_id();
+}
+inline void HMIStatus::set_current_record_id(const std::string& value) {
+  _internal_set_current_record_id(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.current_record_id)
+}
+inline std::string* HMIStatus::mutable_current_record_id() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.HMIStatus.current_record_id)
+  return _internal_mutable_current_record_id();
+}
+inline const std::string& HMIStatus::_internal_current_record_id() const {
+  return current_record_id_.Get();
+}
+inline void HMIStatus::_internal_set_current_record_id(const std::string& value) {
+  _has_bits_[0] |= 0x00000100u;
+  current_record_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void HMIStatus::set_current_record_id(std::string&& value) {
+  _has_bits_[0] |= 0x00000100u;
+  current_record_id_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.HMIStatus.current_record_id)
+}
+inline void HMIStatus::set_current_record_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000100u;
+  current_record_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.HMIStatus.current_record_id)
+}
+inline void HMIStatus::set_current_record_id(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000100u;
+  current_record_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.HMIStatus.current_record_id)
+}
+inline std::string* HMIStatus::_internal_mutable_current_record_id() {
+  _has_bits_[0] |= 0x00000100u;
+  return current_record_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* HMIStatus::release_current_record_id() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.HMIStatus.current_record_id)
+  if (!_internal_has_current_record_id()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000100u;
+  return current_record_id_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void HMIStatus::set_allocated_current_record_id(std::string* current_record_id) {
+  if (current_record_id != nullptr) {
+    _has_bits_[0] |= 0x00000100u;
+  } else {
+    _has_bits_[0] &= ~0x00000100u;
+  }
+  current_record_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), current_record_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.HMIStatus.current_record_id)
+}
+
+// map<string, .apollo.dreamview.LoadRecordInfo> records = 21;
+inline int HMIStatus::_internal_records_size() const {
+  return records_.size();
+}
+inline int HMIStatus::records_size() const {
+  return _internal_records_size();
+}
+inline void HMIStatus::clear_records() {
+  records_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::LoadRecordInfo >&
+HMIStatus::_internal_records() const {
+  return records_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::LoadRecordInfo >&
+HMIStatus::records() const {
+  // @@protoc_insertion_point(field_map:apollo.dreamview.HMIStatus.records)
+  return _internal_records();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::LoadRecordInfo >*
+HMIStatus::_internal_mutable_records() {
+  return records_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::LoadRecordInfo >*
+HMIStatus::mutable_records() {
+  // @@protoc_insertion_point(field_mutable_map:apollo.dreamview.HMIStatus.records)
+  return _internal_mutable_records();
+}
+
+// optional sint32 current_vehicle_type = 22;
+inline bool HMIStatus::_internal_has_current_vehicle_type() const {
+  bool value = (_has_bits_[0] & 0x00010000u) != 0;
+  return value;
+}
+inline bool HMIStatus::has_current_vehicle_type() const {
+  return _internal_has_current_vehicle_type();
+}
+inline void HMIStatus::clear_current_vehicle_type() {
+  current_vehicle_type_ = 0;
+  _has_bits_[0] &= ~0x00010000u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 HMIStatus::_internal_current_vehicle_type() const {
+  return current_vehicle_type_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 HMIStatus::current_vehicle_type() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.current_vehicle_type)
+  return _internal_current_vehicle_type();
+}
+inline void HMIStatus::_internal_set_current_vehicle_type(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00010000u;
+  current_vehicle_type_ = value;
+}
+inline void HMIStatus::set_current_vehicle_type(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_current_vehicle_type(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.current_vehicle_type)
+}
+
+// optional string current_camera_sensor_channel = 23;
+inline bool HMIStatus::_internal_has_current_camera_sensor_channel() const {
+  bool value = (_has_bits_[0] & 0x00000200u) != 0;
+  return value;
+}
+inline bool HMIStatus::has_current_camera_sensor_channel() const {
+  return _internal_has_current_camera_sensor_channel();
+}
+inline void HMIStatus::clear_current_camera_sensor_channel() {
+  current_camera_sensor_channel_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline const std::string& HMIStatus::current_camera_sensor_channel() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.current_camera_sensor_channel)
+  return _internal_current_camera_sensor_channel();
+}
+inline void HMIStatus::set_current_camera_sensor_channel(const std::string& value) {
+  _internal_set_current_camera_sensor_channel(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.current_camera_sensor_channel)
+}
+inline std::string* HMIStatus::mutable_current_camera_sensor_channel() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.HMIStatus.current_camera_sensor_channel)
+  return _internal_mutable_current_camera_sensor_channel();
+}
+inline const std::string& HMIStatus::_internal_current_camera_sensor_channel() const {
+  return current_camera_sensor_channel_.Get();
+}
+inline void HMIStatus::_internal_set_current_camera_sensor_channel(const std::string& value) {
+  _has_bits_[0] |= 0x00000200u;
+  current_camera_sensor_channel_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void HMIStatus::set_current_camera_sensor_channel(std::string&& value) {
+  _has_bits_[0] |= 0x00000200u;
+  current_camera_sensor_channel_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.HMIStatus.current_camera_sensor_channel)
+}
+inline void HMIStatus::set_current_camera_sensor_channel(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000200u;
+  current_camera_sensor_channel_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.HMIStatus.current_camera_sensor_channel)
+}
+inline void HMIStatus::set_current_camera_sensor_channel(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000200u;
+  current_camera_sensor_channel_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.HMIStatus.current_camera_sensor_channel)
+}
+inline std::string* HMIStatus::_internal_mutable_current_camera_sensor_channel() {
+  _has_bits_[0] |= 0x00000200u;
+  return current_camera_sensor_channel_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* HMIStatus::release_current_camera_sensor_channel() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.HMIStatus.current_camera_sensor_channel)
+  if (!_internal_has_current_camera_sensor_channel()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000200u;
+  return current_camera_sensor_channel_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void HMIStatus::set_allocated_current_camera_sensor_channel(std::string* current_camera_sensor_channel) {
+  if (current_camera_sensor_channel != nullptr) {
+    _has_bits_[0] |= 0x00000200u;
+  } else {
+    _has_bits_[0] &= ~0x00000200u;
+  }
+  current_camera_sensor_channel_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), current_camera_sensor_channel,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.HMIStatus.current_camera_sensor_channel)
+}
+
+// optional string current_point_cloud_channel = 24;
+inline bool HMIStatus::_internal_has_current_point_cloud_channel() const {
+  bool value = (_has_bits_[0] & 0x00000400u) != 0;
+  return value;
+}
+inline bool HMIStatus::has_current_point_cloud_channel() const {
+  return _internal_has_current_point_cloud_channel();
+}
+inline void HMIStatus::clear_current_point_cloud_channel() {
+  current_point_cloud_channel_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline const std::string& HMIStatus::current_point_cloud_channel() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.current_point_cloud_channel)
+  return _internal_current_point_cloud_channel();
+}
+inline void HMIStatus::set_current_point_cloud_channel(const std::string& value) {
+  _internal_set_current_point_cloud_channel(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.current_point_cloud_channel)
+}
+inline std::string* HMIStatus::mutable_current_point_cloud_channel() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.HMIStatus.current_point_cloud_channel)
+  return _internal_mutable_current_point_cloud_channel();
+}
+inline const std::string& HMIStatus::_internal_current_point_cloud_channel() const {
+  return current_point_cloud_channel_.Get();
+}
+inline void HMIStatus::_internal_set_current_point_cloud_channel(const std::string& value) {
+  _has_bits_[0] |= 0x00000400u;
+  current_point_cloud_channel_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void HMIStatus::set_current_point_cloud_channel(std::string&& value) {
+  _has_bits_[0] |= 0x00000400u;
+  current_point_cloud_channel_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.HMIStatus.current_point_cloud_channel)
+}
+inline void HMIStatus::set_current_point_cloud_channel(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000400u;
+  current_point_cloud_channel_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.HMIStatus.current_point_cloud_channel)
+}
+inline void HMIStatus::set_current_point_cloud_channel(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000400u;
+  current_point_cloud_channel_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.HMIStatus.current_point_cloud_channel)
+}
+inline std::string* HMIStatus::_internal_mutable_current_point_cloud_channel() {
+  _has_bits_[0] |= 0x00000400u;
+  return current_point_cloud_channel_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* HMIStatus::release_current_point_cloud_channel() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.HMIStatus.current_point_cloud_channel)
+  if (!_internal_has_current_point_cloud_channel()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000400u;
+  return current_point_cloud_channel_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void HMIStatus::set_allocated_current_point_cloud_channel(std::string* current_point_cloud_channel) {
+  if (current_point_cloud_channel != nullptr) {
+    _has_bits_[0] |= 0x00000400u;
+  } else {
+    _has_bits_[0] &= ~0x00000400u;
+  }
+  current_point_cloud_channel_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), current_point_cloud_channel,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.HMIStatus.current_point_cloud_channel)
+}
+
+// repeated .apollo.dreamview.HMIModeOperation operations = 25;
+inline int HMIStatus::_internal_operations_size() const {
+  return operations_.size();
+}
+inline int HMIStatus::operations_size() const {
+  return _internal_operations_size();
+}
+inline void HMIStatus::clear_operations() {
+  operations_.Clear();
+}
+inline ::apollo::dreamview::HMIModeOperation HMIStatus::_internal_operations(int index) const {
+  return static_cast< ::apollo::dreamview::HMIModeOperation >(operations_.Get(index));
+}
+inline ::apollo::dreamview::HMIModeOperation HMIStatus::operations(int index) const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.operations)
+  return _internal_operations(index);
+}
+inline void HMIStatus::set_operations(int index, ::apollo::dreamview::HMIModeOperation value) {
+  assert(::apollo::dreamview::HMIModeOperation_IsValid(value));
+  operations_.Set(index, value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.operations)
+}
+inline void HMIStatus::_internal_add_operations(::apollo::dreamview::HMIModeOperation value) {
+  assert(::apollo::dreamview::HMIModeOperation_IsValid(value));
+  operations_.Add(value);
+}
+inline void HMIStatus::add_operations(::apollo::dreamview::HMIModeOperation value) {
+  // @@protoc_insertion_point(field_add:apollo.dreamview.HMIStatus.operations)
+  _internal_add_operations(value);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>&
+HMIStatus::operations() const {
+  // @@protoc_insertion_point(field_list:apollo.dreamview.HMIStatus.operations)
+  return operations_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
+HMIStatus::_internal_mutable_operations() {
+  return &operations_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
+HMIStatus::mutable_operations() {
+  // @@protoc_insertion_point(field_mutable_list:apollo.dreamview.HMIStatus.operations)
+  return _internal_mutable_operations();
+}
+
+// optional .apollo.dreamview.HMIModeOperation current_operation = 26;
+inline bool HMIStatus::_internal_has_current_operation() const {
+  bool value = (_has_bits_[0] & 0x00020000u) != 0;
+  return value;
+}
+inline bool HMIStatus::has_current_operation() const {
+  return _internal_has_current_operation();
+}
+inline void HMIStatus::clear_current_operation() {
+  current_operation_ = 0;
+  _has_bits_[0] &= ~0x00020000u;
+}
+inline ::apollo::dreamview::HMIModeOperation HMIStatus::_internal_current_operation() const {
+  return static_cast< ::apollo::dreamview::HMIModeOperation >(current_operation_);
+}
+inline ::apollo::dreamview::HMIModeOperation HMIStatus::current_operation() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.current_operation)
+  return _internal_current_operation();
+}
+inline void HMIStatus::_internal_set_current_operation(::apollo::dreamview::HMIModeOperation value) {
+  assert(::apollo::dreamview::HMIModeOperation_IsValid(value));
+  _has_bits_[0] |= 0x00020000u;
+  current_operation_ = value;
+}
+inline void HMIStatus::set_current_operation(::apollo::dreamview::HMIModeOperation value) {
+  _internal_set_current_operation(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.current_operation)
+}
+
+// optional string current_layout = 27;
+inline bool HMIStatus::_internal_has_current_layout() const {
+  bool value = (_has_bits_[0] & 0x00000800u) != 0;
+  return value;
+}
+inline bool HMIStatus::has_current_layout() const {
+  return _internal_has_current_layout();
+}
+inline void HMIStatus::clear_current_layout() {
+  current_layout_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline const std::string& HMIStatus::current_layout() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.current_layout)
+  return _internal_current_layout();
+}
+inline void HMIStatus::set_current_layout(const std::string& value) {
+  _internal_set_current_layout(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.current_layout)
+}
+inline std::string* HMIStatus::mutable_current_layout() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.HMIStatus.current_layout)
+  return _internal_mutable_current_layout();
+}
+inline const std::string& HMIStatus::_internal_current_layout() const {
+  return current_layout_.Get();
+}
+inline void HMIStatus::_internal_set_current_layout(const std::string& value) {
+  _has_bits_[0] |= 0x00000800u;
+  current_layout_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void HMIStatus::set_current_layout(std::string&& value) {
+  _has_bits_[0] |= 0x00000800u;
+  current_layout_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.HMIStatus.current_layout)
+}
+inline void HMIStatus::set_current_layout(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000800u;
+  current_layout_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.HMIStatus.current_layout)
+}
+inline void HMIStatus::set_current_layout(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000800u;
+  current_layout_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.HMIStatus.current_layout)
+}
+inline std::string* HMIStatus::_internal_mutable_current_layout() {
+  _has_bits_[0] |= 0x00000800u;
+  return current_layout_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* HMIStatus::release_current_layout() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.HMIStatus.current_layout)
+  if (!_internal_has_current_layout()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000800u;
+  return current_layout_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void HMIStatus::set_allocated_current_layout(std::string* current_layout) {
+  if (current_layout != nullptr) {
+    _has_bits_[0] |= 0x00000800u;
+  } else {
+    _has_bits_[0] &= ~0x00000800u;
+  }
+  current_layout_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), current_layout,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.HMIStatus.current_layout)
+}
+
+// optional .apollo.dreamview.RecordStatus current_record_status = 28;
+inline bool HMIStatus::_internal_has_current_record_status() const {
+  bool value = (_has_bits_[0] & 0x00004000u) != 0;
+  PROTOBUF_ASSUME(!value || current_record_status_ != nullptr);
+  return value;
+}
+inline bool HMIStatus::has_current_record_status() const {
+  return _internal_has_current_record_status();
+}
+inline void HMIStatus::clear_current_record_status() {
+  if (current_record_status_ != nullptr) current_record_status_->Clear();
+  _has_bits_[0] &= ~0x00004000u;
+}
+inline const ::apollo::dreamview::RecordStatus& HMIStatus::_internal_current_record_status() const {
+  const ::apollo::dreamview::RecordStatus* p = current_record_status_;
+  return p != nullptr ? *p : reinterpret_cast<const ::apollo::dreamview::RecordStatus&>(
+      ::apollo::dreamview::_RecordStatus_default_instance_);
+}
+inline const ::apollo::dreamview::RecordStatus& HMIStatus::current_record_status() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.current_record_status)
+  return _internal_current_record_status();
+}
+inline void HMIStatus::unsafe_arena_set_allocated_current_record_status(
+    ::apollo::dreamview::RecordStatus* current_record_status) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(current_record_status_);
+  }
+  current_record_status_ = current_record_status;
+  if (current_record_status) {
+    _has_bits_[0] |= 0x00004000u;
+  } else {
+    _has_bits_[0] &= ~0x00004000u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:apollo.dreamview.HMIStatus.current_record_status)
+}
+inline ::apollo::dreamview::RecordStatus* HMIStatus::release_current_record_status() {
+  _has_bits_[0] &= ~0x00004000u;
+  ::apollo::dreamview::RecordStatus* temp = current_record_status_;
+  current_record_status_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::apollo::dreamview::RecordStatus* HMIStatus::unsafe_arena_release_current_record_status() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.HMIStatus.current_record_status)
+  _has_bits_[0] &= ~0x00004000u;
+  ::apollo::dreamview::RecordStatus* temp = current_record_status_;
+  current_record_status_ = nullptr;
+  return temp;
+}
+inline ::apollo::dreamview::RecordStatus* HMIStatus::_internal_mutable_current_record_status() {
+  _has_bits_[0] |= 0x00004000u;
+  if (current_record_status_ == nullptr) {
+    auto* p = CreateMaybeMessage<::apollo::dreamview::RecordStatus>(GetArena());
+    current_record_status_ = p;
+  }
+  return current_record_status_;
+}
+inline ::apollo::dreamview::RecordStatus* HMIStatus::mutable_current_record_status() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.HMIStatus.current_record_status)
+  return _internal_mutable_current_record_status();
+}
+inline void HMIStatus::set_allocated_current_record_status(::apollo::dreamview::RecordStatus* current_record_status) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete current_record_status_;
+  }
+  if (current_record_status) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(current_record_status);
+    if (message_arena != submessage_arena) {
+      current_record_status = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, current_record_status, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00004000u;
+  } else {
+    _has_bits_[0] &= ~0x00004000u;
+  }
+  current_record_status_ = current_record_status;
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.HMIStatus.current_record_status)
+}
+
+// map<string, .apollo.monitor.Component> global_components = 29;
+inline int HMIStatus::_internal_global_components_size() const {
+  return global_components_.size();
+}
+inline int HMIStatus::global_components_size() const {
+  return _internal_global_components_size();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >&
+HMIStatus::_internal_global_components() const {
+  return global_components_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >&
+HMIStatus::global_components() const {
+  // @@protoc_insertion_point(field_map:apollo.dreamview.HMIStatus.global_components)
+  return _internal_global_components();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >*
+HMIStatus::_internal_mutable_global_components() {
+  return global_components_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >*
+HMIStatus::mutable_global_components() {
+  // @@protoc_insertion_point(field_mutable_map:apollo.dreamview.HMIStatus.global_components)
+  return _internal_mutable_global_components();
+}
+
+// optional uint32 expected_modules = 30 [default = 0];
+inline bool HMIStatus::_internal_has_expected_modules() const {
+  bool value = (_has_bits_[0] & 0x00040000u) != 0;
+  return value;
+}
+inline bool HMIStatus::has_expected_modules() const {
+  return _internal_has_expected_modules();
+}
+inline void HMIStatus::clear_expected_modules() {
+  expected_modules_ = 0u;
+  _has_bits_[0] &= ~0x00040000u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 HMIStatus::_internal_expected_modules() const {
+  return expected_modules_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::uint32 HMIStatus::expected_modules() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.expected_modules)
+  return _internal_expected_modules();
+}
+inline void HMIStatus::_internal_set_expected_modules(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _has_bits_[0] |= 0x00040000u;
+  expected_modules_ = value;
+}
+inline void HMIStatus::set_expected_modules(::PROTOBUF_NAMESPACE_ID::uint32 value) {
+  _internal_set_expected_modules(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.expected_modules)
+}
+
+// map<string, bool> modules_lock = 31;
+inline int HMIStatus::_internal_modules_lock_size() const {
+  return modules_lock_.size();
+}
+inline int HMIStatus::modules_lock_size() const {
+  return _internal_modules_lock_size();
+}
+inline void HMIStatus::clear_modules_lock() {
+  modules_lock_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, bool >&
+HMIStatus::_internal_modules_lock() const {
+  return modules_lock_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, bool >&
+HMIStatus::modules_lock() const {
+  // @@protoc_insertion_point(field_map:apollo.dreamview.HMIStatus.modules_lock)
+  return _internal_modules_lock();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, bool >*
+HMIStatus::_internal_mutable_modules_lock() {
+  return modules_lock_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, bool >*
+HMIStatus::mutable_modules_lock() {
+  // @@protoc_insertion_point(field_mutable_map:apollo.dreamview.HMIStatus.modules_lock)
+  return _internal_mutable_modules_lock();
+}
+
+// optional bool backend_shutdown = 32 [default = false];
+inline bool HMIStatus::_internal_has_backend_shutdown() const {
+  bool value = (_has_bits_[0] & 0x00080000u) != 0;
+  return value;
+}
+inline bool HMIStatus::has_backend_shutdown() const {
+  return _internal_has_backend_shutdown();
+}
+inline void HMIStatus::clear_backend_shutdown() {
+  backend_shutdown_ = false;
+  _has_bits_[0] &= ~0x00080000u;
+}
+inline bool HMIStatus::_internal_backend_shutdown() const {
+  return backend_shutdown_;
+}
+inline bool HMIStatus::backend_shutdown() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.backend_shutdown)
+  return _internal_backend_shutdown();
+}
+inline void HMIStatus::_internal_set_backend_shutdown(bool value) {
+  _has_bits_[0] |= 0x00080000u;
+  backend_shutdown_ = value;
+}
+inline void HMIStatus::set_backend_shutdown(bool value) {
+  _internal_set_backend_shutdown(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.backend_shutdown)
+}
+
+// repeated string rtk_records = 33;
+inline int HMIStatus::_internal_rtk_records_size() const {
+  return rtk_records_.size();
+}
+inline int HMIStatus::rtk_records_size() const {
+  return _internal_rtk_records_size();
+}
+inline void HMIStatus::clear_rtk_records() {
+  rtk_records_.Clear();
+}
+inline std::string* HMIStatus::add_rtk_records() {
+  // @@protoc_insertion_point(field_add_mutable:apollo.dreamview.HMIStatus.rtk_records)
+  return _internal_add_rtk_records();
+}
+inline const std::string& HMIStatus::_internal_rtk_records(int index) const {
+  return rtk_records_.Get(index);
+}
+inline const std::string& HMIStatus::rtk_records(int index) const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.rtk_records)
+  return _internal_rtk_records(index);
+}
+inline std::string* HMIStatus::mutable_rtk_records(int index) {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.HMIStatus.rtk_records)
+  return rtk_records_.Mutable(index);
+}
+inline void HMIStatus::set_rtk_records(int index, const std::string& value) {
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.rtk_records)
+  rtk_records_.Mutable(index)->assign(value);
+}
+inline void HMIStatus::set_rtk_records(int index, std::string&& value) {
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.rtk_records)
+  rtk_records_.Mutable(index)->assign(std::move(value));
+}
+inline void HMIStatus::set_rtk_records(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  rtk_records_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.HMIStatus.rtk_records)
+}
+inline void HMIStatus::set_rtk_records(int index, const char* value, size_t size) {
+  rtk_records_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.HMIStatus.rtk_records)
+}
+inline std::string* HMIStatus::_internal_add_rtk_records() {
+  return rtk_records_.Add();
+}
+inline void HMIStatus::add_rtk_records(const std::string& value) {
+  rtk_records_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:apollo.dreamview.HMIStatus.rtk_records)
+}
+inline void HMIStatus::add_rtk_records(std::string&& value) {
+  rtk_records_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:apollo.dreamview.HMIStatus.rtk_records)
+}
+inline void HMIStatus::add_rtk_records(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  rtk_records_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:apollo.dreamview.HMIStatus.rtk_records)
+}
+inline void HMIStatus::add_rtk_records(const char* value, size_t size) {
+  rtk_records_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:apollo.dreamview.HMIStatus.rtk_records)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+HMIStatus::rtk_records() const {
+  // @@protoc_insertion_point(field_list:apollo.dreamview.HMIStatus.rtk_records)
+  return rtk_records_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+HMIStatus::mutable_rtk_records() {
+  // @@protoc_insertion_point(field_mutable_list:apollo.dreamview.HMIStatus.rtk_records)
+  return &rtk_records_;
+}
+
+// optional string current_rtk_record_id = 34 [default = ""];
+inline bool HMIStatus::_internal_has_current_rtk_record_id() const {
+  bool value = (_has_bits_[0] & 0x00001000u) != 0;
+  return value;
+}
+inline bool HMIStatus::has_current_rtk_record_id() const {
+  return _internal_has_current_rtk_record_id();
+}
+inline void HMIStatus::clear_current_rtk_record_id() {
+  current_rtk_record_id_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00001000u;
+}
+inline const std::string& HMIStatus::current_rtk_record_id() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIStatus.current_rtk_record_id)
+  return _internal_current_rtk_record_id();
+}
+inline void HMIStatus::set_current_rtk_record_id(const std::string& value) {
+  _internal_set_current_rtk_record_id(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIStatus.current_rtk_record_id)
+}
+inline std::string* HMIStatus::mutable_current_rtk_record_id() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.HMIStatus.current_rtk_record_id)
+  return _internal_mutable_current_rtk_record_id();
+}
+inline const std::string& HMIStatus::_internal_current_rtk_record_id() const {
+  return current_rtk_record_id_.Get();
+}
+inline void HMIStatus::_internal_set_current_rtk_record_id(const std::string& value) {
+  _has_bits_[0] |= 0x00001000u;
+  current_rtk_record_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void HMIStatus::set_current_rtk_record_id(std::string&& value) {
+  _has_bits_[0] |= 0x00001000u;
+  current_rtk_record_id_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.HMIStatus.current_rtk_record_id)
+}
+inline void HMIStatus::set_current_rtk_record_id(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00001000u;
+  current_rtk_record_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.HMIStatus.current_rtk_record_id)
+}
+inline void HMIStatus::set_current_rtk_record_id(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00001000u;
+  current_rtk_record_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.HMIStatus.current_rtk_record_id)
+}
+inline std::string* HMIStatus::_internal_mutable_current_rtk_record_id() {
+  _has_bits_[0] |= 0x00001000u;
+  return current_rtk_record_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* HMIStatus::release_current_rtk_record_id() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.HMIStatus.current_rtk_record_id)
+  if (!_internal_has_current_rtk_record_id()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00001000u;
+  return current_rtk_record_id_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void HMIStatus::set_allocated_current_rtk_record_id(std::string* current_rtk_record_id) {
+  if (current_rtk_record_id != nullptr) {
+    _has_bits_[0] |= 0x00001000u;
+  } else {
+    _has_bits_[0] &= ~0x00001000u;
+  }
+  current_rtk_record_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), current_rtk_record_id,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.HMIStatus.current_rtk_record_id)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -1423,6 +4799,26 @@ HMIStatus::mutable_other_components() {
 
 }  // namespace dreamview
 }  // namespace apollo
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::apollo::dreamview::PlayRecordStatus> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::apollo::dreamview::PlayRecordStatus>() {
+  return ::apollo::dreamview::PlayRecordStatus_descriptor();
+}
+template <> struct is_proto_enum< ::apollo::dreamview::HMIModeOperation> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::apollo::dreamview::HMIModeOperation>() {
+  return ::apollo::dreamview::HMIModeOperation_descriptor();
+}
+template <> struct is_proto_enum< ::apollo::dreamview::LoadRecordStatus> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::apollo::dreamview::LoadRecordStatus>() {
+  return ::apollo::dreamview::LoadRecordStatus_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

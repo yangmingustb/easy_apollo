@@ -18,6 +18,7 @@ extern PROTOBUF_INTERNAL_EXPORT_modules_2fcommon_2fproto_2fheader_2eproto ::PROT
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Component_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ComponentStatus_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_SystemStatus_ComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_SystemStatus_GlobalComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_SystemStatus_HmiModulesEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_SystemStatus_OtherComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto;
 namespace apollo {
@@ -42,6 +43,10 @@ class SystemStatus_OtherComponentsEntry_DoNotUseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SystemStatus_OtherComponentsEntry_DoNotUse> _instance;
 } _SystemStatus_OtherComponentsEntry_DoNotUse_default_instance_;
+class SystemStatus_GlobalComponentsEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SystemStatus_GlobalComponentsEntry_DoNotUse> _instance;
+} _SystemStatus_GlobalComponentsEntry_DoNotUse_default_instance_;
 class SystemStatusDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<SystemStatus> _instance;
@@ -85,12 +90,13 @@ static void InitDefaultsscc_info_SystemStatus_modules_2fmonitor_2fproto_2fsystem
   }
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<4> scc_info_SystemStatus_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 4, 0, InitDefaultsscc_info_SystemStatus_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto}, {
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<5> scc_info_SystemStatus_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 5, 0, InitDefaultsscc_info_SystemStatus_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto}, {
       &scc_info_Header_modules_2fcommon_2fproto_2fheader_2eproto.base,
       &scc_info_SystemStatus_HmiModulesEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,
       &scc_info_SystemStatus_ComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,
-      &scc_info_SystemStatus_OtherComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,}};
+      &scc_info_SystemStatus_OtherComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,
+      &scc_info_SystemStatus_GlobalComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,}};
 
 static void InitDefaultsscc_info_SystemStatus_ComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -103,6 +109,19 @@ static void InitDefaultsscc_info_SystemStatus_ComponentsEntry_DoNotUse_modules_2
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_SystemStatus_ComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_SystemStatus_ComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto}, {
+      &scc_info_Component_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,}};
+
+static void InitDefaultsscc_info_SystemStatus_GlobalComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::apollo::monitor::_SystemStatus_GlobalComponentsEntry_DoNotUse_default_instance_;
+    new (ptr) ::apollo::monitor::SystemStatus_GlobalComponentsEntry_DoNotUse();
+  }
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_SystemStatus_GlobalComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_SystemStatus_GlobalComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto}, {
       &scc_info_Component_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,}};
 
 static void InitDefaultsscc_info_SystemStatus_HmiModulesEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto() {
@@ -131,7 +150,7 @@ static void InitDefaultsscc_info_SystemStatus_OtherComponentsEntry_DoNotUse_modu
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_SystemStatus_OtherComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto}, {
       &scc_info_ComponentStatus_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto[6];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto[7];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto = nullptr;
 
@@ -189,6 +208,15 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_modules_2fmonitor_2fproto_2fsy
   PROTOBUF_FIELD_OFFSET(::apollo::monitor::SystemStatus_OtherComponentsEntry_DoNotUse, value_),
   0,
   1,
+  PROTOBUF_FIELD_OFFSET(::apollo::monitor::SystemStatus_GlobalComponentsEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::apollo::monitor::SystemStatus_GlobalComponentsEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::apollo::monitor::SystemStatus_GlobalComponentsEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::apollo::monitor::SystemStatus_GlobalComponentsEntry_DoNotUse, value_),
+  0,
+  1,
   PROTOBUF_FIELD_OFFSET(::apollo::monitor::SystemStatus, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::apollo::monitor::SystemStatus, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -202,6 +230,8 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_modules_2fmonitor_2fproto_2fsy
   PROTOBUF_FIELD_OFFSET(::apollo::monitor::SystemStatus, require_emergency_stop_),
   PROTOBUF_FIELD_OFFSET(::apollo::monitor::SystemStatus, is_realtime_in_simulation_),
   PROTOBUF_FIELD_OFFSET(::apollo::monitor::SystemStatus, other_components_),
+  PROTOBUF_FIELD_OFFSET(::apollo::monitor::SystemStatus, global_components_),
+  PROTOBUF_FIELD_OFFSET(::apollo::monitor::SystemStatus, detect_immediately_),
   1,
   ~0u,
   ~0u,
@@ -210,6 +240,8 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_modules_2fmonitor_2fproto_2fsy
   3,
   4,
   ~0u,
+  ~0u,
+  5,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 7, sizeof(::apollo::monitor::ComponentStatus)},
@@ -217,7 +249,8 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 26, 33, sizeof(::apollo::monitor::SystemStatus_HmiModulesEntry_DoNotUse)},
   { 35, 42, sizeof(::apollo::monitor::SystemStatus_ComponentsEntry_DoNotUse)},
   { 44, 51, sizeof(::apollo::monitor::SystemStatus_OtherComponentsEntry_DoNotUse)},
-  { 53, 66, sizeof(::apollo::monitor::SystemStatus)},
+  { 53, 60, sizeof(::apollo::monitor::SystemStatus_GlobalComponentsEntry_DoNotUse)},
+  { 62, 77, sizeof(::apollo::monitor::SystemStatus)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -226,6 +259,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::monitor::_SystemStatus_HmiModulesEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::monitor::_SystemStatus_ComponentsEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::monitor::_SystemStatus_OtherComponentsEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::monitor::_SystemStatus_GlobalComponentsEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::monitor::_SystemStatus_default_instance_),
 };
 
@@ -245,7 +279,7 @@ const char descriptor_table_protodef_modules_2fmonitor_2fproto_2fsystem_5fstatus
   "ComponentStatus\0225\n\014other_status\030\005 \001(\0132\037."
   "apollo.monitor.ComponentStatus\0226\n\rmodule"
   "_status\030\006 \001(\0132\037.apollo.monitor.Component"
-  "Status\"\212\005\n\014SystemStatus\022%\n\006header\030\001 \001(\0132"
+  "Status\"\320\006\n\014SystemStatus\022%\n\006header\030\001 \001(\0132"
   "\025.apollo.common.Header\022A\n\013hmi_modules\030\007 "
   "\003(\0132,.apollo.monitor.SystemStatus.HmiMod"
   "ulesEntry\022@\n\ncomponents\030\010 \003(\0132,.apollo.m"
@@ -254,32 +288,38 @@ const char descriptor_table_protodef_modules_2fmonitor_2fproto_2fsystem_5fstatus
   "r_time\030\005 \001(\001\022\036\n\026require_emergency_stop\030\006"
   " \001(\010\022!\n\031is_realtime_in_simulation\030\t \001(\010\022"
   "K\n\020other_components\030\n \003(\01321.apollo.monit"
-  "or.SystemStatus.OtherComponentsEntry\032R\n\017"
-  "HmiModulesEntry\022\013\n\003key\030\001 \001(\t\022.\n\005value\030\002 "
-  "\001(\0132\037.apollo.monitor.ComponentStatus:\0028\001"
-  "\032L\n\017ComponentsEntry\022\013\n\003key\030\001 \001(\t\022(\n\005valu"
-  "e\030\002 \001(\0132\031.apollo.monitor.Component:\0028\001\032W"
-  "\n\024OtherComponentsEntry\022\013\n\003key\030\001 \001(\t\022.\n\005v"
-  "alue\030\002 \001(\0132\037.apollo.monitor.ComponentSta"
-  "tus:\0028\001J\004\010\002\020\003J\004\010\003\020\004"
+  "or.SystemStatus.OtherComponentsEntry\022M\n\021"
+  "global_components\030\013 \003(\01322.apollo.monitor"
+  ".SystemStatus.GlobalComponentsEntry\022!\n\022d"
+  "etect_immediately\030\014 \001(\010:\005false\032R\n\017HmiMod"
+  "ulesEntry\022\013\n\003key\030\001 \001(\t\022.\n\005value\030\002 \001(\0132\037."
+  "apollo.monitor.ComponentStatus:\0028\001\032L\n\017Co"
+  "mponentsEntry\022\013\n\003key\030\001 \001(\t\022(\n\005value\030\002 \001("
+  "\0132\031.apollo.monitor.Component:\0028\001\032W\n\024Othe"
+  "rComponentsEntry\022\013\n\003key\030\001 \001(\t\022.\n\005value\030\002"
+  " \001(\0132\037.apollo.monitor.ComponentStatus:\0028"
+  "\001\032R\n\025GlobalComponentsEntry\022\013\n\003key\030\001 \001(\t\022"
+  "(\n\005value\030\002 \001(\0132\031.apollo.monitor.Componen"
+  "t:\0028\001J\004\010\002\020\003J\004\010\003\020\004"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto_deps[1] = {
   &::descriptor_table_modules_2fcommon_2fproto_2fheader_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto_sccs[6] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto_sccs[7] = {
   &scc_info_Component_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,
   &scc_info_ComponentStatus_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,
   &scc_info_SystemStatus_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,
   &scc_info_SystemStatus_ComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,
+  &scc_info_SystemStatus_GlobalComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,
   &scc_info_SystemStatus_HmiModulesEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,
   &scc_info_SystemStatus_OtherComponentsEntry_DoNotUse_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto = {
-  false, false, descriptor_table_protodef_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto, "modules/monitor/proto/system_status.proto", 1259,
-  &descriptor_table_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto_once, descriptor_table_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto_sccs, descriptor_table_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto_deps, 6, 1,
+  false, false, descriptor_table_protodef_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto, "modules/monitor/proto/system_status.proto", 1457,
+  &descriptor_table_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto_once, descriptor_table_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto_sccs, descriptor_table_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto_deps, 7, 1,
   schemas, file_default_instances, TableStruct_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto::offsets,
-  file_level_metadata_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto, 6, file_level_enum_descriptors_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto, file_level_service_descriptors_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto,
+  file_level_metadata_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto, 7, file_level_enum_descriptors_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto, file_level_service_descriptors_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -1082,6 +1122,23 @@ void SystemStatus_OtherComponentsEntry_DoNotUse::MergeFrom(
 
 // ===================================================================
 
+SystemStatus_GlobalComponentsEntry_DoNotUse::SystemStatus_GlobalComponentsEntry_DoNotUse() {}
+SystemStatus_GlobalComponentsEntry_DoNotUse::SystemStatus_GlobalComponentsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void SystemStatus_GlobalComponentsEntry_DoNotUse::MergeFrom(const SystemStatus_GlobalComponentsEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata SystemStatus_GlobalComponentsEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+void SystemStatus_GlobalComponentsEntry_DoNotUse::MergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
+}
+
+
+// ===================================================================
+
 class SystemStatus::_Internal {
  public:
   using HasBits = decltype(std::declval<SystemStatus>()._has_bits_);
@@ -1101,6 +1158,9 @@ class SystemStatus::_Internal {
   static void set_has_is_realtime_in_simulation(HasBits* has_bits) {
     (*has_bits)[0] |= 16u;
   }
+  static void set_has_detect_immediately(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
 };
 
 const ::apollo::common::Header&
@@ -1115,7 +1175,8 @@ SystemStatus::SystemStatus(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena),
   hmi_modules_(arena),
   components_(arena),
-  other_components_(arena) {
+  other_components_(arena),
+  global_components_(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:apollo.monitor.SystemStatus)
@@ -1127,6 +1188,7 @@ SystemStatus::SystemStatus(const SystemStatus& from)
   hmi_modules_.MergeFrom(from.hmi_modules_);
   components_.MergeFrom(from.components_);
   other_components_.MergeFrom(from.other_components_);
+  global_components_.MergeFrom(from.global_components_);
   passenger_msg_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_passenger_msg()) {
     passenger_msg_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_passenger_msg(), 
@@ -1138,8 +1200,8 @@ SystemStatus::SystemStatus(const SystemStatus& from)
     header_ = nullptr;
   }
   ::memcpy(&safety_mode_trigger_time_, &from.safety_mode_trigger_time_,
-    static_cast<size_t>(reinterpret_cast<char*>(&is_realtime_in_simulation_) -
-    reinterpret_cast<char*>(&safety_mode_trigger_time_)) + sizeof(is_realtime_in_simulation_));
+    static_cast<size_t>(reinterpret_cast<char*>(&detect_immediately_) -
+    reinterpret_cast<char*>(&safety_mode_trigger_time_)) + sizeof(detect_immediately_));
   // @@protoc_insertion_point(copy_constructor:apollo.monitor.SystemStatus)
 }
 
@@ -1148,8 +1210,8 @@ void SystemStatus::SharedCtor() {
   passenger_msg_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
       reinterpret_cast<char*>(&header_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&is_realtime_in_simulation_) -
-      reinterpret_cast<char*>(&header_)) + sizeof(is_realtime_in_simulation_));
+      0, static_cast<size_t>(reinterpret_cast<char*>(&detect_immediately_) -
+      reinterpret_cast<char*>(&header_)) + sizeof(detect_immediately_));
 }
 
 SystemStatus::~SystemStatus() {
@@ -1188,6 +1250,7 @@ void SystemStatus::Clear() {
   hmi_modules_.Clear();
   components_.Clear();
   other_components_.Clear();
+  global_components_.Clear();
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
@@ -1198,10 +1261,10 @@ void SystemStatus::Clear() {
       header_->Clear();
     }
   }
-  if (cached_has_bits & 0x0000001cu) {
+  if (cached_has_bits & 0x0000003cu) {
     ::memset(&safety_mode_trigger_time_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&is_realtime_in_simulation_) -
-        reinterpret_cast<char*>(&safety_mode_trigger_time_)) + sizeof(is_realtime_in_simulation_));
+        reinterpret_cast<char*>(&detect_immediately_) -
+        reinterpret_cast<char*>(&safety_mode_trigger_time_)) + sizeof(detect_immediately_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -1291,6 +1354,26 @@ const char* SystemStatus::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<82>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // map<string, .apollo.monitor.Component> global_components = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 90)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&global_components_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<90>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // optional bool detect_immediately = 12 [default = false];
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 96)) {
+          _Internal::set_has_detect_immediately(&has_bits);
+          detect_immediately_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
         } else goto handle_unusual;
         continue;
       default: {
@@ -1482,6 +1565,53 @@ failure:
     }
   }
 
+  // map<string, .apollo.monitor.Component> global_components = 11;
+  if (!this->_internal_global_components().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+          "apollo.monitor.SystemStatus.GlobalComponentsEntry.key");
+      }
+    };
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_global_components().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_global_components().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >::const_iterator
+          it = this->_internal_global_components().begin();
+          it != this->_internal_global_components().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = SystemStatus_GlobalComponentsEntry_DoNotUse::Funcs::InternalSerialize(11, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >::const_iterator
+          it = this->_internal_global_components().begin();
+          it != this->_internal_global_components().end(); ++it) {
+        target = SystemStatus_GlobalComponentsEntry_DoNotUse::Funcs::InternalSerialize(11, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
+      }
+    }
+  }
+
+  // optional bool detect_immediately = 12 [default = false];
+  if (cached_has_bits & 0x00000020u) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(12, this->_internal_detect_immediately(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1525,8 +1655,17 @@ size_t SystemStatus::ByteSizeLong() const {
     total_size += SystemStatus_OtherComponentsEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
+  // map<string, .apollo.monitor.Component> global_components = 11;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_global_components_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >::const_iterator
+      it = this->_internal_global_components().begin();
+      it != this->_internal_global_components().end(); ++it) {
+    total_size += SystemStatus_GlobalComponentsEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     // optional string passenger_msg = 4;
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
@@ -1553,6 +1692,11 @@ size_t SystemStatus::ByteSizeLong() const {
 
     // optional bool is_realtime_in_simulation = 9;
     if (cached_has_bits & 0x00000010u) {
+      total_size += 1 + 1;
+    }
+
+    // optional bool detect_immediately = 12 [default = false];
+    if (cached_has_bits & 0x00000020u) {
       total_size += 1 + 1;
     }
 
@@ -1591,8 +1735,9 @@ void SystemStatus::MergeFrom(const SystemStatus& from) {
   hmi_modules_.MergeFrom(from.hmi_modules_);
   components_.MergeFrom(from.components_);
   other_components_.MergeFrom(from.other_components_);
+  global_components_.MergeFrom(from.global_components_);
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
       _internal_set_passenger_msg(from._internal_passenger_msg());
     }
@@ -1607,6 +1752,9 @@ void SystemStatus::MergeFrom(const SystemStatus& from) {
     }
     if (cached_has_bits & 0x00000010u) {
       is_realtime_in_simulation_ = from.is_realtime_in_simulation_;
+    }
+    if (cached_has_bits & 0x00000020u) {
+      detect_immediately_ = from.detect_immediately_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -1637,10 +1785,11 @@ void SystemStatus::InternalSwap(SystemStatus* other) {
   hmi_modules_.Swap(&other->hmi_modules_);
   components_.Swap(&other->components_);
   other_components_.Swap(&other->other_components_);
+  global_components_.Swap(&other->global_components_);
   passenger_msg_.Swap(&other->passenger_msg_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SystemStatus, is_realtime_in_simulation_)
-      + sizeof(SystemStatus::is_realtime_in_simulation_)
+      PROTOBUF_FIELD_OFFSET(SystemStatus, detect_immediately_)
+      + sizeof(SystemStatus::detect_immediately_)
       - PROTOBUF_FIELD_OFFSET(SystemStatus, header_)>(
           reinterpret_cast<char*>(&header_),
           reinterpret_cast<char*>(&other->header_));
@@ -1669,6 +1818,9 @@ template<> PROTOBUF_NOINLINE ::apollo::monitor::SystemStatus_ComponentsEntry_DoN
 }
 template<> PROTOBUF_NOINLINE ::apollo::monitor::SystemStatus_OtherComponentsEntry_DoNotUse* Arena::CreateMaybeMessage< ::apollo::monitor::SystemStatus_OtherComponentsEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::apollo::monitor::SystemStatus_OtherComponentsEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::apollo::monitor::SystemStatus_GlobalComponentsEntry_DoNotUse* Arena::CreateMaybeMessage< ::apollo::monitor::SystemStatus_GlobalComponentsEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::apollo::monitor::SystemStatus_GlobalComponentsEntry_DoNotUse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::apollo::monitor::SystemStatus* Arena::CreateMaybeMessage< ::apollo::monitor::SystemStatus >(Arena* arena) {
   return Arena::CreateMessageInternal< ::apollo::monitor::SystemStatus >(arena);

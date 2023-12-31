@@ -47,6 +47,8 @@ public:
     TaskPtr Front();
     void PopFront();
 
+    void Clear();
+
 private:
     TaskMap tasks_;
     mutable std::mutex mutex_;

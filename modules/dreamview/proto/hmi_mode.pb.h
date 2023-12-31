@@ -34,6 +34,7 @@
 #include <google/protobuf/map_entry.h>
 #include <google/protobuf/map_field_inl.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "modules/dreamview/proto/hmi_status.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto
@@ -49,7 +50,7 @@ struct TableStruct_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[16]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[17]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -70,6 +71,9 @@ extern HMIModeDefaultTypeInternal _HMIMode_default_instance_;
 class HMIMode_CyberModulesEntry_DoNotUse;
 class HMIMode_CyberModulesEntry_DoNotUseDefaultTypeInternal;
 extern HMIMode_CyberModulesEntry_DoNotUseDefaultTypeInternal _HMIMode_CyberModulesEntry_DoNotUse_default_instance_;
+class HMIMode_GlobalComponentsEntry_DoNotUse;
+class HMIMode_GlobalComponentsEntry_DoNotUseDefaultTypeInternal;
+extern HMIMode_GlobalComponentsEntry_DoNotUseDefaultTypeInternal _HMIMode_GlobalComponentsEntry_DoNotUse_default_instance_;
 class HMIMode_ModulesEntry_DoNotUse;
 class HMIMode_ModulesEntry_DoNotUseDefaultTypeInternal;
 extern HMIMode_ModulesEntry_DoNotUseDefaultTypeInternal _HMIMode_ModulesEntry_DoNotUse_default_instance_;
@@ -113,6 +117,7 @@ template<> ::apollo::dreamview::ChannelMonitorConfig* Arena::CreateMaybeMessage<
 template<> ::apollo::dreamview::CyberModule* Arena::CreateMaybeMessage<::apollo::dreamview::CyberModule>(Arena*);
 template<> ::apollo::dreamview::HMIMode* Arena::CreateMaybeMessage<::apollo::dreamview::HMIMode>(Arena*);
 template<> ::apollo::dreamview::HMIMode_CyberModulesEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::dreamview::HMIMode_CyberModulesEntry_DoNotUse>(Arena*);
+template<> ::apollo::dreamview::HMIMode_GlobalComponentsEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::dreamview::HMIMode_GlobalComponentsEntry_DoNotUse>(Arena*);
 template<> ::apollo::dreamview::HMIMode_ModulesEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::dreamview::HMIMode_ModulesEntry_DoNotUse>(Arena*);
 template<> ::apollo::dreamview::HMIMode_MonitoredComponentsEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::dreamview::HMIMode_MonitoredComponentsEntry_DoNotUse>(Arena*);
 template<> ::apollo::dreamview::HMIMode_OtherComponentsEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::dreamview::HMIMode_OtherComponentsEntry_DoNotUse>(Arena*);
@@ -2410,6 +2415,42 @@ public:
 
 // -------------------------------------------------------------------
 
+class HMIMode_GlobalComponentsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<HMIMode_GlobalComponentsEntry_DoNotUse, 
+    std::string, ::apollo::dreamview::MonitoredComponent,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<HMIMode_GlobalComponentsEntry_DoNotUse, 
+    std::string, ::apollo::dreamview::MonitoredComponent,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> SuperType;
+  HMIMode_GlobalComponentsEntry_DoNotUse();
+  explicit HMIMode_GlobalComponentsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const HMIMode_GlobalComponentsEntry_DoNotUse& other);
+  static const HMIMode_GlobalComponentsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const HMIMode_GlobalComponentsEntry_DoNotUse*>(&_HMIMode_GlobalComponentsEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+#ifndef NDEBUG
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+       s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "apollo.dreamview.HMIMode.GlobalComponentsEntry.key");
+#else
+    (void) s;
+#endif
+    return true;
+ }
+  static bool ValidateValue(void*) { return true; }
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto);
+    return ::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.file_level_metadata[15];
+  }
+
+  public:
+};
+
+// -------------------------------------------------------------------
+
 class HMIMode PROTOBUF_FINAL :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:apollo.dreamview.HMIMode) */ {
  public:
@@ -2458,7 +2499,7 @@ class HMIMode PROTOBUF_FINAL :
                &_HMIMode_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   friend void swap(HMIMode& a, HMIMode& b) {
     a.Swap(&b);
@@ -2534,6 +2575,10 @@ class HMIMode PROTOBUF_FINAL :
     kModulesFieldNumber = 2,
     kMonitoredComponentsFieldNumber = 3,
     kOtherComponentsFieldNumber = 4,
+    kOperationsFieldNumber = 5,
+    kGlobalComponentsFieldNumber = 8,
+    kLayoutFieldNumber = 7,
+    kDefaultOperationFieldNumber = 6,
   };
   // map<string, .apollo.dreamview.CyberModule> cyber_modules = 1;
   int cyber_modules_size() const;
@@ -2603,6 +2648,73 @@ class HMIMode PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::ProcessMonitorConfig >*
       mutable_other_components();
 
+  // repeated .apollo.dreamview.HMIModeOperation operations = 5;
+  int operations_size() const;
+  private:
+  int _internal_operations_size() const;
+  public:
+  void clear_operations();
+  private:
+  ::apollo::dreamview::HMIModeOperation _internal_operations(int index) const;
+  void _internal_add_operations(::apollo::dreamview::HMIModeOperation value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>* _internal_mutable_operations();
+  public:
+  ::apollo::dreamview::HMIModeOperation operations(int index) const;
+  void set_operations(int index, ::apollo::dreamview::HMIModeOperation value);
+  void add_operations(::apollo::dreamview::HMIModeOperation value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>& operations() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>* mutable_operations();
+
+  // map<string, .apollo.dreamview.MonitoredComponent> global_components = 8;
+  int global_components_size() const;
+  private:
+  int _internal_global_components_size() const;
+  public:
+  void clear_global_components();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::MonitoredComponent >&
+      _internal_global_components() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::MonitoredComponent >*
+      _internal_mutable_global_components();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::MonitoredComponent >&
+      global_components() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::MonitoredComponent >*
+      mutable_global_components();
+
+  // optional string layout = 7;
+  bool has_layout() const;
+  private:
+  bool _internal_has_layout() const;
+  public:
+  void clear_layout();
+  const std::string& layout() const;
+  void set_layout(const std::string& value);
+  void set_layout(std::string&& value);
+  void set_layout(const char* value);
+  void set_layout(const char* value, size_t size);
+  std::string* mutable_layout();
+  std::string* release_layout();
+  void set_allocated_layout(std::string* layout);
+  private:
+  const std::string& _internal_layout() const;
+  void _internal_set_layout(const std::string& value);
+  std::string* _internal_mutable_layout();
+  public:
+
+  // optional .apollo.dreamview.HMIModeOperation default_operation = 6;
+  bool has_default_operation() const;
+  private:
+  bool _internal_has_default_operation() const;
+  public:
+  void clear_default_operation();
+  ::apollo::dreamview::HMIModeOperation default_operation() const;
+  void set_default_operation(::apollo::dreamview::HMIModeOperation value);
+  private:
+  ::apollo::dreamview::HMIModeOperation _internal_default_operation() const;
+  void _internal_set_default_operation(::apollo::dreamview::HMIModeOperation value);
+  public:
+
   // @@protoc_insertion_point(class_scope:apollo.dreamview.HMIMode)
  private:
   class _Internal;
@@ -2610,6 +2722,8 @@ class HMIMode PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::MapField<
       HMIMode_CyberModulesEntry_DoNotUse,
       std::string, ::apollo::dreamview::CyberModule,
@@ -2630,7 +2744,14 @@ class HMIMode PROTOBUF_FINAL :
       std::string, ::apollo::dreamview::ProcessMonitorConfig,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> other_components_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int> operations_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      HMIMode_GlobalComponentsEntry_DoNotUse,
+      std::string, ::apollo::dreamview::MonitoredComponent,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> global_components_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr layout_;
+  int default_operation_;
   friend struct ::TableStruct_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto;
 };
 // ===================================================================
@@ -4537,6 +4658,8 @@ inline void CyberModule::set_allocated_process_group(std::string* process_group)
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // HMIMode
 
 // map<string, .apollo.dreamview.CyberModule> cyber_modules = 1;
@@ -4655,9 +4778,187 @@ HMIMode::mutable_other_components() {
   return _internal_mutable_other_components();
 }
 
+// repeated .apollo.dreamview.HMIModeOperation operations = 5;
+inline int HMIMode::_internal_operations_size() const {
+  return operations_.size();
+}
+inline int HMIMode::operations_size() const {
+  return _internal_operations_size();
+}
+inline void HMIMode::clear_operations() {
+  operations_.Clear();
+}
+inline ::apollo::dreamview::HMIModeOperation HMIMode::_internal_operations(int index) const {
+  return static_cast< ::apollo::dreamview::HMIModeOperation >(operations_.Get(index));
+}
+inline ::apollo::dreamview::HMIModeOperation HMIMode::operations(int index) const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIMode.operations)
+  return _internal_operations(index);
+}
+inline void HMIMode::set_operations(int index, ::apollo::dreamview::HMIModeOperation value) {
+  assert(::apollo::dreamview::HMIModeOperation_IsValid(value));
+  operations_.Set(index, value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIMode.operations)
+}
+inline void HMIMode::_internal_add_operations(::apollo::dreamview::HMIModeOperation value) {
+  assert(::apollo::dreamview::HMIModeOperation_IsValid(value));
+  operations_.Add(value);
+}
+inline void HMIMode::add_operations(::apollo::dreamview::HMIModeOperation value) {
+  // @@protoc_insertion_point(field_add:apollo.dreamview.HMIMode.operations)
+  _internal_add_operations(value);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>&
+HMIMode::operations() const {
+  // @@protoc_insertion_point(field_list:apollo.dreamview.HMIMode.operations)
+  return operations_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
+HMIMode::_internal_mutable_operations() {
+  return &operations_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
+HMIMode::mutable_operations() {
+  // @@protoc_insertion_point(field_mutable_list:apollo.dreamview.HMIMode.operations)
+  return _internal_mutable_operations();
+}
+
+// optional .apollo.dreamview.HMIModeOperation default_operation = 6;
+inline bool HMIMode::_internal_has_default_operation() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool HMIMode::has_default_operation() const {
+  return _internal_has_default_operation();
+}
+inline void HMIMode::clear_default_operation() {
+  default_operation_ = 0;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline ::apollo::dreamview::HMIModeOperation HMIMode::_internal_default_operation() const {
+  return static_cast< ::apollo::dreamview::HMIModeOperation >(default_operation_);
+}
+inline ::apollo::dreamview::HMIModeOperation HMIMode::default_operation() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIMode.default_operation)
+  return _internal_default_operation();
+}
+inline void HMIMode::_internal_set_default_operation(::apollo::dreamview::HMIModeOperation value) {
+  assert(::apollo::dreamview::HMIModeOperation_IsValid(value));
+  _has_bits_[0] |= 0x00000002u;
+  default_operation_ = value;
+}
+inline void HMIMode::set_default_operation(::apollo::dreamview::HMIModeOperation value) {
+  _internal_set_default_operation(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIMode.default_operation)
+}
+
+// optional string layout = 7;
+inline bool HMIMode::_internal_has_layout() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool HMIMode::has_layout() const {
+  return _internal_has_layout();
+}
+inline void HMIMode::clear_layout() {
+  layout_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& HMIMode::layout() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.HMIMode.layout)
+  return _internal_layout();
+}
+inline void HMIMode::set_layout(const std::string& value) {
+  _internal_set_layout(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.HMIMode.layout)
+}
+inline std::string* HMIMode::mutable_layout() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.HMIMode.layout)
+  return _internal_mutable_layout();
+}
+inline const std::string& HMIMode::_internal_layout() const {
+  return layout_.Get();
+}
+inline void HMIMode::_internal_set_layout(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  layout_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void HMIMode::set_layout(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  layout_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.dreamview.HMIMode.layout)
+}
+inline void HMIMode::set_layout(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  layout_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.dreamview.HMIMode.layout)
+}
+inline void HMIMode::set_layout(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  layout_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.dreamview.HMIMode.layout)
+}
+inline std::string* HMIMode::_internal_mutable_layout() {
+  _has_bits_[0] |= 0x00000001u;
+  return layout_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* HMIMode::release_layout() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.HMIMode.layout)
+  if (!_internal_has_layout()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return layout_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void HMIMode::set_allocated_layout(std::string* layout) {
+  if (layout != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  layout_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), layout,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.HMIMode.layout)
+}
+
+// map<string, .apollo.dreamview.MonitoredComponent> global_components = 8;
+inline int HMIMode::_internal_global_components_size() const {
+  return global_components_.size();
+}
+inline int HMIMode::global_components_size() const {
+  return _internal_global_components_size();
+}
+inline void HMIMode::clear_global_components() {
+  global_components_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::MonitoredComponent >&
+HMIMode::_internal_global_components() const {
+  return global_components_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::MonitoredComponent >&
+HMIMode::global_components() const {
+  // @@protoc_insertion_point(field_map:apollo.dreamview.HMIMode.global_components)
+  return _internal_global_components();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::MonitoredComponent >*
+HMIMode::_internal_mutable_global_components() {
+  return global_components_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::MonitoredComponent >*
+HMIMode::mutable_global_components() {
+  // @@protoc_insertion_point(field_mutable_map:apollo.dreamview.HMIMode.global_components)
+  return _internal_mutable_global_components();
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

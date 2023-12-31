@@ -29,19 +29,25 @@
 
 #include "absl/strings/str_cat.h"
 
-#include "modules/common_msgs/task_manager_msgs/task_manager.pb.h"
+#include "modules/task_manager/proto/task_manager.pb.h"
 #include "modules/common_msgs/external_command_msgs/lane_follow_command.pb.h"
+
 #include "modules/common_msgs/external_command_msgs/valet_parking_command.pb.h"
-#include "modules/common_msgs/external_command_msgs/action_command.pb.h"
+
 #include "modules/dreamview_plus/proto/data_handler.pb.h"
+#include "modules/routing/proto/poi.pb.h"
+#include "modules/common_msgs/external_command_msgs/action_command.pb.h"
+
 
 #include "cyber/common/log.h"
 #include "cyber/cyber.h"
-#include "modules/dreamview/backend/common/handlers/websocket_handler.h"
+
+#include "modules/dreamview/backend/handlers/websocket_handler.h"
 #include "modules/dreamview_plus/backend/hmi/hmi.h"
-#include "modules/dreamview/backend/common/map_service/map_service.h"
-#include "modules/dreamview/backend/common/plugins/plugin_manager.h"
-#include "modules/common_msgs/localization_msgs/localization.pb.h"
+#include "modules/dreamview/backend/map/map_service.h"
+#include "modules/dreamview/backend/plugins/plugin_manager.h"
+
+#include "modules/localization/proto/localization.pb.h"
 #include "modules/dreamview_plus/backend/simulation_world/simulation_world_service.h"
 #include "modules/dreamview_plus/backend/socket_manager/socket_manager.h"
 #include "modules/dreamview_plus/backend/updater/updater_base.h"

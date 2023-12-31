@@ -228,6 +228,54 @@ bool Player::Stop()
     return true;
 }
 
+void Player::HandleNohupThreadStatus() { is_paused_ = !is_paused_; }
+
+bool Player::PreloadPlayRecord(const double& progress_s, bool paused_status)
+{
+    if (!producer_->is_initialized())
+    {
+        return false;
+    }
+    if (is_preloaded_.load())
+    {
+        producer_->Reset(progress_s);
+        is_preloaded_.store(false);
+    }
+    if (progress_s == 0)
+    {
+        // When the progress is 0, it is completely reloaded. At this
+        // time, the is_paused_ of the player should change to the initial
+        // state to avoid being disturbed by the last state.On the contrary,
+        // reset the progress needs to preserve the past state to ensure the
+        // unity of the state before and after.
+        is_paused_.exchange(false);
+    } else {
+    is_paused_.exchange(paused_status);
+  }
+  producer_->FillPlayTaskBuffer();
+  is_preloaded_.store(true);
+  return true;
+}
+
+bool Player::Reset()
+{
+    //   if (is_stopped_.exchange(true)) {
+    //     return false;
+    //   }
+    //   // produer may not be stopped under reset progress
+    //   // reset is_stopped_ to true to ensure logical unity
+    //   producer_->set_stopped();
+    //   producer_->Stop();
+    //   consumer_->Stop();
+    //   // clear task buffer for refill it
+    //   task_buffer_->Clear();
+    //   if (nohup_play_th_ != nullptr && nohup_play_th_->joinable()) {
+    //     nohup_play_th_->join();
+    //     nohup_play_th_ = nullptr;
+    //   }
+    return true;
+}
+
 }  // namespace record
 }  // namespace cyber
 }  // namespace apollo

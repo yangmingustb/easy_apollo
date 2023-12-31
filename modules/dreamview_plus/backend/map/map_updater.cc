@@ -21,7 +21,7 @@
 #include "modules/common/util/json_util.h"
 #include "modules/dreamview_plus/backend/map/map_updater.h"
 
-#include "modules/common_msgs/localization_msgs/localization.pb.h"
+#include "modules/localization/proto/localization.pb.h"
 
 namespace apollo {
 

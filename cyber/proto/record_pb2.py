@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto2',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0crecord.proto\x12\x12\x61pollo.cyber.proto\"\x96\x02\n\x0bSingleIndex\x12-\n\x04type\x18\x01 \x01(\x0e\x32\x1f.apollo.cyber.proto.SectionType\x12\x10\n\x08position\x18\x02 \x01(\x04\x12\x39\n\rchannel_cache\x18\x65 \x01(\x0b\x32 .apollo.cyber.proto.ChannelCacheH\x00\x12\x42\n\x12\x63hunk_header_cache\x18\x66 \x01(\x0b\x32$.apollo.cyber.proto.ChunkHeaderCacheH\x00\x12>\n\x10\x63hunk_body_cache\x18g \x01(\x0b\x32\".apollo.cyber.proto.ChunkBodyCacheH\x00\x42\x07\n\x05\x63\x61\x63he\"b\n\x10\x43hunkHeaderCache\x12\x16\n\x0emessage_number\x18\x01 \x01(\x04\x12\x12\n\nbegin_time\x18\x02 \x01(\x04\x12\x10\n\x08\x65nd_time\x18\x03 \x01(\x04\x12\x10\n\x08raw_size\x18\x04 \x01(\x04\"(\n\x0e\x43hunkBodyCache\x12\x16\n\x0emessage_number\x18\x01 \x01(\x04\"^\n\x0c\x43hannelCache\x12\x16\n\x0emessage_number\x18\x01 \x01(\x04\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x14\n\x0cmessage_type\x18\x03 \x01(\t\x12\x12\n\nproto_desc\x18\x04 \x01(\x0c\"D\n\rSingleMessage\x12\x14\n\x0c\x63hannel_name\x18\x01 \x01(\t\x12\x0c\n\x04time\x18\x02 \x01(\x04\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\x0c\"\x91\x03\n\x06Header\x12\x15\n\rmajor_version\x18\x01 \x01(\r\x12\x15\n\rminor_version\x18\x02 \x01(\r\x12\x32\n\x08\x63ompress\x18\x03 \x01(\x0e\x32 .apollo.cyber.proto.CompressType\x12\x16\n\x0e\x63hunk_interval\x18\x04 \x01(\x04\x12\x18\n\x10segment_interval\x18\x05 \x01(\x04\x12\x19\n\x0eindex_position\x18\x06 \x01(\x04:\x01\x30\x12\x17\n\x0c\x63hunk_number\x18\x07 \x01(\x04:\x01\x30\x12\x19\n\x0e\x63hannel_number\x18\x08 \x01(\x04:\x01\x30\x12\x15\n\nbegin_time\x18\t \x01(\x04:\x01\x30\x12\x13\n\x08\x65nd_time\x18\n \x01(\x04:\x01\x30\x12\x19\n\x0emessage_number\x18\x0b \x01(\x04:\x01\x30\x12\x0f\n\x04size\x18\x0c \x01(\x04:\x01\x30\x12\x1a\n\x0bis_complete\x18\r \x01(\x08:\x05\x66\x61lse\x12\x16\n\x0e\x63hunk_raw_size\x18\x0e \x01(\x04\x12\x18\n\x10segment_raw_size\x18\x0f \x01(\x04\"A\n\x07\x43hannel\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0cmessage_type\x18\x02 \x01(\t\x12\x12\n\nproto_desc\x18\x03 \x01(\x0c\"]\n\x0b\x43hunkHeader\x12\x12\n\nbegin_time\x18\x01 \x01(\x04\x12\x10\n\x08\x65nd_time\x18\x02 \x01(\x04\x12\x16\n\x0emessage_number\x18\x03 \x01(\x04\x12\x10\n\x08raw_size\x18\x04 \x01(\x04\"@\n\tChunkBody\x12\x33\n\x08messages\x18\x01 \x03(\x0b\x32!.apollo.cyber.proto.SingleMessage\"9\n\x05Index\x12\x30\n\x07indexes\x18\x01 \x03(\x0b\x32\x1f.apollo.cyber.proto.SingleIndex\"\x19\n\x08PlayInfo\x12\r\n\x05ratio\x18\x01 \x01(\x03*{\n\x0bSectionType\x12\x12\n\x0eSECTION_HEADER\x10\x00\x12\x18\n\x14SECTION_CHUNK_HEADER\x10\x01\x12\x16\n\x12SECTION_CHUNK_BODY\x10\x02\x12\x11\n\rSECTION_INDEX\x10\x03\x12\x13\n\x0fSECTION_CHANNEL\x10\x04*E\n\x0c\x43ompressType\x12\x11\n\rCOMPRESS_NONE\x10\x00\x12\x10\n\x0c\x43OMPRESS_BZ2\x10\x01\x12\x10\n\x0c\x43OMPRESS_LZ4\x10\x02'
+  serialized_pb=b'\n\x0crecord.proto\x12\x12\x61pollo.cyber.proto\"\x96\x02\n\x0bSingleIndex\x12-\n\x04type\x18\x01 \x01(\x0e\x32\x1f.apollo.cyber.proto.SectionType\x12\x10\n\x08position\x18\x02 \x01(\x04\x12\x39\n\rchannel_cache\x18\x65 \x01(\x0b\x32 .apollo.cyber.proto.ChannelCacheH\x00\x12\x42\n\x12\x63hunk_header_cache\x18\x66 \x01(\x0b\x32$.apollo.cyber.proto.ChunkHeaderCacheH\x00\x12>\n\x10\x63hunk_body_cache\x18g \x01(\x0b\x32\".apollo.cyber.proto.ChunkBodyCacheH\x00\x42\x07\n\x05\x63\x61\x63he\"b\n\x10\x43hunkHeaderCache\x12\x16\n\x0emessage_number\x18\x01 \x01(\x04\x12\x12\n\nbegin_time\x18\x02 \x01(\x04\x12\x10\n\x08\x65nd_time\x18\x03 \x01(\x04\x12\x10\n\x08raw_size\x18\x04 \x01(\x04\"(\n\x0e\x43hunkBodyCache\x12\x16\n\x0emessage_number\x18\x01 \x01(\x04\"^\n\x0c\x43hannelCache\x12\x16\n\x0emessage_number\x18\x01 \x01(\x04\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x14\n\x0cmessage_type\x18\x03 \x01(\t\x12\x12\n\nproto_desc\x18\x04 \x01(\x0c\"D\n\rSingleMessage\x12\x14\n\x0c\x63hannel_name\x18\x01 \x01(\t\x12\x0c\n\x04time\x18\x02 \x01(\x04\x12\x0f\n\x07\x63ontent\x18\x03 \x01(\x0c\"\xf7\x03\n\x06Header\x12\x15\n\rmajor_version\x18\x01 \x01(\r\x12\x15\n\rminor_version\x18\x02 \x01(\r\x12\x32\n\x08\x63ompress\x18\x03 \x01(\x0e\x32 .apollo.cyber.proto.CompressType\x12\x16\n\x0e\x63hunk_interval\x18\x04 \x01(\x04\x12\x18\n\x10segment_interval\x18\x05 \x01(\x04\x12\x19\n\x0eindex_position\x18\x06 \x01(\x04:\x01\x30\x12\x17\n\x0c\x63hunk_number\x18\x07 \x01(\x04:\x01\x30\x12\x19\n\x0e\x63hannel_number\x18\x08 \x01(\x04:\x01\x30\x12\x15\n\nbegin_time\x18\t \x01(\x04:\x01\x30\x12\x13\n\x08\x65nd_time\x18\n \x01(\x04:\x01\x30\x12\x19\n\x0emessage_number\x18\x0b \x01(\x04:\x01\x30\x12\x0f\n\x04size\x18\x0c \x01(\x04:\x01\x30\x12\x1a\n\x0bis_complete\x18\r \x01(\x08:\x05\x66\x61lse\x12\x16\n\x0e\x63hunk_raw_size\x18\x0e \x01(\x04\x12\x18\n\x10segment_raw_size\x18\x0f \x01(\x04\x12-\n\x08map_info\x18\x10 \x01(\x0b\x32\x1b.apollo.cyber.proto.MapInfo\x12\x35\n\x0cvehicle_info\x18\x11 \x01(\x0b\x32\x1f.apollo.cyber.proto.VehicleInfo\"A\n\x07\x43hannel\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0cmessage_type\x18\x02 \x01(\t\x12\x12\n\nproto_desc\x18\x03 \x01(\x0c\"]\n\x0b\x43hunkHeader\x12\x12\n\nbegin_time\x18\x01 \x01(\x04\x12\x10\n\x08\x65nd_time\x18\x02 \x01(\x04\x12\x16\n\x0emessage_number\x18\x03 \x01(\x04\x12\x10\n\x08raw_size\x18\x04 \x01(\x04\"@\n\tChunkBody\x12\x33\n\x08messages\x18\x01 \x03(\x0b\x32!.apollo.cyber.proto.SingleMessage\"9\n\x05Index\x12\x30\n\x07indexes\x18\x01 \x03(\x0b\x32\x1f.apollo.cyber.proto.SingleIndex\"\x19\n\x08PlayInfo\x12\r\n\x05ratio\x18\x01 \x01(\x03\"(\n\x07MapInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07version\x18\x02 \x01(\t\"\x1b\n\x0bVehicleInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\"f\n\nRecordInfo\x12\x15\n\x0brecord_name\x18\x01 \x01(\t:\x00\x12\x14\n\x0ctotal_time_s\x18\x02 \x01(\x01\x12\x16\n\x0b\x63urr_time_s\x18\x03 \x01(\x01:\x01\x30\x12\x13\n\x08progress\x18\x04 \x01(\x01:\x01\x30*{\n\x0bSectionType\x12\x12\n\x0eSECTION_HEADER\x10\x00\x12\x18\n\x14SECTION_CHUNK_HEADER\x10\x01\x12\x16\n\x12SECTION_CHUNK_BODY\x10\x02\x12\x11\n\rSECTION_INDEX\x10\x03\x12\x13\n\x0fSECTION_CHANNEL\x10\x04*E\n\x0c\x43ompressType\x12\x11\n\rCOMPRESS_NONE\x10\x00\x12\x10\n\x0c\x43OMPRESS_BZ2\x10\x01\x12\x10\n\x0c\x43OMPRESS_LZ4\x10\x02'
 )
 
 _SECTIONTYPE = _descriptor.EnumDescriptor(
@@ -58,8 +58,8 @@ _SECTIONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1343,
-  serialized_end=1466,
+  serialized_start=1620,
+  serialized_end=1743,
 )
 _sym_db.RegisterEnumDescriptor(_SECTIONTYPE)
 
@@ -89,8 +89,8 @@ _COMPRESSTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1468,
-  serialized_end=1537,
+  serialized_start=1745,
+  serialized_end=1814,
 )
 _sym_db.RegisterEnumDescriptor(_COMPRESSTYPE)
 
@@ -468,6 +468,20 @@ _HEADER = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='map_info', full_name='apollo.cyber.proto.Header.map_info', index=15,
+      number=16, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='vehicle_info', full_name='apollo.cyber.proto.Header.vehicle_info', index=16,
+      number=17, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -481,7 +495,7 @@ _HEADER = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=626,
-  serialized_end=1027,
+  serialized_end=1129,
 )
 
 
@@ -526,8 +540,8 @@ _CHANNEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1029,
-  serialized_end=1094,
+  serialized_start=1131,
+  serialized_end=1196,
 )
 
 
@@ -579,8 +593,8 @@ _CHUNKHEADER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1096,
-  serialized_end=1189,
+  serialized_start=1198,
+  serialized_end=1291,
 )
 
 
@@ -611,8 +625,8 @@ _CHUNKBODY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1191,
-  serialized_end=1255,
+  serialized_start=1293,
+  serialized_end=1357,
 )
 
 
@@ -643,8 +657,8 @@ _INDEX = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1257,
-  serialized_end=1314,
+  serialized_start=1359,
+  serialized_end=1416,
 )
 
 
@@ -675,8 +689,132 @@ _PLAYINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1316,
-  serialized_end=1341,
+  serialized_start=1418,
+  serialized_end=1443,
+)
+
+
+_MAPINFO = _descriptor.Descriptor(
+  name='MapInfo',
+  full_name='apollo.cyber.proto.MapInfo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='apollo.cyber.proto.MapInfo.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='version', full_name='apollo.cyber.proto.MapInfo.version', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1445,
+  serialized_end=1485,
+)
+
+
+_VEHICLEINFO = _descriptor.Descriptor(
+  name='VehicleInfo',
+  full_name='apollo.cyber.proto.VehicleInfo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='apollo.cyber.proto.VehicleInfo.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1487,
+  serialized_end=1514,
+)
+
+
+_RECORDINFO = _descriptor.Descriptor(
+  name='RecordInfo',
+  full_name='apollo.cyber.proto.RecordInfo',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='record_name', full_name='apollo.cyber.proto.RecordInfo.record_name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=True, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='total_time_s', full_name='apollo.cyber.proto.RecordInfo.total_time_s', index=1,
+      number=2, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='curr_time_s', full_name='apollo.cyber.proto.RecordInfo.curr_time_s', index=2,
+      number=3, type=1, cpp_type=5, label=1,
+      has_default_value=True, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='progress', full_name='apollo.cyber.proto.RecordInfo.progress', index=3,
+      number=4, type=1, cpp_type=5, label=1,
+      has_default_value=True, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1516,
+  serialized_end=1618,
 )
 
 _SINGLEINDEX.fields_by_name['type'].enum_type = _SECTIONTYPE
@@ -693,6 +831,8 @@ _SINGLEINDEX.oneofs_by_name['cache'].fields.append(
   _SINGLEINDEX.fields_by_name['chunk_body_cache'])
 _SINGLEINDEX.fields_by_name['chunk_body_cache'].containing_oneof = _SINGLEINDEX.oneofs_by_name['cache']
 _HEADER.fields_by_name['compress'].enum_type = _COMPRESSTYPE
+_HEADER.fields_by_name['map_info'].message_type = _MAPINFO
+_HEADER.fields_by_name['vehicle_info'].message_type = _VEHICLEINFO
 _CHUNKBODY.fields_by_name['messages'].message_type = _SINGLEMESSAGE
 _INDEX.fields_by_name['indexes'].message_type = _SINGLEINDEX
 DESCRIPTOR.message_types_by_name['SingleIndex'] = _SINGLEINDEX
@@ -706,6 +846,9 @@ DESCRIPTOR.message_types_by_name['ChunkHeader'] = _CHUNKHEADER
 DESCRIPTOR.message_types_by_name['ChunkBody'] = _CHUNKBODY
 DESCRIPTOR.message_types_by_name['Index'] = _INDEX
 DESCRIPTOR.message_types_by_name['PlayInfo'] = _PLAYINFO
+DESCRIPTOR.message_types_by_name['MapInfo'] = _MAPINFO
+DESCRIPTOR.message_types_by_name['VehicleInfo'] = _VEHICLEINFO
+DESCRIPTOR.message_types_by_name['RecordInfo'] = _RECORDINFO
 DESCRIPTOR.enum_types_by_name['SectionType'] = _SECTIONTYPE
 DESCRIPTOR.enum_types_by_name['CompressType'] = _COMPRESSTYPE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -786,6 +929,27 @@ PlayInfo = _reflection.GeneratedProtocolMessageType('PlayInfo', (_message.Messag
   # @@protoc_insertion_point(class_scope:apollo.cyber.proto.PlayInfo)
   })
 _sym_db.RegisterMessage(PlayInfo)
+
+MapInfo = _reflection.GeneratedProtocolMessageType('MapInfo', (_message.Message,), {
+  'DESCRIPTOR' : _MAPINFO,
+  '__module__' : 'record_pb2'
+  # @@protoc_insertion_point(class_scope:apollo.cyber.proto.MapInfo)
+  })
+_sym_db.RegisterMessage(MapInfo)
+
+VehicleInfo = _reflection.GeneratedProtocolMessageType('VehicleInfo', (_message.Message,), {
+  'DESCRIPTOR' : _VEHICLEINFO,
+  '__module__' : 'record_pb2'
+  # @@protoc_insertion_point(class_scope:apollo.cyber.proto.VehicleInfo)
+  })
+_sym_db.RegisterMessage(VehicleInfo)
+
+RecordInfo = _reflection.GeneratedProtocolMessageType('RecordInfo', (_message.Message,), {
+  'DESCRIPTOR' : _RECORDINFO,
+  '__module__' : 'record_pb2'
+  # @@protoc_insertion_point(class_scope:apollo.cyber.proto.RecordInfo)
+  })
+_sym_db.RegisterMessage(RecordInfo)
 
 
 # @@protoc_insertion_point(module_scope)

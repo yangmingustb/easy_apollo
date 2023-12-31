@@ -22,8 +22,8 @@
 #include "modules/common/util/json_util.h"
 #include "modules/common/util/map_util.h"
 #include "modules/dreamview/backend/common/dreamview_gflags.h"
-#include "modules/dreamview/backend/common/fuel_monitor/fuel_monitor_manager.h"
-#include "modules/dreamview/backend/common/sim_control_manager/sim_control_manager.h"
+#include "modules/dreamview/backend/fuel_monitor/fuel_monitor_manager.h"
+#include "modules/dreamview/backend/sim_control_manager/sim_control_manager.h"
 #include "modules/map/hdmap/hdmap_util.h"
 
 namespace apollo {

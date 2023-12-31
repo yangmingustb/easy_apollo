@@ -62,6 +62,9 @@ message RoutingRequest {
   optional apollo.hdmap.ParkingSpace parking_space = 6 [deprecated = true];
   optional ParkingInfo parking_info = 7;
   optional DeadEndInfo dead_end_info = 8;
+
+  // If the start pose is set as the first point of "way_point".
+  optional bool is_start_pose_set = 9 [default = false];
 }
 
 message Measurement {

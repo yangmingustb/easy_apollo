@@ -30,7 +30,9 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "modules/perception/proto/perception_obstacle.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_modules_2fdreamview_2fproto_2fcamera_5fupdate_2eproto
@@ -66,6 +68,39 @@ PROTOBUF_NAMESPACE_CLOSE
 namespace apollo {
 namespace dreamview {
 
+enum CameraUpdate_SubType : int {
+  CameraUpdate_SubType_ST_UNKNOWN = 0,
+  CameraUpdate_SubType_ST_UNKNOWN_MOVABLE = 1,
+  CameraUpdate_SubType_ST_UNKNOWN_UNMOVABLE = 2,
+  CameraUpdate_SubType_ST_CAR = 3,
+  CameraUpdate_SubType_ST_VAN = 4,
+  CameraUpdate_SubType_ST_TRUCK = 5,
+  CameraUpdate_SubType_ST_BUS = 6,
+  CameraUpdate_SubType_ST_CYCLIST = 7,
+  CameraUpdate_SubType_ST_MOTORCYCLIST = 8,
+  CameraUpdate_SubType_ST_TRICYCLIST = 9,
+  CameraUpdate_SubType_ST_PEDESTRIAN = 10,
+  CameraUpdate_SubType_ST_TRAFFICCONE = 11
+};
+bool CameraUpdate_SubType_IsValid(int value);
+constexpr CameraUpdate_SubType CameraUpdate_SubType_SubType_MIN = CameraUpdate_SubType_ST_UNKNOWN;
+constexpr CameraUpdate_SubType CameraUpdate_SubType_SubType_MAX = CameraUpdate_SubType_ST_TRAFFICCONE;
+constexpr int CameraUpdate_SubType_SubType_ARRAYSIZE = CameraUpdate_SubType_SubType_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* CameraUpdate_SubType_descriptor();
+template<typename T>
+inline const std::string& CameraUpdate_SubType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, CameraUpdate_SubType>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function CameraUpdate_SubType_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    CameraUpdate_SubType_descriptor(), enum_t_value);
+}
+inline bool CameraUpdate_SubType_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, CameraUpdate_SubType* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<CameraUpdate_SubType>(
+    CameraUpdate_SubType_descriptor(), name, value);
+}
 // ===================================================================
 
 class CameraUpdate PROTOBUF_FINAL :
@@ -184,13 +219,67 @@ class CameraUpdate PROTOBUF_FINAL :
 
   // nested types ----------------------------------------------------
 
+  typedef CameraUpdate_SubType SubType;
+  static constexpr SubType ST_UNKNOWN =
+    CameraUpdate_SubType_ST_UNKNOWN;
+  static constexpr SubType ST_UNKNOWN_MOVABLE =
+    CameraUpdate_SubType_ST_UNKNOWN_MOVABLE;
+  static constexpr SubType ST_UNKNOWN_UNMOVABLE =
+    CameraUpdate_SubType_ST_UNKNOWN_UNMOVABLE;
+  static constexpr SubType ST_CAR =
+    CameraUpdate_SubType_ST_CAR;
+  static constexpr SubType ST_VAN =
+    CameraUpdate_SubType_ST_VAN;
+  static constexpr SubType ST_TRUCK =
+    CameraUpdate_SubType_ST_TRUCK;
+  static constexpr SubType ST_BUS =
+    CameraUpdate_SubType_ST_BUS;
+  static constexpr SubType ST_CYCLIST =
+    CameraUpdate_SubType_ST_CYCLIST;
+  static constexpr SubType ST_MOTORCYCLIST =
+    CameraUpdate_SubType_ST_MOTORCYCLIST;
+  static constexpr SubType ST_TRICYCLIST =
+    CameraUpdate_SubType_ST_TRICYCLIST;
+  static constexpr SubType ST_PEDESTRIAN =
+    CameraUpdate_SubType_ST_PEDESTRIAN;
+  static constexpr SubType ST_TRAFFICCONE =
+    CameraUpdate_SubType_ST_TRAFFICCONE;
+  static inline bool SubType_IsValid(int value) {
+    return CameraUpdate_SubType_IsValid(value);
+  }
+  static constexpr SubType SubType_MIN =
+    CameraUpdate_SubType_SubType_MIN;
+  static constexpr SubType SubType_MAX =
+    CameraUpdate_SubType_SubType_MAX;
+  static constexpr int SubType_ARRAYSIZE =
+    CameraUpdate_SubType_SubType_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  SubType_descriptor() {
+    return CameraUpdate_SubType_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& SubType_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, SubType>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function SubType_Name.");
+    return CameraUpdate_SubType_Name(enum_t_value);
+  }
+  static inline bool SubType_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      SubType* value) {
+    return CameraUpdate_SubType_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
     kLocalizationFieldNumber = 1,
     kLocalization2CameraTfFieldNumber = 2,
+    kBbox2DFieldNumber = 5,
+    kObstaclesIdFieldNumber = 6,
+    kObstaclesSubTypeFieldNumber = 7,
     kImageFieldNumber = 3,
     kImageAspectRatioFieldNumber = 4,
+    kKImageScaleFieldNumber = 8,
   };
   // repeated double localization = 1;
   int localization_size() const;
@@ -236,6 +325,63 @@ class CameraUpdate PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
       mutable_localization2camera_tf();
 
+  // repeated .apollo.perception.BBox2D bbox2d = 5;
+  int bbox2d_size() const;
+  private:
+  int _internal_bbox2d_size() const;
+  public:
+  void clear_bbox2d();
+  ::apollo::perception::BBox2D* mutable_bbox2d(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::apollo::perception::BBox2D >*
+      mutable_bbox2d();
+  private:
+  const ::apollo::perception::BBox2D& _internal_bbox2d(int index) const;
+  ::apollo::perception::BBox2D* _internal_add_bbox2d();
+  public:
+  const ::apollo::perception::BBox2D& bbox2d(int index) const;
+  ::apollo::perception::BBox2D* add_bbox2d();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::apollo::perception::BBox2D >&
+      bbox2d() const;
+
+  // repeated int32 obstacles_id = 6;
+  int obstacles_id_size() const;
+  private:
+  int _internal_obstacles_id_size() const;
+  public:
+  void clear_obstacles_id();
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_obstacles_id(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+      _internal_obstacles_id() const;
+  void _internal_add_obstacles_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+      _internal_mutable_obstacles_id();
+  public:
+  ::PROTOBUF_NAMESPACE_ID::int32 obstacles_id(int index) const;
+  void set_obstacles_id(int index, ::PROTOBUF_NAMESPACE_ID::int32 value);
+  void add_obstacles_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+      obstacles_id() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+      mutable_obstacles_id();
+
+  // repeated .apollo.dreamview.CameraUpdate.SubType obstacles_sub_type = 7;
+  int obstacles_sub_type_size() const;
+  private:
+  int _internal_obstacles_sub_type_size() const;
+  public:
+  void clear_obstacles_sub_type();
+  private:
+  ::apollo::dreamview::CameraUpdate_SubType _internal_obstacles_sub_type(int index) const;
+  void _internal_add_obstacles_sub_type(::apollo::dreamview::CameraUpdate_SubType value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>* _internal_mutable_obstacles_sub_type();
+  public:
+  ::apollo::dreamview::CameraUpdate_SubType obstacles_sub_type(int index) const;
+  void set_obstacles_sub_type(int index, ::apollo::dreamview::CameraUpdate_SubType value);
+  void add_obstacles_sub_type(::apollo::dreamview::CameraUpdate_SubType value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>& obstacles_sub_type() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>* mutable_obstacles_sub_type();
+
   // optional bytes image = 3;
   bool has_image() const;
   private:
@@ -269,6 +415,19 @@ class CameraUpdate PROTOBUF_FINAL :
   void _internal_set_image_aspect_ratio(double value);
   public:
 
+  // optional double k_image_scale = 8;
+  bool has_k_image_scale() const;
+  private:
+  bool _internal_has_k_image_scale() const;
+  public:
+  void clear_k_image_scale();
+  double k_image_scale() const;
+  void set_k_image_scale(double value);
+  private:
+  double _internal_k_image_scale() const;
+  void _internal_set_k_image_scale(double value);
+  public:
+
   // @@protoc_insertion_point(class_scope:apollo.dreamview.CameraUpdate)
  private:
   class _Internal;
@@ -280,8 +439,12 @@ class CameraUpdate PROTOBUF_FINAL :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< double > localization_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< double > localization2camera_tf_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::apollo::perception::BBox2D > bbox2d_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 > obstacles_id_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int> obstacles_sub_type_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr image_;
   double image_aspect_ratio_;
+  double k_image_scale_;
   friend struct ::TableStruct_modules_2fdreamview_2fproto_2fcamera_5fupdate_2eproto;
 };
 // ===================================================================
@@ -490,6 +653,162 @@ inline void CameraUpdate::set_image_aspect_ratio(double value) {
   // @@protoc_insertion_point(field_set:apollo.dreamview.CameraUpdate.image_aspect_ratio)
 }
 
+// repeated .apollo.perception.BBox2D bbox2d = 5;
+inline int CameraUpdate::_internal_bbox2d_size() const {
+  return bbox2d_.size();
+}
+inline int CameraUpdate::bbox2d_size() const {
+  return _internal_bbox2d_size();
+}
+inline ::apollo::perception::BBox2D* CameraUpdate::mutable_bbox2d(int index) {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.CameraUpdate.bbox2d)
+  return bbox2d_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::apollo::perception::BBox2D >*
+CameraUpdate::mutable_bbox2d() {
+  // @@protoc_insertion_point(field_mutable_list:apollo.dreamview.CameraUpdate.bbox2d)
+  return &bbox2d_;
+}
+inline const ::apollo::perception::BBox2D& CameraUpdate::_internal_bbox2d(int index) const {
+  return bbox2d_.Get(index);
+}
+inline const ::apollo::perception::BBox2D& CameraUpdate::bbox2d(int index) const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.CameraUpdate.bbox2d)
+  return _internal_bbox2d(index);
+}
+inline ::apollo::perception::BBox2D* CameraUpdate::_internal_add_bbox2d() {
+  return bbox2d_.Add();
+}
+inline ::apollo::perception::BBox2D* CameraUpdate::add_bbox2d() {
+  // @@protoc_insertion_point(field_add:apollo.dreamview.CameraUpdate.bbox2d)
+  return _internal_add_bbox2d();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::apollo::perception::BBox2D >&
+CameraUpdate::bbox2d() const {
+  // @@protoc_insertion_point(field_list:apollo.dreamview.CameraUpdate.bbox2d)
+  return bbox2d_;
+}
+
+// repeated int32 obstacles_id = 6;
+inline int CameraUpdate::_internal_obstacles_id_size() const {
+  return obstacles_id_.size();
+}
+inline int CameraUpdate::obstacles_id_size() const {
+  return _internal_obstacles_id_size();
+}
+inline void CameraUpdate::clear_obstacles_id() {
+  obstacles_id_.Clear();
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 CameraUpdate::_internal_obstacles_id(int index) const {
+  return obstacles_id_.Get(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 CameraUpdate::obstacles_id(int index) const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.CameraUpdate.obstacles_id)
+  return _internal_obstacles_id(index);
+}
+inline void CameraUpdate::set_obstacles_id(int index, ::PROTOBUF_NAMESPACE_ID::int32 value) {
+  obstacles_id_.Set(index, value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.CameraUpdate.obstacles_id)
+}
+inline void CameraUpdate::_internal_add_obstacles_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  obstacles_id_.Add(value);
+}
+inline void CameraUpdate::add_obstacles_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_add_obstacles_id(value);
+  // @@protoc_insertion_point(field_add:apollo.dreamview.CameraUpdate.obstacles_id)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+CameraUpdate::_internal_obstacles_id() const {
+  return obstacles_id_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >&
+CameraUpdate::obstacles_id() const {
+  // @@protoc_insertion_point(field_list:apollo.dreamview.CameraUpdate.obstacles_id)
+  return _internal_obstacles_id();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+CameraUpdate::_internal_mutable_obstacles_id() {
+  return &obstacles_id_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< ::PROTOBUF_NAMESPACE_ID::int32 >*
+CameraUpdate::mutable_obstacles_id() {
+  // @@protoc_insertion_point(field_mutable_list:apollo.dreamview.CameraUpdate.obstacles_id)
+  return _internal_mutable_obstacles_id();
+}
+
+// repeated .apollo.dreamview.CameraUpdate.SubType obstacles_sub_type = 7;
+inline int CameraUpdate::_internal_obstacles_sub_type_size() const {
+  return obstacles_sub_type_.size();
+}
+inline int CameraUpdate::obstacles_sub_type_size() const {
+  return _internal_obstacles_sub_type_size();
+}
+inline void CameraUpdate::clear_obstacles_sub_type() {
+  obstacles_sub_type_.Clear();
+}
+inline ::apollo::dreamview::CameraUpdate_SubType CameraUpdate::_internal_obstacles_sub_type(int index) const {
+  return static_cast< ::apollo::dreamview::CameraUpdate_SubType >(obstacles_sub_type_.Get(index));
+}
+inline ::apollo::dreamview::CameraUpdate_SubType CameraUpdate::obstacles_sub_type(int index) const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.CameraUpdate.obstacles_sub_type)
+  return _internal_obstacles_sub_type(index);
+}
+inline void CameraUpdate::set_obstacles_sub_type(int index, ::apollo::dreamview::CameraUpdate_SubType value) {
+  assert(::apollo::dreamview::CameraUpdate_SubType_IsValid(value));
+  obstacles_sub_type_.Set(index, value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.CameraUpdate.obstacles_sub_type)
+}
+inline void CameraUpdate::_internal_add_obstacles_sub_type(::apollo::dreamview::CameraUpdate_SubType value) {
+  assert(::apollo::dreamview::CameraUpdate_SubType_IsValid(value));
+  obstacles_sub_type_.Add(value);
+}
+inline void CameraUpdate::add_obstacles_sub_type(::apollo::dreamview::CameraUpdate_SubType value) {
+  // @@protoc_insertion_point(field_add:apollo.dreamview.CameraUpdate.obstacles_sub_type)
+  _internal_add_obstacles_sub_type(value);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>&
+CameraUpdate::obstacles_sub_type() const {
+  // @@protoc_insertion_point(field_list:apollo.dreamview.CameraUpdate.obstacles_sub_type)
+  return obstacles_sub_type_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
+CameraUpdate::_internal_mutable_obstacles_sub_type() {
+  return &obstacles_sub_type_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
+CameraUpdate::mutable_obstacles_sub_type() {
+  // @@protoc_insertion_point(field_mutable_list:apollo.dreamview.CameraUpdate.obstacles_sub_type)
+  return _internal_mutable_obstacles_sub_type();
+}
+
+// optional double k_image_scale = 8;
+inline bool CameraUpdate::_internal_has_k_image_scale() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool CameraUpdate::has_k_image_scale() const {
+  return _internal_has_k_image_scale();
+}
+inline void CameraUpdate::clear_k_image_scale() {
+  k_image_scale_ = 0;
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline double CameraUpdate::_internal_k_image_scale() const {
+  return k_image_scale_;
+}
+inline double CameraUpdate::k_image_scale() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.CameraUpdate.k_image_scale)
+  return _internal_k_image_scale();
+}
+inline void CameraUpdate::_internal_set_k_image_scale(double value) {
+  _has_bits_[0] |= 0x00000004u;
+  k_image_scale_ = value;
+}
+inline void CameraUpdate::set_k_image_scale(double value) {
+  _internal_set_k_image_scale(value);
+  // @@protoc_insertion_point(field_set:apollo.dreamview.CameraUpdate.k_image_scale)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
@@ -498,6 +817,16 @@ inline void CameraUpdate::set_image_aspect_ratio(double value) {
 
 }  // namespace dreamview
 }  // namespace apollo
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::apollo::dreamview::CameraUpdate_SubType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::apollo::dreamview::CameraUpdate_SubType>() {
+  return ::apollo::dreamview::CameraUpdate_SubType_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

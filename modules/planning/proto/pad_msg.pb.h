@@ -75,7 +75,8 @@ enum DrivingAction : int {
   CHANGE_RIGHT = 2,
   PULL_OVER = 3,
   STOP = 4,
-  RESUME_CRUISE = 5
+  RESUME_CRUISE = 5,
+  CLEAR_PLANNING = 6
 };
 bool DrivingAction_IsValid(int value);
 constexpr DrivingAction DrivingAction_MIN = FOLLOW;

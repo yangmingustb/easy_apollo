@@ -21,10 +21,11 @@
 #include "cyber/common/log.h"
 #include "gflags/gflags.h"
 #include "modules/common/configs/vehicle_config_helper.h"
+#include "modules/dreamview/backend/common/dreamview_gflags.h"
 
-DEFINE_string(vehicle_data_config_filename,
-              "./../modules/dreamview/conf/vehicle_data.pb.txt",
-              "Vehicle data config file.");
+// DEFINE_string(vehicle_data_config_filename,
+//               "./../modules/dreamview/conf/vehicle_data.pb.txt",
+//               "Vehicle data config file.");
 
 namespace apollo {
 namespace dreamview {

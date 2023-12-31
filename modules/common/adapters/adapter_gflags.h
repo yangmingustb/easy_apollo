@@ -33,15 +33,21 @@ DECLARE_string(planning_trajectory_topic);
 DECLARE_string(debug_planning_msg);
 
 DECLARE_string(planning_pad_topic);
+DECLARE_string(planning_command);
+DECLARE_string(planning_command_status);
+
 DECLARE_string(monitor_topic);
 DECLARE_string(pad_topic);
 DECLARE_string(control_command_topic);
+DECLARE_string(chassis_command_topic);
 DECLARE_string(control_preprocessor_topic);
 DECLARE_string(control_local_view_topic);
 DECLARE_string(control_core_command_topic);
 DECLARE_string(pointcloud_topic);
 DECLARE_string(pointcloud_16_topic);
 DECLARE_string(pointcloud_16_raw_topic);
+DECLARE_string(pointcloud_16_front_left_raw_topic);
+DECLARE_string(pointcloud_16_front_right_raw_topic);
 DECLARE_string(pointcloud_16_front_up_topic);
 DECLARE_string(pointcloud_64_topic);
 DECLARE_string(pointcloud_128_topic);
@@ -128,6 +134,7 @@ DECLARE_string(heading_topic);
 DECLARE_string(rtcm_data_topic);
 DECLARE_string(audio_event_topic);
 DECLARE_string(task_topic);
+DECLARE_string(record_info_topic);
 
 // Guardian topic
 DECLARE_string(guardian_topic);

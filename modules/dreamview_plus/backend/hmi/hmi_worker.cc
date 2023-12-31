@@ -25,7 +25,9 @@
 
 #include "cyber/proto/dag_conf.pb.h"
 #include "cyber/proto/record.pb.h"
-#include "modules/dreamview/proto/scenario.pb.h"
+
+#include "modules/prediction/proto/scenario.pb.h"
+
 #include "cyber/record/file/record_file_reader.h"
 #include "cyber/common/file.h"
 #include "modules/common/adapters/adapter_gflags.h"
@@ -34,14 +36,17 @@
 #include "modules/common/util/future.h"
 #include "modules/common/util/map_util.h"
 #include "modules/common/util/message_util.h"
+
 #include "modules/dreamview/backend/common/dreamview_gflags.h"
-#include "modules/dreamview/backend/common/fuel_monitor/data_collection_monitor.h"
-#include "modules/dreamview/backend/common/fuel_monitor/fuel_monitor_gflags.h"
-#include "modules/dreamview/backend/common/fuel_monitor/fuel_monitor_manager.h"
-#include "modules/dreamview/backend/common/fuel_monitor/preprocess_monitor.h"
-#include "modules/dreamview/backend/common/vehicle_manager/vehicle_manager.h"
-#include "modules/dreamview/backend/common/sim_control_manager/sim_control_manager.h"
+#include "modules/dreamview/backend/fuel_monitor/data_collection_monitor.h"
+#include "modules/dreamview/backend/fuel_monitor/fuel_monitor_gflags.h"
+#include "modules/dreamview/backend/fuel_monitor/fuel_monitor_manager.h"
+#include "modules/dreamview/backend/fuel_monitor/preprocess_monitor.h"
+#include "modules/dreamview/backend/hmi/vehicle_manager.h"
+
+#include "modules/dreamview/backend/sim_control_manager/sim_control_manager.h"
 #include "modules/dreamview/backend/common/util/hmi_util.h"
+#include "modules/dreamview/proto/scenario.pb.h"
 
 DEFINE_string(cyber_recorder_play_command, "cyber_recorder play -p 1 -f ",
               "Cyber recorder play command");

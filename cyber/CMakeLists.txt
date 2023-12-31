@@ -91,6 +91,7 @@ file(GLOB CYBER_SRCS
     "message/*.cc"
     "node/*.cc"
     "parameter/*.cc"
+    "plugin_manager/*.cc"
     "record/*.cc"
     "record/*/*.cc"
     "scheduler/*.cc"

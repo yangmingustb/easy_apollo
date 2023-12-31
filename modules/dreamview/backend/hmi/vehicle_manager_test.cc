@@ -20,7 +20,7 @@
 #include "gflags/gflags.h"
 #include "gtest/gtest.h"
 
-DECLARE_string(vehicle_data_config_filename);
+// DECLARE_string(vehicle_data_config_filename);
 
 namespace apollo {
 namespace dreamview {

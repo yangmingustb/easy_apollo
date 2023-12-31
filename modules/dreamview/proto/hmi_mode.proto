@@ -2,6 +2,8 @@ syntax = "proto2";
 
 package apollo.dreamview;
 
+import "modules/dreamview/proto/hmi_status.proto";
+
 // This proto defines a mode showing in Dreamview, including how you will
 // display them and monitor their status.
 
@@ -121,4 +123,8 @@ message HMIMode {
   map<string, Module> modules = 2;
   map<string, MonitoredComponent> monitored_components = 3;
   map<string, ProcessMonitorConfig> other_components = 4;
+  repeated HMIModeOperation operations = 5;
+  optional HMIModeOperation default_operation = 6;
+  optional string layout = 7;
+  map<string, MonitoredComponent> global_components = 8;
 }

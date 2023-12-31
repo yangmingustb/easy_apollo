@@ -32,94 +32,89 @@
 
 #include "cyber/class_loader/shared_library/exceptions.h"
 
-namespace apollo
-{
-namespace cyber
-{
-namespace class_loader
-{
+namespace apollo {
+namespace cyber {
+namespace class_loader {
+
 // The SharedLibrary class dynamically loads shared libraries at run-time.
-class SharedLibrary
-{
-public:
-    enum Flags
-    {
-        // On platforms that use dlopen(), use RTLD_GLOBAL. This is the default
-        // if no flags are given.
-        SHLIB_GLOBAL = 1,
+class SharedLibrary {
+ public:
+  enum Flags {
+    // On platforms that use dlopen(), use RTLD_GLOBAL. This is the default
+    // if no flags are given.
+    SHLIB_GLOBAL = 1,
 
-        // On platforms that use dlopen(), use RTLD_LOCAL instead of
-        // RTLD_GLOBAL.
-        //
-        // Note that if this flag is specified, RTTI (including dynamic_cast and
-        // throw) will not work for types defined in the shared library with GCC
-        // and possibly other compilers as well. See
-        // http://gcc.gnu.org/faq.html#dso for more information.
-        SHLIB_LOCAL = 2,
-    };
+    // On platforms that use dlopen(), use RTLD_LOCAL instead of RTLD_GLOBAL.
+    //
+    // Note that if this flag is specified, RTTI (including dynamic_cast and
+    // throw) will not work for types defined in the shared library with GCC
+    // and possibly other compilers as well. See
+    // http://gcc.gnu.org/faq.html#dso for more information.
+    SHLIB_LOCAL = 2,
+  };
 
-    // Creates a SharedLibrary object.
-    SharedLibrary() = default;
+  // Creates a SharedLibrary object.
+  SharedLibrary() = default;
 
-    // Destroys the SharedLibrary. The actual library
-    // remains loaded.
-    virtual ~SharedLibrary();
+  // Destroys the SharedLibrary. The actual library
+  // remains loaded.
+  virtual ~SharedLibrary();
 
-    // Creates a SharedLibrary object and loads a library
-    // from the given path.
-    explicit SharedLibrary(const std::string& path);
+  // Creates a SharedLibrary object and loads a library
+  // from the given path.
+  explicit SharedLibrary(const std::string& path);
 
-    // Creates a SharedLibrary object and loads a library
-    // from the given path, using the given flags.
-    // See the Flags enumeration for valid values.
-    SharedLibrary(const std::string& path, int flags);
+  // Creates a SharedLibrary object and loads a library
+  // from the given path, using the given flags.
+  // See the Flags enumeration for valid values.
+  SharedLibrary(const std::string& path, int flags);
 
-public:
-    // Loads a shared library from the given path.
-    // Throws a LibraryAlreadyLoadedException if
-    // a library has already been loaded.
-    // Throws a LibraryLoadException if the library
-    // cannot be loaded.
-    void Load(const std::string& path);
+ public:
+  // Loads a shared library from the given path.
+  // Throws a LibraryAlreadyLoadedException if
+  // a library has already been loaded.
+  // Throws a LibraryLoadException if the library
+  // cannot be loaded.
+  void Load(const std::string& path);
 
-    // Loads a shared library from the given path,
-    // using the given flags. See the Flags enumeration
-    // for valid values.
-    // Throws a LibraryAlreadyLoadedException if
-    // a library has already been loaded.
-    // Throws a LibraryLoadException if the library
-    // cannot be loaded.
-    void Load(const std::string& path, int flags);
+  // Loads a shared library from the given path,
+  // using the given flags. See the Flags enumeration
+  // for valid values.
+  // Throws a LibraryAlreadyLoadedException if
+  // a library has already been loaded.
+  // Throws a LibraryLoadException if the library
+  // cannot be loaded.
+  void Load(const std::string& path, int flags);
 
-    // Unloads a shared library.
-    void Unload();
+  // Unloads a shared library.
+  void Unload();
 
-    // Returns true iff a library has been loaded.
-    bool IsLoaded();
+  // Returns true iff a library has been loaded.
+  bool IsLoaded();
 
-    // Returns true iff the loaded library contains
-    // a symbol with the given name.
-    bool HasSymbol(const std::string& name);
+  // Returns true iff the loaded library contains
+  // a symbol with the given name.
+  bool HasSymbol(const std::string& name);
 
-    // Returns the address of the symbol with
-    // the given name. For functions, this
-    // is the entry point of the function.
-    // Throws a SymbolNotFoundException if the
-    // symbol does not exist.
-    void* GetSymbol(const std::string& name);
+  // Returns the address of the symbol with
+  // the given name. For functions, this
+  // is the entry point of the function.
+  // Throws a SymbolNotFoundException if the
+  // symbol does not exist.
+  void* GetSymbol(const std::string& name);
 
-    // Returns the path of the library, as specified in a call
-    // to load() or the constructor.
-    inline const std::string& GetPath() const { return path_; }
+  // Returns the path of the library, as specified in a call
+  // to load() or the constructor.
+  inline const std::string& GetPath() const { return path_; }
 
-public:
-    SharedLibrary(const SharedLibrary&) = delete;
-    SharedLibrary& operator=(const SharedLibrary&) = delete;
+ public:
+  SharedLibrary(const SharedLibrary&) = delete;
+  SharedLibrary& operator=(const SharedLibrary&) = delete;
 
-private:
-    void* handle_ = nullptr;
-    std::string path_;
-    static std::mutex mutex_;
+ private:
+  void* handle_ = nullptr;
+  std::string path_;
+  static std::mutex mutex_;
 };
 
 }  // namespace class_loader

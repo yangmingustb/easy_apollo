@@ -35,6 +35,7 @@ struct PlayParam
     double play_rate = 1.0;
     // 指定开始时间
     uint64_t begin_time_ns = 0;
+    uint64_t base_begin_time_ns = 0;
     //指定结束时间
     uint64_t end_time_ns = std::numeric_limits<uint64_t>::max();
     // 开始时间的相对时间
@@ -44,6 +45,9 @@ struct PlayParam
     std::set<std::string> files_to_play;
     std::set<std::string> channels_to_play;
     std::set<std::string> black_channels;
+
+    // for dreamview_plus play record;use record_id to check source
+    std::string record_id = "";
 };
 
 }  // namespace record

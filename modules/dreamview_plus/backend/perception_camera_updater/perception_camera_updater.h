@@ -24,17 +24,19 @@
 
 #include "Eigen/Dense"
 
-#include "modules/common_msgs/localization_msgs/localization.pb.h"
-#include "modules/common_msgs/localization_msgs/pose.pb.h"
-#include "modules/common_msgs/perception_msgs/perception_obstacle.pb.h"
-#include "modules/common_msgs/sensor_msgs/sensor_image.pb.h"
-#include "modules/common_msgs/transform_msgs/transform.pb.h"
+#include "modules/localization/proto/localization.pb.h"
+#include "modules/localization/proto/pose.pb.h"
+#include "modules/perception/proto/perception_obstacle.pb.h"
+
+#include "modules/drivers/proto/sensor_image.pb.h"
+#include "modules/transform/proto/transform.pb.h"
+
 #include "modules/dreamview/proto/camera_update.pb.h"
 #include "modules/dreamview_plus/proto/data_handler.pb.h"
 
 #include "cyber/cyber.h"
 #include "cyber/service_discovery/specific_manager/channel_manager.h"
-#include "modules/dreamview/backend/common/handlers/websocket_handler.h"
+#include "modules/dreamview/backend/handlers/websocket_handler.h"
 #include "modules/dreamview_plus/backend/updater/updater_with_channels_base.h"
 #include "modules/transform/buffer.h"
 

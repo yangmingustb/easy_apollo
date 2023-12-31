@@ -17,6 +17,7 @@
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ChannelMonitorConfig_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CyberModule_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_HMIMode_CyberModulesEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_HMIMode_GlobalComponentsEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_HMIMode_ModulesEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_HMIMode_MonitoredComponentsEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_HMIMode_OtherComponentsEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto;
@@ -91,6 +92,10 @@ class HMIMode_OtherComponentsEntry_DoNotUseDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<HMIMode_OtherComponentsEntry_DoNotUse> _instance;
 } _HMIMode_OtherComponentsEntry_DoNotUse_default_instance_;
+class HMIMode_GlobalComponentsEntry_DoNotUseDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<HMIMode_GlobalComponentsEntry_DoNotUse> _instance;
+} _HMIMode_GlobalComponentsEntry_DoNotUse_default_instance_;
 class HMIModeDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<HMIMode> _instance;
@@ -133,12 +138,13 @@ static void InitDefaultsscc_info_HMIMode_modules_2fdreamview_2fproto_2fhmi_5fmod
   }
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<4> scc_info_HMIMode_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 4, 0, InitDefaultsscc_info_HMIMode_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto}, {
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<5> scc_info_HMIMode_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 5, 0, InitDefaultsscc_info_HMIMode_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto}, {
       &scc_info_HMIMode_CyberModulesEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,
       &scc_info_HMIMode_ModulesEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,
       &scc_info_HMIMode_MonitoredComponentsEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,
-      &scc_info_HMIMode_OtherComponentsEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,}};
+      &scc_info_HMIMode_OtherComponentsEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,
+      &scc_info_HMIMode_GlobalComponentsEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,}};
 
 static void InitDefaultsscc_info_HMIMode_CyberModulesEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -152,6 +158,19 @@ static void InitDefaultsscc_info_HMIMode_CyberModulesEntry_DoNotUse_modules_2fdr
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_HMIMode_CyberModulesEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_HMIMode_CyberModulesEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto}, {
       &scc_info_CyberModule_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,}};
+
+static void InitDefaultsscc_info_HMIMode_GlobalComponentsEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::apollo::dreamview::_HMIMode_GlobalComponentsEntry_DoNotUse_default_instance_;
+    new (ptr) ::apollo::dreamview::HMIMode_GlobalComponentsEntry_DoNotUse();
+  }
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_HMIMode_GlobalComponentsEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_HMIMode_GlobalComponentsEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto}, {
+      &scc_info_MonitoredComponent_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,}};
 
 static void InitDefaultsscc_info_HMIMode_ModulesEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -318,7 +337,7 @@ static void InitDefaultsscc_info_ResourceMonitorConfig_MemoryUsage_modules_2fdre
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_ResourceMonitorConfig_MemoryUsage_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_ResourceMonitorConfig_MemoryUsage_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto[16];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto[17];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto = nullptr;
 
@@ -478,7 +497,16 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_modules_2fdreamview_2fproto_2f
   PROTOBUF_FIELD_OFFSET(::apollo::dreamview::HMIMode_OtherComponentsEntry_DoNotUse, value_),
   0,
   1,
-  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::apollo::dreamview::HMIMode_GlobalComponentsEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::apollo::dreamview::HMIMode_GlobalComponentsEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::apollo::dreamview::HMIMode_GlobalComponentsEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::apollo::dreamview::HMIMode_GlobalComponentsEntry_DoNotUse, value_),
+  0,
+  1,
+  PROTOBUF_FIELD_OFFSET(::apollo::dreamview::HMIMode, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::apollo::dreamview::HMIMode, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -487,6 +515,18 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_modules_2fdreamview_2fproto_2f
   PROTOBUF_FIELD_OFFSET(::apollo::dreamview::HMIMode, modules_),
   PROTOBUF_FIELD_OFFSET(::apollo::dreamview::HMIMode, monitored_components_),
   PROTOBUF_FIELD_OFFSET(::apollo::dreamview::HMIMode, other_components_),
+  PROTOBUF_FIELD_OFFSET(::apollo::dreamview::HMIMode, operations_),
+  PROTOBUF_FIELD_OFFSET(::apollo::dreamview::HMIMode, default_operation_),
+  PROTOBUF_FIELD_OFFSET(::apollo::dreamview::HMIMode, layout_),
+  PROTOBUF_FIELD_OFFSET(::apollo::dreamview::HMIMode, global_components_),
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  1,
+  0,
+  ~0u,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::apollo::dreamview::ProcessMonitorConfig)},
@@ -504,7 +544,8 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 128, 135, sizeof(::apollo::dreamview::HMIMode_ModulesEntry_DoNotUse)},
   { 137, 144, sizeof(::apollo::dreamview::HMIMode_MonitoredComponentsEntry_DoNotUse)},
   { 146, 153, sizeof(::apollo::dreamview::HMIMode_OtherComponentsEntry_DoNotUse)},
-  { 155, -1, sizeof(::apollo::dreamview::HMIMode)},
+  { 155, 162, sizeof(::apollo::dreamview::HMIMode_GlobalComponentsEntry_DoNotUse)},
+  { 164, 177, sizeof(::apollo::dreamview::HMIMode)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -523,74 +564,86 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::dreamview::_HMIMode_ModulesEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::dreamview::_HMIMode_MonitoredComponentsEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::dreamview::_HMIMode_OtherComponentsEntry_DoNotUse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::dreamview::_HMIMode_GlobalComponentsEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::dreamview::_HMIMode_default_instance_),
 };
 
 const char descriptor_table_protodef_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n&modules/dreamview/proto/hmi_mode.proto"
-  "\022\020apollo.dreamview\"0\n\024ProcessMonitorConf"
-  "ig\022\030\n\020command_keywords\030\001 \003(\t\"(\n\023ModuleMo"
-  "nitorConfig\022\021\n\tnode_name\030\001 \003(\t\"\235\001\n\024Chann"
-  "elMonitorConfig\022\014\n\004name\030\001 \001(\t\022\026\n\013delay_f"
-  "atal\030\002 \001(\001:\0013\022\030\n\020mandatory_fields\030\003 \003(\t\022"
-  " \n\025min_frequency_allowed\030\004 \001(\001:\0010\022#\n\025max"
-  "_frequency_allowed\030\005 \001(\001:\0041000\"\316\005\n\025Resou"
-  "rceMonitorConfig\022F\n\013disk_spaces\030\001 \003(\01321."
-  "apollo.dreamview.ResourceMonitorConfig.D"
-  "iskSpace\022D\n\ncpu_usages\030\002 \003(\01320.apollo.dr"
-  "eamview.ResourceMonitorConfig.CPUUsage\022J"
-  "\n\rmemory_usages\030\003 \003(\01323.apollo.dreamview"
-  ".ResourceMonitorConfig.MemoryUsage\022J\n\020di"
-  "sk_load_usages\030\004 \003(\01320.apollo.dreamview."
-  "ResourceMonitorConfig.DiskLoad\032_\n\tDiskSp"
-  "ace\022\014\n\004path\030\001 \001(\t\022\"\n\032insufficient_space_"
-  "warning\030\002 \001(\005\022 \n\030insufficient_space_erro"
-  "r\030\003 \001(\005\032b\n\010CPUUsage\022\036\n\026high_cpu_usage_wa"
-  "rning\030\001 \001(\002\022\034\n\024high_cpu_usage_error\030\002 \001("
-  "\002\022\030\n\020process_dag_path\030\003 \001(\t\032k\n\013MemoryUsa"
-  "ge\022!\n\031high_memory_usage_warning\030\001 \001(\005\022\037\n"
-  "\027high_memory_usage_error\030\002 \001(\005\022\030\n\020proces"
-  "s_dag_path\030\003 \001(\t\032]\n\010DiskLoad\022\036\n\026high_dis"
-  "k_load_warning\030\001 \001(\005\022\034\n\024high_disk_load_e"
-  "rror\030\002 \001(\005\022\023\n\013device_name\030\003 \001(\t\"\233\002\n\022Moni"
-  "toredComponent\0227\n\007process\030\001 \001(\0132&.apollo"
-  ".dreamview.ProcessMonitorConfig\0227\n\007chann"
-  "el\030\002 \001(\0132&.apollo.dreamview.ChannelMonit"
-  "orConfig\0229\n\010resource\030\003 \001(\0132\'.apollo.drea"
-  "mview.ResourceMonitorConfig\022!\n\023required_"
-  "for_safety\030\004 \001(\010:\004true\0225\n\006module\030\005 \001(\0132%"
-  ".apollo.dreamview.ModuleMonitorConfig\"\240\001"
-  "\n\006Module\022\025\n\rstart_command\030\001 \001(\t\022\024\n\014stop_"
-  "command\030\002 \001(\t\022F\n\026process_monitor_config\030"
-  "\003 \001(\0132&.apollo.dreamview.ProcessMonitorC"
-  "onfig\022!\n\023required_for_safety\030\004 \001(\010:\004true"
-  "\"Z\n\013CyberModule\022\021\n\tdag_files\030\001 \003(\t\022!\n\023re"
-  "quired_for_safety\030\002 \001(\010:\004true\022\025\n\rprocess"
-  "_group\030\003 \001(\t\"\202\005\n\007HMIMode\022B\n\rcyber_module"
-  "s\030\001 \003(\0132+.apollo.dreamview.HMIMode.Cyber"
-  "ModulesEntry\0227\n\007modules\030\002 \003(\0132&.apollo.d"
-  "reamview.HMIMode.ModulesEntry\022P\n\024monitor"
-  "ed_components\030\003 \003(\01322.apollo.dreamview.H"
-  "MIMode.MonitoredComponentsEntry\022H\n\020other"
-  "_components\030\004 \003(\0132..apollo.dreamview.HMI"
-  "Mode.OtherComponentsEntry\032R\n\021CyberModule"
-  "sEntry\022\013\n\003key\030\001 \001(\t\022,\n\005value\030\002 \001(\0132\035.apo"
-  "llo.dreamview.CyberModule:\0028\001\032H\n\014Modules"
-  "Entry\022\013\n\003key\030\001 \001(\t\022\'\n\005value\030\002 \001(\0132\030.apol"
-  "lo.dreamview.Module:\0028\001\032`\n\030MonitoredComp"
-  "onentsEntry\022\013\n\003key\030\001 \001(\t\0223\n\005value\030\002 \001(\0132"
-  "$.apollo.dreamview.MonitoredComponent:\0028"
-  "\001\032^\n\024OtherComponentsEntry\022\013\n\003key\030\001 \001(\t\0225"
-  "\n\005value\030\002 \001(\0132&.apollo.dreamview.Process"
-  "MonitorConfig:\0028\001"
+  "\022\020apollo.dreamview\032(modules/dreamview/pr"
+  "oto/hmi_status.proto\"0\n\024ProcessMonitorCo"
+  "nfig\022\030\n\020command_keywords\030\001 \003(\t\"(\n\023Module"
+  "MonitorConfig\022\021\n\tnode_name\030\001 \003(\t\"\235\001\n\024Cha"
+  "nnelMonitorConfig\022\014\n\004name\030\001 \001(\t\022\026\n\013delay"
+  "_fatal\030\002 \001(\001:\0013\022\030\n\020mandatory_fields\030\003 \003("
+  "\t\022 \n\025min_frequency_allowed\030\004 \001(\001:\0010\022#\n\025m"
+  "ax_frequency_allowed\030\005 \001(\001:\0041000\"\316\005\n\025Res"
+  "ourceMonitorConfig\022F\n\013disk_spaces\030\001 \003(\0132"
+  "1.apollo.dreamview.ResourceMonitorConfig"
+  ".DiskSpace\022D\n\ncpu_usages\030\002 \003(\01320.apollo."
+  "dreamview.ResourceMonitorConfig.CPUUsage"
+  "\022J\n\rmemory_usages\030\003 \003(\01323.apollo.dreamvi"
+  "ew.ResourceMonitorConfig.MemoryUsage\022J\n\020"
+  "disk_load_usages\030\004 \003(\01320.apollo.dreamvie"
+  "w.ResourceMonitorConfig.DiskLoad\032_\n\tDisk"
+  "Space\022\014\n\004path\030\001 \001(\t\022\"\n\032insufficient_spac"
+  "e_warning\030\002 \001(\005\022 \n\030insufficient_space_er"
+  "ror\030\003 \001(\005\032b\n\010CPUUsage\022\036\n\026high_cpu_usage_"
+  "warning\030\001 \001(\002\022\034\n\024high_cpu_usage_error\030\002 "
+  "\001(\002\022\030\n\020process_dag_path\030\003 \001(\t\032k\n\013MemoryU"
+  "sage\022!\n\031high_memory_usage_warning\030\001 \001(\005\022"
+  "\037\n\027high_memory_usage_error\030\002 \001(\005\022\030\n\020proc"
+  "ess_dag_path\030\003 \001(\t\032]\n\010DiskLoad\022\036\n\026high_d"
+  "isk_load_warning\030\001 \001(\005\022\034\n\024high_disk_load"
+  "_error\030\002 \001(\005\022\023\n\013device_name\030\003 \001(\t\"\233\002\n\022Mo"
+  "nitoredComponent\0227\n\007process\030\001 \001(\0132&.apol"
+  "lo.dreamview.ProcessMonitorConfig\0227\n\007cha"
+  "nnel\030\002 \001(\0132&.apollo.dreamview.ChannelMon"
+  "itorConfig\0229\n\010resource\030\003 \001(\0132\'.apollo.dr"
+  "eamview.ResourceMonitorConfig\022!\n\023require"
+  "d_for_safety\030\004 \001(\010:\004true\0225\n\006module\030\005 \001(\013"
+  "2%.apollo.dreamview.ModuleMonitorConfig\""
+  "\240\001\n\006Module\022\025\n\rstart_command\030\001 \001(\t\022\024\n\014sto"
+  "p_command\030\002 \001(\t\022F\n\026process_monitor_confi"
+  "g\030\003 \001(\0132&.apollo.dreamview.ProcessMonito"
+  "rConfig\022!\n\023required_for_safety\030\004 \001(\010:\004tr"
+  "ue\"Z\n\013CyberModule\022\021\n\tdag_files\030\001 \003(\t\022!\n\023"
+  "required_for_safety\030\002 \001(\010:\004true\022\025\n\rproce"
+  "ss_group\030\003 \001(\t\"\264\007\n\007HMIMode\022B\n\rcyber_modu"
+  "les\030\001 \003(\0132+.apollo.dreamview.HMIMode.Cyb"
+  "erModulesEntry\0227\n\007modules\030\002 \003(\0132&.apollo"
+  ".dreamview.HMIMode.ModulesEntry\022P\n\024monit"
+  "ored_components\030\003 \003(\01322.apollo.dreamview"
+  ".HMIMode.MonitoredComponentsEntry\022H\n\020oth"
+  "er_components\030\004 \003(\0132..apollo.dreamview.H"
+  "MIMode.OtherComponentsEntry\0226\n\noperation"
+  "s\030\005 \003(\0162\".apollo.dreamview.HMIModeOperat"
+  "ion\022=\n\021default_operation\030\006 \001(\0162\".apollo."
+  "dreamview.HMIModeOperation\022\016\n\006layout\030\007 \001"
+  "(\t\022J\n\021global_components\030\010 \003(\0132/.apollo.d"
+  "reamview.HMIMode.GlobalComponentsEntry\032R"
+  "\n\021CyberModulesEntry\022\013\n\003key\030\001 \001(\t\022,\n\005valu"
+  "e\030\002 \001(\0132\035.apollo.dreamview.CyberModule:\002"
+  "8\001\032H\n\014ModulesEntry\022\013\n\003key\030\001 \001(\t\022\'\n\005value"
+  "\030\002 \001(\0132\030.apollo.dreamview.Module:\0028\001\032`\n\030"
+  "MonitoredComponentsEntry\022\013\n\003key\030\001 \001(\t\0223\n"
+  "\005value\030\002 \001(\0132$.apollo.dreamview.Monitore"
+  "dComponent:\0028\001\032^\n\024OtherComponentsEntry\022\013"
+  "\n\003key\030\001 \001(\t\0225\n\005value\030\002 \001(\0132&.apollo.drea"
+  "mview.ProcessMonitorConfig:\0028\001\032]\n\025Global"
+  "ComponentsEntry\022\013\n\003key\030\001 \001(\t\0223\n\005value\030\002 "
+  "\001(\0132$.apollo.dreamview.MonitoredComponen"
+  "t:\0028\001"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto_deps[1] = {
+  &::descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fstatus_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto_sccs[16] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto_sccs[17] = {
   &scc_info_ChannelMonitorConfig_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,
   &scc_info_CyberModule_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,
   &scc_info_HMIMode_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,
   &scc_info_HMIMode_CyberModulesEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,
+  &scc_info_HMIMode_GlobalComponentsEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,
   &scc_info_HMIMode_ModulesEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,
   &scc_info_HMIMode_MonitoredComponentsEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,
   &scc_info_HMIMode_OtherComponentsEntry_DoNotUse_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base,
@@ -606,10 +659,10 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_mod
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto = {
-  false, false, descriptor_table_protodef_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto, "modules/dreamview/proto/hmi_mode.proto", 2217,
-  &descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto_once, descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto_sccs, descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto_deps, 16, 0,
+  false, false, descriptor_table_protodef_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto, "modules/dreamview/proto/hmi_mode.proto", 2565,
+  &descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto_once, descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto_sccs, descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto_deps, 17, 1,
   schemas, file_default_instances, TableStruct_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto::offsets,
-  file_level_metadata_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto, 16, file_level_enum_descriptors_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto, file_level_service_descriptors_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto,
+  file_level_metadata_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto, 17, file_level_enum_descriptors_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto, file_level_service_descriptors_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -3992,8 +4045,32 @@ void HMIMode_OtherComponentsEntry_DoNotUse::MergeFrom(
 
 // ===================================================================
 
+HMIMode_GlobalComponentsEntry_DoNotUse::HMIMode_GlobalComponentsEntry_DoNotUse() {}
+HMIMode_GlobalComponentsEntry_DoNotUse::HMIMode_GlobalComponentsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void HMIMode_GlobalComponentsEntry_DoNotUse::MergeFrom(const HMIMode_GlobalComponentsEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata HMIMode_GlobalComponentsEntry_DoNotUse::GetMetadata() const {
+  return GetMetadataStatic();
+}
+void HMIMode_GlobalComponentsEntry_DoNotUse::MergeFrom(
+    const ::PROTOBUF_NAMESPACE_ID::Message& other) {
+  ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom(other);
+}
+
+
+// ===================================================================
+
 class HMIMode::_Internal {
  public:
+  using HasBits = decltype(std::declval<HMIMode>()._has_bits_);
+  static void set_has_default_operation(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_layout(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 HMIMode::HMIMode(::PROTOBUF_NAMESPACE_ID::Arena* arena)
@@ -4001,23 +4078,36 @@ HMIMode::HMIMode(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   cyber_modules_(arena),
   modules_(arena),
   monitored_components_(arena),
-  other_components_(arena) {
+  other_components_(arena),
+  operations_(arena),
+  global_components_(arena) {
   SharedCtor();
   RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:apollo.dreamview.HMIMode)
 }
 HMIMode::HMIMode(const HMIMode& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_),
+      operations_(from.operations_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   cyber_modules_.MergeFrom(from.cyber_modules_);
   modules_.MergeFrom(from.modules_);
   monitored_components_.MergeFrom(from.monitored_components_);
   other_components_.MergeFrom(from.other_components_);
+  global_components_.MergeFrom(from.global_components_);
+  layout_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_layout()) {
+    layout_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_layout(), 
+      GetArena());
+  }
+  default_operation_ = from.default_operation_;
   // @@protoc_insertion_point(copy_constructor:apollo.dreamview.HMIMode)
 }
 
 void HMIMode::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_HMIMode_modules_2fdreamview_2fproto_2fhmi_5fmode_2eproto.base);
+  layout_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  default_operation_ = 0;
 }
 
 HMIMode::~HMIMode() {
@@ -4028,6 +4118,7 @@ HMIMode::~HMIMode() {
 
 void HMIMode::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
+  layout_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void HMIMode::ArenaDtor(void* object) {
@@ -4055,11 +4146,20 @@ void HMIMode::Clear() {
   modules_.Clear();
   monitored_components_.Clear();
   other_components_.Clear();
+  operations_.Clear();
+  global_components_.Clear();
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    layout_.ClearNonDefaultToEmpty();
+  }
+  default_operation_ = 0;
+  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* HMIMode::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -4113,6 +4213,61 @@ const char* HMIMode::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
         } else goto handle_unusual;
         continue;
+      // repeated .apollo.dreamview.HMIModeOperation operations = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+            CHK_(ptr);
+            if (PROTOBUF_PREDICT_TRUE(::apollo::dreamview::HMIModeOperation_IsValid(val))) {
+              _internal_add_operations(static_cast<::apollo::dreamview::HMIModeOperation>(val));
+            } else {
+              ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(5, val, mutable_unknown_fields());
+            }
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<40>(ptr));
+        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedEnumParser<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(_internal_mutable_operations(), ptr, ctx, ::apollo::dreamview::HMIModeOperation_IsValid, &_internal_metadata_, 5);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // optional .apollo.dreamview.HMIModeOperation default_operation = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          if (PROTOBUF_PREDICT_TRUE(::apollo::dreamview::HMIModeOperation_IsValid(val))) {
+            _internal_set_default_operation(static_cast<::apollo::dreamview::HMIModeOperation>(val));
+          } else {
+            ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(6, val, mutable_unknown_fields());
+          }
+        } else goto handle_unusual;
+        continue;
+      // optional string layout = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
+          auto str = _internal_mutable_layout();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          #ifndef NDEBUG
+          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "apollo.dreamview.HMIMode.layout");
+          #endif  // !NDEBUG
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // map<string, .apollo.dreamview.MonitoredComponent> global_components = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 66)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&global_components_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<66>(ptr));
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
@@ -4128,6 +4283,7 @@ const char* HMIMode::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
     }  // switch
   }  // while
 success:
+  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -4305,6 +4461,72 @@ failure:
     }
   }
 
+  // repeated .apollo.dreamview.HMIModeOperation operations = 5;
+  for (int i = 0, n = this->_internal_operations_size(); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+        5, this->_internal_operations(i), target);
+  }
+
+  cached_has_bits = _has_bits_[0];
+  // optional .apollo.dreamview.HMIModeOperation default_operation = 6;
+  if (cached_has_bits & 0x00000002u) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      6, this->_internal_default_operation(), target);
+  }
+
+  // optional string layout = 7;
+  if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_layout().data(), static_cast<int>(this->_internal_layout().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "apollo.dreamview.HMIMode.layout");
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_layout(), target);
+  }
+
+  // map<string, .apollo.dreamview.MonitoredComponent> global_components = 8;
+  if (!this->_internal_global_components().empty()) {
+    typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::MonitoredComponent >::const_pointer
+        ConstPtr;
+    typedef ConstPtr SortItem;
+    typedef ::PROTOBUF_NAMESPACE_ID::internal::CompareByDerefFirst<SortItem> Less;
+    struct Utf8Check {
+      static void Check(ConstPtr p) {
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+          p->first.data(), static_cast<int>(p->first.length()),
+          ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+          "apollo.dreamview.HMIMode.GlobalComponentsEntry.key");
+      }
+    };
+
+    if (stream->IsSerializationDeterministic() &&
+        this->_internal_global_components().size() > 1) {
+      ::std::unique_ptr<SortItem[]> items(
+          new SortItem[this->_internal_global_components().size()]);
+      typedef ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::MonitoredComponent >::size_type size_type;
+      size_type n = 0;
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::MonitoredComponent >::const_iterator
+          it = this->_internal_global_components().begin();
+          it != this->_internal_global_components().end(); ++it, ++n) {
+        items[static_cast<ptrdiff_t>(n)] = SortItem(&*it);
+      }
+      ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
+      for (size_type i = 0; i < n; i++) {
+        target = HMIMode_GlobalComponentsEntry_DoNotUse::Funcs::InternalSerialize(8, items[static_cast<ptrdiff_t>(i)]->first, items[static_cast<ptrdiff_t>(i)]->second, target, stream);
+        Utf8Check::Check(&(*items[static_cast<ptrdiff_t>(i)]));
+      }
+    } else {
+      for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::MonitoredComponent >::const_iterator
+          it = this->_internal_global_components().begin();
+          it != this->_internal_global_components().end(); ++it) {
+        target = HMIMode_GlobalComponentsEntry_DoNotUse::Funcs::InternalSerialize(8, it->first, it->second, target, stream);
+        Utf8Check::Check(&(*it));
+      }
+    }
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -4357,6 +4579,41 @@ size_t HMIMode::ByteSizeLong() const {
     total_size += HMIMode_OtherComponentsEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
   }
 
+  // repeated .apollo.dreamview.HMIModeOperation operations = 5;
+  {
+    size_t data_size = 0;
+    unsigned int count = static_cast<unsigned int>(this->_internal_operations_size());for (unsigned int i = 0; i < count; i++) {
+      data_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(
+        this->_internal_operations(static_cast<int>(i)));
+    }
+    total_size += (1UL * count) + data_size;
+  }
+
+  // map<string, .apollo.dreamview.MonitoredComponent> global_components = 8;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_global_components_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::dreamview::MonitoredComponent >::const_iterator
+      it = this->_internal_global_components().begin();
+      it != this->_internal_global_components().end(); ++it) {
+    total_size += HMIMode_GlobalComponentsEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // optional string layout = 7;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_layout());
+    }
+
+    // optional .apollo.dreamview.HMIModeOperation default_operation = 6;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_default_operation());
+    }
+
+  }
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
         _internal_metadata_, total_size, &_cached_size_);
@@ -4392,6 +4649,18 @@ void HMIMode::MergeFrom(const HMIMode& from) {
   modules_.MergeFrom(from.modules_);
   monitored_components_.MergeFrom(from.monitored_components_);
   other_components_.MergeFrom(from.other_components_);
+  operations_.MergeFrom(from.operations_);
+  global_components_.MergeFrom(from.global_components_);
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _internal_set_layout(from._internal_layout());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      default_operation_ = from.default_operation_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
 }
 
 void HMIMode::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -4415,10 +4684,15 @@ bool HMIMode::IsInitialized() const {
 void HMIMode::InternalSwap(HMIMode* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
   cyber_modules_.Swap(&other->cyber_modules_);
   modules_.Swap(&other->modules_);
   monitored_components_.Swap(&other->monitored_components_);
   other_components_.Swap(&other->other_components_);
+  operations_.InternalSwap(&other->operations_);
+  global_components_.Swap(&other->global_components_);
+  layout_.Swap(&other->layout_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  swap(default_operation_, other->default_operation_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata HMIMode::GetMetadata() const {
@@ -4474,6 +4748,9 @@ template<> PROTOBUF_NOINLINE ::apollo::dreamview::HMIMode_MonitoredComponentsEnt
 }
 template<> PROTOBUF_NOINLINE ::apollo::dreamview::HMIMode_OtherComponentsEntry_DoNotUse* Arena::CreateMaybeMessage< ::apollo::dreamview::HMIMode_OtherComponentsEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::apollo::dreamview::HMIMode_OtherComponentsEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::apollo::dreamview::HMIMode_GlobalComponentsEntry_DoNotUse* Arena::CreateMaybeMessage< ::apollo::dreamview::HMIMode_GlobalComponentsEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::apollo::dreamview::HMIMode_GlobalComponentsEntry_DoNotUse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::apollo::dreamview::HMIMode* Arena::CreateMaybeMessage< ::apollo::dreamview::HMIMode >(Arena* arena) {
   return Arena::CreateMessageInternal< ::apollo::dreamview::HMIMode >(arena);

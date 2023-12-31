@@ -21,16 +21,16 @@
 #pragma once
 #include<string>
 #include<memory>
-#include "modules/common_msgs/localization_msgs/localization.pb.h"
+#include "modules/localization/proto/localization.pb.h"
 #include "modules/dreamview_plus/proto/data_handler.pb.h"
-#include "modules/common_msgs/dreamview_msgs/simulation_world.pb.h"
+#include "modules/dreamview/proto/simulation_world.pb.h"
 
 #include "cyber/common/log.h"
 #include "cyber/cyber.h"
 #include "modules/common/adapters/adapter_gflags.h"
 #include "modules/dreamview/backend/common/dreamview_gflags.h"
-#include "modules/dreamview/backend/common/handlers/websocket_handler.h"
-#include "modules/dreamview/backend/common/map_service/map_service.h"
+#include "modules/dreamview/backend/handlers/websocket_handler.h"
+#include "modules/dreamview/backend/map/map_service.h"
 #include "modules/dreamview_plus/backend/map/map_updater.h"
 #include "modules/dreamview_plus/backend/updater/updater_base.h"
 /**

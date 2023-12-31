@@ -1071,6 +1071,7 @@ class RoutingRequest PROTOBUF_FINAL :
     kParkingSpaceFieldNumber = 6,
     kParkingInfoFieldNumber = 7,
     kDeadEndInfoFieldNumber = 8,
+    kIsStartPoseSetFieldNumber = 9,
     kBroadcastFieldNumber = 5,
   };
   // repeated .apollo.routing.LaneWaypoint waypoint = 2;
@@ -1205,6 +1206,19 @@ class RoutingRequest PROTOBUF_FINAL :
       ::apollo::routing::DeadEndInfo* dead_end_info);
   ::apollo::routing::DeadEndInfo* unsafe_arena_release_dead_end_info();
 
+  // optional bool is_start_pose_set = 9 [default = false];
+  bool has_is_start_pose_set() const;
+  private:
+  bool _internal_has_is_start_pose_set() const;
+  public:
+  void clear_is_start_pose_set();
+  bool is_start_pose_set() const;
+  void set_is_start_pose_set(bool value);
+  private:
+  bool _internal_is_start_pose_set() const;
+  void _internal_set_is_start_pose_set(bool value);
+  public:
+
   // optional bool broadcast = 5 [default = true];
   bool has_broadcast() const;
   private:
@@ -1234,6 +1248,7 @@ class RoutingRequest PROTOBUF_FINAL :
   ::apollo::hdmap::ParkingSpace* parking_space_;
   ::apollo::routing::ParkingInfo* parking_info_;
   ::apollo::routing::DeadEndInfo* dead_end_info_;
+  bool is_start_pose_set_;
   bool broadcast_;
   friend struct ::TableStruct_modules_2frouting_2fproto_2frouting_2eproto;
 };
@@ -2963,7 +2978,7 @@ RoutingRequest::mutable_blacklisted_road() {
 
 // optional bool broadcast = 5 [default = true];
 inline bool RoutingRequest::_internal_has_broadcast() const {
-  bool value = (_has_bits_[0] & 0x00000010u) != 0;
+  bool value = (_has_bits_[0] & 0x00000020u) != 0;
   return value;
 }
 inline bool RoutingRequest::has_broadcast() const {
@@ -2971,7 +2986,7 @@ inline bool RoutingRequest::has_broadcast() const {
 }
 inline void RoutingRequest::clear_broadcast() {
   broadcast_ = true;
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline bool RoutingRequest::_internal_broadcast() const {
   return broadcast_;
@@ -2981,7 +2996,7 @@ inline bool RoutingRequest::broadcast() const {
   return _internal_broadcast();
 }
 inline void RoutingRequest::_internal_set_broadcast(bool value) {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
   broadcast_ = value;
 }
 inline void RoutingRequest::set_broadcast(bool value) {
@@ -3232,6 +3247,34 @@ inline void RoutingRequest::set_allocated_dead_end_info(::apollo::routing::DeadE
   }
   dead_end_info_ = dead_end_info;
   // @@protoc_insertion_point(field_set_allocated:apollo.routing.RoutingRequest.dead_end_info)
+}
+
+// optional bool is_start_pose_set = 9 [default = false];
+inline bool RoutingRequest::_internal_has_is_start_pose_set() const {
+  bool value = (_has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool RoutingRequest::has_is_start_pose_set() const {
+  return _internal_has_is_start_pose_set();
+}
+inline void RoutingRequest::clear_is_start_pose_set() {
+  is_start_pose_set_ = false;
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline bool RoutingRequest::_internal_is_start_pose_set() const {
+  return is_start_pose_set_;
+}
+inline bool RoutingRequest::is_start_pose_set() const {
+  // @@protoc_insertion_point(field_get:apollo.routing.RoutingRequest.is_start_pose_set)
+  return _internal_is_start_pose_set();
+}
+inline void RoutingRequest::_internal_set_is_start_pose_set(bool value) {
+  _has_bits_[0] |= 0x00000010u;
+  is_start_pose_set_ = value;
+}
+inline void RoutingRequest::set_is_start_pose_set(bool value) {
+  _internal_set_is_start_pose_set(value);
+  // @@protoc_insertion_point(field_set:apollo.routing.RoutingRequest.is_start_pose_set)
 }
 
 // -------------------------------------------------------------------

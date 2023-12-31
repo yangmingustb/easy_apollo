@@ -56,6 +56,17 @@ void WebSocketHandler::handleClose(CivetServer *server,
     std::unique_lock<std::mutex> lock(mutex_);
     connections_.erase(connection);
   }
+  // send close frame
+  int ret = mg_websocket_write(connection, 0x8, "", 0);
+  // Determine error message based on return value.
+  AWARN << name_ << ": Failed to send clase frame. Reason";
+  if (ret == 0) {
+    AWARN << "Connection closed";
+  } else if (ret < 0) {
+    AWARN << "Send error: " << std::strerror(errno);
+  } else {
+    AWARN << "Bytes to send: expected 2, actual: " << ret;
+  }
 
   AINFO << name_
         << ": Connection closed. Total connections: " << connections_.size();
@@ -77,6 +88,30 @@ bool WebSocketHandler::BroadcastData(const std::string &data, bool skippable) {
   bool all_success = true;
   for (Connection *conn : connections_to_send) {
     if (!SendData(conn, data, skippable)) {
+      all_success = false;
+    }
+  }
+
+  return all_success;
+}
+
+bool WebSocketHandler::BroadcastBinaryData(const std::string &data,
+                                           bool skippable) {
+  std::vector<Connection *> connections_to_send;
+  {
+    std::unique_lock<std::mutex> lock(mutex_);
+    if (connections_.empty()) {
+      return true;
+    }
+    for (auto &kv : connections_) {
+      Connection *conn = kv.first;
+      connections_to_send.push_back(conn);
+    }
+  }
+
+  bool all_success = true;
+  for (Connection *conn : connections_to_send) {
+    if (!SendData(conn, data, skippable, MG_WEBSOCKET_OPCODE_BINARY)) {
       all_success = false;
     }
   }

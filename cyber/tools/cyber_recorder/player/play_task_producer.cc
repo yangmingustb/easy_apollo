@@ -362,6 +362,56 @@ int PlayTaskProducer::publish_play_info(double processed_time)
     return 0;
 }
 
+void PlayTaskProducer::Reset(const double& progress_s)
+{
+    play_param_.begin_time_ns =
+            play_param_.base_begin_time_ns + progress_s * 1e9;
+    play_param_.start_time_s = progress_s;
+
+    // record_viewer_ptr_ = nullptr;
+    // record_viewer_ptr_ = std::make_shared<RecordViewer>(
+    //         record_readers_, play_param_.begin_time_ns,
+    //         play_param_.end_time_ns, play_param_.channels_to_play);
+    // record_viewer_ptr_->set_curr_itr(record_viewer_ptr_->begin());
+}
+
+void PlayTaskProducer::FillPlayTaskBuffer()
+{
+    task_buffer_->Clear();
+    // use fixed preload buffer size
+    uint32_t preload_size = kMinTaskBufferSize * 2;
+
+    // if (!record_viewer_ptr_)
+    // {
+    //     record_viewer_ptr_ = std::make_shared<RecordViewer>(
+    //             record_readers_, play_param_.begin_time_ns,
+    //             play_param_.end_time_ns, play_param_.channels_to_play);
+    //     record_viewer_ptr_->set_curr_itr(record_viewer_ptr_->begin());
+    // }
+
+    // auto itr = record_viewer_ptr_->curr_itr();
+
+    // for (; itr != record_viewer_ptr_->end(); ++itr)
+    // {
+    //     if (task_buffer_->Size() > preload_size)
+    //     {
+    //         record_viewer_ptr_->set_curr_itr(itr);
+    //         break;
+    //     }
+
+    //     auto search = writers_.find(itr->channel_name);
+    //     if (search == writers_.end())
+    //     {
+    //         continue;
+    //     }
+
+    //     auto raw_msg = std::make_shared<message::RawMessage>(itr->content);
+    //     auto task = std::make_shared<PlayTask>(raw_msg, search->second,
+    //                                            itr->time, itr->time);
+    //     task_buffer_->Push(task);
+    // }
+}
+
 }  // namespace record
 }  // namespace cyber
 }  // namespace apollo

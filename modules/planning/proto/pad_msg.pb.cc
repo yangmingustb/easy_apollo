@@ -65,10 +65,11 @@ const char descriptor_table_protodef_modules_2fplanning_2fproto_2fpad_5fmsg_2epr
   "apollo.planning\032!modules/common/proto/he"
   "ader.proto\"c\n\nPadMessage\022%\n\006header\030\001 \001(\013"
   "2\025.apollo.common.Header\022.\n\006action\030\002 \001(\0162"
-  "\036.apollo.planning.DrivingAction*t\n\rDrivi"
-  "ngAction\022\010\n\004NONE\020d\022\n\n\006FOLLOW\020\000\022\017\n\013CHANGE"
-  "_LEFT\020\001\022\020\n\014CHANGE_RIGHT\020\002\022\r\n\tPULL_OVER\020\003"
-  "\022\010\n\004STOP\020\004\022\021\n\rRESUME_CRUISE\020\005"
+  "\036.apollo.planning.DrivingAction*\210\001\n\rDriv"
+  "ingAction\022\010\n\004NONE\020d\022\n\n\006FOLLOW\020\000\022\017\n\013CHANG"
+  "E_LEFT\020\001\022\020\n\014CHANGE_RIGHT\020\002\022\r\n\tPULL_OVER\020"
+  "\003\022\010\n\004STOP\020\004\022\021\n\rRESUME_CRUISE\020\005\022\022\n\016CLEAR_"
+  "PLANNING\020\006"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_modules_2fplanning_2fproto_2fpad_5fmsg_2eproto_deps[1] = {
   &::descriptor_table_modules_2fcommon_2fproto_2fheader_2eproto,
@@ -78,7 +79,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_mod
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_modules_2fplanning_2fproto_2fpad_5fmsg_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_modules_2fplanning_2fproto_2fpad_5fmsg_2eproto = {
-  false, false, descriptor_table_protodef_modules_2fplanning_2fproto_2fpad_5fmsg_2eproto, "modules/planning/proto/pad_msg.proto", 309,
+  false, false, descriptor_table_protodef_modules_2fplanning_2fproto_2fpad_5fmsg_2eproto, "modules/planning/proto/pad_msg.proto", 330,
   &descriptor_table_modules_2fplanning_2fproto_2fpad_5fmsg_2eproto_once, descriptor_table_modules_2fplanning_2fproto_2fpad_5fmsg_2eproto_sccs, descriptor_table_modules_2fplanning_2fproto_2fpad_5fmsg_2eproto_deps, 1, 1,
   schemas, file_default_instances, TableStruct_modules_2fplanning_2fproto_2fpad_5fmsg_2eproto::offsets,
   file_level_metadata_modules_2fplanning_2fproto_2fpad_5fmsg_2eproto, 1, file_level_enum_descriptors_modules_2fplanning_2fproto_2fpad_5fmsg_2eproto, file_level_service_descriptors_modules_2fplanning_2fproto_2fpad_5fmsg_2eproto,
@@ -100,6 +101,7 @@ bool DrivingAction_IsValid(int value) {
     case 3:
     case 4:
     case 5:
+    case 6:
     case 100:
       return true;
     default:

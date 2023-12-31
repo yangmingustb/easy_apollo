@@ -11,6 +11,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from modules.dreamview.proto import hmi_status_pb2 as modules_dot_dreamview_dot_proto_dot_hmi__status__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -19,8 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto2',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n&modules/dreamview/proto/hmi_mode.proto\x12\x10\x61pollo.dreamview\"0\n\x14ProcessMonitorConfig\x12\x18\n\x10\x63ommand_keywords\x18\x01 \x03(\t\"(\n\x13ModuleMonitorConfig\x12\x11\n\tnode_name\x18\x01 \x03(\t\"\x9d\x01\n\x14\x43hannelMonitorConfig\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x16\n\x0b\x64\x65lay_fatal\x18\x02 \x01(\x01:\x01\x33\x12\x18\n\x10mandatory_fields\x18\x03 \x03(\t\x12 \n\x15min_frequency_allowed\x18\x04 \x01(\x01:\x01\x30\x12#\n\x15max_frequency_allowed\x18\x05 \x01(\x01:\x04\x31\x30\x30\x30\"\xce\x05\n\x15ResourceMonitorConfig\x12\x46\n\x0b\x64isk_spaces\x18\x01 \x03(\x0b\x32\x31.apollo.dreamview.ResourceMonitorConfig.DiskSpace\x12\x44\n\ncpu_usages\x18\x02 \x03(\x0b\x32\x30.apollo.dreamview.ResourceMonitorConfig.CPUUsage\x12J\n\rmemory_usages\x18\x03 \x03(\x0b\x32\x33.apollo.dreamview.ResourceMonitorConfig.MemoryUsage\x12J\n\x10\x64isk_load_usages\x18\x04 \x03(\x0b\x32\x30.apollo.dreamview.ResourceMonitorConfig.DiskLoad\x1a_\n\tDiskSpace\x12\x0c\n\x04path\x18\x01 \x01(\t\x12\"\n\x1ainsufficient_space_warning\x18\x02 \x01(\x05\x12 \n\x18insufficient_space_error\x18\x03 \x01(\x05\x1a\x62\n\x08\x43PUUsage\x12\x1e\n\x16high_cpu_usage_warning\x18\x01 \x01(\x02\x12\x1c\n\x14high_cpu_usage_error\x18\x02 \x01(\x02\x12\x18\n\x10process_dag_path\x18\x03 \x01(\t\x1ak\n\x0bMemoryUsage\x12!\n\x19high_memory_usage_warning\x18\x01 \x01(\x05\x12\x1f\n\x17high_memory_usage_error\x18\x02 \x01(\x05\x12\x18\n\x10process_dag_path\x18\x03 \x01(\t\x1a]\n\x08\x44iskLoad\x12\x1e\n\x16high_disk_load_warning\x18\x01 \x01(\x05\x12\x1c\n\x14high_disk_load_error\x18\x02 \x01(\x05\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\"\x9b\x02\n\x12MonitoredComponent\x12\x37\n\x07process\x18\x01 \x01(\x0b\x32&.apollo.dreamview.ProcessMonitorConfig\x12\x37\n\x07\x63hannel\x18\x02 \x01(\x0b\x32&.apollo.dreamview.ChannelMonitorConfig\x12\x39\n\x08resource\x18\x03 \x01(\x0b\x32\'.apollo.dreamview.ResourceMonitorConfig\x12!\n\x13required_for_safety\x18\x04 \x01(\x08:\x04true\x12\x35\n\x06module\x18\x05 \x01(\x0b\x32%.apollo.dreamview.ModuleMonitorConfig\"\xa0\x01\n\x06Module\x12\x15\n\rstart_command\x18\x01 \x01(\t\x12\x14\n\x0cstop_command\x18\x02 \x01(\t\x12\x46\n\x16process_monitor_config\x18\x03 \x01(\x0b\x32&.apollo.dreamview.ProcessMonitorConfig\x12!\n\x13required_for_safety\x18\x04 \x01(\x08:\x04true\"Z\n\x0b\x43yberModule\x12\x11\n\tdag_files\x18\x01 \x03(\t\x12!\n\x13required_for_safety\x18\x02 \x01(\x08:\x04true\x12\x15\n\rprocess_group\x18\x03 \x01(\t\"\x82\x05\n\x07HMIMode\x12\x42\n\rcyber_modules\x18\x01 \x03(\x0b\x32+.apollo.dreamview.HMIMode.CyberModulesEntry\x12\x37\n\x07modules\x18\x02 \x03(\x0b\x32&.apollo.dreamview.HMIMode.ModulesEntry\x12P\n\x14monitored_components\x18\x03 \x03(\x0b\x32\x32.apollo.dreamview.HMIMode.MonitoredComponentsEntry\x12H\n\x10other_components\x18\x04 \x03(\x0b\x32..apollo.dreamview.HMIMode.OtherComponentsEntry\x1aR\n\x11\x43yberModulesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12,\n\x05value\x18\x02 \x01(\x0b\x32\x1d.apollo.dreamview.CyberModule:\x02\x38\x01\x1aH\n\x0cModulesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\'\n\x05value\x18\x02 \x01(\x0b\x32\x18.apollo.dreamview.Module:\x02\x38\x01\x1a`\n\x18MonitoredComponentsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.apollo.dreamview.MonitoredComponent:\x02\x38\x01\x1a^\n\x14OtherComponentsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x35\n\x05value\x18\x02 \x01(\x0b\x32&.apollo.dreamview.ProcessMonitorConfig:\x02\x38\x01'
-)
+  serialized_pb=b'\n&modules/dreamview/proto/hmi_mode.proto\x12\x10\x61pollo.dreamview\x1a(modules/dreamview/proto/hmi_status.proto\"0\n\x14ProcessMonitorConfig\x12\x18\n\x10\x63ommand_keywords\x18\x01 \x03(\t\"(\n\x13ModuleMonitorConfig\x12\x11\n\tnode_name\x18\x01 \x03(\t\"\x9d\x01\n\x14\x43hannelMonitorConfig\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x16\n\x0b\x64\x65lay_fatal\x18\x02 \x01(\x01:\x01\x33\x12\x18\n\x10mandatory_fields\x18\x03 \x03(\t\x12 \n\x15min_frequency_allowed\x18\x04 \x01(\x01:\x01\x30\x12#\n\x15max_frequency_allowed\x18\x05 \x01(\x01:\x04\x31\x30\x30\x30\"\xce\x05\n\x15ResourceMonitorConfig\x12\x46\n\x0b\x64isk_spaces\x18\x01 \x03(\x0b\x32\x31.apollo.dreamview.ResourceMonitorConfig.DiskSpace\x12\x44\n\ncpu_usages\x18\x02 \x03(\x0b\x32\x30.apollo.dreamview.ResourceMonitorConfig.CPUUsage\x12J\n\rmemory_usages\x18\x03 \x03(\x0b\x32\x33.apollo.dreamview.ResourceMonitorConfig.MemoryUsage\x12J\n\x10\x64isk_load_usages\x18\x04 \x03(\x0b\x32\x30.apollo.dreamview.ResourceMonitorConfig.DiskLoad\x1a_\n\tDiskSpace\x12\x0c\n\x04path\x18\x01 \x01(\t\x12\"\n\x1ainsufficient_space_warning\x18\x02 \x01(\x05\x12 \n\x18insufficient_space_error\x18\x03 \x01(\x05\x1a\x62\n\x08\x43PUUsage\x12\x1e\n\x16high_cpu_usage_warning\x18\x01 \x01(\x02\x12\x1c\n\x14high_cpu_usage_error\x18\x02 \x01(\x02\x12\x18\n\x10process_dag_path\x18\x03 \x01(\t\x1ak\n\x0bMemoryUsage\x12!\n\x19high_memory_usage_warning\x18\x01 \x01(\x05\x12\x1f\n\x17high_memory_usage_error\x18\x02 \x01(\x05\x12\x18\n\x10process_dag_path\x18\x03 \x01(\t\x1a]\n\x08\x44iskLoad\x12\x1e\n\x16high_disk_load_warning\x18\x01 \x01(\x05\x12\x1c\n\x14high_disk_load_error\x18\x02 \x01(\x05\x12\x13\n\x0b\x64\x65vice_name\x18\x03 \x01(\t\"\x9b\x02\n\x12MonitoredComponent\x12\x37\n\x07process\x18\x01 \x01(\x0b\x32&.apollo.dreamview.ProcessMonitorConfig\x12\x37\n\x07\x63hannel\x18\x02 \x01(\x0b\x32&.apollo.dreamview.ChannelMonitorConfig\x12\x39\n\x08resource\x18\x03 \x01(\x0b\x32\'.apollo.dreamview.ResourceMonitorConfig\x12!\n\x13required_for_safety\x18\x04 \x01(\x08:\x04true\x12\x35\n\x06module\x18\x05 \x01(\x0b\x32%.apollo.dreamview.ModuleMonitorConfig\"\xa0\x01\n\x06Module\x12\x15\n\rstart_command\x18\x01 \x01(\t\x12\x14\n\x0cstop_command\x18\x02 \x01(\t\x12\x46\n\x16process_monitor_config\x18\x03 \x01(\x0b\x32&.apollo.dreamview.ProcessMonitorConfig\x12!\n\x13required_for_safety\x18\x04 \x01(\x08:\x04true\"Z\n\x0b\x43yberModule\x12\x11\n\tdag_files\x18\x01 \x03(\t\x12!\n\x13required_for_safety\x18\x02 \x01(\x08:\x04true\x12\x15\n\rprocess_group\x18\x03 \x01(\t\"\xb4\x07\n\x07HMIMode\x12\x42\n\rcyber_modules\x18\x01 \x03(\x0b\x32+.apollo.dreamview.HMIMode.CyberModulesEntry\x12\x37\n\x07modules\x18\x02 \x03(\x0b\x32&.apollo.dreamview.HMIMode.ModulesEntry\x12P\n\x14monitored_components\x18\x03 \x03(\x0b\x32\x32.apollo.dreamview.HMIMode.MonitoredComponentsEntry\x12H\n\x10other_components\x18\x04 \x03(\x0b\x32..apollo.dreamview.HMIMode.OtherComponentsEntry\x12\x36\n\noperations\x18\x05 \x03(\x0e\x32\".apollo.dreamview.HMIModeOperation\x12=\n\x11\x64\x65\x66\x61ult_operation\x18\x06 \x01(\x0e\x32\".apollo.dreamview.HMIModeOperation\x12\x0e\n\x06layout\x18\x07 \x01(\t\x12J\n\x11global_components\x18\x08 \x03(\x0b\x32/.apollo.dreamview.HMIMode.GlobalComponentsEntry\x1aR\n\x11\x43yberModulesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12,\n\x05value\x18\x02 \x01(\x0b\x32\x1d.apollo.dreamview.CyberModule:\x02\x38\x01\x1aH\n\x0cModulesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\'\n\x05value\x18\x02 \x01(\x0b\x32\x18.apollo.dreamview.Module:\x02\x38\x01\x1a`\n\x18MonitoredComponentsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.apollo.dreamview.MonitoredComponent:\x02\x38\x01\x1a^\n\x14OtherComponentsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x35\n\x05value\x18\x02 \x01(\x0b\x32&.apollo.dreamview.ProcessMonitorConfig:\x02\x38\x01\x1a]\n\x15GlobalComponentsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.apollo.dreamview.MonitoredComponent:\x02\x38\x01'
+  ,
+  dependencies=[modules_dot_dreamview_dot_proto_dot_hmi__status__pb2.DESCRIPTOR,])
 
 
 
@@ -52,8 +54,8 @@ _PROCESSMONITORCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=60,
-  serialized_end=108,
+  serialized_start=102,
+  serialized_end=150,
 )
 
 
@@ -84,8 +86,8 @@ _MODULEMONITORCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=110,
-  serialized_end=150,
+  serialized_start=152,
+  serialized_end=192,
 )
 
 
@@ -144,8 +146,8 @@ _CHANNELMONITORCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=153,
-  serialized_end=310,
+  serialized_start=195,
+  serialized_end=352,
 )
 
 
@@ -190,8 +192,8 @@ _RESOURCEMONITORCONFIG_DISKSPACE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=632,
-  serialized_end=727,
+  serialized_start=674,
+  serialized_end=769,
 )
 
 _RESOURCEMONITORCONFIG_CPUUSAGE = _descriptor.Descriptor(
@@ -235,8 +237,8 @@ _RESOURCEMONITORCONFIG_CPUUSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=729,
-  serialized_end=827,
+  serialized_start=771,
+  serialized_end=869,
 )
 
 _RESOURCEMONITORCONFIG_MEMORYUSAGE = _descriptor.Descriptor(
@@ -280,8 +282,8 @@ _RESOURCEMONITORCONFIG_MEMORYUSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=829,
-  serialized_end=936,
+  serialized_start=871,
+  serialized_end=978,
 )
 
 _RESOURCEMONITORCONFIG_DISKLOAD = _descriptor.Descriptor(
@@ -325,8 +327,8 @@ _RESOURCEMONITORCONFIG_DISKLOAD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=938,
-  serialized_end=1031,
+  serialized_start=980,
+  serialized_end=1073,
 )
 
 _RESOURCEMONITORCONFIG = _descriptor.Descriptor(
@@ -377,8 +379,8 @@ _RESOURCEMONITORCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=313,
-  serialized_end=1031,
+  serialized_start=355,
+  serialized_end=1073,
 )
 
 
@@ -437,8 +439,8 @@ _MONITOREDCOMPONENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1034,
-  serialized_end=1317,
+  serialized_start=1076,
+  serialized_end=1359,
 )
 
 
@@ -490,8 +492,8 @@ _MODULE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1320,
-  serialized_end=1480,
+  serialized_start=1362,
+  serialized_end=1522,
 )
 
 
@@ -536,8 +538,8 @@ _CYBERMODULE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1482,
-  serialized_end=1572,
+  serialized_start=1524,
+  serialized_end=1614,
 )
 
 
@@ -575,8 +577,8 @@ _HMIMODE_CYBERMODULESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1867,
-  serialized_end=1949,
+  serialized_start=2120,
+  serialized_end=2202,
 )
 
 _HMIMODE_MODULESENTRY = _descriptor.Descriptor(
@@ -613,8 +615,8 @@ _HMIMODE_MODULESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1951,
-  serialized_end=2023,
+  serialized_start=2204,
+  serialized_end=2276,
 )
 
 _HMIMODE_MONITOREDCOMPONENTSENTRY = _descriptor.Descriptor(
@@ -651,8 +653,8 @@ _HMIMODE_MONITOREDCOMPONENTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2025,
-  serialized_end=2121,
+  serialized_start=2278,
+  serialized_end=2374,
 )
 
 _HMIMODE_OTHERCOMPONENTSENTRY = _descriptor.Descriptor(
@@ -689,8 +691,46 @@ _HMIMODE_OTHERCOMPONENTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2123,
-  serialized_end=2217,
+  serialized_start=2376,
+  serialized_end=2470,
+)
+
+_HMIMODE_GLOBALCOMPONENTSENTRY = _descriptor.Descriptor(
+  name='GlobalComponentsEntry',
+  full_name='apollo.dreamview.HMIMode.GlobalComponentsEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='apollo.dreamview.HMIMode.GlobalComponentsEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='apollo.dreamview.HMIMode.GlobalComponentsEntry.value', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2472,
+  serialized_end=2565,
 )
 
 _HMIMODE = _descriptor.Descriptor(
@@ -729,10 +769,38 @@ _HMIMODE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='operations', full_name='apollo.dreamview.HMIMode.operations', index=4,
+      number=5, type=14, cpp_type=8, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='default_operation', full_name='apollo.dreamview.HMIMode.default_operation', index=5,
+      number=6, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='layout', full_name='apollo.dreamview.HMIMode.layout', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='global_components', full_name='apollo.dreamview.HMIMode.global_components', index=7,
+      number=8, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
-  nested_types=[_HMIMODE_CYBERMODULESENTRY, _HMIMODE_MODULESENTRY, _HMIMODE_MONITOREDCOMPONENTSENTRY, _HMIMODE_OTHERCOMPONENTSENTRY, ],
+  nested_types=[_HMIMODE_CYBERMODULESENTRY, _HMIMODE_MODULESENTRY, _HMIMODE_MONITOREDCOMPONENTSENTRY, _HMIMODE_OTHERCOMPONENTSENTRY, _HMIMODE_GLOBALCOMPONENTSENTRY, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -741,8 +809,8 @@ _HMIMODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1575,
-  serialized_end=2217,
+  serialized_start=1617,
+  serialized_end=2565,
 )
 
 _RESOURCEMONITORCONFIG_DISKSPACE.containing_type = _RESOURCEMONITORCONFIG
@@ -766,10 +834,15 @@ _HMIMODE_MONITOREDCOMPONENTSENTRY.fields_by_name['value'].message_type = _MONITO
 _HMIMODE_MONITOREDCOMPONENTSENTRY.containing_type = _HMIMODE
 _HMIMODE_OTHERCOMPONENTSENTRY.fields_by_name['value'].message_type = _PROCESSMONITORCONFIG
 _HMIMODE_OTHERCOMPONENTSENTRY.containing_type = _HMIMODE
+_HMIMODE_GLOBALCOMPONENTSENTRY.fields_by_name['value'].message_type = _MONITOREDCOMPONENT
+_HMIMODE_GLOBALCOMPONENTSENTRY.containing_type = _HMIMODE
 _HMIMODE.fields_by_name['cyber_modules'].message_type = _HMIMODE_CYBERMODULESENTRY
 _HMIMODE.fields_by_name['modules'].message_type = _HMIMODE_MODULESENTRY
 _HMIMODE.fields_by_name['monitored_components'].message_type = _HMIMODE_MONITOREDCOMPONENTSENTRY
 _HMIMODE.fields_by_name['other_components'].message_type = _HMIMODE_OTHERCOMPONENTSENTRY
+_HMIMODE.fields_by_name['operations'].enum_type = modules_dot_dreamview_dot_proto_dot_hmi__status__pb2._HMIMODEOPERATION
+_HMIMODE.fields_by_name['default_operation'].enum_type = modules_dot_dreamview_dot_proto_dot_hmi__status__pb2._HMIMODEOPERATION
+_HMIMODE.fields_by_name['global_components'].message_type = _HMIMODE_GLOBALCOMPONENTSENTRY
 DESCRIPTOR.message_types_by_name['ProcessMonitorConfig'] = _PROCESSMONITORCONFIG
 DESCRIPTOR.message_types_by_name['ModuleMonitorConfig'] = _MODULEMONITORCONFIG
 DESCRIPTOR.message_types_by_name['ChannelMonitorConfig'] = _CHANNELMONITORCONFIG
@@ -890,6 +963,13 @@ HMIMode = _reflection.GeneratedProtocolMessageType('HMIMode', (_message.Message,
     # @@protoc_insertion_point(class_scope:apollo.dreamview.HMIMode.OtherComponentsEntry)
     })
   ,
+
+  'GlobalComponentsEntry' : _reflection.GeneratedProtocolMessageType('GlobalComponentsEntry', (_message.Message,), {
+    'DESCRIPTOR' : _HMIMODE_GLOBALCOMPONENTSENTRY,
+    '__module__' : 'modules.dreamview.proto.hmi_mode_pb2'
+    # @@protoc_insertion_point(class_scope:apollo.dreamview.HMIMode.GlobalComponentsEntry)
+    })
+  ,
   'DESCRIPTOR' : _HMIMODE,
   '__module__' : 'modules.dreamview.proto.hmi_mode_pb2'
   # @@protoc_insertion_point(class_scope:apollo.dreamview.HMIMode)
@@ -899,10 +979,12 @@ _sym_db.RegisterMessage(HMIMode.CyberModulesEntry)
 _sym_db.RegisterMessage(HMIMode.ModulesEntry)
 _sym_db.RegisterMessage(HMIMode.MonitoredComponentsEntry)
 _sym_db.RegisterMessage(HMIMode.OtherComponentsEntry)
+_sym_db.RegisterMessage(HMIMode.GlobalComponentsEntry)
 
 
 _HMIMODE_CYBERMODULESENTRY._options = None
 _HMIMODE_MODULESENTRY._options = None
 _HMIMODE_MONITOREDCOMPONENTSENTRY._options = None
 _HMIMODE_OTHERCOMPONENTSENTRY._options = None
+_HMIMODE_GLOBALCOMPONENTSENTRY._options = None
 # @@protoc_insertion_point(module_scope)
