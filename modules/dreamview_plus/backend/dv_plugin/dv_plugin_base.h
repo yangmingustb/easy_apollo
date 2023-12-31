@@ -24,7 +24,7 @@
 
 #include "CivetServer.h"
 
-#include "modules/dreamview/backend/common/handlers/websocket_handler.h"
+#include "modules/dreamview/backend/handlers/websocket_handler.h"
 namespace apollo {
 namespace dreamview {
 

@@ -212,12 +212,21 @@ const char descriptor_table_protodef_modules_2fdreamview_2fproto_2fhmi_5fconfig_
   " \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"}\n\013VehicleData\022:"
   "\n\ndata_files\030\001 \003(\0132&.apollo.dreamview.Ve"
   "hicleData.DataFile\0322\n\010DataFile\022\023\n\013source"
-  "_path\030\001 \001(\t\022\021\n\tdest_path\030\002 \001(\t*\261\001\n\tHMIAc"
+  "_path\030\001 \001(\t\022\021\n\tdest_path\030\002 \001(\t*\264\004\n\tHMIAc"
   "tion\022\010\n\004NONE\020\000\022\016\n\nSETUP_MODE\020\001\022\016\n\nRESET_"
   "MODE\020\002\022\023\n\017ENTER_AUTO_MODE\020\003\022\r\n\tDISENGAGE"
   "\020\004\022\017\n\013CHANGE_MODE\020\005\022\016\n\nCHANGE_MAP\020\006\022\022\n\016C"
   "HANGE_VEHICLE\020\007\022\020\n\014START_MODULE\020\010\022\017\n\013STO"
-  "P_MODULE\020\t"
+  "P_MODULE\020\t\022\023\n\017CHANGE_SCENARIO\020\n\022\027\n\023CHANG"
+  "E_SCENARIO_SET\020\013\022\022\n\016LOAD_SCENARIOS\020\014\022\027\n\023"
+  "DELETE_SCENARIO_SET\020\r\022\027\n\023LOAD_DYNAMIC_MO"
+  "DELS\020\016\022\030\n\024CHANGE_DYNAMIC_MODEL\020\017\022\030\n\024DELE"
+  "TE_DYNAMIC_MODEL\020\020\022\021\n\rCHANGE_RECORD\020\021\022\021\n"
+  "\rDELETE_RECORD\020\022\022\020\n\014LOAD_RECORDS\020\023\022\017\n\013ST"
+  "OP_RECORD\020\024\022\024\n\020CHANGE_OPERATION\020\025\022\027\n\023DEL"
+  "ETE_VEHICLE_CONF\020\026\022\023\n\017DELETE_V2X_CONF\020\027\022"
+  "\016\n\nDELETE_MAP\020\030\022\024\n\020LOAD_RTK_RECORDS\020\031\022\025\n"
+  "\021CHANGE_RTK_RECORD\020\032\022\017\n\013LOAD_RECORD\020\033"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fconfig_2eproto_deps[1] = {
 };
@@ -231,7 +240,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_mod
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fconfig_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fconfig_2eproto = {
-  false, false, descriptor_table_protodef_modules_2fdreamview_2fproto_2fhmi_5fconfig_2eproto, "modules/dreamview/proto/hmi_config.proto", 690,
+  false, false, descriptor_table_protodef_modules_2fdreamview_2fproto_2fhmi_5fconfig_2eproto, "modules/dreamview/proto/hmi_config.proto", 1077,
   &descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fconfig_2eproto_once, descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fconfig_2eproto_sccs, descriptor_table_modules_2fdreamview_2fproto_2fhmi_5fconfig_2eproto_deps, 6, 0,
   schemas, file_default_instances, TableStruct_modules_2fdreamview_2fproto_2fhmi_5fconfig_2eproto::offsets,
   file_level_metadata_modules_2fdreamview_2fproto_2fhmi_5fconfig_2eproto, 6, file_level_enum_descriptors_modules_2fdreamview_2fproto_2fhmi_5fconfig_2eproto, file_level_service_descriptors_modules_2fdreamview_2fproto_2fhmi_5fconfig_2eproto,
@@ -257,6 +266,24 @@ bool HMIAction_IsValid(int value) {
     case 7:
     case 8:
     case 9:
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+    case 16:
+    case 17:
+    case 18:
+    case 19:
+    case 20:
+    case 21:
+    case 22:
+    case 23:
+    case 24:
+    case 25:
+    case 26:
+    case 27:
       return true;
     default:
       return false;

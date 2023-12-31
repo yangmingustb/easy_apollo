@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto2',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n#modules/routing/proto/routing.proto\x12\x0e\x61pollo.routing\x1a!modules/common/proto/header.proto\x1a#modules/common/proto/geometry.proto\x1a%modules/common/proto/error_code.proto\x1a)modules/map/proto/map_parking_space.proto\x1a$modules/map/proto/map_geometry.proto\"]\n\x0cLaneWaypoint\x12\n\n\x02id\x18\x01 \x01(\t\x12\t\n\x01s\x18\x02 \x01(\x01\x12%\n\x04pose\x18\x03 \x01(\x0b\x32\x17.apollo.common.PointENU\x12\x0f\n\x07heading\x18\x04 \x01(\x01\"9\n\x0bLaneSegment\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07start_s\x18\x02 \x01(\x01\x12\r\n\x05\x65nd_s\x18\x03 \x01(\x01\"\xc2\x01\n\x0bParkingInfo\x12\x18\n\x10parking_space_id\x18\x01 \x01(\t\x12.\n\rparking_point\x18\x02 \x01(\x0b\x32\x17.apollo.common.PointENU\x12<\n\x12parking_space_type\x18\x03 \x01(\x0e\x32 .apollo.routing.ParkingSpaceType\x12+\n\x0c\x63orner_point\x18\x04 \x01(\x0b\x32\x15.apollo.hdmap.Polygon\"\x7f\n\x0b\x44\x65\x61\x64\x45ndInfo\x12\x41\n\x15\x64\x65\x61\x64_end_routing_type\x18\x01 \x01(\x0e\x32\".apollo.routing.DeadEndRoutingType\x12-\n\x0ctarget_point\x18\x02 \x01(\x0b\x32\x17.apollo.common.PointENU\"\xef\x02\n\x0eRoutingRequest\x12%\n\x06header\x18\x01 \x01(\x0b\x32\x15.apollo.common.Header\x12.\n\x08waypoint\x18\x02 \x03(\x0b\x32\x1c.apollo.routing.LaneWaypoint\x12\x35\n\x10\x62lacklisted_lane\x18\x03 \x03(\x0b\x32\x1b.apollo.routing.LaneSegment\x12\x18\n\x10\x62lacklisted_road\x18\x04 \x03(\t\x12\x17\n\tbroadcast\x18\x05 \x01(\x08:\x04true\x12\x35\n\rparking_space\x18\x06 \x01(\x0b\x32\x1a.apollo.hdmap.ParkingSpaceB\x02\x18\x01\x12\x31\n\x0cparking_info\x18\x07 \x01(\x0b\x32\x1b.apollo.routing.ParkingInfo\x12\x32\n\rdead_end_info\x18\x08 \x01(\x0b\x32\x1b.apollo.routing.DeadEndInfo\"\x1f\n\x0bMeasurement\x12\x10\n\x08\x64istance\x18\x01 \x01(\x01\"\x8c\x01\n\x07Passage\x12,\n\x07segment\x18\x01 \x03(\x0b\x32\x1b.apollo.routing.LaneSegment\x12\x10\n\x08\x63\x61n_exit\x18\x02 \x01(\x08\x12\x41\n\x10\x63hange_lane_type\x18\x03 \x01(\x0e\x32\x1e.apollo.routing.ChangeLaneType:\x07\x46ORWARD\"C\n\x0bRoadSegment\x12\n\n\x02id\x18\x01 \x01(\t\x12(\n\x07passage\x18\x02 \x03(\x0b\x32\x17.apollo.routing.Passage\"\x8c\x02\n\x0fRoutingResponse\x12%\n\x06header\x18\x01 \x01(\x0b\x32\x15.apollo.common.Header\x12)\n\x04road\x18\x02 \x03(\x0b\x32\x1b.apollo.routing.RoadSegment\x12\x30\n\x0bmeasurement\x18\x03 \x01(\x0b\x32\x1b.apollo.routing.Measurement\x12\x37\n\x0frouting_request\x18\x04 \x01(\x0b\x32\x1e.apollo.routing.RoutingRequest\x12\x13\n\x0bmap_version\x18\x05 \x01(\x0c\x12\'\n\x06status\x18\x06 \x01(\x0b\x32\x17.apollo.common.StatusPb*;\n\x10ParkingSpaceType\x12\x11\n\rVERTICAL_PLOT\x10\x00\x12\x14\n\x10PARALLEL_PARKING\x10\x01*H\n\x12\x44\x65\x61\x64\x45ndRoutingType\x12\x11\n\rROUTING_OTHER\x10\x00\x12\x0e\n\nROUTING_IN\x10\x01\x12\x0f\n\x0bROUTING_OUT\x10\x02*2\n\x0e\x43hangeLaneType\x12\x0b\n\x07\x46ORWARD\x10\x00\x12\x08\n\x04LEFT\x10\x01\x12\t\n\x05RIGHT\x10\x02'
+  serialized_pb=b'\n#modules/routing/proto/routing.proto\x12\x0e\x61pollo.routing\x1a!modules/common/proto/header.proto\x1a#modules/common/proto/geometry.proto\x1a%modules/common/proto/error_code.proto\x1a)modules/map/proto/map_parking_space.proto\x1a$modules/map/proto/map_geometry.proto\"]\n\x0cLaneWaypoint\x12\n\n\x02id\x18\x01 \x01(\t\x12\t\n\x01s\x18\x02 \x01(\x01\x12%\n\x04pose\x18\x03 \x01(\x0b\x32\x17.apollo.common.PointENU\x12\x0f\n\x07heading\x18\x04 \x01(\x01\"9\n\x0bLaneSegment\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07start_s\x18\x02 \x01(\x01\x12\r\n\x05\x65nd_s\x18\x03 \x01(\x01\"\xc2\x01\n\x0bParkingInfo\x12\x18\n\x10parking_space_id\x18\x01 \x01(\t\x12.\n\rparking_point\x18\x02 \x01(\x0b\x32\x17.apollo.common.PointENU\x12<\n\x12parking_space_type\x18\x03 \x01(\x0e\x32 .apollo.routing.ParkingSpaceType\x12+\n\x0c\x63orner_point\x18\x04 \x01(\x0b\x32\x15.apollo.hdmap.Polygon\"\x7f\n\x0b\x44\x65\x61\x64\x45ndInfo\x12\x41\n\x15\x64\x65\x61\x64_end_routing_type\x18\x01 \x01(\x0e\x32\".apollo.routing.DeadEndRoutingType\x12-\n\x0ctarget_point\x18\x02 \x01(\x0b\x32\x17.apollo.common.PointENU\"\x91\x03\n\x0eRoutingRequest\x12%\n\x06header\x18\x01 \x01(\x0b\x32\x15.apollo.common.Header\x12.\n\x08waypoint\x18\x02 \x03(\x0b\x32\x1c.apollo.routing.LaneWaypoint\x12\x35\n\x10\x62lacklisted_lane\x18\x03 \x03(\x0b\x32\x1b.apollo.routing.LaneSegment\x12\x18\n\x10\x62lacklisted_road\x18\x04 \x03(\t\x12\x17\n\tbroadcast\x18\x05 \x01(\x08:\x04true\x12\x35\n\rparking_space\x18\x06 \x01(\x0b\x32\x1a.apollo.hdmap.ParkingSpaceB\x02\x18\x01\x12\x31\n\x0cparking_info\x18\x07 \x01(\x0b\x32\x1b.apollo.routing.ParkingInfo\x12\x32\n\rdead_end_info\x18\x08 \x01(\x0b\x32\x1b.apollo.routing.DeadEndInfo\x12 \n\x11is_start_pose_set\x18\t \x01(\x08:\x05\x66\x61lse\"\x1f\n\x0bMeasurement\x12\x10\n\x08\x64istance\x18\x01 \x01(\x01\"\x8c\x01\n\x07Passage\x12,\n\x07segment\x18\x01 \x03(\x0b\x32\x1b.apollo.routing.LaneSegment\x12\x10\n\x08\x63\x61n_exit\x18\x02 \x01(\x08\x12\x41\n\x10\x63hange_lane_type\x18\x03 \x01(\x0e\x32\x1e.apollo.routing.ChangeLaneType:\x07\x46ORWARD\"C\n\x0bRoadSegment\x12\n\n\x02id\x18\x01 \x01(\t\x12(\n\x07passage\x18\x02 \x03(\x0b\x32\x17.apollo.routing.Passage\"\x8c\x02\n\x0fRoutingResponse\x12%\n\x06header\x18\x01 \x01(\x0b\x32\x15.apollo.common.Header\x12)\n\x04road\x18\x02 \x03(\x0b\x32\x1b.apollo.routing.RoadSegment\x12\x30\n\x0bmeasurement\x18\x03 \x01(\x0b\x32\x1b.apollo.routing.Measurement\x12\x37\n\x0frouting_request\x18\x04 \x01(\x0b\x32\x1e.apollo.routing.RoutingRequest\x12\x13\n\x0bmap_version\x18\x05 \x01(\x0c\x12\'\n\x06status\x18\x06 \x01(\x0b\x32\x17.apollo.common.StatusPb*;\n\x10ParkingSpaceType\x12\x11\n\rVERTICAL_PLOT\x10\x00\x12\x14\n\x10PARALLEL_PARKING\x10\x01*H\n\x12\x44\x65\x61\x64\x45ndRoutingType\x12\x11\n\rROUTING_OTHER\x10\x00\x12\x0e\n\nROUTING_IN\x10\x01\x12\x0f\n\x0bROUTING_OUT\x10\x02*2\n\x0e\x43hangeLaneType\x12\x0b\n\x07\x46ORWARD\x10\x00\x12\x08\n\x04LEFT\x10\x01\x12\t\n\x05RIGHT\x10\x02'
   ,
   dependencies=[modules_dot_common_dot_proto_dot_header__pb2.DESCRIPTOR,modules_dot_common_dot_proto_dot_geometry__pb2.DESCRIPTOR,modules_dot_common_dot_proto_dot_error__code__pb2.DESCRIPTOR,modules_dot_map_dot_proto_dot_map__parking__space__pb2.DESCRIPTOR,modules_dot_map_dot_proto_dot_map__geometry__pb2.DESCRIPTOR,])
 
@@ -49,8 +49,8 @@ _PARKINGSPACETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1613,
-  serialized_end=1672,
+  serialized_start=1647,
+  serialized_end=1706,
 )
 _sym_db.RegisterEnumDescriptor(_PARKINGSPACETYPE)
 
@@ -80,8 +80,8 @@ _DEADENDROUTINGTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1674,
-  serialized_end=1746,
+  serialized_start=1708,
+  serialized_end=1780,
 )
 _sym_db.RegisterEnumDescriptor(_DEADENDROUTINGTYPE)
 
@@ -111,8 +111,8 @@ _CHANGELANETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1748,
-  serialized_end=1798,
+  serialized_start=1782,
+  serialized_end=1832,
 )
 _sym_db.RegisterEnumDescriptor(_CHANGELANETYPE)
 
@@ -383,6 +383,13 @@ _ROUTINGREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='is_start_pose_set', full_name='apollo.routing.RoutingRequest.is_start_pose_set', index=8,
+      number=9, type=8, cpp_type=7, label=1,
+      has_default_value=True, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -396,7 +403,7 @@ _ROUTINGREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=728,
-  serialized_end=1095,
+  serialized_end=1129,
 )
 
 
@@ -427,8 +434,8 @@ _MEASUREMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1097,
-  serialized_end=1128,
+  serialized_start=1131,
+  serialized_end=1162,
 )
 
 
@@ -473,8 +480,8 @@ _PASSAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1131,
-  serialized_end=1271,
+  serialized_start=1165,
+  serialized_end=1305,
 )
 
 
@@ -512,8 +519,8 @@ _ROADSEGMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1273,
-  serialized_end=1340,
+  serialized_start=1307,
+  serialized_end=1374,
 )
 
 
@@ -579,8 +586,8 @@ _ROUTINGRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1343,
-  serialized_end=1611,
+  serialized_start=1377,
+  serialized_end=1645,
 )
 
 _LANEWAYPOINT.fields_by_name['pose'].message_type = modules_dot_common_dot_proto_dot_geometry__pb2._POINTENU

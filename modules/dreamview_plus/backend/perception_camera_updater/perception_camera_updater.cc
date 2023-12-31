@@ -22,8 +22,8 @@
 
 #include "opencv2/opencv.hpp"
 
-#include "modules/common_msgs/basic_msgs/geometry.pb.h"
-#include "modules/common_msgs/perception_msgs/perception_obstacle.pb.h"
+#include "modules/common/proto/geometry.pb.h"
+#include "modules/perception/proto/perception_obstacle.pb.h"
 #include "modules/dreamview/proto/camera_update.pb.h"
 
 #include "cyber/common/file.h"

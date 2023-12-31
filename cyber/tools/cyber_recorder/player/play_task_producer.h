@@ -59,11 +59,25 @@ public:
     void Start();
     void Stop();
 
+    bool is_initialized() const { return is_initialized_.load(); }
+
     const PlayParam& play_param() const { return play_param_; }
     bool is_stopped() const { return is_stopped_.load(); }
 
     // processed_time，已经处理的时间
     int publish_play_info(double processed_time);
+
+    /**
+     * @brief Reset player producer for dv will repeatedly use it.
+     * reset the start time when dv reset play record progress.
+     */
+    void Reset(const double& progress_time_s);
+
+    /**
+     * @brief Preload the player,producer fill play_task_buffer before
+     * playing.
+     */
+    void FillPlayTaskBuffer();
 
 private:
     bool ReadRecordInfo();
@@ -82,6 +96,8 @@ private:
     WriterMap writers_;
     MessageTypeMap msg_types_;
     std::vector<RecordReaderPtr> record_readers_;
+
+    // RecordViewerPtr record_viewer_ptr_;
 
     uint64_t earliest_begin_time_;
     uint64_t latest_end_time_;

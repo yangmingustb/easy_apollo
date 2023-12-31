@@ -20,19 +20,16 @@
 #include <stdexcept>
 #include <string>
 
-namespace apollo
-{
-namespace cyber
-{
-namespace class_loader
-{
-#define DECLARE_SHARED_LIBRARY_EXCEPTION(CLS, BASE)                 \
-    class CLS : public BASE                                         \
-    {                                                               \
-    public:                                                         \
-        explicit CLS(const std::string& err_msg) : BASE(err_msg) {} \
-        ~CLS() throw() {}                                           \
-    };
+namespace apollo {
+namespace cyber {
+namespace class_loader {
+
+#define DECLARE_SHARED_LIBRARY_EXCEPTION(CLS, BASE)             \
+  class CLS : public BASE {                                     \
+   public:                                                      \
+    explicit CLS(const std::string& err_msg) : BASE(err_msg) {} \
+    ~CLS() throw() {}                                           \
+  };
 
 DECLARE_SHARED_LIBRARY_EXCEPTION(LibraryAlreadyLoadedException,
                                  std::runtime_error);

@@ -265,14 +265,16 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_modules_2frouting_2fproto_2fro
   PROTOBUF_FIELD_OFFSET(::apollo::routing::RoutingRequest, parking_space_),
   PROTOBUF_FIELD_OFFSET(::apollo::routing::RoutingRequest, parking_info_),
   PROTOBUF_FIELD_OFFSET(::apollo::routing::RoutingRequest, dead_end_info_),
+  PROTOBUF_FIELD_OFFSET(::apollo::routing::RoutingRequest, is_start_pose_set_),
   0,
   ~0u,
   ~0u,
   ~0u,
-  4,
+  5,
   1,
   2,
   3,
+  4,
   PROTOBUF_FIELD_OFFSET(::apollo::routing::Measurement, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::apollo::routing::Measurement, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -323,11 +325,11 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 13, 21, sizeof(::apollo::routing::LaneSegment)},
   { 24, 33, sizeof(::apollo::routing::ParkingInfo)},
   { 37, 44, sizeof(::apollo::routing::DeadEndInfo)},
-  { 46, 59, sizeof(::apollo::routing::RoutingRequest)},
-  { 67, 73, sizeof(::apollo::routing::Measurement)},
-  { 74, 82, sizeof(::apollo::routing::Passage)},
-  { 85, 92, sizeof(::apollo::routing::RoadSegment)},
-  { 94, 105, sizeof(::apollo::routing::RoutingResponse)},
+  { 46, 60, sizeof(::apollo::routing::RoutingRequest)},
+  { 69, 75, sizeof(::apollo::routing::Measurement)},
+  { 76, 84, sizeof(::apollo::routing::Passage)},
+  { 87, 94, sizeof(::apollo::routing::RoadSegment)},
+  { 96, 107, sizeof(::apollo::routing::RoutingResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -361,7 +363,7 @@ const char descriptor_table_protodef_modules_2frouting_2fproto_2frouting_2eproto
   "DeadEndInfo\022A\n\025dead_end_routing_type\030\001 \001"
   "(\0162\".apollo.routing.DeadEndRoutingType\022-"
   "\n\014target_point\030\002 \001(\0132\027.apollo.common.Poi"
-  "ntENU\"\357\002\n\016RoutingRequest\022%\n\006header\030\001 \001(\013"
+  "ntENU\"\221\003\n\016RoutingRequest\022%\n\006header\030\001 \001(\013"
   "2\025.apollo.common.Header\022.\n\010waypoint\030\002 \003("
   "\0132\034.apollo.routing.LaneWaypoint\0225\n\020black"
   "listed_lane\030\003 \003(\0132\033.apollo.routing.LaneS"
@@ -370,24 +372,25 @@ const char descriptor_table_protodef_modules_2frouting_2fproto_2frouting_2eproto
   "2\032.apollo.hdmap.ParkingSpaceB\002\030\001\0221\n\014park"
   "ing_info\030\007 \001(\0132\033.apollo.routing.ParkingI"
   "nfo\0222\n\rdead_end_info\030\010 \001(\0132\033.apollo.rout"
-  "ing.DeadEndInfo\"\037\n\013Measurement\022\020\n\010distan"
-  "ce\030\001 \001(\001\"\214\001\n\007Passage\022,\n\007segment\030\001 \003(\0132\033."
-  "apollo.routing.LaneSegment\022\020\n\010can_exit\030\002"
-  " \001(\010\022A\n\020change_lane_type\030\003 \001(\0162\036.apollo."
-  "routing.ChangeLaneType:\007FORWARD\"C\n\013RoadS"
-  "egment\022\n\n\002id\030\001 \001(\t\022(\n\007passage\030\002 \003(\0132\027.ap"
-  "ollo.routing.Passage\"\214\002\n\017RoutingResponse"
-  "\022%\n\006header\030\001 \001(\0132\025.apollo.common.Header\022"
-  ")\n\004road\030\002 \003(\0132\033.apollo.routing.RoadSegme"
-  "nt\0220\n\013measurement\030\003 \001(\0132\033.apollo.routing"
-  ".Measurement\0227\n\017routing_request\030\004 \001(\0132\036."
-  "apollo.routing.RoutingRequest\022\023\n\013map_ver"
-  "sion\030\005 \001(\014\022\'\n\006status\030\006 \001(\0132\027.apollo.comm"
-  "on.StatusPb*;\n\020ParkingSpaceType\022\021\n\rVERTI"
-  "CAL_PLOT\020\000\022\024\n\020PARALLEL_PARKING\020\001*H\n\022Dead"
-  "EndRoutingType\022\021\n\rROUTING_OTHER\020\000\022\016\n\nROU"
-  "TING_IN\020\001\022\017\n\013ROUTING_OUT\020\002*2\n\016ChangeLane"
-  "Type\022\013\n\007FORWARD\020\000\022\010\n\004LEFT\020\001\022\t\n\005RIGHT\020\002"
+  "ing.DeadEndInfo\022 \n\021is_start_pose_set\030\t \001"
+  "(\010:\005false\"\037\n\013Measurement\022\020\n\010distance\030\001 \001"
+  "(\001\"\214\001\n\007Passage\022,\n\007segment\030\001 \003(\0132\033.apollo"
+  ".routing.LaneSegment\022\020\n\010can_exit\030\002 \001(\010\022A"
+  "\n\020change_lane_type\030\003 \001(\0162\036.apollo.routin"
+  "g.ChangeLaneType:\007FORWARD\"C\n\013RoadSegment"
+  "\022\n\n\002id\030\001 \001(\t\022(\n\007passage\030\002 \003(\0132\027.apollo.r"
+  "outing.Passage\"\214\002\n\017RoutingResponse\022%\n\006he"
+  "ader\030\001 \001(\0132\025.apollo.common.Header\022)\n\004roa"
+  "d\030\002 \003(\0132\033.apollo.routing.RoadSegment\0220\n\013"
+  "measurement\030\003 \001(\0132\033.apollo.routing.Measu"
+  "rement\0227\n\017routing_request\030\004 \001(\0132\036.apollo"
+  ".routing.RoutingRequest\022\023\n\013map_version\030\005"
+  " \001(\014\022\'\n\006status\030\006 \001(\0132\027.apollo.common.Sta"
+  "tusPb*;\n\020ParkingSpaceType\022\021\n\rVERTICAL_PL"
+  "OT\020\000\022\024\n\020PARALLEL_PARKING\020\001*H\n\022DeadEndRou"
+  "tingType\022\021\n\rROUTING_OTHER\020\000\022\016\n\nROUTING_I"
+  "N\020\001\022\017\n\013ROUTING_OUT\020\002*2\n\016ChangeLaneType\022\013"
+  "\n\007FORWARD\020\000\022\010\n\004LEFT\020\001\022\t\n\005RIGHT\020\002"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_modules_2frouting_2fproto_2frouting_2eproto_deps[5] = {
   &::descriptor_table_modules_2fcommon_2fproto_2ferror_5fcode_2eproto,
@@ -409,7 +412,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_mod
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_modules_2frouting_2fproto_2frouting_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_modules_2frouting_2fproto_2frouting_2eproto = {
-  false, false, descriptor_table_protodef_modules_2frouting_2fproto_2frouting_2eproto, "modules/routing/proto/routing.proto", 1798,
+  false, false, descriptor_table_protodef_modules_2frouting_2fproto_2frouting_2eproto, "modules/routing/proto/routing.proto", 1832,
   &descriptor_table_modules_2frouting_2fproto_2frouting_2eproto_once, descriptor_table_modules_2frouting_2fproto_2frouting_2eproto_sccs, descriptor_table_modules_2frouting_2fproto_2frouting_2eproto_deps, 9, 5,
   schemas, file_default_instances, TableStruct_modules_2frouting_2fproto_2frouting_2eproto::offsets,
   file_level_metadata_modules_2frouting_2fproto_2frouting_2eproto, 9, file_level_enum_descriptors_modules_2frouting_2fproto_2frouting_2eproto, file_level_service_descriptors_modules_2frouting_2fproto_2frouting_2eproto,
@@ -1755,7 +1758,7 @@ class RoutingRequest::_Internal {
     (*has_bits)[0] |= 1u;
   }
   static void set_has_broadcast(HasBits* has_bits) {
-    (*has_bits)[0] |= 16u;
+    (*has_bits)[0] |= 32u;
   }
   static const ::apollo::hdmap::ParkingSpace& parking_space(const RoutingRequest* msg);
   static void set_has_parking_space(HasBits* has_bits) {
@@ -1768,6 +1771,9 @@ class RoutingRequest::_Internal {
   static const ::apollo::routing::DeadEndInfo& dead_end_info(const RoutingRequest* msg);
   static void set_has_dead_end_info(HasBits* has_bits) {
     (*has_bits)[0] |= 8u;
+  }
+  static void set_has_is_start_pose_set(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
   }
 };
 
@@ -1831,7 +1837,9 @@ RoutingRequest::RoutingRequest(const RoutingRequest& from)
   } else {
     dead_end_info_ = nullptr;
   }
-  broadcast_ = from.broadcast_;
+  ::memcpy(&is_start_pose_set_, &from.is_start_pose_set_,
+    static_cast<size_t>(reinterpret_cast<char*>(&broadcast_) -
+    reinterpret_cast<char*>(&is_start_pose_set_)) + sizeof(broadcast_));
   // @@protoc_insertion_point(copy_constructor:apollo.routing.RoutingRequest)
 }
 
@@ -1839,8 +1847,8 @@ void RoutingRequest::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_RoutingRequest_modules_2frouting_2fproto_2frouting_2eproto.base);
   ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
       reinterpret_cast<char*>(&header_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&dead_end_info_) -
-      reinterpret_cast<char*>(&header_)) + sizeof(dead_end_info_));
+      0, static_cast<size_t>(reinterpret_cast<char*>(&is_start_pose_set_) -
+      reinterpret_cast<char*>(&header_)) + sizeof(is_start_pose_set_));
   broadcast_ = true;
 }
 
@@ -1883,7 +1891,7 @@ void RoutingRequest::Clear() {
   blacklisted_lane_.Clear();
   blacklisted_road_.Clear();
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       GOOGLE_DCHECK(header_ != nullptr);
       header_->Clear();
@@ -1900,6 +1908,9 @@ void RoutingRequest::Clear() {
       GOOGLE_DCHECK(dead_end_info_ != nullptr);
       dead_end_info_->Clear();
     }
+  }
+  if (cached_has_bits & 0x00000030u) {
+    is_start_pose_set_ = false;
     broadcast_ = true;
   }
   _has_bits_.Clear();
@@ -1990,6 +2001,14 @@ const char* RoutingRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
+      // optional bool is_start_pose_set = 9 [default = false];
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 72)) {
+          _Internal::set_has_is_start_pose_set(&has_bits);
+          is_start_pose_set_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
@@ -2055,7 +2074,7 @@ failure:
   }
 
   // optional bool broadcast = 5 [default = true];
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000020u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(5, this->_internal_broadcast(), target);
   }
@@ -2082,6 +2101,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
         8, _Internal::dead_end_info(this), target, stream);
+  }
+
+  // optional bool is_start_pose_set = 9 [default = false];
+  if (cached_has_bits & 0x00000010u) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(9, this->_internal_is_start_pose_set(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2123,7 +2148,7 @@ size_t RoutingRequest::ByteSizeLong() const {
   }
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     // optional .apollo.common.Header header = 1;
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
@@ -2152,8 +2177,13 @@ size_t RoutingRequest::ByteSizeLong() const {
           *dead_end_info_);
     }
 
-    // optional bool broadcast = 5 [default = true];
+    // optional bool is_start_pose_set = 9 [default = false];
     if (cached_has_bits & 0x00000010u) {
+      total_size += 1 + 1;
+    }
+
+    // optional bool broadcast = 5 [default = true];
+    if (cached_has_bits & 0x00000020u) {
       total_size += 1 + 1;
     }
 
@@ -2193,7 +2223,7 @@ void RoutingRequest::MergeFrom(const RoutingRequest& from) {
   blacklisted_lane_.MergeFrom(from.blacklisted_lane_);
   blacklisted_road_.MergeFrom(from.blacklisted_road_);
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
       _internal_mutable_header()->::apollo::common::Header::MergeFrom(from._internal_header());
     }
@@ -2207,6 +2237,9 @@ void RoutingRequest::MergeFrom(const RoutingRequest& from) {
       _internal_mutable_dead_end_info()->::apollo::routing::DeadEndInfo::MergeFrom(from._internal_dead_end_info());
     }
     if (cached_has_bits & 0x00000010u) {
+      is_start_pose_set_ = from.is_start_pose_set_;
+    }
+    if (cached_has_bits & 0x00000020u) {
       broadcast_ = from.broadcast_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -2239,8 +2272,8 @@ void RoutingRequest::InternalSwap(RoutingRequest* other) {
   blacklisted_lane_.InternalSwap(&other->blacklisted_lane_);
   blacklisted_road_.InternalSwap(&other->blacklisted_road_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(RoutingRequest, dead_end_info_)
-      + sizeof(RoutingRequest::dead_end_info_)
+      PROTOBUF_FIELD_OFFSET(RoutingRequest, is_start_pose_set_)
+      + sizeof(RoutingRequest::is_start_pose_set_)
       - PROTOBUF_FIELD_OFFSET(RoutingRequest, header_)>(
           reinterpret_cast<char*>(&header_),
           reinterpret_cast<char*>(&other->header_));

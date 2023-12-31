@@ -41,18 +41,18 @@ DEFINE_string(hmi_modes_config_path,
               "./../modules/dreamview/conf/hmi_modes",
               "HMI modes config path.");
 
-DEFINE_string(maps_data_path, "./../modules/map/data", "Maps data path.");
+// DEFINE_string(maps_data_path, "./../modules/map/data", "Maps data path.");
 
-DEFINE_string(vehicles_config_path, "./../modules/calibration/data",
-              "Vehicles config path.");
+// DEFINE_string(vehicles_config_path, "./../modules/calibration/data",
+              // "Vehicles config path.");
 
-DEFINE_double(status_publish_interval, 5, "HMI Status publish interval.");
+// DEFINE_double(status_publish_interval, 5, "HMI Status publish interval.");
 
-DEFINE_string(current_mode_db_key, "/apollo/hmi/status:current_mode",
-              "Key to store hmi_status.current_mode in KV DB.");
+// DEFINE_string(current_mode_db_key, "/apollo/hmi/status:current_mode",
+              // "Key to store hmi_status.current_mode in KV DB.");
 
-DEFINE_string(default_hmi_mode, "Mkz Standard Debug",
-              "Default HMI Mode when there is no cache.");
+// DEFINE_string(default_hmi_mode, "Mkz Standard Debug",
+              // "Default HMI Mode when there is no cache.");
 
 namespace apollo {
 namespace dreamview {

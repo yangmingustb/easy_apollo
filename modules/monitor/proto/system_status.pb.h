@@ -51,7 +51,7 @@ struct TableStruct_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[6]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[7]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -72,6 +72,9 @@ extern SystemStatusDefaultTypeInternal _SystemStatus_default_instance_;
 class SystemStatus_ComponentsEntry_DoNotUse;
 class SystemStatus_ComponentsEntry_DoNotUseDefaultTypeInternal;
 extern SystemStatus_ComponentsEntry_DoNotUseDefaultTypeInternal _SystemStatus_ComponentsEntry_DoNotUse_default_instance_;
+class SystemStatus_GlobalComponentsEntry_DoNotUse;
+class SystemStatus_GlobalComponentsEntry_DoNotUseDefaultTypeInternal;
+extern SystemStatus_GlobalComponentsEntry_DoNotUseDefaultTypeInternal _SystemStatus_GlobalComponentsEntry_DoNotUse_default_instance_;
 class SystemStatus_HmiModulesEntry_DoNotUse;
 class SystemStatus_HmiModulesEntry_DoNotUseDefaultTypeInternal;
 extern SystemStatus_HmiModulesEntry_DoNotUseDefaultTypeInternal _SystemStatus_HmiModulesEntry_DoNotUse_default_instance_;
@@ -85,6 +88,7 @@ template<> ::apollo::monitor::Component* Arena::CreateMaybeMessage<::apollo::mon
 template<> ::apollo::monitor::ComponentStatus* Arena::CreateMaybeMessage<::apollo::monitor::ComponentStatus>(Arena*);
 template<> ::apollo::monitor::SystemStatus* Arena::CreateMaybeMessage<::apollo::monitor::SystemStatus>(Arena*);
 template<> ::apollo::monitor::SystemStatus_ComponentsEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::monitor::SystemStatus_ComponentsEntry_DoNotUse>(Arena*);
+template<> ::apollo::monitor::SystemStatus_GlobalComponentsEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::monitor::SystemStatus_GlobalComponentsEntry_DoNotUse>(Arena*);
 template<> ::apollo::monitor::SystemStatus_HmiModulesEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::monitor::SystemStatus_HmiModulesEntry_DoNotUse>(Arena*);
 template<> ::apollo::monitor::SystemStatus_OtherComponentsEntry_DoNotUse* Arena::CreateMaybeMessage<::apollo::monitor::SystemStatus_OtherComponentsEntry_DoNotUse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -686,6 +690,42 @@ public:
 
 // -------------------------------------------------------------------
 
+class SystemStatus_GlobalComponentsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<SystemStatus_GlobalComponentsEntry_DoNotUse, 
+    std::string, ::apollo::monitor::Component,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<SystemStatus_GlobalComponentsEntry_DoNotUse, 
+    std::string, ::apollo::monitor::Component,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> SuperType;
+  SystemStatus_GlobalComponentsEntry_DoNotUse();
+  explicit SystemStatus_GlobalComponentsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const SystemStatus_GlobalComponentsEntry_DoNotUse& other);
+  static const SystemStatus_GlobalComponentsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const SystemStatus_GlobalComponentsEntry_DoNotUse*>(&_SystemStatus_GlobalComponentsEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+#ifndef NDEBUG
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+       s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "apollo.monitor.SystemStatus.GlobalComponentsEntry.key");
+#else
+    (void) s;
+#endif
+    return true;
+ }
+  static bool ValidateValue(void*) { return true; }
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& other) final;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto);
+    return ::descriptor_table_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto.file_level_metadata[5];
+  }
+
+  public:
+};
+
+// -------------------------------------------------------------------
+
 class SystemStatus PROTOBUF_FINAL :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:apollo.monitor.SystemStatus) */ {
  public:
@@ -734,7 +774,7 @@ class SystemStatus PROTOBUF_FINAL :
                &_SystemStatus_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(SystemStatus& a, SystemStatus& b) {
     a.Swap(&b);
@@ -809,11 +849,13 @@ class SystemStatus PROTOBUF_FINAL :
     kHmiModulesFieldNumber = 7,
     kComponentsFieldNumber = 8,
     kOtherComponentsFieldNumber = 10,
+    kGlobalComponentsFieldNumber = 11,
     kPassengerMsgFieldNumber = 4,
     kHeaderFieldNumber = 1,
     kSafetyModeTriggerTimeFieldNumber = 5,
     kRequireEmergencyStopFieldNumber = 6,
     kIsRealtimeInSimulationFieldNumber = 9,
+    kDetectImmediatelyFieldNumber = 12,
   };
   // map<string, .apollo.monitor.ComponentStatus> hmi_modules = 7;
   int hmi_modules_size() const;
@@ -865,6 +907,23 @@ class SystemStatus PROTOBUF_FINAL :
       other_components() const;
   ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::ComponentStatus >*
       mutable_other_components();
+
+  // map<string, .apollo.monitor.Component> global_components = 11;
+  int global_components_size() const;
+  private:
+  int _internal_global_components_size() const;
+  public:
+  void clear_global_components();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >&
+      _internal_global_components() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >*
+      _internal_mutable_global_components();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >&
+      global_components() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >*
+      mutable_global_components();
 
   // optional string passenger_msg = 4;
   bool has_passenger_msg() const;
@@ -943,6 +1002,19 @@ class SystemStatus PROTOBUF_FINAL :
   void _internal_set_is_realtime_in_simulation(bool value);
   public:
 
+  // optional bool detect_immediately = 12 [default = false];
+  bool has_detect_immediately() const;
+  private:
+  bool _internal_has_detect_immediately() const;
+  public:
+  void clear_detect_immediately();
+  bool detect_immediately() const;
+  void set_detect_immediately(bool value);
+  private:
+  bool _internal_detect_immediately() const;
+  void _internal_set_detect_immediately(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:apollo.monitor.SystemStatus)
  private:
   class _Internal;
@@ -967,11 +1039,17 @@ class SystemStatus PROTOBUF_FINAL :
       std::string, ::apollo::monitor::ComponentStatus,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> other_components_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      SystemStatus_GlobalComponentsEntry_DoNotUse,
+      std::string, ::apollo::monitor::Component,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_MESSAGE> global_components_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr passenger_msg_;
   ::apollo::common::Header* header_;
   double safety_mode_trigger_time_;
   bool require_emergency_stop_;
   bool is_realtime_in_simulation_;
+  bool detect_immediately_;
   friend struct ::TableStruct_modules_2fmonitor_2fproto_2fsystem_5fstatus_2eproto;
 };
 // ===================================================================
@@ -1597,6 +1675,8 @@ inline void Component::set_allocated_module_status(::apollo::monitor::ComponentS
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // SystemStatus
 
 // optional .apollo.common.Header header = 1;
@@ -1922,9 +2002,68 @@ SystemStatus::mutable_other_components() {
   return _internal_mutable_other_components();
 }
 
+// map<string, .apollo.monitor.Component> global_components = 11;
+inline int SystemStatus::_internal_global_components_size() const {
+  return global_components_.size();
+}
+inline int SystemStatus::global_components_size() const {
+  return _internal_global_components_size();
+}
+inline void SystemStatus::clear_global_components() {
+  global_components_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >&
+SystemStatus::_internal_global_components() const {
+  return global_components_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >&
+SystemStatus::global_components() const {
+  // @@protoc_insertion_point(field_map:apollo.monitor.SystemStatus.global_components)
+  return _internal_global_components();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >*
+SystemStatus::_internal_mutable_global_components() {
+  return global_components_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, ::apollo::monitor::Component >*
+SystemStatus::mutable_global_components() {
+  // @@protoc_insertion_point(field_mutable_map:apollo.monitor.SystemStatus.global_components)
+  return _internal_mutable_global_components();
+}
+
+// optional bool detect_immediately = 12 [default = false];
+inline bool SystemStatus::_internal_has_detect_immediately() const {
+  bool value = (_has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool SystemStatus::has_detect_immediately() const {
+  return _internal_has_detect_immediately();
+}
+inline void SystemStatus::clear_detect_immediately() {
+  detect_immediately_ = false;
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline bool SystemStatus::_internal_detect_immediately() const {
+  return detect_immediately_;
+}
+inline bool SystemStatus::detect_immediately() const {
+  // @@protoc_insertion_point(field_get:apollo.monitor.SystemStatus.detect_immediately)
+  return _internal_detect_immediately();
+}
+inline void SystemStatus::_internal_set_detect_immediately(bool value) {
+  _has_bits_[0] |= 0x00000020u;
+  detect_immediately_ = value;
+}
+inline void SystemStatus::set_detect_immediately(bool value) {
+  _internal_set_detect_immediately(value);
+  // @@protoc_insertion_point(field_set:apollo.monitor.SystemStatus.detect_immediately)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

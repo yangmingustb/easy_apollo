@@ -47,7 +47,7 @@ struct TableStruct_record_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[11]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[14]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -81,15 +81,24 @@ extern HeaderDefaultTypeInternal _Header_default_instance_;
 class Index;
 class IndexDefaultTypeInternal;
 extern IndexDefaultTypeInternal _Index_default_instance_;
+class MapInfo;
+class MapInfoDefaultTypeInternal;
+extern MapInfoDefaultTypeInternal _MapInfo_default_instance_;
 class PlayInfo;
 class PlayInfoDefaultTypeInternal;
 extern PlayInfoDefaultTypeInternal _PlayInfo_default_instance_;
+class RecordInfo;
+class RecordInfoDefaultTypeInternal;
+extern RecordInfoDefaultTypeInternal _RecordInfo_default_instance_;
 class SingleIndex;
 class SingleIndexDefaultTypeInternal;
 extern SingleIndexDefaultTypeInternal _SingleIndex_default_instance_;
 class SingleMessage;
 class SingleMessageDefaultTypeInternal;
 extern SingleMessageDefaultTypeInternal _SingleMessage_default_instance_;
+class VehicleInfo;
+class VehicleInfoDefaultTypeInternal;
+extern VehicleInfoDefaultTypeInternal _VehicleInfo_default_instance_;
 }  // namespace proto
 }  // namespace cyber
 }  // namespace apollo
@@ -102,9 +111,12 @@ template<> ::apollo::cyber::proto::ChunkHeader* Arena::CreateMaybeMessage<::apol
 template<> ::apollo::cyber::proto::ChunkHeaderCache* Arena::CreateMaybeMessage<::apollo::cyber::proto::ChunkHeaderCache>(Arena*);
 template<> ::apollo::cyber::proto::Header* Arena::CreateMaybeMessage<::apollo::cyber::proto::Header>(Arena*);
 template<> ::apollo::cyber::proto::Index* Arena::CreateMaybeMessage<::apollo::cyber::proto::Index>(Arena*);
+template<> ::apollo::cyber::proto::MapInfo* Arena::CreateMaybeMessage<::apollo::cyber::proto::MapInfo>(Arena*);
 template<> ::apollo::cyber::proto::PlayInfo* Arena::CreateMaybeMessage<::apollo::cyber::proto::PlayInfo>(Arena*);
+template<> ::apollo::cyber::proto::RecordInfo* Arena::CreateMaybeMessage<::apollo::cyber::proto::RecordInfo>(Arena*);
 template<> ::apollo::cyber::proto::SingleIndex* Arena::CreateMaybeMessage<::apollo::cyber::proto::SingleIndex>(Arena*);
 template<> ::apollo::cyber::proto::SingleMessage* Arena::CreateMaybeMessage<::apollo::cyber::proto::SingleMessage>(Arena*);
+template<> ::apollo::cyber::proto::VehicleInfo* Arena::CreateMaybeMessage<::apollo::cyber::proto::VehicleInfo>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace apollo {
 namespace cyber {
@@ -1271,6 +1283,8 @@ class Header PROTOBUF_FINAL :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kMapInfoFieldNumber = 16,
+    kVehicleInfoFieldNumber = 17,
     kMajorVersionFieldNumber = 1,
     kMinorVersionFieldNumber = 2,
     kChunkIntervalFieldNumber = 4,
@@ -1287,6 +1301,42 @@ class Header PROTOBUF_FINAL :
     kChunkRawSizeFieldNumber = 14,
     kSegmentRawSizeFieldNumber = 15,
   };
+  // optional .apollo.cyber.proto.MapInfo map_info = 16;
+  bool has_map_info() const;
+  private:
+  bool _internal_has_map_info() const;
+  public:
+  void clear_map_info();
+  const ::apollo::cyber::proto::MapInfo& map_info() const;
+  ::apollo::cyber::proto::MapInfo* release_map_info();
+  ::apollo::cyber::proto::MapInfo* mutable_map_info();
+  void set_allocated_map_info(::apollo::cyber::proto::MapInfo* map_info);
+  private:
+  const ::apollo::cyber::proto::MapInfo& _internal_map_info() const;
+  ::apollo::cyber::proto::MapInfo* _internal_mutable_map_info();
+  public:
+  void unsafe_arena_set_allocated_map_info(
+      ::apollo::cyber::proto::MapInfo* map_info);
+  ::apollo::cyber::proto::MapInfo* unsafe_arena_release_map_info();
+
+  // optional .apollo.cyber.proto.VehicleInfo vehicle_info = 17;
+  bool has_vehicle_info() const;
+  private:
+  bool _internal_has_vehicle_info() const;
+  public:
+  void clear_vehicle_info();
+  const ::apollo::cyber::proto::VehicleInfo& vehicle_info() const;
+  ::apollo::cyber::proto::VehicleInfo* release_vehicle_info();
+  ::apollo::cyber::proto::VehicleInfo* mutable_vehicle_info();
+  void set_allocated_vehicle_info(::apollo::cyber::proto::VehicleInfo* vehicle_info);
+  private:
+  const ::apollo::cyber::proto::VehicleInfo& _internal_vehicle_info() const;
+  ::apollo::cyber::proto::VehicleInfo* _internal_mutable_vehicle_info();
+  public:
+  void unsafe_arena_set_allocated_vehicle_info(
+      ::apollo::cyber::proto::VehicleInfo* vehicle_info);
+  ::apollo::cyber::proto::VehicleInfo* unsafe_arena_release_vehicle_info();
+
   // optional uint32 major_version = 1;
   bool has_major_version() const;
   private:
@@ -1491,6 +1541,8 @@ class Header PROTOBUF_FINAL :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::apollo::cyber::proto::MapInfo* map_info_;
+  ::apollo::cyber::proto::VehicleInfo* vehicle_info_;
   ::PROTOBUF_NAMESPACE_ID::uint32 major_version_;
   ::PROTOBUF_NAMESPACE_ID::uint32 minor_version_;
   ::PROTOBUF_NAMESPACE_ID::uint64 chunk_interval_;
@@ -2350,6 +2402,538 @@ class PlayInfo PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::int64 ratio_;
+  friend struct ::TableStruct_record_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MapInfo PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:apollo.cyber.proto.MapInfo) */ {
+ public:
+  inline MapInfo() : MapInfo(nullptr) {}
+  virtual ~MapInfo();
+
+  MapInfo(const MapInfo& from);
+  MapInfo(MapInfo&& from) noexcept
+    : MapInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline MapInfo& operator=(const MapInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MapInfo& operator=(MapInfo&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const MapInfo& default_instance();
+
+  static inline const MapInfo* internal_default_instance() {
+    return reinterpret_cast<const MapInfo*>(
+               &_MapInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(MapInfo& a, MapInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MapInfo* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MapInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline MapInfo* New() const final {
+    return CreateMaybeMessage<MapInfo>(nullptr);
+  }
+
+  MapInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MapInfo>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const MapInfo& from);
+  void MergeFrom(const MapInfo& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MapInfo* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "apollo.cyber.proto.MapInfo";
+  }
+  protected:
+  explicit MapInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_record_2eproto);
+    return ::descriptor_table_record_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNameFieldNumber = 1,
+    kVersionFieldNumber = 2,
+  };
+  // optional string name = 1;
+  bool has_name() const;
+  private:
+  bool _internal_has_name() const;
+  public:
+  void clear_name();
+  const std::string& name() const;
+  void set_name(const std::string& value);
+  void set_name(std::string&& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  std::string* mutable_name();
+  std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // optional string version = 2;
+  bool has_version() const;
+  private:
+  bool _internal_has_version() const;
+  public:
+  void clear_version();
+  const std::string& version() const;
+  void set_version(const std::string& value);
+  void set_version(std::string&& value);
+  void set_version(const char* value);
+  void set_version(const char* value, size_t size);
+  std::string* mutable_version();
+  std::string* release_version();
+  void set_allocated_version(std::string* version);
+  private:
+  const std::string& _internal_version() const;
+  void _internal_set_version(const std::string& value);
+  std::string* _internal_mutable_version();
+  public:
+
+  // @@protoc_insertion_point(class_scope:apollo.cyber.proto.MapInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr version_;
+  friend struct ::TableStruct_record_2eproto;
+};
+// -------------------------------------------------------------------
+
+class VehicleInfo PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:apollo.cyber.proto.VehicleInfo) */ {
+ public:
+  inline VehicleInfo() : VehicleInfo(nullptr) {}
+  virtual ~VehicleInfo();
+
+  VehicleInfo(const VehicleInfo& from);
+  VehicleInfo(VehicleInfo&& from) noexcept
+    : VehicleInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline VehicleInfo& operator=(const VehicleInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline VehicleInfo& operator=(VehicleInfo&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const VehicleInfo& default_instance();
+
+  static inline const VehicleInfo* internal_default_instance() {
+    return reinterpret_cast<const VehicleInfo*>(
+               &_VehicleInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(VehicleInfo& a, VehicleInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(VehicleInfo* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(VehicleInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline VehicleInfo* New() const final {
+    return CreateMaybeMessage<VehicleInfo>(nullptr);
+  }
+
+  VehicleInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<VehicleInfo>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const VehicleInfo& from);
+  void MergeFrom(const VehicleInfo& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(VehicleInfo* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "apollo.cyber.proto.VehicleInfo";
+  }
+  protected:
+  explicit VehicleInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_record_2eproto);
+    return ::descriptor_table_record_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNameFieldNumber = 1,
+  };
+  // optional string name = 1;
+  bool has_name() const;
+  private:
+  bool _internal_has_name() const;
+  public:
+  void clear_name();
+  const std::string& name() const;
+  void set_name(const std::string& value);
+  void set_name(std::string&& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  std::string* mutable_name();
+  std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // @@protoc_insertion_point(class_scope:apollo.cyber.proto.VehicleInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+  friend struct ::TableStruct_record_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RecordInfo PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:apollo.cyber.proto.RecordInfo) */ {
+ public:
+  inline RecordInfo() : RecordInfo(nullptr) {}
+  virtual ~RecordInfo();
+
+  RecordInfo(const RecordInfo& from);
+  RecordInfo(RecordInfo&& from) noexcept
+    : RecordInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline RecordInfo& operator=(const RecordInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RecordInfo& operator=(RecordInfo&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const RecordInfo& default_instance();
+
+  static inline const RecordInfo* internal_default_instance() {
+    return reinterpret_cast<const RecordInfo*>(
+               &_RecordInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  friend void swap(RecordInfo& a, RecordInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RecordInfo* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RecordInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RecordInfo* New() const final {
+    return CreateMaybeMessage<RecordInfo>(nullptr);
+  }
+
+  RecordInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RecordInfo>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const RecordInfo& from);
+  void MergeFrom(const RecordInfo& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RecordInfo* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "apollo.cyber.proto.RecordInfo";
+  }
+  protected:
+  explicit RecordInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_record_2eproto);
+    return ::descriptor_table_record_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRecordNameFieldNumber = 1,
+    kTotalTimeSFieldNumber = 2,
+    kCurrTimeSFieldNumber = 3,
+    kProgressFieldNumber = 4,
+  };
+  // optional string record_name = 1 [default = ""];
+  bool has_record_name() const;
+  private:
+  bool _internal_has_record_name() const;
+  public:
+  void clear_record_name();
+  const std::string& record_name() const;
+  void set_record_name(const std::string& value);
+  void set_record_name(std::string&& value);
+  void set_record_name(const char* value);
+  void set_record_name(const char* value, size_t size);
+  std::string* mutable_record_name();
+  std::string* release_record_name();
+  void set_allocated_record_name(std::string* record_name);
+  private:
+  const std::string& _internal_record_name() const;
+  void _internal_set_record_name(const std::string& value);
+  std::string* _internal_mutable_record_name();
+  public:
+
+  // optional double total_time_s = 2;
+  bool has_total_time_s() const;
+  private:
+  bool _internal_has_total_time_s() const;
+  public:
+  void clear_total_time_s();
+  double total_time_s() const;
+  void set_total_time_s(double value);
+  private:
+  double _internal_total_time_s() const;
+  void _internal_set_total_time_s(double value);
+  public:
+
+  // optional double curr_time_s = 3 [default = 0];
+  bool has_curr_time_s() const;
+  private:
+  bool _internal_has_curr_time_s() const;
+  public:
+  void clear_curr_time_s();
+  double curr_time_s() const;
+  void set_curr_time_s(double value);
+  private:
+  double _internal_curr_time_s() const;
+  void _internal_set_curr_time_s(double value);
+  public:
+
+  // optional double progress = 4 [default = 0];
+  bool has_progress() const;
+  private:
+  bool _internal_has_progress() const;
+  public:
+  void clear_progress();
+  double progress() const;
+  void set_progress(double value);
+  private:
+  double _internal_progress() const;
+  void _internal_set_progress(double value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:apollo.cyber.proto.RecordInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr record_name_;
+  double total_time_s_;
+  double curr_time_s_;
+  double progress_;
   friend struct ::TableStruct_record_2eproto;
 };
 // ===================================================================
@@ -3231,7 +3815,7 @@ inline void SingleMessage::set_allocated_content(std::string* content) {
 
 // optional uint32 major_version = 1;
 inline bool Header::_internal_has_major_version() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
   return value;
 }
 inline bool Header::has_major_version() const {
@@ -3239,7 +3823,7 @@ inline bool Header::has_major_version() const {
 }
 inline void Header::clear_major_version() {
   major_version_ = 0u;
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 Header::_internal_major_version() const {
   return major_version_;
@@ -3249,7 +3833,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint32 Header::major_version() const {
   return _internal_major_version();
 }
 inline void Header::_internal_set_major_version(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000004u;
   major_version_ = value;
 }
 inline void Header::set_major_version(::PROTOBUF_NAMESPACE_ID::uint32 value) {
@@ -3259,7 +3843,7 @@ inline void Header::set_major_version(::PROTOBUF_NAMESPACE_ID::uint32 value) {
 
 // optional uint32 minor_version = 2;
 inline bool Header::_internal_has_minor_version() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
   return value;
 }
 inline bool Header::has_minor_version() const {
@@ -3267,7 +3851,7 @@ inline bool Header::has_minor_version() const {
 }
 inline void Header::clear_minor_version() {
   minor_version_ = 0u;
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 Header::_internal_minor_version() const {
   return minor_version_;
@@ -3277,7 +3861,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint32 Header::minor_version() const {
   return _internal_minor_version();
 }
 inline void Header::_internal_set_minor_version(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000008u;
   minor_version_ = value;
 }
 inline void Header::set_minor_version(::PROTOBUF_NAMESPACE_ID::uint32 value) {
@@ -3287,7 +3871,7 @@ inline void Header::set_minor_version(::PROTOBUF_NAMESPACE_ID::uint32 value) {
 
 // optional .apollo.cyber.proto.CompressType compress = 3;
 inline bool Header::_internal_has_compress() const {
-  bool value = (_has_bits_[0] & 0x00000080u) != 0;
+  bool value = (_has_bits_[0] & 0x00000200u) != 0;
   return value;
 }
 inline bool Header::has_compress() const {
@@ -3295,7 +3879,7 @@ inline bool Header::has_compress() const {
 }
 inline void Header::clear_compress() {
   compress_ = 0;
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline ::apollo::cyber::proto::CompressType Header::_internal_compress() const {
   return static_cast< ::apollo::cyber::proto::CompressType >(compress_);
@@ -3306,7 +3890,7 @@ inline ::apollo::cyber::proto::CompressType Header::compress() const {
 }
 inline void Header::_internal_set_compress(::apollo::cyber::proto::CompressType value) {
   assert(::apollo::cyber::proto::CompressType_IsValid(value));
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000200u;
   compress_ = value;
 }
 inline void Header::set_compress(::apollo::cyber::proto::CompressType value) {
@@ -3316,7 +3900,7 @@ inline void Header::set_compress(::apollo::cyber::proto::CompressType value) {
 
 // optional uint64 chunk_interval = 4;
 inline bool Header::_internal_has_chunk_interval() const {
-  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_has_bits_[0] & 0x00000010u) != 0;
   return value;
 }
 inline bool Header::has_chunk_interval() const {
@@ -3324,7 +3908,7 @@ inline bool Header::has_chunk_interval() const {
 }
 inline void Header::clear_chunk_interval() {
   chunk_interval_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::_internal_chunk_interval() const {
   return chunk_interval_;
@@ -3334,7 +3918,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::chunk_interval() const {
   return _internal_chunk_interval();
 }
 inline void Header::_internal_set_chunk_interval(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000010u;
   chunk_interval_ = value;
 }
 inline void Header::set_chunk_interval(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -3344,7 +3928,7 @@ inline void Header::set_chunk_interval(::PROTOBUF_NAMESPACE_ID::uint64 value) {
 
 // optional uint64 segment_interval = 5;
 inline bool Header::_internal_has_segment_interval() const {
-  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  bool value = (_has_bits_[0] & 0x00000020u) != 0;
   return value;
 }
 inline bool Header::has_segment_interval() const {
@@ -3352,7 +3936,7 @@ inline bool Header::has_segment_interval() const {
 }
 inline void Header::clear_segment_interval() {
   segment_interval_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::_internal_segment_interval() const {
   return segment_interval_;
@@ -3362,7 +3946,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::segment_interval() const {
   return _internal_segment_interval();
 }
 inline void Header::_internal_set_segment_interval(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000020u;
   segment_interval_ = value;
 }
 inline void Header::set_segment_interval(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -3372,7 +3956,7 @@ inline void Header::set_segment_interval(::PROTOBUF_NAMESPACE_ID::uint64 value) 
 
 // optional uint64 index_position = 6 [default = 0];
 inline bool Header::_internal_has_index_position() const {
-  bool value = (_has_bits_[0] & 0x00000010u) != 0;
+  bool value = (_has_bits_[0] & 0x00000040u) != 0;
   return value;
 }
 inline bool Header::has_index_position() const {
@@ -3380,7 +3964,7 @@ inline bool Header::has_index_position() const {
 }
 inline void Header::clear_index_position() {
   index_position_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::_internal_index_position() const {
   return index_position_;
@@ -3390,7 +3974,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::index_position() const {
   return _internal_index_position();
 }
 inline void Header::_internal_set_index_position(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000040u;
   index_position_ = value;
 }
 inline void Header::set_index_position(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -3400,7 +3984,7 @@ inline void Header::set_index_position(::PROTOBUF_NAMESPACE_ID::uint64 value) {
 
 // optional uint64 chunk_number = 7 [default = 0];
 inline bool Header::_internal_has_chunk_number() const {
-  bool value = (_has_bits_[0] & 0x00000020u) != 0;
+  bool value = (_has_bits_[0] & 0x00000080u) != 0;
   return value;
 }
 inline bool Header::has_chunk_number() const {
@@ -3408,7 +3992,7 @@ inline bool Header::has_chunk_number() const {
 }
 inline void Header::clear_chunk_number() {
   chunk_number_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::_internal_chunk_number() const {
   return chunk_number_;
@@ -3418,7 +4002,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::chunk_number() const {
   return _internal_chunk_number();
 }
 inline void Header::_internal_set_chunk_number(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000080u;
   chunk_number_ = value;
 }
 inline void Header::set_chunk_number(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -3428,7 +4012,7 @@ inline void Header::set_chunk_number(::PROTOBUF_NAMESPACE_ID::uint64 value) {
 
 // optional uint64 channel_number = 8 [default = 0];
 inline bool Header::_internal_has_channel_number() const {
-  bool value = (_has_bits_[0] & 0x00000040u) != 0;
+  bool value = (_has_bits_[0] & 0x00000100u) != 0;
   return value;
 }
 inline bool Header::has_channel_number() const {
@@ -3436,7 +4020,7 @@ inline bool Header::has_channel_number() const {
 }
 inline void Header::clear_channel_number() {
   channel_number_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::_internal_channel_number() const {
   return channel_number_;
@@ -3446,7 +4030,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::channel_number() const {
   return _internal_channel_number();
 }
 inline void Header::_internal_set_channel_number(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000100u;
   channel_number_ = value;
 }
 inline void Header::set_channel_number(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -3456,7 +4040,7 @@ inline void Header::set_channel_number(::PROTOBUF_NAMESPACE_ID::uint64 value) {
 
 // optional uint64 begin_time = 9 [default = 0];
 inline bool Header::_internal_has_begin_time() const {
-  bool value = (_has_bits_[0] & 0x00000200u) != 0;
+  bool value = (_has_bits_[0] & 0x00000800u) != 0;
   return value;
 }
 inline bool Header::has_begin_time() const {
@@ -3464,7 +4048,7 @@ inline bool Header::has_begin_time() const {
 }
 inline void Header::clear_begin_time() {
   begin_time_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::_internal_begin_time() const {
   return begin_time_;
@@ -3474,7 +4058,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::begin_time() const {
   return _internal_begin_time();
 }
 inline void Header::_internal_set_begin_time(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000800u;
   begin_time_ = value;
 }
 inline void Header::set_begin_time(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -3484,7 +4068,7 @@ inline void Header::set_begin_time(::PROTOBUF_NAMESPACE_ID::uint64 value) {
 
 // optional uint64 end_time = 10 [default = 0];
 inline bool Header::_internal_has_end_time() const {
-  bool value = (_has_bits_[0] & 0x00000400u) != 0;
+  bool value = (_has_bits_[0] & 0x00001000u) != 0;
   return value;
 }
 inline bool Header::has_end_time() const {
@@ -3492,7 +4076,7 @@ inline bool Header::has_end_time() const {
 }
 inline void Header::clear_end_time() {
   end_time_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::_internal_end_time() const {
   return end_time_;
@@ -3502,7 +4086,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::end_time() const {
   return _internal_end_time();
 }
 inline void Header::_internal_set_end_time(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00001000u;
   end_time_ = value;
 }
 inline void Header::set_end_time(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -3512,7 +4096,7 @@ inline void Header::set_end_time(::PROTOBUF_NAMESPACE_ID::uint64 value) {
 
 // optional uint64 message_number = 11 [default = 0];
 inline bool Header::_internal_has_message_number() const {
-  bool value = (_has_bits_[0] & 0x00000800u) != 0;
+  bool value = (_has_bits_[0] & 0x00002000u) != 0;
   return value;
 }
 inline bool Header::has_message_number() const {
@@ -3520,7 +4104,7 @@ inline bool Header::has_message_number() const {
 }
 inline void Header::clear_message_number() {
   message_number_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::_internal_message_number() const {
   return message_number_;
@@ -3530,7 +4114,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::message_number() const {
   return _internal_message_number();
 }
 inline void Header::_internal_set_message_number(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00002000u;
   message_number_ = value;
 }
 inline void Header::set_message_number(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -3540,7 +4124,7 @@ inline void Header::set_message_number(::PROTOBUF_NAMESPACE_ID::uint64 value) {
 
 // optional uint64 size = 12 [default = 0];
 inline bool Header::_internal_has_size() const {
-  bool value = (_has_bits_[0] & 0x00001000u) != 0;
+  bool value = (_has_bits_[0] & 0x00004000u) != 0;
   return value;
 }
 inline bool Header::has_size() const {
@@ -3548,7 +4132,7 @@ inline bool Header::has_size() const {
 }
 inline void Header::clear_size() {
   size_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::_internal_size() const {
   return size_;
@@ -3558,7 +4142,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::size() const {
   return _internal_size();
 }
 inline void Header::_internal_set_size(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00004000u;
   size_ = value;
 }
 inline void Header::set_size(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -3568,7 +4152,7 @@ inline void Header::set_size(::PROTOBUF_NAMESPACE_ID::uint64 value) {
 
 // optional bool is_complete = 13 [default = false];
 inline bool Header::_internal_has_is_complete() const {
-  bool value = (_has_bits_[0] & 0x00000100u) != 0;
+  bool value = (_has_bits_[0] & 0x00000400u) != 0;
   return value;
 }
 inline bool Header::has_is_complete() const {
@@ -3576,7 +4160,7 @@ inline bool Header::has_is_complete() const {
 }
 inline void Header::clear_is_complete() {
   is_complete_ = false;
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline bool Header::_internal_is_complete() const {
   return is_complete_;
@@ -3586,7 +4170,7 @@ inline bool Header::is_complete() const {
   return _internal_is_complete();
 }
 inline void Header::_internal_set_is_complete(bool value) {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000400u;
   is_complete_ = value;
 }
 inline void Header::set_is_complete(bool value) {
@@ -3596,7 +4180,7 @@ inline void Header::set_is_complete(bool value) {
 
 // optional uint64 chunk_raw_size = 14;
 inline bool Header::_internal_has_chunk_raw_size() const {
-  bool value = (_has_bits_[0] & 0x00002000u) != 0;
+  bool value = (_has_bits_[0] & 0x00008000u) != 0;
   return value;
 }
 inline bool Header::has_chunk_raw_size() const {
@@ -3604,7 +4188,7 @@ inline bool Header::has_chunk_raw_size() const {
 }
 inline void Header::clear_chunk_raw_size() {
   chunk_raw_size_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::_internal_chunk_raw_size() const {
   return chunk_raw_size_;
@@ -3614,7 +4198,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::chunk_raw_size() const {
   return _internal_chunk_raw_size();
 }
 inline void Header::_internal_set_chunk_raw_size(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00008000u;
   chunk_raw_size_ = value;
 }
 inline void Header::set_chunk_raw_size(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -3624,7 +4208,7 @@ inline void Header::set_chunk_raw_size(::PROTOBUF_NAMESPACE_ID::uint64 value) {
 
 // optional uint64 segment_raw_size = 15;
 inline bool Header::_internal_has_segment_raw_size() const {
-  bool value = (_has_bits_[0] & 0x00004000u) != 0;
+  bool value = (_has_bits_[0] & 0x00010000u) != 0;
   return value;
 }
 inline bool Header::has_segment_raw_size() const {
@@ -3632,7 +4216,7 @@ inline bool Header::has_segment_raw_size() const {
 }
 inline void Header::clear_segment_raw_size() {
   segment_raw_size_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00010000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::_internal_segment_raw_size() const {
   return segment_raw_size_;
@@ -3642,12 +4226,178 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 Header::segment_raw_size() const {
   return _internal_segment_raw_size();
 }
 inline void Header::_internal_set_segment_raw_size(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00010000u;
   segment_raw_size_ = value;
 }
 inline void Header::set_segment_raw_size(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   _internal_set_segment_raw_size(value);
   // @@protoc_insertion_point(field_set:apollo.cyber.proto.Header.segment_raw_size)
+}
+
+// optional .apollo.cyber.proto.MapInfo map_info = 16;
+inline bool Header::_internal_has_map_info() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || map_info_ != nullptr);
+  return value;
+}
+inline bool Header::has_map_info() const {
+  return _internal_has_map_info();
+}
+inline void Header::clear_map_info() {
+  if (map_info_ != nullptr) map_info_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const ::apollo::cyber::proto::MapInfo& Header::_internal_map_info() const {
+  const ::apollo::cyber::proto::MapInfo* p = map_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::apollo::cyber::proto::MapInfo&>(
+      ::apollo::cyber::proto::_MapInfo_default_instance_);
+}
+inline const ::apollo::cyber::proto::MapInfo& Header::map_info() const {
+  // @@protoc_insertion_point(field_get:apollo.cyber.proto.Header.map_info)
+  return _internal_map_info();
+}
+inline void Header::unsafe_arena_set_allocated_map_info(
+    ::apollo::cyber::proto::MapInfo* map_info) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(map_info_);
+  }
+  map_info_ = map_info;
+  if (map_info) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:apollo.cyber.proto.Header.map_info)
+}
+inline ::apollo::cyber::proto::MapInfo* Header::release_map_info() {
+  _has_bits_[0] &= ~0x00000001u;
+  ::apollo::cyber::proto::MapInfo* temp = map_info_;
+  map_info_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::apollo::cyber::proto::MapInfo* Header::unsafe_arena_release_map_info() {
+  // @@protoc_insertion_point(field_release:apollo.cyber.proto.Header.map_info)
+  _has_bits_[0] &= ~0x00000001u;
+  ::apollo::cyber::proto::MapInfo* temp = map_info_;
+  map_info_ = nullptr;
+  return temp;
+}
+inline ::apollo::cyber::proto::MapInfo* Header::_internal_mutable_map_info() {
+  _has_bits_[0] |= 0x00000001u;
+  if (map_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::apollo::cyber::proto::MapInfo>(GetArena());
+    map_info_ = p;
+  }
+  return map_info_;
+}
+inline ::apollo::cyber::proto::MapInfo* Header::mutable_map_info() {
+  // @@protoc_insertion_point(field_mutable:apollo.cyber.proto.Header.map_info)
+  return _internal_mutable_map_info();
+}
+inline void Header::set_allocated_map_info(::apollo::cyber::proto::MapInfo* map_info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete map_info_;
+  }
+  if (map_info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(map_info);
+    if (message_arena != submessage_arena) {
+      map_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, map_info, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  map_info_ = map_info;
+  // @@protoc_insertion_point(field_set_allocated:apollo.cyber.proto.Header.map_info)
+}
+
+// optional .apollo.cyber.proto.VehicleInfo vehicle_info = 17;
+inline bool Header::_internal_has_vehicle_info() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || vehicle_info_ != nullptr);
+  return value;
+}
+inline bool Header::has_vehicle_info() const {
+  return _internal_has_vehicle_info();
+}
+inline void Header::clear_vehicle_info() {
+  if (vehicle_info_ != nullptr) vehicle_info_->Clear();
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const ::apollo::cyber::proto::VehicleInfo& Header::_internal_vehicle_info() const {
+  const ::apollo::cyber::proto::VehicleInfo* p = vehicle_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::apollo::cyber::proto::VehicleInfo&>(
+      ::apollo::cyber::proto::_VehicleInfo_default_instance_);
+}
+inline const ::apollo::cyber::proto::VehicleInfo& Header::vehicle_info() const {
+  // @@protoc_insertion_point(field_get:apollo.cyber.proto.Header.vehicle_info)
+  return _internal_vehicle_info();
+}
+inline void Header::unsafe_arena_set_allocated_vehicle_info(
+    ::apollo::cyber::proto::VehicleInfo* vehicle_info) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(vehicle_info_);
+  }
+  vehicle_info_ = vehicle_info;
+  if (vehicle_info) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:apollo.cyber.proto.Header.vehicle_info)
+}
+inline ::apollo::cyber::proto::VehicleInfo* Header::release_vehicle_info() {
+  _has_bits_[0] &= ~0x00000002u;
+  ::apollo::cyber::proto::VehicleInfo* temp = vehicle_info_;
+  vehicle_info_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::apollo::cyber::proto::VehicleInfo* Header::unsafe_arena_release_vehicle_info() {
+  // @@protoc_insertion_point(field_release:apollo.cyber.proto.Header.vehicle_info)
+  _has_bits_[0] &= ~0x00000002u;
+  ::apollo::cyber::proto::VehicleInfo* temp = vehicle_info_;
+  vehicle_info_ = nullptr;
+  return temp;
+}
+inline ::apollo::cyber::proto::VehicleInfo* Header::_internal_mutable_vehicle_info() {
+  _has_bits_[0] |= 0x00000002u;
+  if (vehicle_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::apollo::cyber::proto::VehicleInfo>(GetArena());
+    vehicle_info_ = p;
+  }
+  return vehicle_info_;
+}
+inline ::apollo::cyber::proto::VehicleInfo* Header::mutable_vehicle_info() {
+  // @@protoc_insertion_point(field_mutable:apollo.cyber.proto.Header.vehicle_info)
+  return _internal_mutable_vehicle_info();
+}
+inline void Header::set_allocated_vehicle_info(::apollo::cyber::proto::VehicleInfo* vehicle_info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete vehicle_info_;
+  }
+  if (vehicle_info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(vehicle_info);
+    if (message_arena != submessage_arena) {
+      vehicle_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, vehicle_info, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  vehicle_info_ = vehicle_info;
+  // @@protoc_insertion_point(field_set_allocated:apollo.cyber.proto.Header.vehicle_info)
 }
 
 // -------------------------------------------------------------------
@@ -4107,9 +4857,403 @@ inline void PlayInfo::set_ratio(::PROTOBUF_NAMESPACE_ID::int64 value) {
   // @@protoc_insertion_point(field_set:apollo.cyber.proto.PlayInfo.ratio)
 }
 
+// -------------------------------------------------------------------
+
+// MapInfo
+
+// optional string name = 1;
+inline bool MapInfo::_internal_has_name() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool MapInfo::has_name() const {
+  return _internal_has_name();
+}
+inline void MapInfo::clear_name() {
+  name_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& MapInfo::name() const {
+  // @@protoc_insertion_point(field_get:apollo.cyber.proto.MapInfo.name)
+  return _internal_name();
+}
+inline void MapInfo::set_name(const std::string& value) {
+  _internal_set_name(value);
+  // @@protoc_insertion_point(field_set:apollo.cyber.proto.MapInfo.name)
+}
+inline std::string* MapInfo::mutable_name() {
+  // @@protoc_insertion_point(field_mutable:apollo.cyber.proto.MapInfo.name)
+  return _internal_mutable_name();
+}
+inline const std::string& MapInfo::_internal_name() const {
+  return name_.Get();
+}
+inline void MapInfo::_internal_set_name(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void MapInfo::set_name(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  name_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.cyber.proto.MapInfo.name)
+}
+inline void MapInfo::set_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.cyber.proto.MapInfo.name)
+}
+inline void MapInfo::set_name(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.cyber.proto.MapInfo.name)
+}
+inline std::string* MapInfo::_internal_mutable_name() {
+  _has_bits_[0] |= 0x00000001u;
+  return name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* MapInfo::release_name() {
+  // @@protoc_insertion_point(field_release:apollo.cyber.proto.MapInfo.name)
+  if (!_internal_has_name()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return name_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void MapInfo::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.cyber.proto.MapInfo.name)
+}
+
+// optional string version = 2;
+inline bool MapInfo::_internal_has_version() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool MapInfo::has_version() const {
+  return _internal_has_version();
+}
+inline void MapInfo::clear_version() {
+  version_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& MapInfo::version() const {
+  // @@protoc_insertion_point(field_get:apollo.cyber.proto.MapInfo.version)
+  return _internal_version();
+}
+inline void MapInfo::set_version(const std::string& value) {
+  _internal_set_version(value);
+  // @@protoc_insertion_point(field_set:apollo.cyber.proto.MapInfo.version)
+}
+inline std::string* MapInfo::mutable_version() {
+  // @@protoc_insertion_point(field_mutable:apollo.cyber.proto.MapInfo.version)
+  return _internal_mutable_version();
+}
+inline const std::string& MapInfo::_internal_version() const {
+  return version_.Get();
+}
+inline void MapInfo::_internal_set_version(const std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  version_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void MapInfo::set_version(std::string&& value) {
+  _has_bits_[0] |= 0x00000002u;
+  version_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.cyber.proto.MapInfo.version)
+}
+inline void MapInfo::set_version(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000002u;
+  version_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.cyber.proto.MapInfo.version)
+}
+inline void MapInfo::set_version(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000002u;
+  version_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.cyber.proto.MapInfo.version)
+}
+inline std::string* MapInfo::_internal_mutable_version() {
+  _has_bits_[0] |= 0x00000002u;
+  return version_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* MapInfo::release_version() {
+  // @@protoc_insertion_point(field_release:apollo.cyber.proto.MapInfo.version)
+  if (!_internal_has_version()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  return version_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void MapInfo::set_allocated_version(std::string* version) {
+  if (version != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  version_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), version,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.cyber.proto.MapInfo.version)
+}
+
+// -------------------------------------------------------------------
+
+// VehicleInfo
+
+// optional string name = 1;
+inline bool VehicleInfo::_internal_has_name() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool VehicleInfo::has_name() const {
+  return _internal_has_name();
+}
+inline void VehicleInfo::clear_name() {
+  name_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& VehicleInfo::name() const {
+  // @@protoc_insertion_point(field_get:apollo.cyber.proto.VehicleInfo.name)
+  return _internal_name();
+}
+inline void VehicleInfo::set_name(const std::string& value) {
+  _internal_set_name(value);
+  // @@protoc_insertion_point(field_set:apollo.cyber.proto.VehicleInfo.name)
+}
+inline std::string* VehicleInfo::mutable_name() {
+  // @@protoc_insertion_point(field_mutable:apollo.cyber.proto.VehicleInfo.name)
+  return _internal_mutable_name();
+}
+inline const std::string& VehicleInfo::_internal_name() const {
+  return name_.Get();
+}
+inline void VehicleInfo::_internal_set_name(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void VehicleInfo::set_name(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  name_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.cyber.proto.VehicleInfo.name)
+}
+inline void VehicleInfo::set_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.cyber.proto.VehicleInfo.name)
+}
+inline void VehicleInfo::set_name(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.cyber.proto.VehicleInfo.name)
+}
+inline std::string* VehicleInfo::_internal_mutable_name() {
+  _has_bits_[0] |= 0x00000001u;
+  return name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* VehicleInfo::release_name() {
+  // @@protoc_insertion_point(field_release:apollo.cyber.proto.VehicleInfo.name)
+  if (!_internal_has_name()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return name_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void VehicleInfo::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.cyber.proto.VehicleInfo.name)
+}
+
+// -------------------------------------------------------------------
+
+// RecordInfo
+
+// optional string record_name = 1 [default = ""];
+inline bool RecordInfo::_internal_has_record_name() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool RecordInfo::has_record_name() const {
+  return _internal_has_record_name();
+}
+inline void RecordInfo::clear_record_name() {
+  record_name_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& RecordInfo::record_name() const {
+  // @@protoc_insertion_point(field_get:apollo.cyber.proto.RecordInfo.record_name)
+  return _internal_record_name();
+}
+inline void RecordInfo::set_record_name(const std::string& value) {
+  _internal_set_record_name(value);
+  // @@protoc_insertion_point(field_set:apollo.cyber.proto.RecordInfo.record_name)
+}
+inline std::string* RecordInfo::mutable_record_name() {
+  // @@protoc_insertion_point(field_mutable:apollo.cyber.proto.RecordInfo.record_name)
+  return _internal_mutable_record_name();
+}
+inline const std::string& RecordInfo::_internal_record_name() const {
+  return record_name_.Get();
+}
+inline void RecordInfo::_internal_set_record_name(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  record_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void RecordInfo::set_record_name(std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  record_name_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.cyber.proto.RecordInfo.record_name)
+}
+inline void RecordInfo::set_record_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  record_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.cyber.proto.RecordInfo.record_name)
+}
+inline void RecordInfo::set_record_name(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  record_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.cyber.proto.RecordInfo.record_name)
+}
+inline std::string* RecordInfo::_internal_mutable_record_name() {
+  _has_bits_[0] |= 0x00000001u;
+  return record_name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* RecordInfo::release_record_name() {
+  // @@protoc_insertion_point(field_release:apollo.cyber.proto.RecordInfo.record_name)
+  if (!_internal_has_record_name()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return record_name_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void RecordInfo::set_allocated_record_name(std::string* record_name) {
+  if (record_name != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  record_name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), record_name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.cyber.proto.RecordInfo.record_name)
+}
+
+// optional double total_time_s = 2;
+inline bool RecordInfo::_internal_has_total_time_s() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool RecordInfo::has_total_time_s() const {
+  return _internal_has_total_time_s();
+}
+inline void RecordInfo::clear_total_time_s() {
+  total_time_s_ = 0;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline double RecordInfo::_internal_total_time_s() const {
+  return total_time_s_;
+}
+inline double RecordInfo::total_time_s() const {
+  // @@protoc_insertion_point(field_get:apollo.cyber.proto.RecordInfo.total_time_s)
+  return _internal_total_time_s();
+}
+inline void RecordInfo::_internal_set_total_time_s(double value) {
+  _has_bits_[0] |= 0x00000002u;
+  total_time_s_ = value;
+}
+inline void RecordInfo::set_total_time_s(double value) {
+  _internal_set_total_time_s(value);
+  // @@protoc_insertion_point(field_set:apollo.cyber.proto.RecordInfo.total_time_s)
+}
+
+// optional double curr_time_s = 3 [default = 0];
+inline bool RecordInfo::_internal_has_curr_time_s() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool RecordInfo::has_curr_time_s() const {
+  return _internal_has_curr_time_s();
+}
+inline void RecordInfo::clear_curr_time_s() {
+  curr_time_s_ = 0;
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline double RecordInfo::_internal_curr_time_s() const {
+  return curr_time_s_;
+}
+inline double RecordInfo::curr_time_s() const {
+  // @@protoc_insertion_point(field_get:apollo.cyber.proto.RecordInfo.curr_time_s)
+  return _internal_curr_time_s();
+}
+inline void RecordInfo::_internal_set_curr_time_s(double value) {
+  _has_bits_[0] |= 0x00000004u;
+  curr_time_s_ = value;
+}
+inline void RecordInfo::set_curr_time_s(double value) {
+  _internal_set_curr_time_s(value);
+  // @@protoc_insertion_point(field_set:apollo.cyber.proto.RecordInfo.curr_time_s)
+}
+
+// optional double progress = 4 [default = 0];
+inline bool RecordInfo::_internal_has_progress() const {
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool RecordInfo::has_progress() const {
+  return _internal_has_progress();
+}
+inline void RecordInfo::clear_progress() {
+  progress_ = 0;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline double RecordInfo::_internal_progress() const {
+  return progress_;
+}
+inline double RecordInfo::progress() const {
+  // @@protoc_insertion_point(field_get:apollo.cyber.proto.RecordInfo.progress)
+  return _internal_progress();
+}
+inline void RecordInfo::_internal_set_progress(double value) {
+  _has_bits_[0] |= 0x00000008u;
+  progress_ = value;
+}
+inline void RecordInfo::set_progress(double value) {
+  _internal_set_progress(value);
+  // @@protoc_insertion_point(field_set:apollo.cyber.proto.RecordInfo.progress)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

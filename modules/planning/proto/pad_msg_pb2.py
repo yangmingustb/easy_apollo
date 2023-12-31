@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto2',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n$modules/planning/proto/pad_msg.proto\x12\x0f\x61pollo.planning\x1a!modules/common/proto/header.proto\"c\n\nPadMessage\x12%\n\x06header\x18\x01 \x01(\x0b\x32\x15.apollo.common.Header\x12.\n\x06\x61\x63tion\x18\x02 \x01(\x0e\x32\x1e.apollo.planning.DrivingAction*t\n\rDrivingAction\x12\x08\n\x04NONE\x10\x64\x12\n\n\x06\x46OLLOW\x10\x00\x12\x0f\n\x0b\x43HANGE_LEFT\x10\x01\x12\x10\n\x0c\x43HANGE_RIGHT\x10\x02\x12\r\n\tPULL_OVER\x10\x03\x12\x08\n\x04STOP\x10\x04\x12\x11\n\rRESUME_CRUISE\x10\x05'
+  serialized_pb=b'\n$modules/planning/proto/pad_msg.proto\x12\x0f\x61pollo.planning\x1a!modules/common/proto/header.proto\"c\n\nPadMessage\x12%\n\x06header\x18\x01 \x01(\x0b\x32\x15.apollo.common.Header\x12.\n\x06\x61\x63tion\x18\x02 \x01(\x0e\x32\x1e.apollo.planning.DrivingAction*\x88\x01\n\rDrivingAction\x12\x08\n\x04NONE\x10\x64\x12\n\n\x06\x46OLLOW\x10\x00\x12\x0f\n\x0b\x43HANGE_LEFT\x10\x01\x12\x10\n\x0c\x43HANGE_RIGHT\x10\x02\x12\r\n\tPULL_OVER\x10\x03\x12\x08\n\x04STOP\x10\x04\x12\x11\n\rRESUME_CRUISE\x10\x05\x12\x12\n\x0e\x43LEAR_PLANNING\x10\x06'
   ,
   dependencies=[modules_dot_common_dot_proto_dot_header__pb2.DESCRIPTOR,])
 
@@ -67,11 +67,16 @@ _DRIVINGACTION = _descriptor.EnumDescriptor(
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CLEAR_PLANNING', index=7, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=193,
-  serialized_end=309,
+  serialized_start=194,
+  serialized_end=330,
 )
 _sym_db.RegisterEnumDescriptor(_DRIVINGACTION)
 
@@ -83,6 +88,7 @@ CHANGE_RIGHT = 2
 PULL_OVER = 3
 STOP = 4
 RESUME_CRUISE = 5
+CLEAR_PLANNING = 6
 
 
 

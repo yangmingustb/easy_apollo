@@ -28,7 +28,7 @@
 
 #include "cyber/common/log.h"
 #include "cyber/cyber.h"
-#include "modules/dreamview/backend/common/handlers/websocket_handler.h"
+#include "modules/dreamview/backend/handlers/websocket_handler.h"
 #include "modules/dreamview_plus/backend/updater/updater_base.h"
 /**
  * @namespace apollo::dreamview

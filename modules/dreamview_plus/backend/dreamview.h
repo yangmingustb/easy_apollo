@@ -24,18 +24,23 @@
 
 #include "cyber/cyber.h"
 #include "modules/common/status/status.h"
-#include "modules/dreamview/backend/common/handlers/image_handler.h"
-#include "modules/dreamview/backend/common/handlers/proto_handler.h"
-#include "modules/dreamview/backend/common/handlers/websocket_handler.h"
+#include "modules/dreamview/backend/handlers/image_handler.h"
+#include "modules/dreamview/backend/handlers/proto_handler.h"
+#include "modules/dreamview/backend/handlers/websocket_handler.h"
+
+
+#include "modules/dreamview/backend/handlers/websocket_handler.h"
+
+
 #include "modules/dreamview_plus/backend/dv_plugin/dv_plugin_manager.h"
 #include "modules/dreamview_plus/backend/hmi/hmi.h"
-#include "modules/dreamview/backend/common/map_service/map_service.h"
+#include "modules/dreamview/backend/map/map_service.h"
 #include "modules/dreamview_plus/backend/map/map_updater.h"
 #include "modules/dreamview_plus/backend/perception_camera_updater/perception_camera_updater.h"
 #include "modules/dreamview_plus/backend/obstacle_updater/obstacle_updater.h"
-#include "modules/dreamview/backend/common/plugins/plugin_manager.h"
+#include "modules/dreamview/backend/plugins/plugin_manager.h"
 #include "modules/dreamview_plus/backend/point_cloud/point_cloud_updater.h"
-#include "modules/dreamview/backend/common/sim_control_manager/sim_control_manager.h"
+#include "modules/dreamview/backend/sim_control_manager/sim_control_manager.h"
 #include "modules/dreamview_plus/backend/simulation_world/simulation_world_updater.h"
 #include "modules/dreamview_plus/backend/socket_manager/socket_manager.h"
 #include "modules/dreamview_plus/backend/updater/updater_manager.h"

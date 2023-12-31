@@ -25,90 +25,102 @@
 
 #include "cyber/class_loader/class_loader.h"
 
-namespace apollo
-{
-namespace cyber
-{
-namespace class_loader
-{
-class ClassLoaderManager
-{
-public:
-    ClassLoaderManager();
-    virtual ~ClassLoaderManager();
+namespace apollo {
+namespace cyber {
+namespace class_loader {
 
-    bool LoadLibrary(const std::string& library_path);
-    void UnloadAllLibrary();
-    bool IsLibraryValid(const std::string& library_path);
-    template <typename Base>
-    std::shared_ptr<Base> CreateClassObj(const std::string& class_name);
-    template <typename Base>
-    std::shared_ptr<Base> CreateClassObj(const std::string& class_name,
-                                         const std::string& library_path);
-    template <typename Base> bool IsClassValid(const std::string& class_name);
-    template <typename Base> std::vector<std::string> GetValidClassNames();
+class ClassLoaderManager {
+ public:
+  ClassLoaderManager();
+  virtual ~ClassLoaderManager();
 
-private:
-    ClassLoader* GetClassLoaderByLibPath(const std::string& library_path);
-    std::vector<ClassLoader*> GetAllValidClassLoaders();
-    std::vector<std::string> GetAllValidLibPath();
-    int UnloadLibrary(const std::string& library_path);
+  bool LoadLibrary(const std::string& library_path);
+  void UnloadAllLibrary();
+  bool IsLibraryValid(const std::string& library_path);
+  template <typename Base>
+  std::shared_ptr<Base> CreateClassObj(const std::string& class_name);
+  template <typename Base>
+  std::shared_ptr<Base> CreateClassObj(const std::string& class_name,
+                                       const std::string& library_path);
+  template <typename Base>
+  bool IsClassValid(const std::string& class_name);
+  template <typename Base>
+  std::vector<std::string> GetValidClassNames();
 
-private:
-    std::mutex libpath_loader_map_mutex_;
-    std::map<std::string, ClassLoader*> libpath_loader_map_;
+  /**
+   * @brief get pathof  library that class belongs to
+   * @param class_name derived class
+   * @return path of library that containing the derived class
+   */
+  template <typename Base>
+  std::string GetClassValidLibrary(const std::string& class_name);
+
+ private:
+  ClassLoader* GetClassLoaderByLibPath(const std::string& library_path);
+  std::vector<ClassLoader*> GetAllValidClassLoaders();
+  std::vector<std::string> GetAllValidLibPath();
+  int UnloadLibrary(const std::string& library_path);
+
+ private:
+  std::mutex libpath_loader_map_mutex_;
+  std::map<std::string, ClassLoader*> libpath_loader_map_;
 };
 
 template <typename Base>
 std::shared_ptr<Base> ClassLoaderManager::CreateClassObj(
-        const std::string& class_name)
-{
-    std::vector<ClassLoader*> class_loaders = GetAllValidClassLoaders();
-    for (auto class_loader : class_loaders)
-    {
-        if (class_loader->IsClassValid<Base>(class_name))
-        {
-            return (class_loader->CreateClassObj<Base>(class_name));
-        }
+    const std::string& class_name) {
+  std::vector<ClassLoader*> class_loaders = GetAllValidClassLoaders();
+  for (auto class_loader : class_loaders) {
+    if (class_loader->IsClassValid<Base>(class_name)) {
+      return (class_loader->CreateClassObj<Base>(class_name));
     }
-    AERROR << "Invalid class name: " << class_name;
-    return std::shared_ptr<Base>();
+  }
+  AERROR << "Invalid class name: " << class_name;
+  return std::shared_ptr<Base>();
 }
 
 template <typename Base>
 std::shared_ptr<Base> ClassLoaderManager::CreateClassObj(
-        const std::string& class_name, const std::string& library_path)
-{
-    ClassLoader* loader = GetClassLoaderByLibPath(library_path);
-    if (loader)
-    {
-        return (loader->CreateClassObj<Base>(class_name));
-    }
-    AERROR << "Could not create classobj, there is no ClassLoader in: "
-           << class_name;
-    return std::shared_ptr<Base>();
+    const std::string& class_name, const std::string& library_path) {
+  ClassLoader* loader = GetClassLoaderByLibPath(library_path);
+  if (loader) {
+    return (loader->CreateClassObj<Base>(class_name));
+  }
+  AERROR << "Could not create classobj, there is no ClassLoader in: "
+         << class_name;
+  return std::shared_ptr<Base>();
 }
 
 template <typename Base>
-bool ClassLoaderManager::IsClassValid(const std::string& class_name)
-{
-    std::vector<std::string> valid_classes = GetValidClassNames<Base>();
-    return (valid_classes.end() !=
-            std::find(valid_classes.begin(), valid_classes.end(), class_name));
+bool ClassLoaderManager::IsClassValid(const std::string& class_name) {
+  std::vector<std::string> valid_classes = GetValidClassNames<Base>();
+  return (valid_classes.end() !=
+          std::find(valid_classes.begin(), valid_classes.end(), class_name));
 }
 
 template <typename Base>
-std::vector<std::string> ClassLoaderManager::GetValidClassNames()
-{
-    std::vector<std::string> valid_classes;
-    for (auto class_loader : GetAllValidClassLoaders())
-    {
-        std::vector<std::string> class_loaders =
-                class_loader->GetValidClassNames<Base>();
-        valid_classes.insert(valid_classes.end(), class_loaders.begin(),
-                             class_loaders.end());
+std::vector<std::string> ClassLoaderManager::GetValidClassNames() {
+  std::vector<std::string> valid_classes;
+  for (auto class_loader : GetAllValidClassLoaders()) {
+    std::vector<std::string> class_loaders =
+        class_loader->GetValidClassNames<Base>();
+    valid_classes.insert(valid_classes.end(), class_loaders.begin(),
+                         class_loaders.end());
+  }
+  return valid_classes;
+}
+
+template <typename Base>
+std::string ClassLoaderManager::GetClassValidLibrary(
+    const std::string& class_name) {
+  for (auto& lib_class_loader : libpath_loader_map_) {
+    if (lib_class_loader.second != nullptr) {
+      if (lib_class_loader.second->IsClassValid<Base>(class_name)) {
+        return lib_class_loader.first;
+      }
     }
-    return valid_classes;
+  }
+  return "";
 }
 
 }  // namespace class_loader

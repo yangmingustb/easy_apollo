@@ -11,6 +11,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from modules.perception.proto import perception_obstacle_pb2 as modules_dot_perception_dot_proto_dot_perception__obstacle__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -19,10 +20,86 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto2',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n+modules/dreamview/proto/camera_update.proto\x12\x10\x61pollo.dreamview\"o\n\x0c\x43\x61meraUpdate\x12\x14\n\x0clocalization\x18\x01 \x03(\x01\x12\x1e\n\x16localization2camera_tf\x18\x02 \x03(\x01\x12\r\n\x05image\x18\x03 \x01(\x0c\x12\x1a\n\x12image_aspect_ratio\x18\x04 \x01(\x01'
+  serialized_pb=b'\n+modules/dreamview/proto/camera_update.proto\x12\x10\x61pollo.dreamview\x1a\x32modules/perception/proto/perception_obstacle.proto\"\xea\x03\n\x0c\x43\x61meraUpdate\x12\x14\n\x0clocalization\x18\x01 \x03(\x01\x12\x1e\n\x16localization2camera_tf\x18\x02 \x03(\x01\x12\r\n\x05image\x18\x03 \x01(\x0c\x12\x1a\n\x12image_aspect_ratio\x18\x04 \x01(\x01\x12)\n\x06\x62\x62ox2d\x18\x05 \x03(\x0b\x32\x19.apollo.perception.BBox2D\x12\x14\n\x0cobstacles_id\x18\x06 \x03(\x05\x12\x42\n\x12obstacles_sub_type\x18\x07 \x03(\x0e\x32&.apollo.dreamview.CameraUpdate.SubType\x12\x15\n\rk_image_scale\x18\x08 \x01(\x01\"\xdc\x01\n\x07SubType\x12\x0e\n\nST_UNKNOWN\x10\x00\x12\x16\n\x12ST_UNKNOWN_MOVABLE\x10\x01\x12\x18\n\x14ST_UNKNOWN_UNMOVABLE\x10\x02\x12\n\n\x06ST_CAR\x10\x03\x12\n\n\x06ST_VAN\x10\x04\x12\x0c\n\x08ST_TRUCK\x10\x05\x12\n\n\x06ST_BUS\x10\x06\x12\x0e\n\nST_CYCLIST\x10\x07\x12\x13\n\x0fST_MOTORCYCLIST\x10\x08\x12\x11\n\rST_TRICYCLIST\x10\t\x12\x11\n\rST_PEDESTRIAN\x10\n\x12\x12\n\x0eST_TRAFFICCONE\x10\x0b'
+  ,
+  dependencies=[modules_dot_perception_dot_proto_dot_perception__obstacle__pb2.DESCRIPTOR,])
+
+
+
+_CAMERAUPDATE_SUBTYPE = _descriptor.EnumDescriptor(
+  name='SubType',
+  full_name='apollo.dreamview.CameraUpdate.SubType',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='ST_UNKNOWN', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ST_UNKNOWN_MOVABLE', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ST_UNKNOWN_UNMOVABLE', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ST_CAR', index=3, number=3,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ST_VAN', index=4, number=4,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ST_TRUCK', index=5, number=5,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ST_BUS', index=6, number=6,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ST_CYCLIST', index=7, number=7,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ST_MOTORCYCLIST', index=8, number=8,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ST_TRICYCLIST', index=9, number=9,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ST_PEDESTRIAN', index=10, number=10,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ST_TRAFFICCONE', index=11, number=11,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=388,
+  serialized_end=608,
 )
-
-
+_sym_db.RegisterEnumDescriptor(_CAMERAUPDATE_SUBTYPE)
 
 
 _CAMERAUPDATE = _descriptor.Descriptor(
@@ -61,11 +138,40 @@ _CAMERAUPDATE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='bbox2d', full_name='apollo.dreamview.CameraUpdate.bbox2d', index=4,
+      number=5, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='obstacles_id', full_name='apollo.dreamview.CameraUpdate.obstacles_id', index=5,
+      number=6, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='obstacles_sub_type', full_name='apollo.dreamview.CameraUpdate.obstacles_sub_type', index=6,
+      number=7, type=14, cpp_type=8, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='k_image_scale', full_name='apollo.dreamview.CameraUpdate.k_image_scale', index=7,
+      number=8, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
+    _CAMERAUPDATE_SUBTYPE,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -73,10 +179,13 @@ _CAMERAUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=65,
-  serialized_end=176,
+  serialized_start=118,
+  serialized_end=608,
 )
 
+_CAMERAUPDATE.fields_by_name['bbox2d'].message_type = modules_dot_perception_dot_proto_dot_perception__obstacle__pb2._BBOX2D
+_CAMERAUPDATE.fields_by_name['obstacles_sub_type'].enum_type = _CAMERAUPDATE_SUBTYPE
+_CAMERAUPDATE_SUBTYPE.containing_type = _CAMERAUPDATE
 DESCRIPTOR.message_types_by_name['CameraUpdate'] = _CAMERAUPDATE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 

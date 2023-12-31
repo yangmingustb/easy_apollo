@@ -36,30 +36,43 @@
 
 #include "nlohmann/json.hpp"
 
-#include "modules/common_msgs/audio_msgs/audio.pb.h"
-#include "modules/common_msgs/audio_msgs/audio_event.pb.h"
-#include "modules/common_msgs/basic_msgs/drive_event.pb.h"
-#include "modules/common_msgs/basic_msgs/pnc_point.pb.h"
-#include "modules/common_msgs/control_msgs/control_cmd.pb.h"
+#include "modules/drivers/microphone/proto/audio.pb.h"
+#include "modules/audio/proto/audio_event.pb.h"
+#include "modules/audio/proto/audio.pb.h"
+#include "modules/common/proto/drive_event.pb.h"
+#include "modules/common/proto/pnc_point.pb.h"
+#include "modules/control/proto/control_cmd.pb.h"
+
 #include "modules/common_msgs/external_command_msgs/command_status.pb.h"
+
 #include "modules/common_msgs/external_command_msgs/lane_follow_command.pb.h"
+
 #include "modules/common_msgs/external_command_msgs/valet_parking_command.pb.h"
+
 #include "modules/common_msgs/external_command_msgs/action_command.pb.h"
-#include "modules/common_msgs/localization_msgs/gps.pb.h"
-#include "modules/common_msgs/localization_msgs/localization.pb.h"
-#include "modules/common_msgs/perception_msgs/traffic_light_detection.pb.h"
-#include "modules/common_msgs/planning_msgs/planning.pb.h"
-#include "modules/common_msgs/planning_msgs/planning_command.pb.h"
-#include "modules/common_msgs/planning_msgs/planning_internal.pb.h"
-#include "modules/common_msgs/prediction_msgs/prediction_obstacle.pb.h"
-#include "modules/common_msgs/routing_msgs/routing.pb.h"
-#include "modules/common_msgs/storytelling_msgs/story.pb.h"
-#include "modules/common_msgs/task_manager_msgs/task_manager.pb.h"
-#include "modules/common_msgs/dreamview_msgs/simulation_world.pb.h"
+
+#include "modules/localization/proto/gps.pb.h"
+#include "modules/localization/proto/localization.pb.h"
+
+#include "modules/perception/proto/traffic_light_detection.pb.h"
+#include "modules/planning/proto/planning.pb.h"
+
+#include "modules/planning/proto/planning_command.pb.h"
+
+#include "modules/planning/proto/planning_internal.pb.h"
+
+#include "modules/prediction/proto/prediction_obstacle.pb.h"
+
+#include "modules/routing/proto/routing.pb.h"
+
+#include "modules/storytelling/proto/story.pb.h"
+#include "modules/task_manager/proto/task_manager.pb.h"
+
+#include "modules/dreamview/proto/simulation_world.pb.h"
 
 #include "cyber/common/log.h"
 #include "modules/common/monitor_log/monitor_log_buffer.h"
-#include "modules/dreamview/backend/common/map_service/map_service.h"
+#include "modules/dreamview/backend/map/map_service.h"
 
 /**
  * @namespace apollo::dreamview

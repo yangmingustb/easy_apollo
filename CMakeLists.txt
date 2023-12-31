@@ -101,6 +101,7 @@ include_directories(${TORCH_INCLUDE_DIRS})
 link_directories(${THIRD_LIB_DIR}/libtorch_cpu/lib)
 #set(DEP_LIBS ${DEP_LIBS} torch)
 # set(DEP_LIBS ${DEP_LIBS} #torch_cpu # torch_global_deps torch)
+add_definitions(-DC10_USE_GLOG)
 
 message(STATUS "Torch_LIBRARIES: ${TORCH_LIBRARIES}")
 message(STATUS "Torch_INCLUDE_DIRS: ${TORCH_INCLUDE_DIRS}")

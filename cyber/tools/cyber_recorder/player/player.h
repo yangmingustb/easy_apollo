@@ -46,6 +46,32 @@ public:
     bool Start();
     bool Stop();
 
+    /**
+     * @brief Reset player for dv will repeatedly use
+     * @return If the action executed successfully.
+     */
+    bool Reset();
+
+    /**
+     * @brief set nohup process to play record.
+     */
+    void NohupPlayRecord();
+    /**
+     * @brief Pause or continue to play record by change the nohup process
+     * status.
+     */
+    void HandleNohupThreadStatus();
+
+    /**
+     * @brief Preload the player,fill play_task_buffer ahead ofr
+     * time to ensure fast playback and avoid consumer waiting.
+     * @param progress_s The start time we begin to read record
+     * and fill task buffer.
+     * @return If the action executed successfully.
+     */
+    bool PreloadPlayRecord(const double& progress_s = 0,
+                           bool paused_status = false);
+
 private:
     void ThreadFunc_Term();
 
@@ -54,6 +80,9 @@ private:
     std::atomic<bool> is_stopped_ = {false};
     std::atomic<bool> is_paused_ = {false};
     std::atomic<bool> is_playonce_ = {false};
+    // is_preloaded_ is only used under nohup play mode to
+    // mark whether the task_buffer_ is preloaded.
+    std::atomic<bool> is_preloaded_ = {false};
     ConsumerPtr consumer_;
     ProducerPtr producer_;
     TaskBufferPtr task_buffer_;

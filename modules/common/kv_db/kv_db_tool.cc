@@ -27,7 +27,6 @@ DEFINE_string(value, "", "The value to query.");
 
 using apollo::common::KVDB;
 
-#if 0
 int main(int32_t argc, char **argv) {
   google::InitGoogleLogging(argv[0]);
   google::ParseCommandLineFlags(&argc, &argv, true);
@@ -51,5 +50,3 @@ int main(int32_t argc, char **argv) {
 
   return 0;
 }
-
-#endif

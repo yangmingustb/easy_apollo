@@ -119,6 +119,12 @@ class WebSocketHandler : public CivetWebSocketHandler {
   bool BroadcastData(const std::string &data, bool skippable = false);
 
   /**
+   * @brief Sends the provided binary data to all the connected clients.
+   * @param data The message string to be sent.
+   */
+  bool BroadcastBinaryData(const std::string &data, bool skippable = false);
+
+  /**
    * @brief Sends the provided data to a specific connected client.
    *
    * @param conn The connection to send to.
