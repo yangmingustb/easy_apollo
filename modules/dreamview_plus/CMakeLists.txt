@@ -76,12 +76,12 @@ file(GLOB VIZ2_FILES
 
 )
 
-list(FILTER VIZ_FILES EXCLUDE REGEX .*test[.]cc)
+list(FILTER VIZ2_FILES EXCLUDE REGEX .*test[.]cc)
 
-message("dreamview source: ${VIZ_FILES}")
+message("dreamview source: ${VIZ2_FILES}")
 
 add_library(dreamview2_lib  ${BUILD_TYPE}
-      ${VIZ_FILES}
+      ${VIZ2_FILES}
       backend/dreamview.cc
         )
 target_include_directories(dreamview2_lib PUBLIC
@@ -92,21 +92,27 @@ target_link_libraries(dreamview2_lib PUBLIC
 					apollo_common
 					apollo_map
 					apollo_dreamview_proto
-                    apollo_dreamview_lib
 					dreamview2_proto
-                    dreamview2_hmi
+                    
                     ${PCL_LIBRARIES}
                     ${civetweb_LIBRARIES}
                     libcivetweb-cpp.so
                     libcivetweb.so
 
+                    cyber
                     gnss_driver
                     apollo_drivers
                     audio_proto
                     apollo_tf
                     # yaml-cpp
                     task_manager
+
                     fuel_monitor
+                    dreamview_common
+                    dv_map
+                    dv_handlers
+                    dv_plugins
+                    dv_sim_control_manager
 )
 
 # exe
@@ -120,7 +126,9 @@ target_link_libraries(dreamview2_main PUBLIC
 					apollo_map
 					dreamview2_lib
 					apollo_dreamview_proto
+
 					dreamview2_proto
+                    dreamview2_hmi
 
                     apollo_monitor
                     apollo_planning
