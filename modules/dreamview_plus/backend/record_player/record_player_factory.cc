@@ -83,7 +83,8 @@ bool RecordPlayerFactory::RegisterRecordPlayer(
   play_param.files_to_play.insert(record_file_path);
   const std::string node_name = "record_player_factory_" + record_name;
   s_record_player_map_[record_name] = std::unique_ptr<Player>(
-      new Player(play_param, apollo::cyber::CreateNode(node_name), true));
+      // new Player(play_param, apollo::cyber::CreateNode(node_name), true));
+      new Player(play_param));
   s_record_player_map_[record_name]->Init();
   {
     WLock wlock(mutex_);

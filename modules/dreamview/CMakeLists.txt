@@ -208,6 +208,37 @@ target_link_libraries(dv_point_cloud PUBLIC
 					apollo_dreamview_proto
 )
 
+
+# lib
+file(GLOB dv_sim_control_manager_file 
+
+    "backend/sim_control_manager/*.cc"
+    "backend/sim_control_manager/proto/*.cc"
+    "backend/sim_control_manager/common/*.cc"
+    "backend/sim_control_manager/core/*.cc"
+    "backend/sim_control_manager/dynamic_model/perfect_control/*.cc"
+    "backend/sim_control_manager/dynamic_model/perfect_control/*.cc"
+
+
+)
+
+list(FILTER dv_sim_control_manager_file EXCLUDE REGEX .*test[.]cc)
+
+message("dreamview source: ${dv_sim_control_manager_file}")
+
+add_library(dv_sim_control_manager  ${BUILD_TYPE}
+      ${dv_sim_control_manager_file}
+        )
+target_include_directories(dv_sim_control_manager PUBLIC
+${CMAKE_CURRENT_SOURCE_DIR}
+)
+target_link_libraries(dv_sim_control_manager PUBLIC
+					${PROTOBUF_LIBRARIES}
+					apollo_common
+					apollo_map
+					apollo_dreamview_proto
+)
+
 # lib
 file(GLOB VIZ_FILES 
     # "backend/fuel_monitor/*.cc"
@@ -218,12 +249,6 @@ file(GLOB VIZ_FILES
     "backend/sim_control/*.cc"
     # "backend/simulation_world/*.cc"
 
-    "backend/sim_control_manager/*.cc"
-    "backend/sim_control_manager/proto/*.cc"
-    "backend/sim_control_manager/common/*.cc"
-    "backend/sim_control_manager/core/*.cc"
-    "backend/sim_control_manager/dynamic_model/perfect_control/*.cc"
-    "backend/sim_control_manager/dynamic_model/perfect_control/*.cc"
 
 
 )
@@ -251,6 +276,7 @@ target_link_libraries(apollo_dreamview_lib PUBLIC
                     dv_pcu
                     dv_simulation_world
                     dv_point_cloud
+                    dv_sim_control_manager
                     ${PCL_LIBRARIES}
                     ${civetweb_LIBRARIES}
                     libcivetweb-cpp.so
@@ -305,6 +331,7 @@ install(TARGETS
         dv_plugins
         dv_simulation_world
         dv_point_cloud
+        dv_sim_control_manager
 
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib

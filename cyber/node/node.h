@@ -29,6 +29,7 @@ namespace apollo
 {
 namespace cyber
 {
+
 template <typename M0, typename M1, typename M2, typename M3> class Component;
 class TimerComponent;
 
@@ -152,6 +153,9 @@ public:
     auto CreateClient(const std::string& service_name)
             -> std::shared_ptr<Client<Request, Response>>;
 
+    bool DeleteReader(const std::string& channel_name);
+    bool DeleteReader(const ReaderConfig& config);
+    bool DeleteReader(const proto::RoleAttributes& role_attr);
     /**
      * @brief Observe all readers' data
      */
