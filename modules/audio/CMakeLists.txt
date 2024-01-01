@@ -10,14 +10,12 @@ file(GLOB AUDIO_PROTO_FILES
 
 )
 
-add_library(audio_proto  SHARED  ${AUDIO_PROTO_FILES})
+add_library(audio_proto  STATIC  ${AUDIO_PROTO_FILES})
 target_include_directories(audio_proto PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
         )
 target_link_libraries(audio_proto PUBLIC
                                          ${PROTOBUF_LIBRARIES}
-                                        #  ${OpenCV_LIBRARIES}
-                                        #  cyber
 
                                          )
 
@@ -28,6 +26,6 @@ install(TARGETS
         
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
-        RUNTIME DESTINATION bin
+        # RUNTIME DESTINATION bin
         INCLUDES DESTINATION .
         )

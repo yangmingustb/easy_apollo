@@ -193,14 +193,14 @@ DEFINE_string(data_record_default_name, "default_record_name",
               "Data record default name");
 
 DEFINE_string(dv_hmi_modes_config_path,
-              "/apollo/modules/dreamview/conf/hmi_modes",
+              "./../modules/dreamview/conf/hmi_modes",
               "Dreamview HMI modes config path.");
 DEFINE_string(dv_plus_hmi_modes_config_path,
-              "/apollo/modules/dreamview_plus/conf/hmi_modes",
+              "./../modules/dreamview_plus/conf/hmi_modes",
               "Dreamview Plus HMI modes config path.");
 DEFINE_string(maps_data_path, "./../modules/map/data", "Maps data path.");
 DEFINE_string(global_components_config_path,
-              "/apollo/modules/dreamview/conf/global_components_config.pb.txt",
+              "./../modules/dreamview/conf/global_components_config.pb.txt",
               "Global components config path.");
 
 DEFINE_string(
