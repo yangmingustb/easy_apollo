@@ -5,6 +5,7 @@ package apollo.dreamview;
 import "modules/canbus/proto/chassis.proto";
 import "modules/common/monitor_log/proto/monitor_log.proto";
 import "modules/common/proto/pnc_point.proto";
+import "modules/common/configs/proto/vehicle_config.proto";
 import "modules/perception/proto/perception_obstacle.proto";
 import "modules/planning/proto/planning_internal.proto";
 import "modules/prediction/proto/feature.proto";
@@ -296,4 +297,7 @@ message SimulationWorld {
   map<string, SensorMeasurements> sensor_measurements = 29;
 
   optional bool is_siren_on = 30 [default = false];
+
+  // vehicle param
+  optional apollo.common.VehicleParam vehicle_param = 31;
 }

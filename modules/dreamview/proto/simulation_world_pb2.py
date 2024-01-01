@@ -14,6 +14,7 @@ _sym_db = _symbol_database.Default()
 from modules.canbus.proto import chassis_pb2 as modules_dot_canbus_dot_proto_dot_chassis__pb2
 from modules.common.monitor_log.proto import monitor_log_pb2 as modules_dot_common_dot_monitor__log_dot_proto_dot_monitor__log__pb2
 from modules.common.proto import pnc_point_pb2 as modules_dot_common_dot_proto_dot_pnc__point__pb2
+from modules.common.configs.proto import vehicle_config_pb2 as modules_dot_common_dot_configs_dot_proto_dot_vehicle__config__pb2
 from modules.perception.proto import perception_obstacle_pb2 as modules_dot_perception_dot_proto_dot_perception__obstacle__pb2
 from modules.planning.proto import planning_internal_pb2 as modules_dot_planning_dot_proto_dot_planning__internal__pb2
 from modules.prediction.proto import feature_pb2 as modules_dot_prediction_dot_proto_dot_feature__pb2
@@ -26,9 +27,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto2',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n.modules/dreamview/proto/simulation_world.proto\x12\x10\x61pollo.dreamview\x1a\"modules/canbus/proto/chassis.proto\x1a\x32modules/common/monitor_log/proto/monitor_log.proto\x1a$modules/common/proto/pnc_point.proto\x1a\x32modules/perception/proto/perception_obstacle.proto\x1a.modules/planning/proto/planning_internal.proto\x1a&modules/prediction/proto/feature.proto\x1a#modules/routing/proto/routing.proto\"f\n\x0cPolygonPoint\x12\t\n\x01x\x18\x01 \x01(\x01\x12\t\n\x01y\x18\x02 \x01(\x01\x12\x0c\n\x01z\x18\x03 \x01(\x01:\x01\x30\x12\x32\n\rgaussian_info\x18\x04 \x01(\x0b\x32\x1b.apollo.common.GaussianInfo\"_\n\nPrediction\x12\x13\n\x0bprobability\x18\x01 \x01(\x01\x12<\n\x14predicted_trajectory\x18\x02 \x03(\x0b\x32\x1e.apollo.dreamview.PolygonPoint\"\xc4\x06\n\x08\x44\x65\x63ision\x12\x35\n\x04type\x18\x01 \x01(\x0e\x32\x1f.apollo.dreamview.Decision.Type:\x06IGNORE\x12\x35\n\rpolygon_point\x18\x02 \x03(\x0b\x32\x1e.apollo.dreamview.PolygonPoint\x12\x0f\n\x07heading\x18\x03 \x01(\x01\x12\x10\n\x08latitude\x18\x04 \x01(\x01\x12\x11\n\tlongitude\x18\x05 \x01(\x01\x12\x12\n\nposition_x\x18\x06 \x01(\x01\x12\x12\n\nposition_y\x18\x07 \x01(\x01\x12\x13\n\x06length\x18\x08 \x01(\x01:\x03\x32.8\x12\x12\n\x05width\x18\t \x01(\x01:\x03\x31.4\x12\x13\n\x06height\x18\n \x01(\x01:\x03\x31.8\x12=\n\nstopReason\x18\x0b \x01(\x0e\x32).apollo.dreamview.Decision.StopReasonCode\x12\x38\n\x10\x63hange_lane_type\x18\x0c \x01(\x0e\x32\x1e.apollo.routing.ChangeLaneType\"Z\n\x04Type\x12\n\n\x06IGNORE\x10\x00\x12\x08\n\x04STOP\x10\x01\x12\t\n\x05NUDGE\x10\x02\x12\t\n\x05YIELD\x10\x03\x12\x0c\n\x08OVERTAKE\x10\x04\x12\n\n\x06\x46OLLOW\x10\x05\x12\x0c\n\x08SIDEPASS\x10\x06\"\xd8\x02\n\x0eStopReasonCode\x12\x1c\n\x18STOP_REASON_HEAD_VEHICLE\x10\x01\x12\x1b\n\x17STOP_REASON_DESTINATION\x10\x02\x12\x1a\n\x16STOP_REASON_PEDESTRIAN\x10\x03\x12\x18\n\x14STOP_REASON_OBSTACLE\x10\x04\x12\x16\n\x12STOP_REASON_SIGNAL\x10\x64\x12\x19\n\x15STOP_REASON_STOP_SIGN\x10\x65\x12\x1a\n\x16STOP_REASON_YIELD_SIGN\x10\x66\x12\x1a\n\x16STOP_REASON_CLEAR_ZONE\x10g\x12\x19\n\x15STOP_REASON_CROSSWALK\x10h\x12\x19\n\x15STOP_REASON_EMERGENCY\x10i\x12\x19\n\x15STOP_REASON_NOT_READY\x10j\x12\x19\n\x15STOP_REASON_PULL_OVER\x10k\"\xcc\x0c\n\x06Object\x12\n\n\x02id\x18\x01 \x01(\t\x12\x35\n\rpolygon_point\x18\x02 \x03(\x0b\x32\x1e.apollo.dreamview.PolygonPoint\x12\x0f\n\x07heading\x18\x03 \x01(\x01\x12\x10\n\x08latitude\x18\x04 \x01(\x01\x12\x11\n\tlongitude\x18\x05 \x01(\x01\x12\x12\n\nposition_x\x18\x06 \x01(\x01\x12\x12\n\nposition_y\x18\x07 \x01(\x01\x12\x13\n\x06length\x18\x08 \x01(\x01:\x03\x32.8\x12\x12\n\x05width\x18\t \x01(\x01:\x03\x31.4\x12\x13\n\x06height\x18\n \x01(\x01:\x03\x31.8\x12\r\n\x05speed\x18\x0b \x01(\x01\x12\x1a\n\x12speed_acceleration\x18\x0c \x01(\x01\x12\x12\n\nspeed_jerk\x18\r \x01(\x01\x12\x0c\n\x04spin\x18\x0e \x01(\x01\x12\x19\n\x11spin_acceleration\x18\x0f \x01(\x01\x12\x11\n\tspin_jerk\x18\x10 \x01(\x01\x12\x15\n\rspeed_heading\x18\x11 \x01(\x01\x12\r\n\x05kappa\x18\x12 \x01(\x01\x12\x0e\n\x06\x64kappa\x18# \x01(\x01\x12\x12\n\nsignal_set\x18\x13 \x03(\t\x12\x16\n\x0e\x63urrent_signal\x18\x14 \x01(\t\x12\x15\n\rtimestamp_sec\x18\x15 \x01(\x01\x12,\n\x08\x64\x65\x63ision\x18\x16 \x03(\x0b\x32\x1a.apollo.dreamview.Decision\x12\x1f\n\x10yielded_obstacle\x18  \x01(\x08:\x05\x66\x61lse\x12\x1b\n\x13throttle_percentage\x18\x17 \x01(\x01\x12\x18\n\x10\x62rake_percentage\x18\x18 \x01(\x01\x12\x1b\n\x13steering_percentage\x18\x19 \x01(\x01\x12\x16\n\x0esteering_angle\x18\x1a \x01(\x01\x12\x16\n\x0esteering_ratio\x18\x1b \x01(\x01\x12\x1a\n\x12\x62\x61ttery_percentage\x18& \x01(\x05\x12:\n\rgear_location\x18\' \x01(\x0e\x32#.apollo.canbus.Chassis.GearPosition\x12>\n\x0e\x64isengage_type\x18\x1c \x01(\x0e\x32&.apollo.dreamview.Object.DisengageType\x12+\n\x04type\x18\x1d \x01(\x0e\x32\x1d.apollo.dreamview.Object.Type\x12?\n\x08sub_type\x18\" \x01(\x0e\x32-.apollo.perception.PerceptionObstacle.SubType\x12\x30\n\nprediction\x18\x1e \x03(\x0b\x32\x1c.apollo.dreamview.Prediction\x12\x15\n\nconfidence\x18\x1f \x01(\x01:\x01\x31\x12>\n\x11obstacle_priority\x18! \x01(\x0b\x32#.apollo.prediction.ObstaclePriority\x12\x42\n\x0finteractive_tag\x18( \x01(\x0b\x32).apollo.prediction.ObstacleInteractiveTag\x12J\n\x06source\x18$ \x01(\x0e\x32,.apollo.perception.PerceptionObstacle.Source:\x0cHOST_VEHICLE\x12\x33\n\x08v2x_info\x18% \x01(\x0b\x32!.apollo.perception.V2XInformation\"\xc4\x01\n\rDisengageType\x12\x12\n\x0e\x44ISENGAGE_NONE\x10\x00\x12\x15\n\x11\x44ISENGAGE_UNKNOWN\x10\x01\x12\x14\n\x10\x44ISENGAGE_MANUAL\x10\x02\x12\x17\n\x13\x44ISENGAGE_EMERGENCY\x10\x03\x12\x1d\n\x19\x44ISENGAGE_AUTO_STEER_ONLY\x10\x04\x12\x1d\n\x19\x44ISENGAGE_AUTO_SPEED_ONLY\x10\x05\x12\x1b\n\x17\x44ISENGAGE_CHASSIS_ERROR\x10\x06\"\x80\x01\n\x04Type\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x13\n\x0fUNKNOWN_MOVABLE\x10\x01\x12\x15\n\x11UNKNOWN_UNMOVABLE\x10\x02\x12\x0e\n\nPEDESTRIAN\x10\x03\x12\x0b\n\x07\x42ICYCLE\x10\x04\x12\x0b\n\x07VEHICLE\x10\x05\x12\x0b\n\x07VIRTUAL\x10\x06\x12\x08\n\x04\x43IPV\x10\x07\"\x9e\x01\n\nDelaysInMs\x12\x0f\n\x07\x63hassis\x18\x01 \x01(\x01\x12\x14\n\x0clocalization\x18\x03 \x01(\x01\x12\x1b\n\x13perception_obstacle\x18\x04 \x01(\x01\x12\x10\n\x08planning\x18\x05 \x01(\x01\x12\x12\n\nprediction\x18\x07 \x01(\x01\x12\x15\n\rtraffic_light\x18\x08 \x01(\x01\x12\x0f\n\x07\x63ontrol\x18\t \x01(\x01\":\n\tRoutePath\x12-\n\x05point\x18\x01 \x03(\x0b\x32\x1e.apollo.dreamview.PolygonPoint\"7\n\x07Latency\x12\x15\n\rtimestamp_sec\x18\x01 \x01(\x01\x12\x15\n\rtotal_time_ms\x18\x02 \x01(\x01\"\xe8\x01\n\rMapElementIds\x12\x0c\n\x04lane\x18\x01 \x03(\t\x12\x11\n\tcrosswalk\x18\x02 \x03(\t\x12\x10\n\x08junction\x18\x03 \x03(\t\x12\x0e\n\x06signal\x18\x04 \x03(\t\x12\x11\n\tstop_sign\x18\x05 \x03(\t\x12\r\n\x05yield\x18\x06 \x03(\t\x12\x0f\n\x07overlap\x18\x07 \x03(\t\x12\x0c\n\x04road\x18\x08 \x03(\t\x12\x12\n\nclear_area\x18\t \x03(\t\x12\x15\n\rparking_space\x18\n \x03(\t\x12\x12\n\nspeed_bump\x18\x0b \x03(\t\x12\x14\n\x0cpnc_junction\x18\x0c \x03(\t\"\xa7\x01\n\x0b\x43ontrolData\x12\x15\n\rtimestamp_sec\x18\x01 \x01(\x01\x12\x15\n\rstation_error\x18\x02 \x01(\x01\x12\x15\n\rlateral_error\x18\x03 \x01(\x01\x12\x15\n\rheading_error\x18\x04 \x01(\x01\x12<\n\x14\x63urrent_target_point\x18\x05 \x01(\x0b\x32\x1e.apollo.common.TrajectoryPoint\"^\n\x0cNotification\x12\x15\n\rtimestamp_sec\x18\x01 \x01(\x01\x12\x37\n\x04item\x18\x02 \x01(\x0b\x32).apollo.common.monitor.MonitorMessageItem\"J\n\x12SensorMeasurements\x12\x34\n\x12sensor_measurement\x18\x01 \x03(\x0b\x32\x18.apollo.dreamview.Object\"\xab\x0c\n\x0fSimulationWorld\x12\x11\n\ttimestamp\x18\x01 \x01(\x01\x12\x14\n\x0csequence_num\x18\x02 \x01(\r\x12(\n\x06object\x18\x03 \x03(\x0b\x32\x18.apollo.dreamview.Object\x12\x32\n\x10\x61uto_driving_car\x18\x04 \x01(\x0b\x32\x18.apollo.dreamview.Object\x12\x30\n\x0etraffic_signal\x18\x05 \x01(\x0b\x32\x18.apollo.dreamview.Object\x12/\n\nroute_path\x18\x06 \x03(\x0b\x32\x1b.apollo.dreamview.RoutePath\x12\x14\n\x0crouting_time\x18\x07 \x01(\x01\x12\x35\n\x13planning_trajectory\x18\x08 \x03(\x0b\x32\x18.apollo.dreamview.Object\x12/\n\tmain_stop\x18\t \x01(\x0b\x32\x18.apollo.dreamview.ObjectB\x02\x18\x01\x12/\n\rmain_decision\x18\n \x01(\x0b\x32\x18.apollo.dreamview.Object\x12\x13\n\x0bspeed_limit\x18\x0b \x01(\x01\x12+\n\x05\x64\x65lay\x18\x0c \x01(\x0b\x32\x1c.apollo.dreamview.DelaysInMs\x12:\n\x07monitor\x18\r \x01(\x0b\x32%.apollo.common.monitor.MonitorMessageB\x02\x18\x01\x12\x34\n\x0cnotification\x18\x0e \x03(\x0b\x32\x1e.apollo.dreamview.Notification\x12\x15\n\rengage_advice\x18\x0f \x01(\t\x12?\n\x07latency\x18\x10 \x03(\x0b\x32..apollo.dreamview.SimulationWorld.LatencyEntry\x12\x38\n\x0fmap_element_ids\x18\x11 \x01(\x0b\x32\x1f.apollo.dreamview.MapElementIds\x12\x10\n\x08map_hash\x18\x12 \x01(\x04\x12\x12\n\nmap_radius\x18\x13 \x01(\x01\x12=\n\rplanning_data\x18\x14 \x01(\x0b\x32&.apollo.planning_internal.PlanningData\x12%\n\x03gps\x18\x15 \x01(\x0b\x32\x18.apollo.dreamview.Object\x12\x33\n\x0blane_marker\x18\x16 \x01(\x0b\x32\x1e.apollo.perception.LaneMarkers\x12\x33\n\x0c\x63ontrol_data\x18\x17 \x01(\x0b\x32\x1d.apollo.dreamview.ControlData\x12,\n\x0fnavigation_path\x18\x18 \x03(\x0b\x32\x13.apollo.common.Path\x12\x19\n\x0bis_rss_safe\x18\x19 \x01(\x08:\x04true\x12\x35\n\x13shadow_localization\x18\x1a \x01(\x0b\x32\x18.apollo.dreamview.Object\x12\x32\n\x10perceived_signal\x18\x1b \x03(\x0b\x32\x18.apollo.dreamview.Object\x12?\n\x07stories\x18\x1c \x03(\x0b\x32..apollo.dreamview.SimulationWorld.StoriesEntry\x12V\n\x13sensor_measurements\x18\x1d \x03(\x0b\x32\x39.apollo.dreamview.SimulationWorld.SensorMeasurementsEntry\x12\x1a\n\x0bis_siren_on\x18\x1e \x01(\x08:\x05\x66\x61lse\x1aI\n\x0cLatencyEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12(\n\x05value\x18\x02 \x01(\x0b\x32\x19.apollo.dreamview.Latency:\x02\x38\x01\x1a.\n\x0cStoriesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x08:\x02\x38\x01\x1a_\n\x17SensorMeasurementsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.apollo.dreamview.SensorMeasurements:\x02\x38\x01'
+  serialized_pb=b'\n.modules/dreamview/proto/simulation_world.proto\x12\x10\x61pollo.dreamview\x1a\"modules/canbus/proto/chassis.proto\x1a\x32modules/common/monitor_log/proto/monitor_log.proto\x1a$modules/common/proto/pnc_point.proto\x1a\x31modules/common/configs/proto/vehicle_config.proto\x1a\x32modules/perception/proto/perception_obstacle.proto\x1a.modules/planning/proto/planning_internal.proto\x1a&modules/prediction/proto/feature.proto\x1a#modules/routing/proto/routing.proto\"f\n\x0cPolygonPoint\x12\t\n\x01x\x18\x01 \x01(\x01\x12\t\n\x01y\x18\x02 \x01(\x01\x12\x0c\n\x01z\x18\x03 \x01(\x01:\x01\x30\x12\x32\n\rgaussian_info\x18\x04 \x01(\x0b\x32\x1b.apollo.common.GaussianInfo\"_\n\nPrediction\x12\x13\n\x0bprobability\x18\x01 \x01(\x01\x12<\n\x14predicted_trajectory\x18\x02 \x03(\x0b\x32\x1e.apollo.dreamview.PolygonPoint\"\xc4\x06\n\x08\x44\x65\x63ision\x12\x35\n\x04type\x18\x01 \x01(\x0e\x32\x1f.apollo.dreamview.Decision.Type:\x06IGNORE\x12\x35\n\rpolygon_point\x18\x02 \x03(\x0b\x32\x1e.apollo.dreamview.PolygonPoint\x12\x0f\n\x07heading\x18\x03 \x01(\x01\x12\x10\n\x08latitude\x18\x04 \x01(\x01\x12\x11\n\tlongitude\x18\x05 \x01(\x01\x12\x12\n\nposition_x\x18\x06 \x01(\x01\x12\x12\n\nposition_y\x18\x07 \x01(\x01\x12\x13\n\x06length\x18\x08 \x01(\x01:\x03\x32.8\x12\x12\n\x05width\x18\t \x01(\x01:\x03\x31.4\x12\x13\n\x06height\x18\n \x01(\x01:\x03\x31.8\x12=\n\nstopReason\x18\x0b \x01(\x0e\x32).apollo.dreamview.Decision.StopReasonCode\x12\x38\n\x10\x63hange_lane_type\x18\x0c \x01(\x0e\x32\x1e.apollo.routing.ChangeLaneType\"Z\n\x04Type\x12\n\n\x06IGNORE\x10\x00\x12\x08\n\x04STOP\x10\x01\x12\t\n\x05NUDGE\x10\x02\x12\t\n\x05YIELD\x10\x03\x12\x0c\n\x08OVERTAKE\x10\x04\x12\n\n\x06\x46OLLOW\x10\x05\x12\x0c\n\x08SIDEPASS\x10\x06\"\xd8\x02\n\x0eStopReasonCode\x12\x1c\n\x18STOP_REASON_HEAD_VEHICLE\x10\x01\x12\x1b\n\x17STOP_REASON_DESTINATION\x10\x02\x12\x1a\n\x16STOP_REASON_PEDESTRIAN\x10\x03\x12\x18\n\x14STOP_REASON_OBSTACLE\x10\x04\x12\x16\n\x12STOP_REASON_SIGNAL\x10\x64\x12\x19\n\x15STOP_REASON_STOP_SIGN\x10\x65\x12\x1a\n\x16STOP_REASON_YIELD_SIGN\x10\x66\x12\x1a\n\x16STOP_REASON_CLEAR_ZONE\x10g\x12\x19\n\x15STOP_REASON_CROSSWALK\x10h\x12\x19\n\x15STOP_REASON_EMERGENCY\x10i\x12\x19\n\x15STOP_REASON_NOT_READY\x10j\x12\x19\n\x15STOP_REASON_PULL_OVER\x10k\"\xcc\x0c\n\x06Object\x12\n\n\x02id\x18\x01 \x01(\t\x12\x35\n\rpolygon_point\x18\x02 \x03(\x0b\x32\x1e.apollo.dreamview.PolygonPoint\x12\x0f\n\x07heading\x18\x03 \x01(\x01\x12\x10\n\x08latitude\x18\x04 \x01(\x01\x12\x11\n\tlongitude\x18\x05 \x01(\x01\x12\x12\n\nposition_x\x18\x06 \x01(\x01\x12\x12\n\nposition_y\x18\x07 \x01(\x01\x12\x13\n\x06length\x18\x08 \x01(\x01:\x03\x32.8\x12\x12\n\x05width\x18\t \x01(\x01:\x03\x31.4\x12\x13\n\x06height\x18\n \x01(\x01:\x03\x31.8\x12\r\n\x05speed\x18\x0b \x01(\x01\x12\x1a\n\x12speed_acceleration\x18\x0c \x01(\x01\x12\x12\n\nspeed_jerk\x18\r \x01(\x01\x12\x0c\n\x04spin\x18\x0e \x01(\x01\x12\x19\n\x11spin_acceleration\x18\x0f \x01(\x01\x12\x11\n\tspin_jerk\x18\x10 \x01(\x01\x12\x15\n\rspeed_heading\x18\x11 \x01(\x01\x12\r\n\x05kappa\x18\x12 \x01(\x01\x12\x0e\n\x06\x64kappa\x18# \x01(\x01\x12\x12\n\nsignal_set\x18\x13 \x03(\t\x12\x16\n\x0e\x63urrent_signal\x18\x14 \x01(\t\x12\x15\n\rtimestamp_sec\x18\x15 \x01(\x01\x12,\n\x08\x64\x65\x63ision\x18\x16 \x03(\x0b\x32\x1a.apollo.dreamview.Decision\x12\x1f\n\x10yielded_obstacle\x18  \x01(\x08:\x05\x66\x61lse\x12\x1b\n\x13throttle_percentage\x18\x17 \x01(\x01\x12\x18\n\x10\x62rake_percentage\x18\x18 \x01(\x01\x12\x1b\n\x13steering_percentage\x18\x19 \x01(\x01\x12\x16\n\x0esteering_angle\x18\x1a \x01(\x01\x12\x16\n\x0esteering_ratio\x18\x1b \x01(\x01\x12\x1a\n\x12\x62\x61ttery_percentage\x18& \x01(\x05\x12:\n\rgear_location\x18\' \x01(\x0e\x32#.apollo.canbus.Chassis.GearPosition\x12>\n\x0e\x64isengage_type\x18\x1c \x01(\x0e\x32&.apollo.dreamview.Object.DisengageType\x12+\n\x04type\x18\x1d \x01(\x0e\x32\x1d.apollo.dreamview.Object.Type\x12?\n\x08sub_type\x18\" \x01(\x0e\x32-.apollo.perception.PerceptionObstacle.SubType\x12\x30\n\nprediction\x18\x1e \x03(\x0b\x32\x1c.apollo.dreamview.Prediction\x12\x15\n\nconfidence\x18\x1f \x01(\x01:\x01\x31\x12>\n\x11obstacle_priority\x18! \x01(\x0b\x32#.apollo.prediction.ObstaclePriority\x12\x42\n\x0finteractive_tag\x18( \x01(\x0b\x32).apollo.prediction.ObstacleInteractiveTag\x12J\n\x06source\x18$ \x01(\x0e\x32,.apollo.perception.PerceptionObstacle.Source:\x0cHOST_VEHICLE\x12\x33\n\x08v2x_info\x18% \x01(\x0b\x32!.apollo.perception.V2XInformation\"\xc4\x01\n\rDisengageType\x12\x12\n\x0e\x44ISENGAGE_NONE\x10\x00\x12\x15\n\x11\x44ISENGAGE_UNKNOWN\x10\x01\x12\x14\n\x10\x44ISENGAGE_MANUAL\x10\x02\x12\x17\n\x13\x44ISENGAGE_EMERGENCY\x10\x03\x12\x1d\n\x19\x44ISENGAGE_AUTO_STEER_ONLY\x10\x04\x12\x1d\n\x19\x44ISENGAGE_AUTO_SPEED_ONLY\x10\x05\x12\x1b\n\x17\x44ISENGAGE_CHASSIS_ERROR\x10\x06\"\x80\x01\n\x04Type\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x13\n\x0fUNKNOWN_MOVABLE\x10\x01\x12\x15\n\x11UNKNOWN_UNMOVABLE\x10\x02\x12\x0e\n\nPEDESTRIAN\x10\x03\x12\x0b\n\x07\x42ICYCLE\x10\x04\x12\x0b\n\x07VEHICLE\x10\x05\x12\x0b\n\x07VIRTUAL\x10\x06\x12\x08\n\x04\x43IPV\x10\x07\"\x9e\x01\n\nDelaysInMs\x12\x0f\n\x07\x63hassis\x18\x01 \x01(\x01\x12\x14\n\x0clocalization\x18\x03 \x01(\x01\x12\x1b\n\x13perception_obstacle\x18\x04 \x01(\x01\x12\x10\n\x08planning\x18\x05 \x01(\x01\x12\x12\n\nprediction\x18\x07 \x01(\x01\x12\x15\n\rtraffic_light\x18\x08 \x01(\x01\x12\x0f\n\x07\x63ontrol\x18\t \x01(\x01\":\n\tRoutePath\x12-\n\x05point\x18\x01 \x03(\x0b\x32\x1e.apollo.dreamview.PolygonPoint\"7\n\x07Latency\x12\x15\n\rtimestamp_sec\x18\x01 \x01(\x01\x12\x15\n\rtotal_time_ms\x18\x02 \x01(\x01\"\xe8\x01\n\rMapElementIds\x12\x0c\n\x04lane\x18\x01 \x03(\t\x12\x11\n\tcrosswalk\x18\x02 \x03(\t\x12\x10\n\x08junction\x18\x03 \x03(\t\x12\x0e\n\x06signal\x18\x04 \x03(\t\x12\x11\n\tstop_sign\x18\x05 \x03(\t\x12\r\n\x05yield\x18\x06 \x03(\t\x12\x0f\n\x07overlap\x18\x07 \x03(\t\x12\x0c\n\x04road\x18\x08 \x03(\t\x12\x12\n\nclear_area\x18\t \x03(\t\x12\x15\n\rparking_space\x18\n \x03(\t\x12\x12\n\nspeed_bump\x18\x0b \x03(\t\x12\x14\n\x0cpnc_junction\x18\x0c \x03(\t\"\xa7\x01\n\x0b\x43ontrolData\x12\x15\n\rtimestamp_sec\x18\x01 \x01(\x01\x12\x15\n\rstation_error\x18\x02 \x01(\x01\x12\x15\n\rlateral_error\x18\x03 \x01(\x01\x12\x15\n\rheading_error\x18\x04 \x01(\x01\x12<\n\x14\x63urrent_target_point\x18\x05 \x01(\x0b\x32\x1e.apollo.common.TrajectoryPoint\"^\n\x0cNotification\x12\x15\n\rtimestamp_sec\x18\x01 \x01(\x01\x12\x37\n\x04item\x18\x02 \x01(\x0b\x32).apollo.common.monitor.MonitorMessageItem\"J\n\x12SensorMeasurements\x12\x34\n\x12sensor_measurement\x18\x01 \x03(\x0b\x32\x18.apollo.dreamview.Object\"\xdf\x0c\n\x0fSimulationWorld\x12\x11\n\ttimestamp\x18\x01 \x01(\x01\x12\x14\n\x0csequence_num\x18\x02 \x01(\r\x12(\n\x06object\x18\x03 \x03(\x0b\x32\x18.apollo.dreamview.Object\x12\x32\n\x10\x61uto_driving_car\x18\x04 \x01(\x0b\x32\x18.apollo.dreamview.Object\x12\x30\n\x0etraffic_signal\x18\x05 \x01(\x0b\x32\x18.apollo.dreamview.Object\x12/\n\nroute_path\x18\x06 \x03(\x0b\x32\x1b.apollo.dreamview.RoutePath\x12\x14\n\x0crouting_time\x18\x07 \x01(\x01\x12\x35\n\x13planning_trajectory\x18\x08 \x03(\x0b\x32\x18.apollo.dreamview.Object\x12/\n\tmain_stop\x18\t \x01(\x0b\x32\x18.apollo.dreamview.ObjectB\x02\x18\x01\x12/\n\rmain_decision\x18\n \x01(\x0b\x32\x18.apollo.dreamview.Object\x12\x13\n\x0bspeed_limit\x18\x0b \x01(\x01\x12+\n\x05\x64\x65lay\x18\x0c \x01(\x0b\x32\x1c.apollo.dreamview.DelaysInMs\x12:\n\x07monitor\x18\r \x01(\x0b\x32%.apollo.common.monitor.MonitorMessageB\x02\x18\x01\x12\x34\n\x0cnotification\x18\x0e \x03(\x0b\x32\x1e.apollo.dreamview.Notification\x12\x15\n\rengage_advice\x18\x0f \x01(\t\x12?\n\x07latency\x18\x10 \x03(\x0b\x32..apollo.dreamview.SimulationWorld.LatencyEntry\x12\x38\n\x0fmap_element_ids\x18\x11 \x01(\x0b\x32\x1f.apollo.dreamview.MapElementIds\x12\x10\n\x08map_hash\x18\x12 \x01(\x04\x12\x12\n\nmap_radius\x18\x13 \x01(\x01\x12=\n\rplanning_data\x18\x14 \x01(\x0b\x32&.apollo.planning_internal.PlanningData\x12%\n\x03gps\x18\x15 \x01(\x0b\x32\x18.apollo.dreamview.Object\x12\x33\n\x0blane_marker\x18\x16 \x01(\x0b\x32\x1e.apollo.perception.LaneMarkers\x12\x33\n\x0c\x63ontrol_data\x18\x17 \x01(\x0b\x32\x1d.apollo.dreamview.ControlData\x12,\n\x0fnavigation_path\x18\x18 \x03(\x0b\x32\x13.apollo.common.Path\x12\x19\n\x0bis_rss_safe\x18\x19 \x01(\x08:\x04true\x12\x35\n\x13shadow_localization\x18\x1a \x01(\x0b\x32\x18.apollo.dreamview.Object\x12\x32\n\x10perceived_signal\x18\x1b \x03(\x0b\x32\x18.apollo.dreamview.Object\x12?\n\x07stories\x18\x1c \x03(\x0b\x32..apollo.dreamview.SimulationWorld.StoriesEntry\x12V\n\x13sensor_measurements\x18\x1d \x03(\x0b\x32\x39.apollo.dreamview.SimulationWorld.SensorMeasurementsEntry\x12\x1a\n\x0bis_siren_on\x18\x1e \x01(\x08:\x05\x66\x61lse\x12\x32\n\rvehicle_param\x18\x1f \x01(\x0b\x32\x1b.apollo.common.VehicleParam\x1aI\n\x0cLatencyEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12(\n\x05value\x18\x02 \x01(\x0b\x32\x19.apollo.dreamview.Latency:\x02\x38\x01\x1a.\n\x0cStoriesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x08:\x02\x38\x01\x1a_\n\x17SensorMeasurementsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.apollo.dreamview.SensorMeasurements:\x02\x38\x01'
   ,
-  dependencies=[modules_dot_canbus_dot_proto_dot_chassis__pb2.DESCRIPTOR,modules_dot_common_dot_monitor__log_dot_proto_dot_monitor__log__pb2.DESCRIPTOR,modules_dot_common_dot_proto_dot_pnc__point__pb2.DESCRIPTOR,modules_dot_perception_dot_proto_dot_perception__obstacle__pb2.DESCRIPTOR,modules_dot_planning_dot_proto_dot_planning__internal__pb2.DESCRIPTOR,modules_dot_prediction_dot_proto_dot_feature__pb2.DESCRIPTOR,modules_dot_routing_dot_proto_dot_routing__pb2.DESCRIPTOR,])
+  dependencies=[modules_dot_canbus_dot_proto_dot_chassis__pb2.DESCRIPTOR,modules_dot_common_dot_monitor__log_dot_proto_dot_monitor__log__pb2.DESCRIPTOR,modules_dot_common_dot_proto_dot_pnc__point__pb2.DESCRIPTOR,modules_dot_common_dot_configs_dot_proto_dot_vehicle__config__pb2.DESCRIPTOR,modules_dot_perception_dot_proto_dot_perception__obstacle__pb2.DESCRIPTOR,modules_dot_planning_dot_proto_dot_planning__internal__pb2.DESCRIPTOR,modules_dot_prediction_dot_proto_dot_feature__pb2.DESCRIPTOR,modules_dot_routing_dot_proto_dot_routing__pb2.DESCRIPTOR,])
 
 
 
@@ -77,8 +78,8 @@ _DECISION_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=972,
-  serialized_end=1062,
+  serialized_start=1023,
+  serialized_end=1113,
 )
 _sym_db.RegisterEnumDescriptor(_DECISION_TYPE)
 
@@ -152,8 +153,8 @@ _DECISION_STOPREASONCODE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1065,
-  serialized_end=1409,
+  serialized_start=1116,
+  serialized_end=1460,
 )
 _sym_db.RegisterEnumDescriptor(_DECISION_STOPREASONCODE)
 
@@ -202,8 +203,8 @@ _OBJECT_DISENGAGETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2697,
-  serialized_end=2893,
+  serialized_start=2748,
+  serialized_end=2944,
 )
 _sym_db.RegisterEnumDescriptor(_OBJECT_DISENGAGETYPE)
 
@@ -257,8 +258,8 @@ _OBJECT_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2896,
-  serialized_end=3024,
+  serialized_start=2947,
+  serialized_end=3075,
 )
 _sym_db.RegisterEnumDescriptor(_OBJECT_TYPE)
 
@@ -311,8 +312,8 @@ _POLYGONPOINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=371,
-  serialized_end=473,
+  serialized_start=422,
+  serialized_end=524,
 )
 
 
@@ -350,8 +351,8 @@ _PREDICTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=475,
-  serialized_end=570,
+  serialized_start=526,
+  serialized_end=621,
 )
 
 
@@ -461,8 +462,8 @@ _DECISION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=573,
-  serialized_end=1409,
+  serialized_start=624,
+  serialized_end=1460,
 )
 
 
@@ -768,8 +769,8 @@ _OBJECT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1412,
-  serialized_end=3024,
+  serialized_start=1463,
+  serialized_end=3075,
 )
 
 
@@ -842,8 +843,8 @@ _DELAYSINMS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3027,
-  serialized_end=3185,
+  serialized_start=3078,
+  serialized_end=3236,
 )
 
 
@@ -874,8 +875,8 @@ _ROUTEPATH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3187,
-  serialized_end=3245,
+  serialized_start=3238,
+  serialized_end=3296,
 )
 
 
@@ -913,8 +914,8 @@ _LATENCY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3247,
-  serialized_end=3302,
+  serialized_start=3298,
+  serialized_end=3353,
 )
 
 
@@ -1022,8 +1023,8 @@ _MAPELEMENTIDS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3305,
-  serialized_end=3537,
+  serialized_start=3356,
+  serialized_end=3588,
 )
 
 
@@ -1082,8 +1083,8 @@ _CONTROLDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3540,
-  serialized_end=3707,
+  serialized_start=3591,
+  serialized_end=3758,
 )
 
 
@@ -1121,8 +1122,8 @@ _NOTIFICATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3709,
-  serialized_end=3803,
+  serialized_start=3760,
+  serialized_end=3854,
 )
 
 
@@ -1153,8 +1154,8 @@ _SENSORMEASUREMENTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3805,
-  serialized_end=3879,
+  serialized_start=3856,
+  serialized_end=3930,
 )
 
 
@@ -1192,8 +1193,8 @@ _SIMULATIONWORLD_LATENCYENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5243,
-  serialized_end=5316,
+  serialized_start=5346,
+  serialized_end=5419,
 )
 
 _SIMULATIONWORLD_STORIESENTRY = _descriptor.Descriptor(
@@ -1230,8 +1231,8 @@ _SIMULATIONWORLD_STORIESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5318,
-  serialized_end=5364,
+  serialized_start=5421,
+  serialized_end=5467,
 )
 
 _SIMULATIONWORLD_SENSORMEASUREMENTSENTRY = _descriptor.Descriptor(
@@ -1268,8 +1269,8 @@ _SIMULATIONWORLD_SENSORMEASUREMENTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5366,
-  serialized_end=5461,
+  serialized_start=5469,
+  serialized_end=5564,
 )
 
 _SIMULATIONWORLD = _descriptor.Descriptor(
@@ -1490,6 +1491,13 @@ _SIMULATIONWORLD = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='vehicle_param', full_name='apollo.dreamview.SimulationWorld.vehicle_param', index=30,
+      number=31, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1502,8 +1510,8 @@ _SIMULATIONWORLD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3882,
-  serialized_end=5461,
+  serialized_start=3933,
+  serialized_end=5564,
 )
 
 _POLYGONPOINT.fields_by_name['gaussian_info'].message_type = modules_dot_common_dot_proto_dot_pnc__point__pb2._GAUSSIANINFO
@@ -1557,6 +1565,7 @@ _SIMULATIONWORLD.fields_by_name['shadow_localization'].message_type = _OBJECT
 _SIMULATIONWORLD.fields_by_name['perceived_signal'].message_type = _OBJECT
 _SIMULATIONWORLD.fields_by_name['stories'].message_type = _SIMULATIONWORLD_STORIESENTRY
 _SIMULATIONWORLD.fields_by_name['sensor_measurements'].message_type = _SIMULATIONWORLD_SENSORMEASUREMENTSENTRY
+_SIMULATIONWORLD.fields_by_name['vehicle_param'].message_type = modules_dot_common_dot_configs_dot_proto_dot_vehicle__config__pb2._VEHICLEPARAM
 DESCRIPTOR.message_types_by_name['PolygonPoint'] = _POLYGONPOINT
 DESCRIPTOR.message_types_by_name['Prediction'] = _PREDICTION
 DESCRIPTOR.message_types_by_name['Decision'] = _DECISION

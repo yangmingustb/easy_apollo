@@ -31,7 +31,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto2',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n.modules/planning/proto/planning_internal.proto\x12\x18\x61pollo.planning_internal\x1a#modules/common/proto/geometry.proto\x1a!modules/common/proto/header.proto\x1a\"modules/canbus/proto/chassis.proto\x1a$modules/common/proto/pnc_point.proto\x1a-modules/localization/proto/localization.proto\x1a#modules/dreamview/proto/chart.proto\x1a/modules/map/relative_map/proto/navigation.proto\x1a#modules/routing/proto/routing.proto\x1a\x36modules/perception/proto/traffic_light_detection.proto\x1a(modules/planning/proto/sl_boundary.proto\x1a%modules/planning/proto/decision.proto\x1a,modules/planning/proto/planning_config.proto\"F\n\x05\x44\x65\x62ug\x12=\n\rplanning_data\x18\x02 \x01(\x0b\x32&.apollo.planning_internal.PlanningData\"I\n\tSpeedPlan\x12\x0c\n\x04name\x18\x01 \x01(\t\x12.\n\x0bspeed_point\x18\x02 \x03(\x0b\x32\x19.apollo.common.SpeedPoint\"\x9a\x03\n\x14StGraphBoundaryDebug\x12\x0c\n\x04name\x18\x01 \x01(\t\x12(\n\x05point\x18\x02 \x03(\x0b\x32\x19.apollo.common.SpeedPoint\x12K\n\x04type\x18\x03 \x01(\x0e\x32=.apollo.planning_internal.StGraphBoundaryDebug.StBoundaryType\x12\x12\n\ndistance_s\x18\x04 \x01(\x01\"\xe8\x01\n\x0eStBoundaryType\x12\x1c\n\x18ST_BOUNDARY_TYPE_UNKNOWN\x10\x01\x12\x19\n\x15ST_BOUNDARY_TYPE_STOP\x10\x02\x12\x1b\n\x17ST_BOUNDARY_TYPE_FOLLOW\x10\x03\x12\x1a\n\x16ST_BOUNDARY_TYPE_YIELD\x10\x04\x12\x1d\n\x19ST_BOUNDARY_TYPE_OVERTAKE\x10\x05\x12\x1f\n\x1bST_BOUNDARY_TYPE_KEEP_CLEAR\x10\x06\x12$\n ST_BOUNDARY_TYPE_DRIVABLE_REGION\x10\x07\"\x82\x03\n\x0cSLFrameDebug\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tsampled_s\x18\x02 \x03(\x01\x12#\n\x1bstatic_obstacle_lower_bound\x18\x03 \x03(\x01\x12$\n\x1c\x64ynamic_obstacle_lower_bound\x18\x04 \x03(\x01\x12#\n\x1bstatic_obstacle_upper_bound\x18\x05 \x03(\x01\x12$\n\x1c\x64ynamic_obstacle_upper_bound\x18\x06 \x03(\x01\x12\x17\n\x0fmap_lower_bound\x18\x07 \x03(\x01\x12\x17\n\x0fmap_upper_bound\x18\x08 \x03(\x01\x12\'\n\x07sl_path\x18\t \x03(\x0b\x32\x16.apollo.common.SLPoint\x12\x1d\n\x15\x61ggregated_boundary_s\x18\n \x03(\x01\x12\x1f\n\x17\x61ggregated_boundary_low\x18\x0b \x03(\x01\x12 \n\x18\x61ggregated_boundary_high\x18\x0c \x03(\x01\"\xf9\x05\n\x0cSTGraphDebug\x12\x0c\n\x04name\x18\x01 \x01(\t\x12@\n\x08\x62oundary\x18\x02 \x03(\x0b\x32..apollo.planning_internal.StGraphBoundaryDebug\x12.\n\x0bspeed_limit\x18\x03 \x03(\x0b\x32\x19.apollo.common.SpeedPoint\x12\x30\n\rst_guide_line\x18\x04 \x03(\x0b\x32\x19.apollo.common.SpeedPoint\x12\x33\n\x10\x64p_speed_profile\x18\x05 \x03(\x0b\x32\x19.apollo.common.SpeedPoint\x12\x30\n\rspeed_profile\x18\x06 \x03(\x0b\x32\x19.apollo.common.SpeedPoint\x12W\n\x10speed_constraint\x18\x07 \x01(\x0b\x32=.apollo.planning_internal.STGraphDebug.STGraphSpeedConstraint\x12W\n\x11kernel_cruise_ref\x18\x08 \x01(\x0b\x32<.apollo.planning_internal.STGraphDebug.STGraphKernelCuiseRef\x12X\n\x11kernel_follow_ref\x18\t \x01(\x0b\x32=.apollo.planning_internal.STGraphDebug.STGraphKernelFollowRef\x1aM\n\x16STGraphSpeedConstraint\x12\t\n\x01t\x18\x01 \x03(\x01\x12\x13\n\x0blower_bound\x18\x02 \x03(\x01\x12\x13\n\x0bupper_bound\x18\x03 \x03(\x01\x1a\x39\n\x15STGraphKernelCuiseRef\x12\t\n\x01t\x18\x01 \x03(\x01\x12\x15\n\rcruise_line_s\x18\x02 \x03(\x01\x1a:\n\x16STGraphKernelFollowRef\x12\t\n\x01t\x18\x01 \x03(\x01\x12\x15\n\rfollow_line_s\x18\x02 \x03(\x01\"\xad\x02\n\x10SignalLightDebug\x12\x11\n\tadc_speed\x18\x01 \x01(\x01\x12\x13\n\x0b\x61\x64\x63_front_s\x18\x02 \x01(\x01\x12\x46\n\x06signal\x18\x03 \x03(\x0b\x32\x36.apollo.planning_internal.SignalLightDebug.SignalDebug\x1a\xa8\x01\n\x0bSignalDebug\x12\x10\n\x08light_id\x18\x01 \x01(\t\x12\x34\n\x05\x63olor\x18\x02 \x01(\x0e\x32%.apollo.perception.TrafficLight.Color\x12\x14\n\x0clight_stop_s\x18\x03 \x01(\x01\x12\x1d\n\x15\x61\x64\x63_stop_deceleration\x18\x04 \x01(\x01\x12\x1c\n\x14is_stop_wall_created\x18\x05 \x01(\x08\"Y\n\x0b\x44\x65\x63isionTag\x12\x13\n\x0b\x64\x65\x63ider_tag\x18\x01 \x01(\t\x12\x35\n\x08\x64\x65\x63ision\x18\x02 \x01(\x0b\x32#.apollo.planning.ObjectDecisionType\"\xc0\x01\n\rObstacleDebug\x12\n\n\x02id\x18\x01 \x01(\t\x12\x30\n\x0bsl_boundary\x18\x02 \x01(\x0b\x32\x1b.apollo.planning.SLBoundary\x12;\n\x0c\x64\x65\x63ision_tag\x18\x03 \x03(\x0b\x32%.apollo.planning_internal.DecisionTag\x12\x19\n\x11vertices_x_coords\x18\x04 \x03(\x01\x12\x19\n\x11vertices_y_coords\x18\x05 \x03(\x01\"\xd9\x02\n\x12ReferenceLineDebug\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06length\x18\x02 \x01(\x01\x12\x0c\n\x04\x63ost\x18\x03 \x01(\x01\x12\x1b\n\x13is_change_lane_path\x18\x04 \x01(\x08\x12\x13\n\x0bis_drivable\x18\x05 \x01(\x08\x12\x14\n\x0cis_protected\x18\x06 \x01(\x08\x12\x12\n\nis_offroad\x18\x07 \x01(\x08\x12\x18\n\x10minimum_boundary\x18\x08 \x01(\x01\x12\x19\n\raverage_kappa\x18\t \x01(\x01\x42\x02\x18\x01\x12\x1a\n\x0e\x61verage_dkappa\x18\n \x01(\x01\x42\x02\x18\x01\x12\x11\n\tkappa_rms\x18\x0b \x01(\x01\x12\x12\n\ndkappa_rms\x18\x0c \x01(\x01\x12\x15\n\rkappa_max_abs\x18\r \x01(\x01\x12\x16\n\x0e\x64kappa_max_abs\x18\x0e \x01(\x01\x12\x16\n\x0e\x61verage_offset\x18\x0f \x01(\x01\"<\n\x10SampleLayerDebug\x12(\n\x08sl_point\x18\x01 \x03(\x0b\x32\x16.apollo.common.SLPoint\"\x84\x01\n\x10\x44pPolyGraphDebug\x12@\n\x0csample_layer\x18\x01 \x03(\x0b\x32*.apollo.planning_internal.SampleLayerDebug\x12.\n\x0emin_cost_point\x18\x02 \x03(\x0b\x32\x16.apollo.common.SLPoint\"\xa0\x01\n\rScenarioDebug\x12\x43\n\rscenario_type\x18\x01 \x01(\x0e\x32,.apollo.planning.ScenarioConfig.ScenarioType\x12=\n\nstage_type\x18\x02 \x01(\x0e\x32).apollo.planning.ScenarioConfig.StageType\x12\x0b\n\x03msg\x18\x03 \x01(\t\"=\n\x0cTrajectories\x12-\n\ntrajectory\x18\x01 \x03(\x0b\x32\x19.apollo.common.Trajectory\"\xd5\x07\n\x0eOpenSpaceDebug\x12<\n\x0ctrajectories\x18\x01 \x01(\x0b\x32&.apollo.planning_internal.Trajectories\x12;\n\x15warm_start_trajectory\x18\x02 \x01(\x0b\x32\x1c.apollo.common.VehicleMotion\x12\x39\n\x13smoothed_trajectory\x18\x03 \x01(\x0b\x32\x1c.apollo.common.VehicleMotion\x12\x1e\n\x16warm_start_dual_lambda\x18\x04 \x03(\x01\x12\x1b\n\x13warm_start_dual_miu\x18\x05 \x03(\x01\x12\x1d\n\x15optimized_dual_lambda\x18\x06 \x03(\x01\x12\x1a\n\x12optimized_dual_miu\x18\x07 \x03(\x01\x12\x13\n\x0bxy_boundary\x18\x08 \x03(\x01\x12:\n\tobstacles\x18\t \x03(\x0b\x32\'.apollo.planning_internal.ObstacleDebug\x12\x37\n\x0froi_shift_point\x18\n \x01(\x0b\x32\x1e.apollo.common.TrajectoryPoint\x12\x31\n\tend_point\x18\x0b \x01(\x0b\x32\x1e.apollo.common.TrajectoryPoint\x12H\n\x18partitioned_trajectories\x18\x0c \x01(\x0b\x32&.apollo.planning_internal.Trajectories\x12\x41\n\x11\x63hosen_trajectory\x18\r \x01(\x0b\x32&.apollo.planning_internal.Trajectories\x12\x1e\n\x16is_fallback_trajectory\x18\x0e \x01(\x08\x12\x43\n\x13\x66\x61llback_trajectory\x18\x0f \x01(\x0b\x32&.apollo.planning_internal.Trajectories\x12\x42\n\x1atrajectory_stitching_point\x18\x10 \x01(\x0b\x32\x1e.apollo.common.TrajectoryPoint\x12>\n\x16\x66uture_collision_point\x18\x11 \x01(\x0b\x32\x1e.apollo.common.TrajectoryPoint\x12\x17\n\x0ctime_latency\x18\x12 \x01(\x01:\x01\x30\x12-\n\x0corigin_point\x18\x13 \x01(\x0b\x32\x17.apollo.common.PointENU\x12\x1a\n\x12origin_heading_rad\x18\x14 \x01(\x01\"\xc3\x01\n\rSmootherDebug\x12\x13\n\x0bis_smoothed\x18\x01 \x01(\x08\x12Q\n\x04type\x18\x02 \x01(\x0e\x32\x34.apollo.planning_internal.SmootherDebug.SmootherType:\rSMOOTHER_NONE\x12\x0e\n\x06reason\x18\x03 \x01(\t\":\n\x0cSmootherType\x12\x11\n\rSMOOTHER_NONE\x10\x01\x12\x17\n\x13SMOOTHER_CLOSE_STOP\x10\x02\"\x9d\x01\n\rPullOverDebug\x12)\n\x08position\x18\x01 \x01(\x0b\x32\x17.apollo.common.PointENU\x12\r\n\x05theta\x18\x02 \x01(\x01\x12\x14\n\x0clength_front\x18\x03 \x01(\x01\x12\x13\n\x0blength_back\x18\x04 \x01(\x01\x12\x12\n\nwidth_left\x18\x05 \x01(\x01\x12\x13\n\x0bwidth_right\x18\x06 \x01(\x01\"\xad\n\n\x0cPlanningData\x12?\n\x0c\x61\x64\x63_position\x18\x07 \x01(\x0b\x32).apollo.localization.LocalizationEstimate\x12\'\n\x07\x63hassis\x18\x08 \x01(\x0b\x32\x16.apollo.canbus.Chassis\x12\x30\n\x07routing\x18\t \x01(\x0b\x32\x1f.apollo.routing.RoutingResponse\x12\x32\n\ninit_point\x18\n \x01(\x0b\x32\x1e.apollo.common.TrajectoryPoint\x12!\n\x04path\x18\x06 \x03(\x0b\x32\x13.apollo.common.Path\x12\x37\n\nspeed_plan\x18\r \x03(\x0b\x32#.apollo.planning_internal.SpeedPlan\x12\x38\n\x08st_graph\x18\x0e \x03(\x0b\x32&.apollo.planning_internal.STGraphDebug\x12\x38\n\x08sl_frame\x18\x0f \x03(\x0b\x32&.apollo.planning_internal.SLFrameDebug\x12\x30\n\x11prediction_header\x18\x10 \x01(\x0b\x32\x15.apollo.common.Header\x12@\n\x0csignal_light\x18\x11 \x01(\x0b\x32*.apollo.planning_internal.SignalLightDebug\x12\x39\n\x08obstacle\x18\x12 \x03(\x0b\x32\'.apollo.planning_internal.ObstacleDebug\x12\x44\n\x0ereference_line\x18\x13 \x03(\x0b\x32,.apollo.planning_internal.ReferenceLineDebug\x12\x41\n\rdp_poly_graph\x18\x14 \x01(\x0b\x32*.apollo.planning_internal.DpPolyGraphDebug\x12\x45\n\x10lattice_st_image\x18\x15 \x01(\x0b\x32+.apollo.planning_internal.LatticeStTraining\x12\x31\n\x0crelative_map\x18\x16 \x01(\x0b\x32\x1b.apollo.relative_map.MapMsg\x12S\n\x19\x61uto_tuning_training_data\x18\x17 \x01(\x0b\x32\x30.apollo.planning_internal.AutoTuningTrainingData\x12\x1c\n\x14\x66ront_clear_distance\x18\x18 \x01(\x01\x12&\n\x05\x63hart\x18\x19 \x03(\x0b\x32\x17.apollo.dreamview.Chart\x12\x39\n\x08scenario\x18\x1a \x01(\x0b\x32\'.apollo.planning_internal.ScenarioDebug\x12<\n\nopen_space\x18\x1b \x01(\x0b\x32(.apollo.planning_internal.OpenSpaceDebug\x12\x39\n\x08smoother\x18\x1c \x01(\x0b\x32\'.apollo.planning_internal.SmootherDebug\x12:\n\tpull_over\x18\x1d \x01(\x0b\x32\'.apollo.planning_internal.PullOverDebug\x12@\n\x0chybrid_model\x18\x1e \x01(\x0b\x32*.apollo.planning_internal.HybridModelDebug\"G\n\x0eLatticeStPixel\x12\t\n\x01s\x18\x01 \x01(\x05\x12\t\n\x01t\x18\x02 \x01(\x05\x12\t\n\x01r\x18\x03 \x01(\r\x12\t\n\x01g\x18\x04 \x01(\r\x12\t\n\x01\x62\x18\x05 \x01(\r\"\xc9\x01\n\x11LatticeStTraining\x12\x37\n\x05pixel\x18\x01 \x03(\x0b\x32(.apollo.planning_internal.LatticeStPixel\x12\x11\n\ttimestamp\x18\x02 \x01(\x01\x12\x12\n\nannotation\x18\x03 \x01(\t\x12\x13\n\x0bnum_s_grids\x18\x04 \x01(\r\x12\x13\n\x0bnum_t_grids\x18\x05 \x01(\r\x12\x14\n\x0cs_resolution\x18\x06 \x01(\x01\x12\x14\n\x0ct_resolution\x18\x07 \x01(\x01\"(\n\x0e\x43ostComponents\x12\x16\n\x0e\x63ost_component\x18\x01 \x03(\x01\"\xa2\x01\n\x16\x41utoTuningTrainingData\x12\x43\n\x11teacher_component\x18\x01 \x01(\x0b\x32(.apollo.planning_internal.CostComponents\x12\x43\n\x11student_component\x18\x02 \x01(\x0b\x32(.apollo.planning_internal.CostComponents\"N\n\x19\x43loudReferenceLineRequest\x12\x31\n\x0clane_segment\x18\x01 \x03(\x0b\x32\x1b.apollo.routing.LaneSegment\"T\n CloudReferenceLineRoutingRequest\x12\x30\n\x07routing\x18\x01 \x01(\x0b\x32\x1f.apollo.routing.RoutingResponse\"B\n\x1a\x43loudReferenceLineResponse\x12$\n\x07segment\x18\x01 \x03(\x0b\x32\x13.apollo.common.Path\"\xcb\x01\n\x10HybridModelDebug\x12*\n\x1busing_learning_model_output\x18\x01 \x01(\x08:\x05\x66\x61lse\x12)\n!learning_model_output_usage_ratio\x18\x02 \x01(\x01\x12)\n!learning_model_output_fail_reason\x18\x03 \x01(\t\x12\x35\n\x18\x65valuated_path_reference\x18\x04 \x01(\x0b\x32\x13.apollo.common.Path'
+  serialized_pb=b'\n.modules/planning/proto/planning_internal.proto\x12\x18\x61pollo.planning_internal\x1a#modules/common/proto/geometry.proto\x1a!modules/common/proto/header.proto\x1a\"modules/canbus/proto/chassis.proto\x1a$modules/common/proto/pnc_point.proto\x1a-modules/localization/proto/localization.proto\x1a#modules/dreamview/proto/chart.proto\x1a/modules/map/relative_map/proto/navigation.proto\x1a#modules/routing/proto/routing.proto\x1a\x36modules/perception/proto/traffic_light_detection.proto\x1a(modules/planning/proto/sl_boundary.proto\x1a%modules/planning/proto/decision.proto\x1a,modules/planning/proto/planning_config.proto\"F\n\x05\x44\x65\x62ug\x12=\n\rplanning_data\x18\x02 \x01(\x0b\x32&.apollo.planning_internal.PlanningData\"I\n\tSpeedPlan\x12\x0c\n\x04name\x18\x01 \x01(\t\x12.\n\x0bspeed_point\x18\x02 \x03(\x0b\x32\x19.apollo.common.SpeedPoint\"\x9a\x03\n\x14StGraphBoundaryDebug\x12\x0c\n\x04name\x18\x01 \x01(\t\x12(\n\x05point\x18\x02 \x03(\x0b\x32\x19.apollo.common.SpeedPoint\x12K\n\x04type\x18\x03 \x01(\x0e\x32=.apollo.planning_internal.StGraphBoundaryDebug.StBoundaryType\x12\x12\n\ndistance_s\x18\x04 \x01(\x01\"\xe8\x01\n\x0eStBoundaryType\x12\x1c\n\x18ST_BOUNDARY_TYPE_UNKNOWN\x10\x01\x12\x19\n\x15ST_BOUNDARY_TYPE_STOP\x10\x02\x12\x1b\n\x17ST_BOUNDARY_TYPE_FOLLOW\x10\x03\x12\x1a\n\x16ST_BOUNDARY_TYPE_YIELD\x10\x04\x12\x1d\n\x19ST_BOUNDARY_TYPE_OVERTAKE\x10\x05\x12\x1f\n\x1bST_BOUNDARY_TYPE_KEEP_CLEAR\x10\x06\x12$\n ST_BOUNDARY_TYPE_DRIVABLE_REGION\x10\x07\"\x82\x03\n\x0cSLFrameDebug\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tsampled_s\x18\x02 \x03(\x01\x12#\n\x1bstatic_obstacle_lower_bound\x18\x03 \x03(\x01\x12$\n\x1c\x64ynamic_obstacle_lower_bound\x18\x04 \x03(\x01\x12#\n\x1bstatic_obstacle_upper_bound\x18\x05 \x03(\x01\x12$\n\x1c\x64ynamic_obstacle_upper_bound\x18\x06 \x03(\x01\x12\x17\n\x0fmap_lower_bound\x18\x07 \x03(\x01\x12\x17\n\x0fmap_upper_bound\x18\x08 \x03(\x01\x12\'\n\x07sl_path\x18\t \x03(\x0b\x32\x16.apollo.common.SLPoint\x12\x1d\n\x15\x61ggregated_boundary_s\x18\n \x03(\x01\x12\x1f\n\x17\x61ggregated_boundary_low\x18\x0b \x03(\x01\x12 \n\x18\x61ggregated_boundary_high\x18\x0c \x03(\x01\"\xf9\x05\n\x0cSTGraphDebug\x12\x0c\n\x04name\x18\x01 \x01(\t\x12@\n\x08\x62oundary\x18\x02 \x03(\x0b\x32..apollo.planning_internal.StGraphBoundaryDebug\x12.\n\x0bspeed_limit\x18\x03 \x03(\x0b\x32\x19.apollo.common.SpeedPoint\x12\x30\n\rst_guide_line\x18\x04 \x03(\x0b\x32\x19.apollo.common.SpeedPoint\x12\x33\n\x10\x64p_speed_profile\x18\x05 \x03(\x0b\x32\x19.apollo.common.SpeedPoint\x12\x30\n\rspeed_profile\x18\x06 \x03(\x0b\x32\x19.apollo.common.SpeedPoint\x12W\n\x10speed_constraint\x18\x07 \x01(\x0b\x32=.apollo.planning_internal.STGraphDebug.STGraphSpeedConstraint\x12W\n\x11kernel_cruise_ref\x18\x08 \x01(\x0b\x32<.apollo.planning_internal.STGraphDebug.STGraphKernelCuiseRef\x12X\n\x11kernel_follow_ref\x18\t \x01(\x0b\x32=.apollo.planning_internal.STGraphDebug.STGraphKernelFollowRef\x1aM\n\x16STGraphSpeedConstraint\x12\t\n\x01t\x18\x01 \x03(\x01\x12\x13\n\x0blower_bound\x18\x02 \x03(\x01\x12\x13\n\x0bupper_bound\x18\x03 \x03(\x01\x1a\x39\n\x15STGraphKernelCuiseRef\x12\t\n\x01t\x18\x01 \x03(\x01\x12\x15\n\rcruise_line_s\x18\x02 \x03(\x01\x1a:\n\x16STGraphKernelFollowRef\x12\t\n\x01t\x18\x01 \x03(\x01\x12\x15\n\rfollow_line_s\x18\x02 \x03(\x01\"\xad\x02\n\x10SignalLightDebug\x12\x11\n\tadc_speed\x18\x01 \x01(\x01\x12\x13\n\x0b\x61\x64\x63_front_s\x18\x02 \x01(\x01\x12\x46\n\x06signal\x18\x03 \x03(\x0b\x32\x36.apollo.planning_internal.SignalLightDebug.SignalDebug\x1a\xa8\x01\n\x0bSignalDebug\x12\x10\n\x08light_id\x18\x01 \x01(\t\x12\x34\n\x05\x63olor\x18\x02 \x01(\x0e\x32%.apollo.perception.TrafficLight.Color\x12\x14\n\x0clight_stop_s\x18\x03 \x01(\x01\x12\x1d\n\x15\x61\x64\x63_stop_deceleration\x18\x04 \x01(\x01\x12\x1c\n\x14is_stop_wall_created\x18\x05 \x01(\x08\"Y\n\x0b\x44\x65\x63isionTag\x12\x13\n\x0b\x64\x65\x63ider_tag\x18\x01 \x01(\t\x12\x35\n\x08\x64\x65\x63ision\x18\x02 \x01(\x0b\x32#.apollo.planning.ObjectDecisionType\"\xc0\x01\n\rObstacleDebug\x12\n\n\x02id\x18\x01 \x01(\t\x12\x30\n\x0bsl_boundary\x18\x02 \x01(\x0b\x32\x1b.apollo.planning.SLBoundary\x12;\n\x0c\x64\x65\x63ision_tag\x18\x03 \x03(\x0b\x32%.apollo.planning_internal.DecisionTag\x12\x19\n\x11vertices_x_coords\x18\x04 \x03(\x01\x12\x19\n\x11vertices_y_coords\x18\x05 \x03(\x01\"\xd9\x02\n\x12ReferenceLineDebug\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0e\n\x06length\x18\x02 \x01(\x01\x12\x0c\n\x04\x63ost\x18\x03 \x01(\x01\x12\x1b\n\x13is_change_lane_path\x18\x04 \x01(\x08\x12\x13\n\x0bis_drivable\x18\x05 \x01(\x08\x12\x14\n\x0cis_protected\x18\x06 \x01(\x08\x12\x12\n\nis_offroad\x18\x07 \x01(\x08\x12\x18\n\x10minimum_boundary\x18\x08 \x01(\x01\x12\x19\n\raverage_kappa\x18\t \x01(\x01\x42\x02\x18\x01\x12\x1a\n\x0e\x61verage_dkappa\x18\n \x01(\x01\x42\x02\x18\x01\x12\x11\n\tkappa_rms\x18\x0b \x01(\x01\x12\x12\n\ndkappa_rms\x18\x0c \x01(\x01\x12\x15\n\rkappa_max_abs\x18\r \x01(\x01\x12\x16\n\x0e\x64kappa_max_abs\x18\x0e \x01(\x01\x12\x16\n\x0e\x61verage_offset\x18\x0f \x01(\x01\"<\n\x10SampleLayerDebug\x12(\n\x08sl_point\x18\x01 \x03(\x0b\x32\x16.apollo.common.SLPoint\"\x84\x01\n\x10\x44pPolyGraphDebug\x12@\n\x0csample_layer\x18\x01 \x03(\x0b\x32*.apollo.planning_internal.SampleLayerDebug\x12.\n\x0emin_cost_point\x18\x02 \x03(\x0b\x32\x16.apollo.common.SLPoint\"\xd9\x01\n\rScenarioDebug\x12\x43\n\rscenario_type\x18\x01 \x01(\x0e\x32,.apollo.planning.ScenarioConfig.ScenarioType\x12=\n\nstage_type\x18\x02 \x01(\x0e\x32).apollo.planning.ScenarioConfig.StageType\x12\x0b\n\x03msg\x18\x03 \x01(\t\x12\x1c\n\x14scenario_plugin_type\x18\x04 \x01(\t\x12\x19\n\x11stage_plugin_type\x18\x05 \x01(\t\"=\n\x0cTrajectories\x12-\n\ntrajectory\x18\x01 \x03(\x0b\x32\x19.apollo.common.Trajectory\"\xd5\x07\n\x0eOpenSpaceDebug\x12<\n\x0ctrajectories\x18\x01 \x01(\x0b\x32&.apollo.planning_internal.Trajectories\x12;\n\x15warm_start_trajectory\x18\x02 \x01(\x0b\x32\x1c.apollo.common.VehicleMotion\x12\x39\n\x13smoothed_trajectory\x18\x03 \x01(\x0b\x32\x1c.apollo.common.VehicleMotion\x12\x1e\n\x16warm_start_dual_lambda\x18\x04 \x03(\x01\x12\x1b\n\x13warm_start_dual_miu\x18\x05 \x03(\x01\x12\x1d\n\x15optimized_dual_lambda\x18\x06 \x03(\x01\x12\x1a\n\x12optimized_dual_miu\x18\x07 \x03(\x01\x12\x13\n\x0bxy_boundary\x18\x08 \x03(\x01\x12:\n\tobstacles\x18\t \x03(\x0b\x32\'.apollo.planning_internal.ObstacleDebug\x12\x37\n\x0froi_shift_point\x18\n \x01(\x0b\x32\x1e.apollo.common.TrajectoryPoint\x12\x31\n\tend_point\x18\x0b \x01(\x0b\x32\x1e.apollo.common.TrajectoryPoint\x12H\n\x18partitioned_trajectories\x18\x0c \x01(\x0b\x32&.apollo.planning_internal.Trajectories\x12\x41\n\x11\x63hosen_trajectory\x18\r \x01(\x0b\x32&.apollo.planning_internal.Trajectories\x12\x1e\n\x16is_fallback_trajectory\x18\x0e \x01(\x08\x12\x43\n\x13\x66\x61llback_trajectory\x18\x0f \x01(\x0b\x32&.apollo.planning_internal.Trajectories\x12\x42\n\x1atrajectory_stitching_point\x18\x10 \x01(\x0b\x32\x1e.apollo.common.TrajectoryPoint\x12>\n\x16\x66uture_collision_point\x18\x11 \x01(\x0b\x32\x1e.apollo.common.TrajectoryPoint\x12\x17\n\x0ctime_latency\x18\x12 \x01(\x01:\x01\x30\x12-\n\x0corigin_point\x18\x13 \x01(\x0b\x32\x17.apollo.common.PointENU\x12\x1a\n\x12origin_heading_rad\x18\x14 \x01(\x01\"\xc3\x01\n\rSmootherDebug\x12\x13\n\x0bis_smoothed\x18\x01 \x01(\x08\x12Q\n\x04type\x18\x02 \x01(\x0e\x32\x34.apollo.planning_internal.SmootherDebug.SmootherType:\rSMOOTHER_NONE\x12\x0e\n\x06reason\x18\x03 \x01(\t\":\n\x0cSmootherType\x12\x11\n\rSMOOTHER_NONE\x10\x01\x12\x17\n\x13SMOOTHER_CLOSE_STOP\x10\x02\"\x9d\x01\n\rPullOverDebug\x12)\n\x08position\x18\x01 \x01(\x0b\x32\x17.apollo.common.PointENU\x12\r\n\x05theta\x18\x02 \x01(\x01\x12\x14\n\x0clength_front\x18\x03 \x01(\x01\x12\x13\n\x0blength_back\x18\x04 \x01(\x01\x12\x12\n\nwidth_left\x18\x05 \x01(\x01\x12\x13\n\x0bwidth_right\x18\x06 \x01(\x01\"\xad\n\n\x0cPlanningData\x12?\n\x0c\x61\x64\x63_position\x18\x07 \x01(\x0b\x32).apollo.localization.LocalizationEstimate\x12\'\n\x07\x63hassis\x18\x08 \x01(\x0b\x32\x16.apollo.canbus.Chassis\x12\x30\n\x07routing\x18\t \x01(\x0b\x32\x1f.apollo.routing.RoutingResponse\x12\x32\n\ninit_point\x18\n \x01(\x0b\x32\x1e.apollo.common.TrajectoryPoint\x12!\n\x04path\x18\x06 \x03(\x0b\x32\x13.apollo.common.Path\x12\x37\n\nspeed_plan\x18\r \x03(\x0b\x32#.apollo.planning_internal.SpeedPlan\x12\x38\n\x08st_graph\x18\x0e \x03(\x0b\x32&.apollo.planning_internal.STGraphDebug\x12\x38\n\x08sl_frame\x18\x0f \x03(\x0b\x32&.apollo.planning_internal.SLFrameDebug\x12\x30\n\x11prediction_header\x18\x10 \x01(\x0b\x32\x15.apollo.common.Header\x12@\n\x0csignal_light\x18\x11 \x01(\x0b\x32*.apollo.planning_internal.SignalLightDebug\x12\x39\n\x08obstacle\x18\x12 \x03(\x0b\x32\'.apollo.planning_internal.ObstacleDebug\x12\x44\n\x0ereference_line\x18\x13 \x03(\x0b\x32,.apollo.planning_internal.ReferenceLineDebug\x12\x41\n\rdp_poly_graph\x18\x14 \x01(\x0b\x32*.apollo.planning_internal.DpPolyGraphDebug\x12\x45\n\x10lattice_st_image\x18\x15 \x01(\x0b\x32+.apollo.planning_internal.LatticeStTraining\x12\x31\n\x0crelative_map\x18\x16 \x01(\x0b\x32\x1b.apollo.relative_map.MapMsg\x12S\n\x19\x61uto_tuning_training_data\x18\x17 \x01(\x0b\x32\x30.apollo.planning_internal.AutoTuningTrainingData\x12\x1c\n\x14\x66ront_clear_distance\x18\x18 \x01(\x01\x12&\n\x05\x63hart\x18\x19 \x03(\x0b\x32\x17.apollo.dreamview.Chart\x12\x39\n\x08scenario\x18\x1a \x01(\x0b\x32\'.apollo.planning_internal.ScenarioDebug\x12<\n\nopen_space\x18\x1b \x01(\x0b\x32(.apollo.planning_internal.OpenSpaceDebug\x12\x39\n\x08smoother\x18\x1c \x01(\x0b\x32\'.apollo.planning_internal.SmootherDebug\x12:\n\tpull_over\x18\x1d \x01(\x0b\x32\'.apollo.planning_internal.PullOverDebug\x12@\n\x0chybrid_model\x18\x1e \x01(\x0b\x32*.apollo.planning_internal.HybridModelDebug\"G\n\x0eLatticeStPixel\x12\t\n\x01s\x18\x01 \x01(\x05\x12\t\n\x01t\x18\x02 \x01(\x05\x12\t\n\x01r\x18\x03 \x01(\r\x12\t\n\x01g\x18\x04 \x01(\r\x12\t\n\x01\x62\x18\x05 \x01(\r\"\xc9\x01\n\x11LatticeStTraining\x12\x37\n\x05pixel\x18\x01 \x03(\x0b\x32(.apollo.planning_internal.LatticeStPixel\x12\x11\n\ttimestamp\x18\x02 \x01(\x01\x12\x12\n\nannotation\x18\x03 \x01(\t\x12\x13\n\x0bnum_s_grids\x18\x04 \x01(\r\x12\x13\n\x0bnum_t_grids\x18\x05 \x01(\r\x12\x14\n\x0cs_resolution\x18\x06 \x01(\x01\x12\x14\n\x0ct_resolution\x18\x07 \x01(\x01\"(\n\x0e\x43ostComponents\x12\x16\n\x0e\x63ost_component\x18\x01 \x03(\x01\"\xa2\x01\n\x16\x41utoTuningTrainingData\x12\x43\n\x11teacher_component\x18\x01 \x01(\x0b\x32(.apollo.planning_internal.CostComponents\x12\x43\n\x11student_component\x18\x02 \x01(\x0b\x32(.apollo.planning_internal.CostComponents\"N\n\x19\x43loudReferenceLineRequest\x12\x31\n\x0clane_segment\x18\x01 \x03(\x0b\x32\x1b.apollo.routing.LaneSegment\"T\n CloudReferenceLineRoutingRequest\x12\x30\n\x07routing\x18\x01 \x01(\x0b\x32\x1f.apollo.routing.RoutingResponse\"B\n\x1a\x43loudReferenceLineResponse\x12$\n\x07segment\x18\x01 \x03(\x0b\x32\x13.apollo.common.Path\"\xcb\x01\n\x10HybridModelDebug\x12*\n\x1busing_learning_model_output\x18\x01 \x01(\x08:\x05\x66\x61lse\x12)\n!learning_model_output_usage_ratio\x18\x02 \x01(\x01\x12)\n!learning_model_output_fail_reason\x18\x03 \x01(\t\x12\x35\n\x18\x65valuated_path_reference\x18\x04 \x01(\x0b\x32\x13.apollo.common.Path'
   ,
   dependencies=[modules_dot_common_dot_proto_dot_geometry__pb2.DESCRIPTOR,modules_dot_common_dot_proto_dot_header__pb2.DESCRIPTOR,modules_dot_canbus_dot_proto_dot_chassis__pb2.DESCRIPTOR,modules_dot_common_dot_proto_dot_pnc__point__pb2.DESCRIPTOR,modules_dot_localization_dot_proto_dot_localization__pb2.DESCRIPTOR,modules_dot_dreamview_dot_proto_dot_chart__pb2.DESCRIPTOR,modules_dot_map_dot_relative__map_dot_proto_dot_navigation__pb2.DESCRIPTOR,modules_dot_routing_dot_proto_dot_routing__pb2.DESCRIPTOR,modules_dot_perception_dot_proto_dot_traffic__light__detection__pb2.DESCRIPTOR,modules_dot_planning_dot_proto_dot_sl__boundary__pb2.DESCRIPTOR,modules_dot_planning_dot_proto_dot_decision__pb2.DESCRIPTOR,modules_dot_planning_dot_proto_dot_planning__config__pb2.DESCRIPTOR,])
 
@@ -107,8 +107,8 @@ _SMOOTHERDEBUG_SMOOTHERTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4771,
-  serialized_end=4829,
+  serialized_start=4828,
+  serialized_end=4886,
 )
 _sym_db.RegisterEnumDescriptor(_SMOOTHERDEBUG_SMOOTHERTYPE)
 
@@ -990,6 +990,20 @@ _SCENARIODEBUG = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='scenario_plugin_type', full_name='apollo.planning_internal.ScenarioDebug.scenario_plugin_type', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='stage_plugin_type', full_name='apollo.planning_internal.ScenarioDebug.stage_plugin_type', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1003,7 +1017,7 @@ _SCENARIODEBUG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=3424,
-  serialized_end=3584,
+  serialized_end=3641,
 )
 
 
@@ -1034,8 +1048,8 @@ _TRAJECTORIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3586,
-  serialized_end=3647,
+  serialized_start=3643,
+  serialized_end=3704,
 )
 
 
@@ -1199,8 +1213,8 @@ _OPENSPACEDEBUG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3650,
-  serialized_end=4631,
+  serialized_start=3707,
+  serialized_end=4688,
 )
 
 
@@ -1246,8 +1260,8 @@ _SMOOTHERDEBUG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4634,
-  serialized_end=4829,
+  serialized_start=4691,
+  serialized_end=4886,
 )
 
 
@@ -1313,8 +1327,8 @@ _PULLOVERDEBUG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4832,
-  serialized_end=4989,
+  serialized_start=4889,
+  serialized_end=5046,
 )
 
 
@@ -1499,8 +1513,8 @@ _PLANNINGDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4992,
-  serialized_end=6317,
+  serialized_start=5049,
+  serialized_end=6374,
 )
 
 
@@ -1559,8 +1573,8 @@ _LATTICESTPIXEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6319,
-  serialized_end=6390,
+  serialized_start=6376,
+  serialized_end=6447,
 )
 
 
@@ -1633,8 +1647,8 @@ _LATTICESTTRAINING = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6393,
-  serialized_end=6594,
+  serialized_start=6450,
+  serialized_end=6651,
 )
 
 
@@ -1665,8 +1679,8 @@ _COSTCOMPONENTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6596,
-  serialized_end=6636,
+  serialized_start=6653,
+  serialized_end=6693,
 )
 
 
@@ -1704,8 +1718,8 @@ _AUTOTUNINGTRAININGDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6639,
-  serialized_end=6801,
+  serialized_start=6696,
+  serialized_end=6858,
 )
 
 
@@ -1736,8 +1750,8 @@ _CLOUDREFERENCELINEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6803,
-  serialized_end=6881,
+  serialized_start=6860,
+  serialized_end=6938,
 )
 
 
@@ -1768,8 +1782,8 @@ _CLOUDREFERENCELINEROUTINGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6883,
-  serialized_end=6967,
+  serialized_start=6940,
+  serialized_end=7024,
 )
 
 
@@ -1800,8 +1814,8 @@ _CLOUDREFERENCELINERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6969,
-  serialized_end=7035,
+  serialized_start=7026,
+  serialized_end=7092,
 )
 
 
@@ -1853,8 +1867,8 @@ _HYBRIDMODELDEBUG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7038,
-  serialized_end=7241,
+  serialized_start=7095,
+  serialized_end=7298,
 )
 
 _DEBUG.fields_by_name['planning_data'].message_type = _PLANNINGDATA

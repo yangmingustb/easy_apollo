@@ -17,6 +17,7 @@
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fcommon_2fproto_2fpnc_5fpoint_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_GaussianInfo_modules_2fcommon_2fproto_2fpnc_5fpoint_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fcommon_2fproto_2fpnc_5fpoint_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Path_modules_2fcommon_2fproto_2fpnc_5fpoint_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fcommon_2fproto_2fpnc_5fpoint_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_TrajectoryPoint_modules_2fcommon_2fproto_2fpnc_5fpoint_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_modules_2fcommon_2fconfigs_2fproto_2fvehicle_5fconfig_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_VehicleParam_modules_2fcommon_2fconfigs_2fproto_2fvehicle_5fconfig_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fcommon_2fmonitor_5flog_2fproto_2fmonitor_5flog_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_MonitorMessage_modules_2fcommon_2fmonitor_5flog_2fproto_2fmonitor_5flog_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fcommon_2fmonitor_5flog_2fproto_2fmonitor_5flog_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_MonitorMessageItem_modules_2fcommon_2fmonitor_5flog_2fproto_2fmonitor_5flog_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ControlData_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto;
@@ -268,8 +269,8 @@ static void InitDefaultsscc_info_SimulationWorld_modules_2fdreamview_2fproto_2fs
   }
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<13> scc_info_SimulationWorld_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 13, 0, InitDefaultsscc_info_SimulationWorld_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto}, {
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<14> scc_info_SimulationWorld_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 14, 0, InitDefaultsscc_info_SimulationWorld_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto}, {
       &scc_info_Object_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto.base,
       &scc_info_RoutePath_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto.base,
       &scc_info_DelaysInMs_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto.base,
@@ -282,7 +283,8 @@ static void InitDefaultsscc_info_SimulationWorld_modules_2fdreamview_2fproto_2fs
       &scc_info_ControlData_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto.base,
       &scc_info_Path_modules_2fcommon_2fproto_2fpnc_5fpoint_2eproto.base,
       &scc_info_SimulationWorld_StoriesEntry_DoNotUse_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto.base,
-      &scc_info_SimulationWorld_SensorMeasurementsEntry_DoNotUse_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto.base,}};
+      &scc_info_SimulationWorld_SensorMeasurementsEntry_DoNotUse_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto.base,
+      &scc_info_VehicleParam_modules_2fcommon_2fconfigs_2fproto_2fvehicle_5fconfig_2eproto.base,}};
 
 static void InitDefaultsscc_info_SimulationWorld_LatencyEntry_DoNotUse_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -606,36 +608,38 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_modules_2fdreamview_2fproto_2f
   PROTOBUF_FIELD_OFFSET(::apollo::dreamview::SimulationWorld, stories_),
   PROTOBUF_FIELD_OFFSET(::apollo::dreamview::SimulationWorld, sensor_measurements_),
   PROTOBUF_FIELD_OFFSET(::apollo::dreamview::SimulationWorld, is_siren_on_),
-  13,
-  16,
+  PROTOBUF_FIELD_OFFSET(::apollo::dreamview::SimulationWorld, vehicle_param_),
+  14,
+  17,
   ~0u,
   1,
   2,
   ~0u,
-  14,
+  15,
   ~0u,
   3,
   4,
-  15,
+  16,
   5,
   6,
   ~0u,
   0,
   ~0u,
   7,
-  18,
   19,
+  20,
   8,
   9,
   10,
   11,
   ~0u,
-  20,
+  21,
   12,
   ~0u,
   ~0u,
   ~0u,
-  17,
+  18,
+  13,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 9, sizeof(::apollo::dreamview::PolygonPoint)},
@@ -652,7 +656,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 217, 224, sizeof(::apollo::dreamview::SimulationWorld_LatencyEntry_DoNotUse)},
   { 226, 233, sizeof(::apollo::dreamview::SimulationWorld_StoriesEntry_DoNotUse)},
   { 235, 242, sizeof(::apollo::dreamview::SimulationWorld_SensorMeasurementsEntry_DoNotUse)},
-  { 244, 279, sizeof(::apollo::dreamview::SimulationWorld)},
+  { 244, 280, sizeof(::apollo::dreamview::SimulationWorld)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -678,142 +682,146 @@ const char descriptor_table_protodef_modules_2fdreamview_2fproto_2fsimulation_5f
   "ld.proto\022\020apollo.dreamview\032\"modules/canb"
   "us/proto/chassis.proto\0322modules/common/m"
   "onitor_log/proto/monitor_log.proto\032$modu"
-  "les/common/proto/pnc_point.proto\0322module"
-  "s/perception/proto/perception_obstacle.p"
-  "roto\032.modules/planning/proto/planning_in"
-  "ternal.proto\032&modules/prediction/proto/f"
-  "eature.proto\032#modules/routing/proto/rout"
-  "ing.proto\"f\n\014PolygonPoint\022\t\n\001x\030\001 \001(\001\022\t\n\001"
-  "y\030\002 \001(\001\022\014\n\001z\030\003 \001(\001:\0010\0222\n\rgaussian_info\030\004"
-  " \001(\0132\033.apollo.common.GaussianInfo\"_\n\nPre"
-  "diction\022\023\n\013probability\030\001 \001(\001\022<\n\024predicte"
-  "d_trajectory\030\002 \003(\0132\036.apollo.dreamview.Po"
-  "lygonPoint\"\304\006\n\010Decision\0225\n\004type\030\001 \001(\0162\037."
-  "apollo.dreamview.Decision.Type:\006IGNORE\0225"
-  "\n\rpolygon_point\030\002 \003(\0132\036.apollo.dreamview"
-  ".PolygonPoint\022\017\n\007heading\030\003 \001(\001\022\020\n\010latitu"
-  "de\030\004 \001(\001\022\021\n\tlongitude\030\005 \001(\001\022\022\n\nposition_"
-  "x\030\006 \001(\001\022\022\n\nposition_y\030\007 \001(\001\022\023\n\006length\030\010 "
-  "\001(\001:\0032.8\022\022\n\005width\030\t \001(\001:\0031.4\022\023\n\006height\030\n"
-  " \001(\001:\0031.8\022=\n\nstopReason\030\013 \001(\0162).apollo.d"
-  "reamview.Decision.StopReasonCode\0228\n\020chan"
-  "ge_lane_type\030\014 \001(\0162\036.apollo.routing.Chan"
-  "geLaneType\"Z\n\004Type\022\n\n\006IGNORE\020\000\022\010\n\004STOP\020\001"
-  "\022\t\n\005NUDGE\020\002\022\t\n\005YIELD\020\003\022\014\n\010OVERTAKE\020\004\022\n\n\006"
-  "FOLLOW\020\005\022\014\n\010SIDEPASS\020\006\"\330\002\n\016StopReasonCod"
-  "e\022\034\n\030STOP_REASON_HEAD_VEHICLE\020\001\022\033\n\027STOP_"
-  "REASON_DESTINATION\020\002\022\032\n\026STOP_REASON_PEDE"
-  "STRIAN\020\003\022\030\n\024STOP_REASON_OBSTACLE\020\004\022\026\n\022ST"
-  "OP_REASON_SIGNAL\020d\022\031\n\025STOP_REASON_STOP_S"
-  "IGN\020e\022\032\n\026STOP_REASON_YIELD_SIGN\020f\022\032\n\026STO"
-  "P_REASON_CLEAR_ZONE\020g\022\031\n\025STOP_REASON_CRO"
-  "SSWALK\020h\022\031\n\025STOP_REASON_EMERGENCY\020i\022\031\n\025S"
-  "TOP_REASON_NOT_READY\020j\022\031\n\025STOP_REASON_PU"
-  "LL_OVER\020k\"\314\014\n\006Object\022\n\n\002id\030\001 \001(\t\0225\n\rpoly"
-  "gon_point\030\002 \003(\0132\036.apollo.dreamview.Polyg"
-  "onPoint\022\017\n\007heading\030\003 \001(\001\022\020\n\010latitude\030\004 \001"
-  "(\001\022\021\n\tlongitude\030\005 \001(\001\022\022\n\nposition_x\030\006 \001("
-  "\001\022\022\n\nposition_y\030\007 \001(\001\022\023\n\006length\030\010 \001(\001:\0032"
-  ".8\022\022\n\005width\030\t \001(\001:\0031.4\022\023\n\006height\030\n \001(\001:\003"
-  "1.8\022\r\n\005speed\030\013 \001(\001\022\032\n\022speed_acceleration"
-  "\030\014 \001(\001\022\022\n\nspeed_jerk\030\r \001(\001\022\014\n\004spin\030\016 \001(\001"
-  "\022\031\n\021spin_acceleration\030\017 \001(\001\022\021\n\tspin_jerk"
-  "\030\020 \001(\001\022\025\n\rspeed_heading\030\021 \001(\001\022\r\n\005kappa\030\022"
-  " \001(\001\022\016\n\006dkappa\030# \001(\001\022\022\n\nsignal_set\030\023 \003(\t"
-  "\022\026\n\016current_signal\030\024 \001(\t\022\025\n\rtimestamp_se"
-  "c\030\025 \001(\001\022,\n\010decision\030\026 \003(\0132\032.apollo.dream"
-  "view.Decision\022\037\n\020yielded_obstacle\030  \001(\010:"
-  "\005false\022\033\n\023throttle_percentage\030\027 \001(\001\022\030\n\020b"
-  "rake_percentage\030\030 \001(\001\022\033\n\023steering_percen"
-  "tage\030\031 \001(\001\022\026\n\016steering_angle\030\032 \001(\001\022\026\n\016st"
-  "eering_ratio\030\033 \001(\001\022\032\n\022battery_percentage"
-  "\030& \001(\005\022:\n\rgear_location\030\' \001(\0162#.apollo.c"
-  "anbus.Chassis.GearPosition\022>\n\016disengage_"
-  "type\030\034 \001(\0162&.apollo.dreamview.Object.Dis"
-  "engageType\022+\n\004type\030\035 \001(\0162\035.apollo.dreamv"
-  "iew.Object.Type\022\?\n\010sub_type\030\" \001(\0162-.apol"
-  "lo.perception.PerceptionObstacle.SubType"
-  "\0220\n\nprediction\030\036 \003(\0132\034.apollo.dreamview."
-  "Prediction\022\025\n\nconfidence\030\037 \001(\001:\0011\022>\n\021obs"
-  "tacle_priority\030! \001(\0132#.apollo.prediction"
-  ".ObstaclePriority\022B\n\017interactive_tag\030( \001"
-  "(\0132).apollo.prediction.ObstacleInteracti"
-  "veTag\022J\n\006source\030$ \001(\0162,.apollo.perceptio"
-  "n.PerceptionObstacle.Source:\014HOST_VEHICL"
-  "E\0223\n\010v2x_info\030% \001(\0132!.apollo.perception."
-  "V2XInformation\"\304\001\n\rDisengageType\022\022\n\016DISE"
-  "NGAGE_NONE\020\000\022\025\n\021DISENGAGE_UNKNOWN\020\001\022\024\n\020D"
-  "ISENGAGE_MANUAL\020\002\022\027\n\023DISENGAGE_EMERGENCY"
-  "\020\003\022\035\n\031DISENGAGE_AUTO_STEER_ONLY\020\004\022\035\n\031DIS"
-  "ENGAGE_AUTO_SPEED_ONLY\020\005\022\033\n\027DISENGAGE_CH"
-  "ASSIS_ERROR\020\006\"\200\001\n\004Type\022\013\n\007UNKNOWN\020\000\022\023\n\017U"
-  "NKNOWN_MOVABLE\020\001\022\025\n\021UNKNOWN_UNMOVABLE\020\002\022"
-  "\016\n\nPEDESTRIAN\020\003\022\013\n\007BICYCLE\020\004\022\013\n\007VEHICLE\020"
-  "\005\022\013\n\007VIRTUAL\020\006\022\010\n\004CIPV\020\007\"\236\001\n\nDelaysInMs\022"
-  "\017\n\007chassis\030\001 \001(\001\022\024\n\014localization\030\003 \001(\001\022\033"
-  "\n\023perception_obstacle\030\004 \001(\001\022\020\n\010planning\030"
-  "\005 \001(\001\022\022\n\nprediction\030\007 \001(\001\022\025\n\rtraffic_lig"
-  "ht\030\010 \001(\001\022\017\n\007control\030\t \001(\001\":\n\tRoutePath\022-"
-  "\n\005point\030\001 \003(\0132\036.apollo.dreamview.Polygon"
-  "Point\"7\n\007Latency\022\025\n\rtimestamp_sec\030\001 \001(\001\022"
-  "\025\n\rtotal_time_ms\030\002 \001(\001\"\350\001\n\rMapElementIds"
-  "\022\014\n\004lane\030\001 \003(\t\022\021\n\tcrosswalk\030\002 \003(\t\022\020\n\010jun"
-  "ction\030\003 \003(\t\022\016\n\006signal\030\004 \003(\t\022\021\n\tstop_sign"
-  "\030\005 \003(\t\022\r\n\005yield\030\006 \003(\t\022\017\n\007overlap\030\007 \003(\t\022\014"
-  "\n\004road\030\010 \003(\t\022\022\n\nclear_area\030\t \003(\t\022\025\n\rpark"
-  "ing_space\030\n \003(\t\022\022\n\nspeed_bump\030\013 \003(\t\022\024\n\014p"
-  "nc_junction\030\014 \003(\t\"\247\001\n\013ControlData\022\025\n\rtim"
-  "estamp_sec\030\001 \001(\001\022\025\n\rstation_error\030\002 \001(\001\022"
-  "\025\n\rlateral_error\030\003 \001(\001\022\025\n\rheading_error\030"
-  "\004 \001(\001\022<\n\024current_target_point\030\005 \001(\0132\036.ap"
-  "ollo.common.TrajectoryPoint\"^\n\014Notificat"
-  "ion\022\025\n\rtimestamp_sec\030\001 \001(\001\0227\n\004item\030\002 \001(\013"
-  "2).apollo.common.monitor.MonitorMessageI"
-  "tem\"J\n\022SensorMeasurements\0224\n\022sensor_meas"
-  "urement\030\001 \003(\0132\030.apollo.dreamview.Object\""
-  "\253\014\n\017SimulationWorld\022\021\n\ttimestamp\030\001 \001(\001\022\024"
-  "\n\014sequence_num\030\002 \001(\r\022(\n\006object\030\003 \003(\0132\030.a"
-  "pollo.dreamview.Object\0222\n\020auto_driving_c"
-  "ar\030\004 \001(\0132\030.apollo.dreamview.Object\0220\n\016tr"
-  "affic_signal\030\005 \001(\0132\030.apollo.dreamview.Ob"
-  "ject\022/\n\nroute_path\030\006 \003(\0132\033.apollo.dreamv"
-  "iew.RoutePath\022\024\n\014routing_time\030\007 \001(\001\0225\n\023p"
-  "lanning_trajectory\030\010 \003(\0132\030.apollo.dreamv"
-  "iew.Object\022/\n\tmain_stop\030\t \001(\0132\030.apollo.d"
-  "reamview.ObjectB\002\030\001\022/\n\rmain_decision\030\n \001"
-  "(\0132\030.apollo.dreamview.Object\022\023\n\013speed_li"
-  "mit\030\013 \001(\001\022+\n\005delay\030\014 \001(\0132\034.apollo.dreamv"
-  "iew.DelaysInMs\022:\n\007monitor\030\r \001(\0132%.apollo"
-  ".common.monitor.MonitorMessageB\002\030\001\0224\n\014no"
-  "tification\030\016 \003(\0132\036.apollo.dreamview.Noti"
-  "fication\022\025\n\rengage_advice\030\017 \001(\t\022\?\n\007laten"
-  "cy\030\020 \003(\0132..apollo.dreamview.SimulationWo"
-  "rld.LatencyEntry\0228\n\017map_element_ids\030\021 \001("
-  "\0132\037.apollo.dreamview.MapElementIds\022\020\n\010ma"
-  "p_hash\030\022 \001(\004\022\022\n\nmap_radius\030\023 \001(\001\022=\n\rplan"
-  "ning_data\030\024 \001(\0132&.apollo.planning_intern"
-  "al.PlanningData\022%\n\003gps\030\025 \001(\0132\030.apollo.dr"
-  "eamview.Object\0223\n\013lane_marker\030\026 \001(\0132\036.ap"
-  "ollo.perception.LaneMarkers\0223\n\014control_d"
-  "ata\030\027 \001(\0132\035.apollo.dreamview.ControlData"
-  "\022,\n\017navigation_path\030\030 \003(\0132\023.apollo.commo"
-  "n.Path\022\031\n\013is_rss_safe\030\031 \001(\010:\004true\0225\n\023sha"
-  "dow_localization\030\032 \001(\0132\030.apollo.dreamvie"
-  "w.Object\0222\n\020perceived_signal\030\033 \003(\0132\030.apo"
-  "llo.dreamview.Object\022\?\n\007stories\030\034 \003(\0132.."
-  "apollo.dreamview.SimulationWorld.Stories"
-  "Entry\022V\n\023sensor_measurements\030\035 \003(\01329.apo"
-  "llo.dreamview.SimulationWorld.SensorMeas"
-  "urementsEntry\022\032\n\013is_siren_on\030\036 \001(\010:\005fals"
-  "e\032I\n\014LatencyEntry\022\013\n\003key\030\001 \001(\t\022(\n\005value\030"
-  "\002 \001(\0132\031.apollo.dreamview.Latency:\0028\001\032.\n\014"
-  "StoriesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010"
-  ":\0028\001\032_\n\027SensorMeasurementsEntry\022\013\n\003key\030\001"
-  " \001(\t\0223\n\005value\030\002 \001(\0132$.apollo.dreamview.S"
-  "ensorMeasurements:\0028\001"
+  "les/common/proto/pnc_point.proto\0321module"
+  "s/common/configs/proto/vehicle_config.pr"
+  "oto\0322modules/perception/proto/perception"
+  "_obstacle.proto\032.modules/planning/proto/"
+  "planning_internal.proto\032&modules/predict"
+  "ion/proto/feature.proto\032#modules/routing"
+  "/proto/routing.proto\"f\n\014PolygonPoint\022\t\n\001"
+  "x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022\014\n\001z\030\003 \001(\001:\0010\0222\n\rgaus"
+  "sian_info\030\004 \001(\0132\033.apollo.common.Gaussian"
+  "Info\"_\n\nPrediction\022\023\n\013probability\030\001 \001(\001\022"
+  "<\n\024predicted_trajectory\030\002 \003(\0132\036.apollo.d"
+  "reamview.PolygonPoint\"\304\006\n\010Decision\0225\n\004ty"
+  "pe\030\001 \001(\0162\037.apollo.dreamview.Decision.Typ"
+  "e:\006IGNORE\0225\n\rpolygon_point\030\002 \003(\0132\036.apoll"
+  "o.dreamview.PolygonPoint\022\017\n\007heading\030\003 \001("
+  "\001\022\020\n\010latitude\030\004 \001(\001\022\021\n\tlongitude\030\005 \001(\001\022\022"
+  "\n\nposition_x\030\006 \001(\001\022\022\n\nposition_y\030\007 \001(\001\022\023"
+  "\n\006length\030\010 \001(\001:\0032.8\022\022\n\005width\030\t \001(\001:\0031.4\022"
+  "\023\n\006height\030\n \001(\001:\0031.8\022=\n\nstopReason\030\013 \001(\016"
+  "2).apollo.dreamview.Decision.StopReasonC"
+  "ode\0228\n\020change_lane_type\030\014 \001(\0162\036.apollo.r"
+  "outing.ChangeLaneType\"Z\n\004Type\022\n\n\006IGNORE\020"
+  "\000\022\010\n\004STOP\020\001\022\t\n\005NUDGE\020\002\022\t\n\005YIELD\020\003\022\014\n\010OVE"
+  "RTAKE\020\004\022\n\n\006FOLLOW\020\005\022\014\n\010SIDEPASS\020\006\"\330\002\n\016St"
+  "opReasonCode\022\034\n\030STOP_REASON_HEAD_VEHICLE"
+  "\020\001\022\033\n\027STOP_REASON_DESTINATION\020\002\022\032\n\026STOP_"
+  "REASON_PEDESTRIAN\020\003\022\030\n\024STOP_REASON_OBSTA"
+  "CLE\020\004\022\026\n\022STOP_REASON_SIGNAL\020d\022\031\n\025STOP_RE"
+  "ASON_STOP_SIGN\020e\022\032\n\026STOP_REASON_YIELD_SI"
+  "GN\020f\022\032\n\026STOP_REASON_CLEAR_ZONE\020g\022\031\n\025STOP"
+  "_REASON_CROSSWALK\020h\022\031\n\025STOP_REASON_EMERG"
+  "ENCY\020i\022\031\n\025STOP_REASON_NOT_READY\020j\022\031\n\025STO"
+  "P_REASON_PULL_OVER\020k\"\314\014\n\006Object\022\n\n\002id\030\001 "
+  "\001(\t\0225\n\rpolygon_point\030\002 \003(\0132\036.apollo.drea"
+  "mview.PolygonPoint\022\017\n\007heading\030\003 \001(\001\022\020\n\010l"
+  "atitude\030\004 \001(\001\022\021\n\tlongitude\030\005 \001(\001\022\022\n\nposi"
+  "tion_x\030\006 \001(\001\022\022\n\nposition_y\030\007 \001(\001\022\023\n\006leng"
+  "th\030\010 \001(\001:\0032.8\022\022\n\005width\030\t \001(\001:\0031.4\022\023\n\006hei"
+  "ght\030\n \001(\001:\0031.8\022\r\n\005speed\030\013 \001(\001\022\032\n\022speed_a"
+  "cceleration\030\014 \001(\001\022\022\n\nspeed_jerk\030\r \001(\001\022\014\n"
+  "\004spin\030\016 \001(\001\022\031\n\021spin_acceleration\030\017 \001(\001\022\021"
+  "\n\tspin_jerk\030\020 \001(\001\022\025\n\rspeed_heading\030\021 \001(\001"
+  "\022\r\n\005kappa\030\022 \001(\001\022\016\n\006dkappa\030# \001(\001\022\022\n\nsigna"
+  "l_set\030\023 \003(\t\022\026\n\016current_signal\030\024 \001(\t\022\025\n\rt"
+  "imestamp_sec\030\025 \001(\001\022,\n\010decision\030\026 \003(\0132\032.a"
+  "pollo.dreamview.Decision\022\037\n\020yielded_obst"
+  "acle\030  \001(\010:\005false\022\033\n\023throttle_percentage"
+  "\030\027 \001(\001\022\030\n\020brake_percentage\030\030 \001(\001\022\033\n\023stee"
+  "ring_percentage\030\031 \001(\001\022\026\n\016steering_angle\030"
+  "\032 \001(\001\022\026\n\016steering_ratio\030\033 \001(\001\022\032\n\022battery"
+  "_percentage\030& \001(\005\022:\n\rgear_location\030\' \001(\016"
+  "2#.apollo.canbus.Chassis.GearPosition\022>\n"
+  "\016disengage_type\030\034 \001(\0162&.apollo.dreamview"
+  ".Object.DisengageType\022+\n\004type\030\035 \001(\0162\035.ap"
+  "ollo.dreamview.Object.Type\022\?\n\010sub_type\030\""
+  " \001(\0162-.apollo.perception.PerceptionObsta"
+  "cle.SubType\0220\n\nprediction\030\036 \003(\0132\034.apollo"
+  ".dreamview.Prediction\022\025\n\nconfidence\030\037 \001("
+  "\001:\0011\022>\n\021obstacle_priority\030! \001(\0132#.apollo"
+  ".prediction.ObstaclePriority\022B\n\017interact"
+  "ive_tag\030( \001(\0132).apollo.prediction.Obstac"
+  "leInteractiveTag\022J\n\006source\030$ \001(\0162,.apoll"
+  "o.perception.PerceptionObstacle.Source:\014"
+  "HOST_VEHICLE\0223\n\010v2x_info\030% \001(\0132!.apollo."
+  "perception.V2XInformation\"\304\001\n\rDisengageT"
+  "ype\022\022\n\016DISENGAGE_NONE\020\000\022\025\n\021DISENGAGE_UNK"
+  "NOWN\020\001\022\024\n\020DISENGAGE_MANUAL\020\002\022\027\n\023DISENGAG"
+  "E_EMERGENCY\020\003\022\035\n\031DISENGAGE_AUTO_STEER_ON"
+  "LY\020\004\022\035\n\031DISENGAGE_AUTO_SPEED_ONLY\020\005\022\033\n\027D"
+  "ISENGAGE_CHASSIS_ERROR\020\006\"\200\001\n\004Type\022\013\n\007UNK"
+  "NOWN\020\000\022\023\n\017UNKNOWN_MOVABLE\020\001\022\025\n\021UNKNOWN_U"
+  "NMOVABLE\020\002\022\016\n\nPEDESTRIAN\020\003\022\013\n\007BICYCLE\020\004\022"
+  "\013\n\007VEHICLE\020\005\022\013\n\007VIRTUAL\020\006\022\010\n\004CIPV\020\007\"\236\001\n\n"
+  "DelaysInMs\022\017\n\007chassis\030\001 \001(\001\022\024\n\014localizat"
+  "ion\030\003 \001(\001\022\033\n\023perception_obstacle\030\004 \001(\001\022\020"
+  "\n\010planning\030\005 \001(\001\022\022\n\nprediction\030\007 \001(\001\022\025\n\r"
+  "traffic_light\030\010 \001(\001\022\017\n\007control\030\t \001(\001\":\n\t"
+  "RoutePath\022-\n\005point\030\001 \003(\0132\036.apollo.dreamv"
+  "iew.PolygonPoint\"7\n\007Latency\022\025\n\rtimestamp"
+  "_sec\030\001 \001(\001\022\025\n\rtotal_time_ms\030\002 \001(\001\"\350\001\n\rMa"
+  "pElementIds\022\014\n\004lane\030\001 \003(\t\022\021\n\tcrosswalk\030\002"
+  " \003(\t\022\020\n\010junction\030\003 \003(\t\022\016\n\006signal\030\004 \003(\t\022\021"
+  "\n\tstop_sign\030\005 \003(\t\022\r\n\005yield\030\006 \003(\t\022\017\n\007over"
+  "lap\030\007 \003(\t\022\014\n\004road\030\010 \003(\t\022\022\n\nclear_area\030\t "
+  "\003(\t\022\025\n\rparking_space\030\n \003(\t\022\022\n\nspeed_bump"
+  "\030\013 \003(\t\022\024\n\014pnc_junction\030\014 \003(\t\"\247\001\n\013Control"
+  "Data\022\025\n\rtimestamp_sec\030\001 \001(\001\022\025\n\rstation_e"
+  "rror\030\002 \001(\001\022\025\n\rlateral_error\030\003 \001(\001\022\025\n\rhea"
+  "ding_error\030\004 \001(\001\022<\n\024current_target_point"
+  "\030\005 \001(\0132\036.apollo.common.TrajectoryPoint\"^"
+  "\n\014Notification\022\025\n\rtimestamp_sec\030\001 \001(\001\0227\n"
+  "\004item\030\002 \001(\0132).apollo.common.monitor.Moni"
+  "torMessageItem\"J\n\022SensorMeasurements\0224\n\022"
+  "sensor_measurement\030\001 \003(\0132\030.apollo.dreamv"
+  "iew.Object\"\337\014\n\017SimulationWorld\022\021\n\ttimest"
+  "amp\030\001 \001(\001\022\024\n\014sequence_num\030\002 \001(\r\022(\n\006objec"
+  "t\030\003 \003(\0132\030.apollo.dreamview.Object\0222\n\020aut"
+  "o_driving_car\030\004 \001(\0132\030.apollo.dreamview.O"
+  "bject\0220\n\016traffic_signal\030\005 \001(\0132\030.apollo.d"
+  "reamview.Object\022/\n\nroute_path\030\006 \003(\0132\033.ap"
+  "ollo.dreamview.RoutePath\022\024\n\014routing_time"
+  "\030\007 \001(\001\0225\n\023planning_trajectory\030\010 \003(\0132\030.ap"
+  "ollo.dreamview.Object\022/\n\tmain_stop\030\t \001(\013"
+  "2\030.apollo.dreamview.ObjectB\002\030\001\022/\n\rmain_d"
+  "ecision\030\n \001(\0132\030.apollo.dreamview.Object\022"
+  "\023\n\013speed_limit\030\013 \001(\001\022+\n\005delay\030\014 \001(\0132\034.ap"
+  "ollo.dreamview.DelaysInMs\022:\n\007monitor\030\r \001"
+  "(\0132%.apollo.common.monitor.MonitorMessag"
+  "eB\002\030\001\0224\n\014notification\030\016 \003(\0132\036.apollo.dre"
+  "amview.Notification\022\025\n\rengage_advice\030\017 \001"
+  "(\t\022\?\n\007latency\030\020 \003(\0132..apollo.dreamview.S"
+  "imulationWorld.LatencyEntry\0228\n\017map_eleme"
+  "nt_ids\030\021 \001(\0132\037.apollo.dreamview.MapEleme"
+  "ntIds\022\020\n\010map_hash\030\022 \001(\004\022\022\n\nmap_radius\030\023 "
+  "\001(\001\022=\n\rplanning_data\030\024 \001(\0132&.apollo.plan"
+  "ning_internal.PlanningData\022%\n\003gps\030\025 \001(\0132"
+  "\030.apollo.dreamview.Object\0223\n\013lane_marker"
+  "\030\026 \001(\0132\036.apollo.perception.LaneMarkers\0223"
+  "\n\014control_data\030\027 \001(\0132\035.apollo.dreamview."
+  "ControlData\022,\n\017navigation_path\030\030 \003(\0132\023.a"
+  "pollo.common.Path\022\031\n\013is_rss_safe\030\031 \001(\010:\004"
+  "true\0225\n\023shadow_localization\030\032 \001(\0132\030.apol"
+  "lo.dreamview.Object\0222\n\020perceived_signal\030"
+  "\033 \003(\0132\030.apollo.dreamview.Object\022\?\n\007stori"
+  "es\030\034 \003(\0132..apollo.dreamview.SimulationWo"
+  "rld.StoriesEntry\022V\n\023sensor_measurements\030"
+  "\035 \003(\01329.apollo.dreamview.SimulationWorld"
+  ".SensorMeasurementsEntry\022\032\n\013is_siren_on\030"
+  "\036 \001(\010:\005false\0222\n\rvehicle_param\030\037 \001(\0132\033.ap"
+  "ollo.common.VehicleParam\032I\n\014LatencyEntry"
+  "\022\013\n\003key\030\001 \001(\t\022(\n\005value\030\002 \001(\0132\031.apollo.dr"
+  "eamview.Latency:\0028\001\032.\n\014StoriesEntry\022\013\n\003k"
+  "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\032_\n\027SensorMea"
+  "surementsEntry\022\013\n\003key\030\001 \001(\t\0223\n\005value\030\002 \001"
+  "(\0132$.apollo.dreamview.SensorMeasurements"
+  ":\0028\001"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto_deps[7] = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto_deps[8] = {
   &::descriptor_table_modules_2fcanbus_2fproto_2fchassis_2eproto,
+  &::descriptor_table_modules_2fcommon_2fconfigs_2fproto_2fvehicle_5fconfig_2eproto,
   &::descriptor_table_modules_2fcommon_2fmonitor_5flog_2fproto_2fmonitor_5flog_2eproto,
   &::descriptor_table_modules_2fcommon_2fproto_2fpnc_5fpoint_2eproto,
   &::descriptor_table_modules_2fperception_2fproto_2fperception_5fobstacle_2eproto,
@@ -840,8 +848,8 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_mod
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto = {
-  false, false, descriptor_table_protodef_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto, "modules/dreamview/proto/simulation_world.proto", 5461,
-  &descriptor_table_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto_once, descriptor_table_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto_sccs, descriptor_table_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto_deps, 15, 7,
+  false, false, descriptor_table_protodef_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto, "modules/dreamview/proto/simulation_world.proto", 5564,
+  &descriptor_table_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto_once, descriptor_table_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto_sccs, descriptor_table_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto_deps, 15, 8,
   schemas, file_default_instances, TableStruct_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto::offsets,
   file_level_metadata_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto, 15, file_level_enum_descriptors_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto, file_level_service_descriptors_modules_2fdreamview_2fproto_2fsimulation_5fworld_2eproto,
 };
@@ -5856,10 +5864,10 @@ class SimulationWorld::_Internal {
  public:
   using HasBits = decltype(std::declval<SimulationWorld>()._has_bits_);
   static void set_has_timestamp(HasBits* has_bits) {
-    (*has_bits)[0] |= 8192u;
+    (*has_bits)[0] |= 16384u;
   }
   static void set_has_sequence_num(HasBits* has_bits) {
-    (*has_bits)[0] |= 65536u;
+    (*has_bits)[0] |= 131072u;
   }
   static const ::apollo::dreamview::Object& auto_driving_car(const SimulationWorld* msg);
   static void set_has_auto_driving_car(HasBits* has_bits) {
@@ -5870,7 +5878,7 @@ class SimulationWorld::_Internal {
     (*has_bits)[0] |= 4u;
   }
   static void set_has_routing_time(HasBits* has_bits) {
-    (*has_bits)[0] |= 16384u;
+    (*has_bits)[0] |= 32768u;
   }
   static const ::apollo::dreamview::Object& main_stop(const SimulationWorld* msg);
   static void set_has_main_stop(HasBits* has_bits) {
@@ -5881,7 +5889,7 @@ class SimulationWorld::_Internal {
     (*has_bits)[0] |= 16u;
   }
   static void set_has_speed_limit(HasBits* has_bits) {
-    (*has_bits)[0] |= 32768u;
+    (*has_bits)[0] |= 65536u;
   }
   static const ::apollo::dreamview::DelaysInMs& delay(const SimulationWorld* msg);
   static void set_has_delay(HasBits* has_bits) {
@@ -5899,10 +5907,10 @@ class SimulationWorld::_Internal {
     (*has_bits)[0] |= 128u;
   }
   static void set_has_map_hash(HasBits* has_bits) {
-    (*has_bits)[0] |= 262144u;
+    (*has_bits)[0] |= 524288u;
   }
   static void set_has_map_radius(HasBits* has_bits) {
-    (*has_bits)[0] |= 524288u;
+    (*has_bits)[0] |= 1048576u;
   }
   static const ::apollo::planning_internal::PlanningData& planning_data(const SimulationWorld* msg);
   static void set_has_planning_data(HasBits* has_bits) {
@@ -5921,14 +5929,18 @@ class SimulationWorld::_Internal {
     (*has_bits)[0] |= 2048u;
   }
   static void set_has_is_rss_safe(HasBits* has_bits) {
-    (*has_bits)[0] |= 1048576u;
+    (*has_bits)[0] |= 2097152u;
   }
   static const ::apollo::dreamview::Object& shadow_localization(const SimulationWorld* msg);
   static void set_has_shadow_localization(HasBits* has_bits) {
     (*has_bits)[0] |= 4096u;
   }
   static void set_has_is_siren_on(HasBits* has_bits) {
-    (*has_bits)[0] |= 131072u;
+    (*has_bits)[0] |= 262144u;
+  }
+  static const ::apollo::common::VehicleParam& vehicle_param(const SimulationWorld* msg);
+  static void set_has_vehicle_param(HasBits* has_bits) {
+    (*has_bits)[0] |= 8192u;
   }
 };
 
@@ -5980,6 +5992,10 @@ const ::apollo::dreamview::Object&
 SimulationWorld::_Internal::shadow_localization(const SimulationWorld* msg) {
   return *msg->shadow_localization_;
 }
+const ::apollo::common::VehicleParam&
+SimulationWorld::_Internal::vehicle_param(const SimulationWorld* msg) {
+  return *msg->vehicle_param_;
+}
 void SimulationWorld::clear_monitor() {
   if (monitor_ != nullptr) monitor_->Clear();
   _has_bits_[0] &= ~0x00000040u;
@@ -5994,6 +6010,10 @@ void SimulationWorld::clear_lane_marker() {
 }
 void SimulationWorld::clear_navigation_path() {
   navigation_path_.Clear();
+}
+void SimulationWorld::clear_vehicle_param() {
+  if (vehicle_param_ != nullptr) vehicle_param_->Clear();
+  _has_bits_[0] &= ~0x00002000u;
 }
 SimulationWorld::SimulationWorld(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena),
@@ -6088,6 +6108,11 @@ SimulationWorld::SimulationWorld(const SimulationWorld& from)
   } else {
     shadow_localization_ = nullptr;
   }
+  if (from._internal_has_vehicle_param()) {
+    vehicle_param_ = new ::apollo::common::VehicleParam(*from.vehicle_param_);
+  } else {
+    vehicle_param_ = nullptr;
+  }
   ::memcpy(&timestamp_, &from.timestamp_,
     static_cast<size_t>(reinterpret_cast<char*>(&is_rss_safe_) -
     reinterpret_cast<char*>(&timestamp_)) + sizeof(is_rss_safe_));
@@ -6125,6 +6150,7 @@ void SimulationWorld::SharedDtor() {
   if (this != internal_default_instance()) delete lane_marker_;
   if (this != internal_default_instance()) delete control_data_;
   if (this != internal_default_instance()) delete shadow_localization_;
+  if (this != internal_default_instance()) delete vehicle_param_;
 }
 
 void SimulationWorld::ArenaDtor(void* object) {
@@ -6191,7 +6217,7 @@ void SimulationWorld::Clear() {
       map_element_ids_->Clear();
     }
   }
-  if (cached_has_bits & 0x00001f00u) {
+  if (cached_has_bits & 0x00003f00u) {
     if (cached_has_bits & 0x00000100u) {
       GOOGLE_DCHECK(planning_data_ != nullptr);
       planning_data_->Clear();
@@ -6212,16 +6238,20 @@ void SimulationWorld::Clear() {
       GOOGLE_DCHECK(shadow_localization_ != nullptr);
       shadow_localization_->Clear();
     }
+    if (cached_has_bits & 0x00002000u) {
+      GOOGLE_DCHECK(vehicle_param_ != nullptr);
+      vehicle_param_->Clear();
+    }
   }
-  if (cached_has_bits & 0x0000e000u) {
+  if (cached_has_bits & 0x0000c000u) {
     ::memset(&timestamp_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&speed_limit_) -
-        reinterpret_cast<char*>(&timestamp_)) + sizeof(speed_limit_));
+        reinterpret_cast<char*>(&routing_time_) -
+        reinterpret_cast<char*>(&timestamp_)) + sizeof(routing_time_));
   }
-  if (cached_has_bits & 0x001f0000u) {
-    ::memset(&sequence_num_, 0, static_cast<size_t>(
+  if (cached_has_bits & 0x003f0000u) {
+    ::memset(&speed_limit_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&map_radius_) -
-        reinterpret_cast<char*>(&sequence_num_)) + sizeof(map_radius_));
+        reinterpret_cast<char*>(&speed_limit_)) + sizeof(map_radius_));
     is_rss_safe_ = true;
   }
   _has_bits_.Clear();
@@ -6503,6 +6533,13 @@ const char* SimulationWorld::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPAC
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
+      // optional .apollo.common.VehicleParam vehicle_param = 31;
+      case 31:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 250)) {
+          ptr = ctx->ParseMessage(_internal_mutable_vehicle_param(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
@@ -6534,13 +6571,13 @@ failure:
 
   cached_has_bits = _has_bits_[0];
   // optional double timestamp = 1;
-  if (cached_has_bits & 0x00002000u) {
+  if (cached_has_bits & 0x00004000u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(1, this->_internal_timestamp(), target);
   }
 
   // optional uint32 sequence_num = 2;
-  if (cached_has_bits & 0x00010000u) {
+  if (cached_has_bits & 0x00020000u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_sequence_num(), target);
   }
@@ -6578,7 +6615,7 @@ failure:
   }
 
   // optional double routing_time = 7;
-  if (cached_has_bits & 0x00004000u) {
+  if (cached_has_bits & 0x00008000u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(7, this->_internal_routing_time(), target);
   }
@@ -6608,7 +6645,7 @@ failure:
   }
 
   // optional double speed_limit = 11;
-  if (cached_has_bits & 0x00008000u) {
+  if (cached_has_bits & 0x00010000u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(11, this->_internal_speed_limit(), target);
   }
@@ -6697,13 +6734,13 @@ failure:
   }
 
   // optional uint64 map_hash = 18;
-  if (cached_has_bits & 0x00040000u) {
+  if (cached_has_bits & 0x00080000u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(18, this->_internal_map_hash(), target);
   }
 
   // optional double map_radius = 19;
-  if (cached_has_bits & 0x00080000u) {
+  if (cached_has_bits & 0x00100000u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(19, this->_internal_map_radius(), target);
   }
@@ -6749,7 +6786,7 @@ failure:
   }
 
   // optional bool is_rss_safe = 25 [default = true];
-  if (cached_has_bits & 0x00100000u) {
+  if (cached_has_bits & 0x00200000u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(25, this->_internal_is_rss_safe(), target);
   }
@@ -6853,9 +6890,17 @@ failure:
   }
 
   // optional bool is_siren_on = 30 [default = false];
-  if (cached_has_bits & 0x00020000u) {
+  if (cached_has_bits & 0x00040000u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(30, this->_internal_is_siren_on(), target);
+  }
+
+  // optional .apollo.common.VehicleParam vehicle_param = 31;
+  if (cached_has_bits & 0x00002000u) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        31, _Internal::vehicle_param(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -7038,49 +7083,56 @@ size_t SimulationWorld::ByteSizeLong() const {
           *shadow_localization_);
     }
 
-    // optional double timestamp = 1;
+    // optional .apollo.common.VehicleParam vehicle_param = 31;
     if (cached_has_bits & 0x00002000u) {
-      total_size += 1 + 8;
+      total_size += 2 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *vehicle_param_);
     }
 
-    // optional double routing_time = 7;
+    // optional double timestamp = 1;
     if (cached_has_bits & 0x00004000u) {
       total_size += 1 + 8;
     }
 
-    // optional double speed_limit = 11;
+    // optional double routing_time = 7;
     if (cached_has_bits & 0x00008000u) {
       total_size += 1 + 8;
     }
 
   }
-  if (cached_has_bits & 0x001f0000u) {
-    // optional uint32 sequence_num = 2;
+  if (cached_has_bits & 0x003f0000u) {
+    // optional double speed_limit = 11;
     if (cached_has_bits & 0x00010000u) {
+      total_size += 1 + 8;
+    }
+
+    // optional uint32 sequence_num = 2;
+    if (cached_has_bits & 0x00020000u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
           this->_internal_sequence_num());
     }
 
     // optional bool is_siren_on = 30 [default = false];
-    if (cached_has_bits & 0x00020000u) {
+    if (cached_has_bits & 0x00040000u) {
       total_size += 2 + 1;
     }
 
     // optional uint64 map_hash = 18;
-    if (cached_has_bits & 0x00040000u) {
+    if (cached_has_bits & 0x00080000u) {
       total_size += 2 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
           this->_internal_map_hash());
     }
 
     // optional double map_radius = 19;
-    if (cached_has_bits & 0x00080000u) {
+    if (cached_has_bits & 0x00100000u) {
       total_size += 2 + 8;
     }
 
     // optional bool is_rss_safe = 25 [default = true];
-    if (cached_has_bits & 0x00100000u) {
+    if (cached_has_bits & 0x00200000u) {
       total_size += 2 + 1;
     }
 
@@ -7169,30 +7221,33 @@ void SimulationWorld::MergeFrom(const SimulationWorld& from) {
       _internal_mutable_shadow_localization()->::apollo::dreamview::Object::MergeFrom(from._internal_shadow_localization());
     }
     if (cached_has_bits & 0x00002000u) {
-      timestamp_ = from.timestamp_;
+      _internal_mutable_vehicle_param()->::apollo::common::VehicleParam::MergeFrom(from._internal_vehicle_param());
     }
     if (cached_has_bits & 0x00004000u) {
-      routing_time_ = from.routing_time_;
+      timestamp_ = from.timestamp_;
     }
     if (cached_has_bits & 0x00008000u) {
-      speed_limit_ = from.speed_limit_;
+      routing_time_ = from.routing_time_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
-  if (cached_has_bits & 0x001f0000u) {
+  if (cached_has_bits & 0x003f0000u) {
     if (cached_has_bits & 0x00010000u) {
-      sequence_num_ = from.sequence_num_;
+      speed_limit_ = from.speed_limit_;
     }
     if (cached_has_bits & 0x00020000u) {
-      is_siren_on_ = from.is_siren_on_;
+      sequence_num_ = from.sequence_num_;
     }
     if (cached_has_bits & 0x00040000u) {
-      map_hash_ = from.map_hash_;
+      is_siren_on_ = from.is_siren_on_;
     }
     if (cached_has_bits & 0x00080000u) {
-      map_radius_ = from.map_radius_;
+      map_hash_ = from.map_hash_;
     }
     if (cached_has_bits & 0x00100000u) {
+      map_radius_ = from.map_radius_;
+    }
+    if (cached_has_bits & 0x00200000u) {
       is_rss_safe_ = from.is_rss_safe_;
     }
     _has_bits_[0] |= cached_has_bits;
