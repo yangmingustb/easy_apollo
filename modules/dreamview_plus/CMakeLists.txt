@@ -8,8 +8,8 @@ find_package(civetweb REQUIRED)
 
 include_directories(${PCL_INCLUDE_DIRS} ${civetweb_INCLUDE_DIR})
 
-# find_package(yaml-cpp REQUIRED)
-# include_directories(${YAML_CPP_INCLUDE_DIR})
+find_package(yaml-cpp REQUIRED)
+include_directories(${YAML_CPP_INCLUDE_DIR})
 
 # lib
 file(GLOB DREAMVIEW_PLUS_PROTO_FILES 
@@ -104,7 +104,7 @@ target_link_libraries(dreamview2_lib PUBLIC
                     apollo_drivers
                     audio_proto
                     apollo_tf
-                    # yaml-cpp
+                    yaml-cpp
                     task_manager
 
                     fuel_monitor
@@ -113,6 +113,7 @@ target_link_libraries(dreamview2_lib PUBLIC
                     dv_handlers
                     dv_plugins
                     dv_sim_control_manager
+                    task_manager
 )
 
 # exe

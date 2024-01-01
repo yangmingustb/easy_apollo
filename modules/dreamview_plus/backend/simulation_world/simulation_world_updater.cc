@@ -25,6 +25,7 @@
 #include "modules/dreamview/backend/fuel_monitor/fuel_monitor_manager.h"
 #include "modules/dreamview/backend/sim_control_manager/sim_control_manager.h"
 #include "modules/map/hdmap/hdmap_util.h"
+#include "modules/task_manager/common/task_manager_gflags.h"
 
 namespace apollo {
 namespace dreamview {
