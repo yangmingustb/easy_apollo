@@ -142,7 +142,6 @@ message("cyber source: ${CYBER_PROTO_SRCS}")
 
 add_library(cyber SHARED
   ${CYBER_PROTO_SRCS}
-  # ${ALL_PROTO_SRCS}
   ${CYBER_SRCS}
 )
 target_include_directories(cyber PUBLIC
@@ -157,13 +156,10 @@ target_link_libraries(cyber PUBLIC
     glog
     ${fastrtps_LIBRARIES}
     
-    # fastcdr
     atomic
     uuid
     gflags
     tinyxml2
-    # dl
-    # rt
 )
 
 

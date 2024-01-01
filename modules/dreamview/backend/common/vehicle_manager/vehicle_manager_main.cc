@@ -14,32 +14,22 @@
  * limitations under the License.
  *****************************************************************************/
 
-#pragma once
+#include "modules/dreamview/backend/common/vehicle_manager/vehicle_manager.h"
 
-#include <string>
+#include "cyber/common/log.h"
+#include "gflags/gflags.h"
 
-#include "cyber/common/macros.h"
+DEFINE_string(vehicle_data_path, "modules/calibration/data/mkz_example",
+              "Vehicle data path.");
 
-#include "modules/dreamview/proto/hmi_config.pb.h"
+int main(int argc, char **argv) {
+  FLAGS_logtostderr = true;
+  google::InitGoogleLogging(argv[0]);
+  google::ParseCommandLineFlags(&argc, &argv, true);
 
-/**
- * @namespace apollo::dreamview
- * @brief apollo::dreamview
- */
-namespace apollo {
-namespace dreamview {
+  apollo::dreamview::VehicleManager::Instance()->UseVehicle(
+      FLAGS_vehicle_data_path);
+  AINFO << "Switched to vehicle with data from " << FLAGS_vehicle_data_path;
 
-class VehicleManager {
- public:
-  bool UseVehicle(const std::string& vehicle_data_path);
-  const std::string& GetVehicleDataPath() const;
-
- private:
-  std::string vehicle_data_path_;
-  VehicleData vehicle_data_;
-
-  DECLARE_SINGLETON(VehicleManager)
-};
-
-}  // namespace dreamview
-}  // namespace apollo
+  return 0;
+}

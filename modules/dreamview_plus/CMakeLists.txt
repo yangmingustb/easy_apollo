@@ -100,6 +100,7 @@ target_link_libraries(dreamview2_lib PUBLIC
                     libcivetweb.so
 
                     cyber
+                    recorder
                     gnss_driver
                     apollo_drivers
                     audio_proto

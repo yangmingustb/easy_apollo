@@ -276,6 +276,11 @@ bool Player::Reset()
     return true;
 }
 
+void Player::NohupPlayRecord()
+{
+    // nohup_play_th_.reset(new std::thread(&Player::ThreadFunc_Play_Nohup, this));
+}
+
 }  // namespace record
 }  // namespace cyber
 }  // namespace apollo

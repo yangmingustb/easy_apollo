@@ -18,21 +18,32 @@ target_link_libraries(cyber_monitor
 set_target_properties(cyber_monitor PROPERTIES RUNTIME_OUTPUT_DIRECTORY 
   "${CMAKE_BINARY_DIR}/bin/")
 
+
+# cyber_recorder
+add_library(recorder
+cyber_recorder/info.cc
+cyber_recorder/recorder.cc
+cyber_recorder/recoverer.cc
+cyber_recorder/spliter.cc
+cyber_recorder/player/play_task.cc
+cyber_recorder/player/play_task_buffer.cc
+cyber_recorder/player/play_task_consumer.cc
+cyber_recorder/player/play_task_producer.cc
+cyber_recorder/player/player.cc
+)
+target_link_libraries(recorder
+cyber 
+)
+set_target_properties(recorder PROPERTIES RUNTIME_OUTPUT_DIRECTORY 
+  "${CMAKE_BINARY_DIR}/bin/")
+
 # cyber_recorder
 add_executable(cyber_recorder
   cyber_recorder/main.cc
-  cyber_recorder/info.cc
-  cyber_recorder/recorder.cc
-  cyber_recorder/recoverer.cc
-  cyber_recorder/spliter.cc
-  cyber_recorder/player/play_task.cc
-  cyber_recorder/player/play_task_buffer.cc
-  cyber_recorder/player/play_task_consumer.cc
-  cyber_recorder/player/play_task_producer.cc
-  cyber_recorder/player/player.cc
 )
 target_link_libraries(cyber_recorder
  cyber 
+ recorder
 )
 set_target_properties(cyber_recorder PROPERTIES RUNTIME_OUTPUT_DIRECTORY 
     "${CMAKE_BINARY_DIR}/bin/")
@@ -40,9 +51,10 @@ set_target_properties(cyber_recorder PROPERTIES RUNTIME_OUTPUT_DIRECTORY
 
 install(TARGETS cyber_monitor
                 cyber_recorder
+                recorder
       ARCHIVE DESTINATION lib
       LIBRARY DESTINATION lib
-      # RUNTIME DESTINATION bin
+      RUNTIME DESTINATION bin
       RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}
 )
 

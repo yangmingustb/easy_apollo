@@ -35,7 +35,7 @@
 #include "modules/dreamview/backend/fuel_monitor/fuel_monitor_gflags.h"
 #include "modules/dreamview/backend/fuel_monitor/fuel_monitor_manager.h"
 #include "modules/dreamview/backend/fuel_monitor/preprocess_monitor.h"
-#include "modules/dreamview/backend/hmi/vehicle_manager.h"
+#include "modules/dreamview/backend/common/vehicle_manager/vehicle_manager.h"
 
 DEFINE_string(hmi_modes_config_path,
               "./../modules/dreamview/conf/hmi_modes",
