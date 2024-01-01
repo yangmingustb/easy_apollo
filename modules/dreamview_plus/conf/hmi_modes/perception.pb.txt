@@ -81,5 +81,5 @@ modules {
     }
   }
 }
-operations: Record
-default_operation: Record
+operations: Auto_Drive
+default_operation: Auto_Drive

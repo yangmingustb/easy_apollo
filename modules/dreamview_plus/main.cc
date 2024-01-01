@@ -18,18 +18,32 @@
 #include "cyber/init.h"
 #include "modules/dreamview_plus/backend/dreamview.h"
 
-int main(int argc, char *argv[]) {
-  google::ParseCommandLineFlags(&argc, &argv, true);
-  // Added by caros to improve dv performance
-  apollo::cyber::GlobalData::Instance()->SetProcessGroup("dreamview_sched");
-  apollo::cyber::Init(argv[0]);
+int main(int argc, char *argv[])
+{
+    google::ParseCommandLineFlags(&argc, &argv, true);
+    // Added by caros to improve dv performance
 
-  apollo::dreamview::Dreamview dreamview;
-  const bool init_success = dreamview.Init().ok() && dreamview.Start().ok();
-  if (!init_success) {
-    AERROR << "Failed to initialize dreamview server";
-    return -1;
-  }
-  apollo::cyber::WaitForShutdown();
-  return 0;
+    apollo::cyber::binary::SetName("dreamview_plus");
+    apollo::cyber::GlobalData::Instance()->SetProcessGroup("dreamview_sched");
+    apollo::cyber::Init(argv[0]);
+
+    FLAGS_vehicle_config_path =
+            "./../modules/common/data/vehicle_param.pb.txt";
+
+    FLAGS_vehicle_model_config_filename =
+            "./../modules/common/vehicle_model/conf/"
+            "vehicle_model_config.pb.txt";
+
+    apollo::dreamview::Dreamview dreamview;
+
+    const bool init_success = dreamview.Init().ok() && dreamview.Start().ok();
+
+    if (!init_success)
+    {
+        AERROR << "Failed to initialize dreamview server";
+        return -1;
+    }
+
+    apollo::cyber::WaitForShutdown();
+    return 0;
 }

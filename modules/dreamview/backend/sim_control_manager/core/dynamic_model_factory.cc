@@ -44,11 +44,14 @@ struct DynamicModelInfo {
 unordered_map<string, DynamicModelInfo> s_dynamic_model_map_;
 unordered_map<string, int> s_dm_lib_count_;
 
-DynamicModelFactory::DynamicModelFactory() : dynamic_model_local_path_("") {
-  home_path_ = cyber::common::GetEnv("HOME");
-  dynamic_model_local_path_ = home_path_ + FLAGS_resource_dynamic_model_path;
-  // init should register default sim control:SimPerfectControl
-  RegisterSimPerfectControl();
+DynamicModelFactory::DynamicModelFactory() : dynamic_model_local_path_("")
+{
+    // home_path_ = cyber::common::GetEnv("HOME");
+    // dynamic_model_local_path_ = home_path_ + FLAGS_resource_dynamic_model_path;
+
+    dynamic_model_local_path_ = FLAGS_resource_dynamic_model_path;
+    // init should register default sim control:SimPerfectControl
+    RegisterSimPerfectControl();
 }
 
 DynamicModelFactory::~DynamicModelFactory() {

@@ -82,7 +82,7 @@ DEFINE_double(system_status_lifetime_seconds, 30,
               "the status change.");
 
 DEFINE_string(lidar_height_yaml,
-              "/apollo/modules/localization/msf/params/velodyne_params/"
+              "./../modules/localization/msf/params/velodyne_params/"
               "velodyne64_height.yaml",
               "The yaml file for reading height of lidar w.r.t. ground.");
 
@@ -114,12 +114,12 @@ DEFINE_double(parking_routing_distance_threshold, 20.0,
               "end point based on this threshold.");
 
 
-DEFINE_string(plugin_path, "/.apollo/dreamview/plugins/", "Plugin placement");
+DEFINE_string(plugin_path, "./../modules/dreamview/backend/plugins/", "Plugin placement");
 
 DEFINE_string(plugin_config_file_name_suffix, "_plugin_config.pb.txt",
               "PLugin config file name!");
 
-DEFINE_string(plugin_channel_prefix, "/apollo/dreamview/plugins/",
+DEFINE_string(plugin_channel_prefix, "./../dreamview/backend/plugins/",
               "plugins must use this as channel prefix");
 
 DEFINE_string(resource_scenario_path, "/.apollo/resources/scenario_sets/",
@@ -152,7 +152,7 @@ DEFINE_string(sim_obstacle_path,
               "sim obstacle binary placement.");
 
 DEFINE_string(gflag_command_arg,
-              " --flagfile=/apollo/modules/common/data/global_flagfile.txt",
+              " --flagfile=./../modules/common/data/global_flagfile.txt",
               "sim obstacle need use gflag!");
 
 DEFINE_string(sim_perfect_control, "Simulation Perfect Control",

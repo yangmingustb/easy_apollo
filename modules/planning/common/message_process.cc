@@ -133,7 +133,7 @@ void MessageProcess::OnHMIStatus(apollo::dreamview::HMIStatus hmi_status)
     if (map_m_.count(current_map) > 0)
     {
         map_name_ = map_m_[current_map];
-        const std::string& map_base_folder = "/apollo/modules/map/data/";
+        const std::string& map_base_folder = "./../modules/map/data/";
         FLAGS_map_dir = map_base_folder + map_name_;
     }
 }

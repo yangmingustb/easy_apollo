@@ -29,13 +29,16 @@ void DvPluginManager::Init() {
 
 void DvPluginManager::Start() { RunInstances(); }
 
-bool DvPluginManager::AutoLoadPlugins() {
-  if (!PluginManager::Instance()->LoadInstalledPlugins()) {
-    AERROR << "Load plugins failed!";
-    return false;
-  }
-  AERROR << "pluginmanager index: " << PluginManager::Instance();
-  return true;
+bool DvPluginManager::AutoLoadPlugins()
+{
+    if (!PluginManager::Instance()->LoadInstalledPlugins())
+    {
+        AERROR << "Load plugins failed!";
+        return false;
+    }
+
+    AERROR << "plugin manager index: " << PluginManager::Instance();
+    return true;
 }
 
 void DvPluginManager::GetPluginClassNames() {
@@ -43,16 +46,19 @@ void DvPluginManager::GetPluginClassNames() {
       PluginManager::Instance()->GetDerivedClassNameByBaseClass<DvPluginBase>();
 }
 
-bool DvPluginManager::CreatePluginInstances() {
-  if (derived_class_names_.empty()) {
-    AERROR
-        << "There be seems no dreamview_plus plugins, please install plugins.";
-    return false;
-  }
-  for (const auto &class_name : derived_class_names_) {
-    CreatePluginInstance(class_name);
-  }
-  return true;
+bool DvPluginManager::CreatePluginInstances()
+{
+    if (derived_class_names_.empty())
+    {
+        AERROR << "There be seems no dreamview_plus plugins, please install "
+                  "plugins.";
+        return false;
+    }
+    for (const auto &class_name : derived_class_names_)
+    {
+        CreatePluginInstance(class_name);
+    }
+    return true;
 }
 
 bool DvPluginManager::CreatePluginInstance(const std::string class_name) {

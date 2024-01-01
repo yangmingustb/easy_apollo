@@ -45,7 +45,7 @@ void GenerateLearningData()
     }
 
     const std::string planning_config_file =
-            "/apollo/modules/planning/conf/planning_config.pb.txt";
+            "./../modules/planning/conf/planning_config.pb.txt";
     PlanningConfig planning_config;
     ACHECK(cyber::common::GetProtoFromFile(planning_config_file,
                                            &planning_config))
