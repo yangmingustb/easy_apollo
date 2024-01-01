@@ -192,11 +192,6 @@ DEFINE_string(data_recorder_command_keyword, "cyber_recorder record",
 DEFINE_string(data_record_default_name, "default_record_name",
               "Data record default name");
 
-DEFINE_double(threshold_for_destination_check, 1.0,
-              "meters, which is 100 feet.  This threshold is used to check if"
-              "the vehicle reaches the destination");
-
-
 DEFINE_string(dv_hmi_modes_config_path,
               "/apollo/modules/dreamview/conf/hmi_modes",
               "Dreamview HMI modes config path.");

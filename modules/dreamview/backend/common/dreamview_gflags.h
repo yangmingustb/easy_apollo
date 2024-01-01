@@ -120,8 +120,6 @@ DECLARE_string(data_recorder_command_keyword);
 
 DECLARE_string(data_record_default_name);
 
-DECLARE_double(threshold_for_destination_check);
-
 DECLARE_string(dv_hmi_modes_config_path);
 
 DECLARE_string(dv_plus_hmi_modes_config_path);

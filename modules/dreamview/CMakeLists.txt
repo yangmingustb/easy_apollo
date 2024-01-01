@@ -206,6 +206,7 @@ target_link_libraries(dv_point_cloud PUBLIC
 					apollo_common
 					apollo_map
 					apollo_dreamview_proto
+                    yaml-cpp
 )
 
 
