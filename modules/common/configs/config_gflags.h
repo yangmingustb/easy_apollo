@@ -54,3 +54,5 @@ DECLARE_bool(state_transform_to_com_drive);
 DECLARE_bool(multithread_run);
 DECLARE_bool(replay_mode);
 DECLARE_bool(use_bev_perception);
+
+DECLARE_string(park_go_routing_filename);

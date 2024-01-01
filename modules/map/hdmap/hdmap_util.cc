@@ -25,10 +25,12 @@ namespace apollo
 {
 namespace hdmap
 {
+
 using apollo::relative_map::MapMsg;
 
 namespace
 {
+
 // Find the first existing file from a list of candidates: "file_a|file_b|...".
 std::string FindFirstExist(const std::string& dir, const std::string& files)
 {
@@ -205,6 +207,15 @@ bool HDMapUtil::ReloadMaps()
         sim_map_ = CreateMap(SimMapFile());
     }
     return base_map_ != nullptr && sim_map_ != nullptr;
+}
+
+bool HDMapUtil::ReloadBaseMap()
+{
+    {
+        std::lock_guard<std::mutex> lock(base_map_mutex_);
+        base_map_ = CreateMap(BaseMapFile());
+    }
+    return base_map_ != nullptr;
 }
 
 }  // namespace hdmap

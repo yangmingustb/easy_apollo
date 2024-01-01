@@ -34,7 +34,7 @@
 #include <google/protobuf/unknown_field_set.h>
 #include "modules/common/proto/header.pb.h"
 #include "modules/routing/proto/routing.pb.h"
-#include "modules/map/proto/map_parking_space.pb.h"
+#include "modules/common_msgs/external_command_msgs/lane_follow_command.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto
@@ -50,7 +50,7 @@ struct TableStruct_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[5]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -65,6 +65,9 @@ extern CycleRoutingTaskDefaultTypeInternal _CycleRoutingTask_default_instance_;
 class DeadEndRoutingTask;
 class DeadEndRoutingTaskDefaultTypeInternal;
 extern DeadEndRoutingTaskDefaultTypeInternal _DeadEndRoutingTask_default_instance_;
+class ParkGoRoutingTask;
+class ParkGoRoutingTaskDefaultTypeInternal;
+extern ParkGoRoutingTaskDefaultTypeInternal _ParkGoRoutingTask_default_instance_;
 class ParkingRoutingTask;
 class ParkingRoutingTaskDefaultTypeInternal;
 extern ParkingRoutingTaskDefaultTypeInternal _ParkingRoutingTask_default_instance_;
@@ -76,6 +79,7 @@ extern TaskDefaultTypeInternal _Task_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
 template<> ::apollo::task_manager::CycleRoutingTask* Arena::CreateMaybeMessage<::apollo::task_manager::CycleRoutingTask>(Arena*);
 template<> ::apollo::task_manager::DeadEndRoutingTask* Arena::CreateMaybeMessage<::apollo::task_manager::DeadEndRoutingTask>(Arena*);
+template<> ::apollo::task_manager::ParkGoRoutingTask* Arena::CreateMaybeMessage<::apollo::task_manager::ParkGoRoutingTask>(Arena*);
 template<> ::apollo::task_manager::ParkingRoutingTask* Arena::CreateMaybeMessage<::apollo::task_manager::ParkingRoutingTask>(Arena*);
 template<> ::apollo::task_manager::Task* Arena::CreateMaybeMessage<::apollo::task_manager::Task>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -255,6 +259,7 @@ class CycleRoutingTask PROTOBUF_FINAL :
 
   enum : int {
     kRoutingRequestFieldNumber = 2,
+    kLaneFollowCommandFieldNumber = 3,
     kCycleNumFieldNumber = 1,
   };
   // optional .apollo.routing.RoutingRequest routing_request = 2;
@@ -274,6 +279,24 @@ class CycleRoutingTask PROTOBUF_FINAL :
   void unsafe_arena_set_allocated_routing_request(
       ::apollo::routing::RoutingRequest* routing_request);
   ::apollo::routing::RoutingRequest* unsafe_arena_release_routing_request();
+
+  // optional .apollo.external_command.LaneFollowCommand lane_follow_command = 3;
+  bool has_lane_follow_command() const;
+  private:
+  bool _internal_has_lane_follow_command() const;
+  public:
+  void clear_lane_follow_command();
+  const ::apollo::external_command::LaneFollowCommand& lane_follow_command() const;
+  ::apollo::external_command::LaneFollowCommand* release_lane_follow_command();
+  ::apollo::external_command::LaneFollowCommand* mutable_lane_follow_command();
+  void set_allocated_lane_follow_command(::apollo::external_command::LaneFollowCommand* lane_follow_command);
+  private:
+  const ::apollo::external_command::LaneFollowCommand& _internal_lane_follow_command() const;
+  ::apollo::external_command::LaneFollowCommand* _internal_mutable_lane_follow_command();
+  public:
+  void unsafe_arena_set_allocated_lane_follow_command(
+      ::apollo::external_command::LaneFollowCommand* lane_follow_command);
+  ::apollo::external_command::LaneFollowCommand* unsafe_arena_release_lane_follow_command();
 
   // optional int32 cycle_num = 1;
   bool has_cycle_num() const;
@@ -298,6 +321,7 @@ class CycleRoutingTask PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::apollo::routing::RoutingRequest* routing_request_;
+  ::apollo::external_command::LaneFollowCommand* lane_follow_command_;
   ::PROTOBUF_NAMESPACE_ID::int32 cycle_num_;
   friend struct ::TableStruct_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto;
 };
@@ -644,6 +668,174 @@ class DeadEndRoutingTask PROTOBUF_FINAL :
 };
 // -------------------------------------------------------------------
 
+class ParkGoRoutingTask PROTOBUF_FINAL :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:apollo.task_manager.ParkGoRoutingTask) */ {
+ public:
+  inline ParkGoRoutingTask() : ParkGoRoutingTask(nullptr) {}
+  virtual ~ParkGoRoutingTask();
+
+  ParkGoRoutingTask(const ParkGoRoutingTask& from);
+  ParkGoRoutingTask(ParkGoRoutingTask&& from) noexcept
+    : ParkGoRoutingTask() {
+    *this = ::std::move(from);
+  }
+
+  inline ParkGoRoutingTask& operator=(const ParkGoRoutingTask& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ParkGoRoutingTask& operator=(ParkGoRoutingTask&& from) noexcept {
+    if (GetArena() == from.GetArena()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const ParkGoRoutingTask& default_instance();
+
+  static inline const ParkGoRoutingTask* internal_default_instance() {
+    return reinterpret_cast<const ParkGoRoutingTask*>(
+               &_ParkGoRoutingTask_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(ParkGoRoutingTask& a, ParkGoRoutingTask& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ParkGoRoutingTask* other) {
+    if (other == this) return;
+    if (GetArena() == other->GetArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ParkGoRoutingTask* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ParkGoRoutingTask* New() const final {
+    return CreateMaybeMessage<ParkGoRoutingTask>(nullptr);
+  }
+
+  ParkGoRoutingTask* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ParkGoRoutingTask>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const ParkGoRoutingTask& from);
+  void MergeFrom(const ParkGoRoutingTask& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ParkGoRoutingTask* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "apollo.task_manager.ParkGoRoutingTask";
+  }
+  protected:
+  explicit ParkGoRoutingTask(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto);
+    return ::descriptor_table_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRoutingRequestFieldNumber = 2,
+    kParkTimeFieldNumber = 1,
+  };
+  // optional .apollo.routing.RoutingRequest routing_request = 2;
+  bool has_routing_request() const;
+  private:
+  bool _internal_has_routing_request() const;
+  public:
+  void clear_routing_request();
+  const ::apollo::routing::RoutingRequest& routing_request() const;
+  ::apollo::routing::RoutingRequest* release_routing_request();
+  ::apollo::routing::RoutingRequest* mutable_routing_request();
+  void set_allocated_routing_request(::apollo::routing::RoutingRequest* routing_request);
+  private:
+  const ::apollo::routing::RoutingRequest& _internal_routing_request() const;
+  ::apollo::routing::RoutingRequest* _internal_mutable_routing_request();
+  public:
+  void unsafe_arena_set_allocated_routing_request(
+      ::apollo::routing::RoutingRequest* routing_request);
+  ::apollo::routing::RoutingRequest* unsafe_arena_release_routing_request();
+
+  // optional int32 park_time = 1;
+  bool has_park_time() const;
+  private:
+  bool _internal_has_park_time() const;
+  public:
+  void clear_park_time();
+  ::PROTOBUF_NAMESPACE_ID::int32 park_time() const;
+  void set_park_time(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_park_time() const;
+  void _internal_set_park_time(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:apollo.task_manager.ParkGoRoutingTask)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::apollo::routing::RoutingRequest* routing_request_;
+  ::PROTOBUF_NAMESPACE_ID::int32 park_time_;
+  friend struct ::TableStruct_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto;
+};
+// -------------------------------------------------------------------
+
 class Task PROTOBUF_FINAL :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:apollo.task_manager.Task) */ {
  public:
@@ -691,6 +883,7 @@ class Task PROTOBUF_FINAL :
     kCycleRoutingTask = 4,
     kParkingRoutingTask = 5,
     kDeadEndRoutingTask = 6,
+    kParkGoRoutingTask = 7,
     ROUTING_TASK_NOT_SET = 0,
   };
 
@@ -699,7 +892,7 @@ class Task PROTOBUF_FINAL :
                &_Task_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(Task& a, Task& b) {
     a.Swap(&b);
@@ -776,6 +969,7 @@ class Task PROTOBUF_FINAL :
     kCycleRoutingTaskFieldNumber = 4,
     kParkingRoutingTaskFieldNumber = 5,
     kDeadEndRoutingTaskFieldNumber = 6,
+    kParkGoRoutingTaskFieldNumber = 7,
   };
   // optional string task_name = 2;
   bool has_task_name() const;
@@ -882,6 +1076,24 @@ class Task PROTOBUF_FINAL :
       ::apollo::task_manager::DeadEndRoutingTask* dead_end_routing_task);
   ::apollo::task_manager::DeadEndRoutingTask* unsafe_arena_release_dead_end_routing_task();
 
+  // .apollo.task_manager.ParkGoRoutingTask park_go_routing_task = 7;
+  bool has_park_go_routing_task() const;
+  private:
+  bool _internal_has_park_go_routing_task() const;
+  public:
+  void clear_park_go_routing_task();
+  const ::apollo::task_manager::ParkGoRoutingTask& park_go_routing_task() const;
+  ::apollo::task_manager::ParkGoRoutingTask* release_park_go_routing_task();
+  ::apollo::task_manager::ParkGoRoutingTask* mutable_park_go_routing_task();
+  void set_allocated_park_go_routing_task(::apollo::task_manager::ParkGoRoutingTask* park_go_routing_task);
+  private:
+  const ::apollo::task_manager::ParkGoRoutingTask& _internal_park_go_routing_task() const;
+  ::apollo::task_manager::ParkGoRoutingTask* _internal_mutable_park_go_routing_task();
+  public:
+  void unsafe_arena_set_allocated_park_go_routing_task(
+      ::apollo::task_manager::ParkGoRoutingTask* park_go_routing_task);
+  ::apollo::task_manager::ParkGoRoutingTask* unsafe_arena_release_park_go_routing_task();
+
   void clear_routing_task();
   RoutingTaskCase routing_task_case() const;
   // @@protoc_insertion_point(class_scope:apollo.task_manager.Task)
@@ -890,6 +1102,7 @@ class Task PROTOBUF_FINAL :
   void set_has_cycle_routing_task();
   void set_has_parking_routing_task();
   void set_has_dead_end_routing_task();
+  void set_has_park_go_routing_task();
 
   inline bool has_routing_task() const;
   inline void clear_has_routing_task();
@@ -907,6 +1120,7 @@ class Task PROTOBUF_FINAL :
     ::apollo::task_manager::CycleRoutingTask* cycle_routing_task_;
     ::apollo::task_manager::ParkingRoutingTask* parking_routing_task_;
     ::apollo::task_manager::DeadEndRoutingTask* dead_end_routing_task_;
+    ::apollo::task_manager::ParkGoRoutingTask* park_go_routing_task_;
   } routing_task_;
   ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
 
@@ -925,7 +1139,7 @@ class Task PROTOBUF_FINAL :
 
 // optional int32 cycle_num = 1;
 inline bool CycleRoutingTask::_internal_has_cycle_num() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
   return value;
 }
 inline bool CycleRoutingTask::has_cycle_num() const {
@@ -933,7 +1147,7 @@ inline bool CycleRoutingTask::has_cycle_num() const {
 }
 inline void CycleRoutingTask::clear_cycle_num() {
   cycle_num_ = 0;
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::int32 CycleRoutingTask::_internal_cycle_num() const {
   return cycle_num_;
@@ -943,7 +1157,7 @@ inline ::PROTOBUF_NAMESPACE_ID::int32 CycleRoutingTask::cycle_num() const {
   return _internal_cycle_num();
 }
 inline void CycleRoutingTask::_internal_set_cycle_num(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   cycle_num_ = value;
 }
 inline void CycleRoutingTask::set_cycle_num(::PROTOBUF_NAMESPACE_ID::int32 value) {
@@ -1028,6 +1242,85 @@ inline void CycleRoutingTask::set_allocated_routing_request(::apollo::routing::R
   }
   routing_request_ = routing_request;
   // @@protoc_insertion_point(field_set_allocated:apollo.task_manager.CycleRoutingTask.routing_request)
+}
+
+// optional .apollo.external_command.LaneFollowCommand lane_follow_command = 3;
+inline bool CycleRoutingTask::_internal_has_lane_follow_command() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || lane_follow_command_ != nullptr);
+  return value;
+}
+inline bool CycleRoutingTask::has_lane_follow_command() const {
+  return _internal_has_lane_follow_command();
+}
+inline const ::apollo::external_command::LaneFollowCommand& CycleRoutingTask::_internal_lane_follow_command() const {
+  const ::apollo::external_command::LaneFollowCommand* p = lane_follow_command_;
+  return p != nullptr ? *p : reinterpret_cast<const ::apollo::external_command::LaneFollowCommand&>(
+      ::apollo::external_command::_LaneFollowCommand_default_instance_);
+}
+inline const ::apollo::external_command::LaneFollowCommand& CycleRoutingTask::lane_follow_command() const {
+  // @@protoc_insertion_point(field_get:apollo.task_manager.CycleRoutingTask.lane_follow_command)
+  return _internal_lane_follow_command();
+}
+inline void CycleRoutingTask::unsafe_arena_set_allocated_lane_follow_command(
+    ::apollo::external_command::LaneFollowCommand* lane_follow_command) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(lane_follow_command_);
+  }
+  lane_follow_command_ = lane_follow_command;
+  if (lane_follow_command) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:apollo.task_manager.CycleRoutingTask.lane_follow_command)
+}
+inline ::apollo::external_command::LaneFollowCommand* CycleRoutingTask::release_lane_follow_command() {
+  _has_bits_[0] &= ~0x00000002u;
+  ::apollo::external_command::LaneFollowCommand* temp = lane_follow_command_;
+  lane_follow_command_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::apollo::external_command::LaneFollowCommand* CycleRoutingTask::unsafe_arena_release_lane_follow_command() {
+  // @@protoc_insertion_point(field_release:apollo.task_manager.CycleRoutingTask.lane_follow_command)
+  _has_bits_[0] &= ~0x00000002u;
+  ::apollo::external_command::LaneFollowCommand* temp = lane_follow_command_;
+  lane_follow_command_ = nullptr;
+  return temp;
+}
+inline ::apollo::external_command::LaneFollowCommand* CycleRoutingTask::_internal_mutable_lane_follow_command() {
+  _has_bits_[0] |= 0x00000002u;
+  if (lane_follow_command_ == nullptr) {
+    auto* p = CreateMaybeMessage<::apollo::external_command::LaneFollowCommand>(GetArena());
+    lane_follow_command_ = p;
+  }
+  return lane_follow_command_;
+}
+inline ::apollo::external_command::LaneFollowCommand* CycleRoutingTask::mutable_lane_follow_command() {
+  // @@protoc_insertion_point(field_mutable:apollo.task_manager.CycleRoutingTask.lane_follow_command)
+  return _internal_mutable_lane_follow_command();
+}
+inline void CycleRoutingTask::set_allocated_lane_follow_command(::apollo::external_command::LaneFollowCommand* lane_follow_command) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(lane_follow_command_);
+  }
+  if (lane_follow_command) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(lane_follow_command)->GetArena();
+    if (message_arena != submessage_arena) {
+      lane_follow_command = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, lane_follow_command, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  lane_follow_command_ = lane_follow_command;
+  // @@protoc_insertion_point(field_set_allocated:apollo.task_manager.CycleRoutingTask.lane_follow_command)
 }
 
 // -------------------------------------------------------------------
@@ -1301,6 +1594,117 @@ inline void DeadEndRoutingTask::set_allocated_routing_request_out(::apollo::rout
   }
   routing_request_out_ = routing_request_out;
   // @@protoc_insertion_point(field_set_allocated:apollo.task_manager.DeadEndRoutingTask.routing_request_out)
+}
+
+// -------------------------------------------------------------------
+
+// ParkGoRoutingTask
+
+// optional int32 park_time = 1;
+inline bool ParkGoRoutingTask::_internal_has_park_time() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool ParkGoRoutingTask::has_park_time() const {
+  return _internal_has_park_time();
+}
+inline void ParkGoRoutingTask::clear_park_time() {
+  park_time_ = 0;
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ParkGoRoutingTask::_internal_park_time() const {
+  return park_time_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 ParkGoRoutingTask::park_time() const {
+  // @@protoc_insertion_point(field_get:apollo.task_manager.ParkGoRoutingTask.park_time)
+  return _internal_park_time();
+}
+inline void ParkGoRoutingTask::_internal_set_park_time(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000002u;
+  park_time_ = value;
+}
+inline void ParkGoRoutingTask::set_park_time(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_park_time(value);
+  // @@protoc_insertion_point(field_set:apollo.task_manager.ParkGoRoutingTask.park_time)
+}
+
+// optional .apollo.routing.RoutingRequest routing_request = 2;
+inline bool ParkGoRoutingTask::_internal_has_routing_request() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || routing_request_ != nullptr);
+  return value;
+}
+inline bool ParkGoRoutingTask::has_routing_request() const {
+  return _internal_has_routing_request();
+}
+inline const ::apollo::routing::RoutingRequest& ParkGoRoutingTask::_internal_routing_request() const {
+  const ::apollo::routing::RoutingRequest* p = routing_request_;
+  return p != nullptr ? *p : reinterpret_cast<const ::apollo::routing::RoutingRequest&>(
+      ::apollo::routing::_RoutingRequest_default_instance_);
+}
+inline const ::apollo::routing::RoutingRequest& ParkGoRoutingTask::routing_request() const {
+  // @@protoc_insertion_point(field_get:apollo.task_manager.ParkGoRoutingTask.routing_request)
+  return _internal_routing_request();
+}
+inline void ParkGoRoutingTask::unsafe_arena_set_allocated_routing_request(
+    ::apollo::routing::RoutingRequest* routing_request) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(routing_request_);
+  }
+  routing_request_ = routing_request;
+  if (routing_request) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:apollo.task_manager.ParkGoRoutingTask.routing_request)
+}
+inline ::apollo::routing::RoutingRequest* ParkGoRoutingTask::release_routing_request() {
+  _has_bits_[0] &= ~0x00000001u;
+  ::apollo::routing::RoutingRequest* temp = routing_request_;
+  routing_request_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::apollo::routing::RoutingRequest* ParkGoRoutingTask::unsafe_arena_release_routing_request() {
+  // @@protoc_insertion_point(field_release:apollo.task_manager.ParkGoRoutingTask.routing_request)
+  _has_bits_[0] &= ~0x00000001u;
+  ::apollo::routing::RoutingRequest* temp = routing_request_;
+  routing_request_ = nullptr;
+  return temp;
+}
+inline ::apollo::routing::RoutingRequest* ParkGoRoutingTask::_internal_mutable_routing_request() {
+  _has_bits_[0] |= 0x00000001u;
+  if (routing_request_ == nullptr) {
+    auto* p = CreateMaybeMessage<::apollo::routing::RoutingRequest>(GetArena());
+    routing_request_ = p;
+  }
+  return routing_request_;
+}
+inline ::apollo::routing::RoutingRequest* ParkGoRoutingTask::mutable_routing_request() {
+  // @@protoc_insertion_point(field_mutable:apollo.task_manager.ParkGoRoutingTask.routing_request)
+  return _internal_mutable_routing_request();
+}
+inline void ParkGoRoutingTask::set_allocated_routing_request(::apollo::routing::RoutingRequest* routing_request) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(routing_request_);
+  }
+  if (routing_request) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(routing_request)->GetArena();
+    if (message_arena != submessage_arena) {
+      routing_request = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, routing_request, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  routing_request_ = routing_request;
+  // @@protoc_insertion_point(field_set_allocated:apollo.task_manager.ParkGoRoutingTask.routing_request)
 }
 
 // -------------------------------------------------------------------
@@ -1707,6 +2111,79 @@ inline ::apollo::task_manager::DeadEndRoutingTask* Task::mutable_dead_end_routin
   return _internal_mutable_dead_end_routing_task();
 }
 
+// .apollo.task_manager.ParkGoRoutingTask park_go_routing_task = 7;
+inline bool Task::_internal_has_park_go_routing_task() const {
+  return routing_task_case() == kParkGoRoutingTask;
+}
+inline bool Task::has_park_go_routing_task() const {
+  return _internal_has_park_go_routing_task();
+}
+inline void Task::set_has_park_go_routing_task() {
+  _oneof_case_[0] = kParkGoRoutingTask;
+}
+inline void Task::clear_park_go_routing_task() {
+  if (_internal_has_park_go_routing_task()) {
+    if (GetArena() == nullptr) {
+      delete routing_task_.park_go_routing_task_;
+    }
+    clear_has_routing_task();
+  }
+}
+inline ::apollo::task_manager::ParkGoRoutingTask* Task::release_park_go_routing_task() {
+  // @@protoc_insertion_point(field_release:apollo.task_manager.Task.park_go_routing_task)
+  if (_internal_has_park_go_routing_task()) {
+    clear_has_routing_task();
+      ::apollo::task_manager::ParkGoRoutingTask* temp = routing_task_.park_go_routing_task_;
+    if (GetArena() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    routing_task_.park_go_routing_task_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::apollo::task_manager::ParkGoRoutingTask& Task::_internal_park_go_routing_task() const {
+  return _internal_has_park_go_routing_task()
+      ? *routing_task_.park_go_routing_task_
+      : reinterpret_cast< ::apollo::task_manager::ParkGoRoutingTask&>(::apollo::task_manager::_ParkGoRoutingTask_default_instance_);
+}
+inline const ::apollo::task_manager::ParkGoRoutingTask& Task::park_go_routing_task() const {
+  // @@protoc_insertion_point(field_get:apollo.task_manager.Task.park_go_routing_task)
+  return _internal_park_go_routing_task();
+}
+inline ::apollo::task_manager::ParkGoRoutingTask* Task::unsafe_arena_release_park_go_routing_task() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:apollo.task_manager.Task.park_go_routing_task)
+  if (_internal_has_park_go_routing_task()) {
+    clear_has_routing_task();
+    ::apollo::task_manager::ParkGoRoutingTask* temp = routing_task_.park_go_routing_task_;
+    routing_task_.park_go_routing_task_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void Task::unsafe_arena_set_allocated_park_go_routing_task(::apollo::task_manager::ParkGoRoutingTask* park_go_routing_task) {
+  clear_routing_task();
+  if (park_go_routing_task) {
+    set_has_park_go_routing_task();
+    routing_task_.park_go_routing_task_ = park_go_routing_task;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:apollo.task_manager.Task.park_go_routing_task)
+}
+inline ::apollo::task_manager::ParkGoRoutingTask* Task::_internal_mutable_park_go_routing_task() {
+  if (!_internal_has_park_go_routing_task()) {
+    clear_routing_task();
+    set_has_park_go_routing_task();
+    routing_task_.park_go_routing_task_ = CreateMaybeMessage< ::apollo::task_manager::ParkGoRoutingTask >(GetArena());
+  }
+  return routing_task_.park_go_routing_task_;
+}
+inline ::apollo::task_manager::ParkGoRoutingTask* Task::mutable_park_go_routing_task() {
+  // @@protoc_insertion_point(field_mutable:apollo.task_manager.Task.park_go_routing_task)
+  return _internal_mutable_park_go_routing_task();
+}
+
 inline bool Task::has_routing_task() const {
   return routing_task_case() != ROUTING_TASK_NOT_SET;
 }
@@ -1719,6 +2196,8 @@ inline Task::RoutingTaskCase Task::routing_task_case() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

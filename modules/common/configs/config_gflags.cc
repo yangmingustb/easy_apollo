@@ -82,3 +82,7 @@ DEFINE_bool(multithread_run, false,
             "multi-thread run flag mainly used by simulation");
 DEFINE_bool(replay_mode, false, "replay mode for read record");
 DEFINE_bool(use_bev_perception, true, "replay mode for read record");
+
+
+DEFINE_string(park_go_routing_filename, "park_go_routing.txt",
+              "Park go routing of the map, support for dreamview contest.");

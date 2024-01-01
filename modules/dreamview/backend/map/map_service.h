@@ -98,6 +98,13 @@ public:
 
     size_t CalculateMapHash(const MapElementIds &ids) const;
 
+    double GetLaneHeading(const std::string &id_str, double s);
+
+    std::string GetParkingSpaceId(const double x, const double y) const;
+
+    bool CheckRoutingPointWithHeading(const double x, const double y,
+                                      const double heading) const;
+
     // private:
 public:
     void UpdateOffsets();
