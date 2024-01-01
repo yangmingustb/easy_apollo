@@ -211,45 +211,57 @@ bool PluginManager::RegisterPlugin(
   return true;
 }
 
-bool PluginManager::RegisterPlugins() {
-  const std::string plugin_path =
-      (cyber::common::GetEnv("HOME")) + FLAGS_plugin_path;
-  DIR* directory = opendir(plugin_path.c_str());
-  if (directory == nullptr) {
-    AERROR << "Cannot open directory " << FLAGS_plugin_path;
-    return false;
-  }
-  struct dirent* entry;
-  bool register_res = true;
-  while ((entry = readdir(directory)) != nullptr && register_res) {
-    // skip directory_path/. and directory_path/..
-    if (!strcmp(entry->d_name, ".") || !strcmp(entry->d_name, "..")) {
-      continue;
+bool PluginManager::RegisterPlugins()
+{
+    const std::string plugin_path = FLAGS_plugin_path;
+
+    DIR* directory = opendir(plugin_path.c_str());
+    if (directory == nullptr)
+    {
+        AERROR << "Cannot open directory " << plugin_path;
+        return false;
     }
-    if (entry->d_type != DT_DIR) {
-      // skip not directory
-      continue;
+    struct dirent* entry;
+    bool register_res = true;
+    while ((entry = readdir(directory)) != nullptr && register_res)
+    {
+        // skip directory_path/. and directory_path/..
+        if (!strcmp(entry->d_name, ".") || !strcmp(entry->d_name, ".."))
+        {
+            continue;
+        }
+        if (entry->d_type != DT_DIR)
+        {
+            // skip not directory
+            continue;
+        }
+        const string plugin_config_file_name =
+                entry->d_name + FLAGS_plugin_config_file_name_suffix;
+
+        // const string plugin_config_file_path =
+        //         (cyber::common::GetEnv("HOME")) + FLAGS_plugin_path + "/" +
+        //         entry->d_name + "/" + plugin_config_file_name;
+        const string plugin_config_file_path = FLAGS_plugin_path + "/" +
+                                               entry->d_name + "/" +
+                                               plugin_config_file_name;
+
+        if (!cyber::common::PathExists(plugin_config_file_path))
+        {
+            AERROR << "Cannot find plugin:" << entry->d_name
+                   << " plugin config file, jump it!";
+            continue;
+        }
+        auto plugin_config = std::make_shared<PluginConfig>();
+        if (!cyber::common::GetProtoFromFile(plugin_config_file_path,
+                                             plugin_config.get()))
+        {
+            AWARN << "Unable to read plugin config from file: "
+                  << plugin_config_file_path;
+            return false;
+        }
+        register_res = RegisterPlugin(plugin_config);
     }
-    const string plugin_config_file_name =
-        entry->d_name + FLAGS_plugin_config_file_name_suffix;
-    const string plugin_config_file_path =
-        (cyber::common::GetEnv("HOME")) + FLAGS_plugin_path + "/" +
-        entry->d_name + "/" + plugin_config_file_name;
-    if (!cyber::common::PathExists(plugin_config_file_path)) {
-      AERROR << "Cannot find plugin:" << entry->d_name
-             << " plugin config file, jump it!";
-      continue;
-    }
-    auto plugin_config = std::make_shared<PluginConfig>();
-    if (!cyber::common::GetProtoFromFile(plugin_config_file_path,
-                                         plugin_config.get())) {
-      AWARN << "Unable to read plugin config from file: "
-            << plugin_config_file_path;
-      return false;
-    }
-    register_res = RegisterPlugin(plugin_config);
-  }
-  return register_res;
+    return register_res;
 }
 
 bool PluginManager::CheckPluginStatus(const string& plugin_name) {

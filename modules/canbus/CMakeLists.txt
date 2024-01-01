@@ -9,7 +9,7 @@ file(GLOB_RECURSE APOLLO_MODULES_SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/proto
 
 
 
-add_library(apollo_canbus  SHARED  ${APOLLO_MODULES_SOURCE_FILES})
+add_library(apollo_canbus  STATIC  ${APOLLO_MODULES_SOURCE_FILES})
 target_include_directories(apollo_canbus PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
         )
@@ -23,7 +23,7 @@ install(TARGETS apollo_canbus
         
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
-        RUNTIME DESTINATION bin
+        # RUNTIME DESTINATION bin
         INCLUDES DESTINATION .
         )
 

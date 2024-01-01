@@ -11,6 +11,7 @@ ended_procs="
             chassis_component_main
             cyber_recorder
             dreamview_main
+            dreamview2_main
             "
 
 curr_dir=$(pwd)

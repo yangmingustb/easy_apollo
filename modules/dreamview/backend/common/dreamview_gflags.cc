@@ -82,7 +82,7 @@ DEFINE_double(system_status_lifetime_seconds, 30,
               "the status change.");
 
 DEFINE_string(lidar_height_yaml,
-              "/apollo/modules/localization/msf/params/velodyne_params/"
+              "./../modules/localization/msf/params/velodyne_params/"
               "velodyne64_height.yaml",
               "The yaml file for reading height of lidar w.r.t. ground.");
 
@@ -114,12 +114,12 @@ DEFINE_double(parking_routing_distance_threshold, 20.0,
               "end point based on this threshold.");
 
 
-DEFINE_string(plugin_path, "/.apollo/dreamview/plugins/", "Plugin placement");
+DEFINE_string(plugin_path, "./../modules/dreamview/backend/plugins/", "Plugin placement");
 
 DEFINE_string(plugin_config_file_name_suffix, "_plugin_config.pb.txt",
               "PLugin config file name!");
 
-DEFINE_string(plugin_channel_prefix, "/apollo/dreamview/plugins/",
+DEFINE_string(plugin_channel_prefix, "./../dreamview/backend/plugins/",
               "plugins must use this as channel prefix");
 
 DEFINE_string(resource_scenario_path, "/.apollo/resources/scenario_sets/",
@@ -152,7 +152,7 @@ DEFINE_string(sim_obstacle_path,
               "sim obstacle binary placement.");
 
 DEFINE_string(gflag_command_arg,
-              " --flagfile=/apollo/modules/common/data/global_flagfile.txt",
+              " --flagfile=./../modules/common/data/global_flagfile.txt",
               "sim obstacle need use gflag!");
 
 DEFINE_string(sim_perfect_control, "Simulation Perfect Control",
@@ -193,14 +193,14 @@ DEFINE_string(data_record_default_name, "default_record_name",
               "Data record default name");
 
 DEFINE_string(dv_hmi_modes_config_path,
-              "/apollo/modules/dreamview/conf/hmi_modes",
+              "./../modules/dreamview/conf/hmi_modes",
               "Dreamview HMI modes config path.");
 DEFINE_string(dv_plus_hmi_modes_config_path,
-              "/apollo/modules/dreamview_plus/conf/hmi_modes",
+              "./../modules/dreamview_plus/conf/hmi_modes",
               "Dreamview Plus HMI modes config path.");
 DEFINE_string(maps_data_path, "./../modules/map/data", "Maps data path.");
 DEFINE_string(global_components_config_path,
-              "/apollo/modules/dreamview/conf/global_components_config.pb.txt",
+              "./../modules/dreamview/conf/global_components_config.pb.txt",
               "Global components config path.");
 
 DEFINE_string(

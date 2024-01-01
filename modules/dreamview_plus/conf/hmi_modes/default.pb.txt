@@ -83,7 +83,8 @@ modules {
     }
   }
 }
-operations: Record
-operations: Scenario_Sim
-operations: Sim_Control
-default_operation: Record
+# operations: Record
+# operations: Scenario_Sim
+# operations: Sim_Control
+operations: Auto_Drive
+default_operation: Auto_Drive

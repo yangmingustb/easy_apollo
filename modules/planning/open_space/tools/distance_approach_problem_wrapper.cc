@@ -495,7 +495,7 @@ extern "C"
         double ipopt_total = 0.0;
 
         std::string flag_file_path =
-                "/apollo/modules/planning/conf/planning.conf";
+                "./../modules/planning/conf/planning.conf";
         google::SetCommandLineOption("flagfile", flag_file_path.c_str());
 
         HybridAStartResult hybrid_astar_result;

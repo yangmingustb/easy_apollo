@@ -128,10 +128,10 @@ TEST(FileTest, Glob)
             Glob("/apol?o/modules/p*"),
             testing::AllOf(
                     testing::Contains(
-                            std::string("/apollo/modules/perception")),
-                    testing::Contains(std::string("/apollo/modules/planning")),
+                            std::string("./../modules/perception")),
+                    testing::Contains(std::string("./../modules/planning")),
                     testing::Contains(
-                            std::string("/apollo/modules/prediction"))));
+                            std::string("./../modules/prediction"))));
 }
 
 TEST(FileTest, GetAbsolutePath)

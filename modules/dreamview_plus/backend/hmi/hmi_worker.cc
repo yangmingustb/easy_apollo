@@ -87,7 +87,7 @@ template <class FlagType, class ValueType>
 void SetGlobalFlag(std::string_view flag_name, const ValueType &value,
                    FlagType *flag) {
   constexpr char kGlobalFlagfile[] =
-      "/apollo/modules/common/data/global_flagfile.txt";
+      "./../modules/common/data/global_flagfile.txt";
   if (*flag != value) {
     *flag = value;
     // Overwrite global flagfile.
@@ -848,10 +848,13 @@ void HMIWorker::UpdateComponentStatus() {
   }
 }
 
-void HMIWorker::GetScenarioResourcePath(std::string *scenario_resource_path) {
-  CHECK_NOTNULL(scenario_resource_path);
-  const std::string home = cyber::common::GetEnv("HOME");
-  *scenario_resource_path = home + FLAGS_resource_scenario_path;
+void HMIWorker::GetScenarioResourcePath(std::string *scenario_resource_path)
+{
+    CHECK_NOTNULL(scenario_resource_path);
+    // const std::string home = cyber::common::GetEnv("HOME");
+    // *scenario_resource_path = home + FLAGS_resource_scenario_path;
+    
+    *scenario_resource_path = FLAGS_resource_scenario_path;
 }
 
 void HMIWorker::GetScenarioSetPath(const std::string &scenario_set_id,
@@ -862,14 +865,18 @@ void HMIWorker::GetScenarioSetPath(const std::string &scenario_set_id,
   return;
 }
 
-bool HMIWorker::StopModuleByCommand(const std::string &stop_command) const {
-  int ret = std::system(stop_command.data());
-  if (ret < 0 || !WIFEXITED(ret)) {
-    // 256 does not means failure
-    AERROR << "Failed to stop sim obstacle";
-    return false;
-  }
-  return true;
+bool HMIWorker::StopModuleByCommand(const std::string &stop_command) const
+{
+    int ret = std::system(stop_command.data());
+    
+    if (ret < 0 || !WIFEXITED(ret))
+    {
+        // 256 does not means failure
+        AERROR << "Failed to stop sim obstacle";
+        return false;
+    }
+
+    return true;
 }
 
 // bool HMIWorker::ResetSimObstacle(const std::string &scenario_id) {
@@ -1393,10 +1400,13 @@ void HMIWorker::DeleteDynamicModel(const std::string &dynamic_model_name) {
   return;
 }
 
-void HMIWorker::GetRecordPath(std::string *record_path) {
-  CHECK_NOTNULL(record_path);
-  const std::string home = cyber::common::GetEnv("HOME");
-  *record_path = home + FLAGS_resource_record_path;
+void HMIWorker::GetRecordPath(std::string *record_path)
+{
+    CHECK_NOTNULL(record_path);
+    // const std::string home = cyber::common::GetEnv("HOME");
+    // *record_path = home + FLAGS_resource_record_path;
+    
+    *record_path = FLAGS_resource_record_path;
 }
 
 bool HMIWorker::handlePlayRecordProcess(const std::string &action_type) {
@@ -2253,19 +2263,23 @@ void HMIWorker::AddExpectedModules(const HMIAction& action) {
   status_changed_ = true;
 }
 
-void HMIWorker::OnTimer(const double& overtime_time) {
-  if (monitor_reader_ != nullptr) {
-    auto delay_sec = monitor_reader_->GetDelaySec();
-    if (delay_sec < 0 || delay_sec > overtime_time) {
-      AERROR << "Running time error: monitor is not turned on!";
-      {
-        WLock wlock(status_mutex_);
-        for (auto& iter : *status_.mutable_modules_lock()) {
-          iter.second = false;
+void HMIWorker::OnTimer(const double &overtime_time)
+{
+    if (monitor_reader_ != nullptr)
+    {
+        auto delay_sec = monitor_reader_->GetDelaySec();
+        if (delay_sec < 0 || delay_sec > overtime_time)
+        {
+            AERROR << "Running time error: monitor is not turned on!";
+            {
+                WLock wlock(status_mutex_);
+                for (auto &iter : *status_.mutable_modules_lock())
+                {
+                    iter.second = false;
+                }
+            }
         }
-      }
     }
-  }
 }
 
 void HMIWorker::LockModule(const std::string& module, const bool& lock_flag) {

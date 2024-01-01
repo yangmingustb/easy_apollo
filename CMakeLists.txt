@@ -254,4 +254,9 @@ install(FILES ${CMAKE_BINARY_DIR}/launch_dreamview.sh
   DESTINATION .
 )
 
+configure_file("launch_dreamview_plus.sh" "${CMAKE_BINARY_DIR}/launch_dreamview_plus.sh" @ONLY)
+install(FILES ${CMAKE_BINARY_DIR}/launch_dreamview_plus.sh
+  DESTINATION .
+)
+
 

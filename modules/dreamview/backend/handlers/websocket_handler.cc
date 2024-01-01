@@ -242,10 +242,11 @@ bool WebSocketHandler::handleJsonData(Connection *conn,
   }
 
   auto type = json["type"];
-  if (!ContainsKey(message_handlers_, type)) {
-    AERROR << "No message handler found for message type " << type
-           << ". The message will be discarded!";
-    return true;
+  if (!ContainsKey(message_handlers_, type))
+  {
+      AERROR << "No message handler found for message type " << type
+             << ". The message will be discarded!";
+      return true;
   }
   message_handlers_[type](json, conn);
   return true;
