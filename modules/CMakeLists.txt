@@ -29,4 +29,4 @@ add_subdirectory(common_msgs)
 add_subdirectory(dreamview)
 # add_subdirectory(tools)
 
-# add_subdirectory(dreamview_plus)
+add_subdirectory(dreamview_plus)

@@ -3742,6 +3742,8 @@ class ScenarioDebug PROTOBUF_FINAL :
 
   enum : int {
     kMsgFieldNumber = 3,
+    kScenarioPluginTypeFieldNumber = 4,
+    kStagePluginTypeFieldNumber = 5,
     kScenarioTypeFieldNumber = 1,
     kStageTypeFieldNumber = 2,
   };
@@ -3763,6 +3765,46 @@ class ScenarioDebug PROTOBUF_FINAL :
   const std::string& _internal_msg() const;
   void _internal_set_msg(const std::string& value);
   std::string* _internal_mutable_msg();
+  public:
+
+  // optional string scenario_plugin_type = 4;
+  bool has_scenario_plugin_type() const;
+  private:
+  bool _internal_has_scenario_plugin_type() const;
+  public:
+  void clear_scenario_plugin_type();
+  const std::string& scenario_plugin_type() const;
+  void set_scenario_plugin_type(const std::string& value);
+  void set_scenario_plugin_type(std::string&& value);
+  void set_scenario_plugin_type(const char* value);
+  void set_scenario_plugin_type(const char* value, size_t size);
+  std::string* mutable_scenario_plugin_type();
+  std::string* release_scenario_plugin_type();
+  void set_allocated_scenario_plugin_type(std::string* scenario_plugin_type);
+  private:
+  const std::string& _internal_scenario_plugin_type() const;
+  void _internal_set_scenario_plugin_type(const std::string& value);
+  std::string* _internal_mutable_scenario_plugin_type();
+  public:
+
+  // optional string stage_plugin_type = 5;
+  bool has_stage_plugin_type() const;
+  private:
+  bool _internal_has_stage_plugin_type() const;
+  public:
+  void clear_stage_plugin_type();
+  const std::string& stage_plugin_type() const;
+  void set_stage_plugin_type(const std::string& value);
+  void set_stage_plugin_type(std::string&& value);
+  void set_stage_plugin_type(const char* value);
+  void set_stage_plugin_type(const char* value, size_t size);
+  std::string* mutable_stage_plugin_type();
+  std::string* release_stage_plugin_type();
+  void set_allocated_stage_plugin_type(std::string* stage_plugin_type);
+  private:
+  const std::string& _internal_stage_plugin_type() const;
+  void _internal_set_stage_plugin_type(const std::string& value);
+  std::string* _internal_mutable_stage_plugin_type();
   public:
 
   // optional .apollo.planning.ScenarioConfig.ScenarioType scenario_type = 1;
@@ -3801,6 +3843,8 @@ class ScenarioDebug PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr msg_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr scenario_plugin_type_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr stage_plugin_type_;
   int scenario_type_;
   int stage_type_;
   friend struct ::TableStruct_modules_2fplanning_2fproto_2fplanning_5finternal_2eproto;
@@ -10113,7 +10157,7 @@ DpPolyGraphDebug::min_cost_point() const {
 
 // optional .apollo.planning.ScenarioConfig.ScenarioType scenario_type = 1;
 inline bool ScenarioDebug::_internal_has_scenario_type() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
   return value;
 }
 inline bool ScenarioDebug::has_scenario_type() const {
@@ -10121,7 +10165,7 @@ inline bool ScenarioDebug::has_scenario_type() const {
 }
 inline void ScenarioDebug::clear_scenario_type() {
   scenario_type_ = 0;
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline ::apollo::planning::ScenarioConfig_ScenarioType ScenarioDebug::_internal_scenario_type() const {
   return static_cast< ::apollo::planning::ScenarioConfig_ScenarioType >(scenario_type_);
@@ -10132,7 +10176,7 @@ inline ::apollo::planning::ScenarioConfig_ScenarioType ScenarioDebug::scenario_t
 }
 inline void ScenarioDebug::_internal_set_scenario_type(::apollo::planning::ScenarioConfig_ScenarioType value) {
   assert(::apollo::planning::ScenarioConfig_ScenarioType_IsValid(value));
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000008u;
   scenario_type_ = value;
 }
 inline void ScenarioDebug::set_scenario_type(::apollo::planning::ScenarioConfig_ScenarioType value) {
@@ -10142,7 +10186,7 @@ inline void ScenarioDebug::set_scenario_type(::apollo::planning::ScenarioConfig_
 
 // optional .apollo.planning.ScenarioConfig.StageType stage_type = 2;
 inline bool ScenarioDebug::_internal_has_stage_type() const {
-  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_has_bits_[0] & 0x00000010u) != 0;
   return value;
 }
 inline bool ScenarioDebug::has_stage_type() const {
@@ -10150,7 +10194,7 @@ inline bool ScenarioDebug::has_stage_type() const {
 }
 inline void ScenarioDebug::clear_stage_type() {
   stage_type_ = 0;
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline ::apollo::planning::ScenarioConfig_StageType ScenarioDebug::_internal_stage_type() const {
   return static_cast< ::apollo::planning::ScenarioConfig_StageType >(stage_type_);
@@ -10161,7 +10205,7 @@ inline ::apollo::planning::ScenarioConfig_StageType ScenarioDebug::stage_type() 
 }
 inline void ScenarioDebug::_internal_set_stage_type(::apollo::planning::ScenarioConfig_StageType value) {
   assert(::apollo::planning::ScenarioConfig_StageType_IsValid(value));
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000010u;
   stage_type_ = value;
 }
 inline void ScenarioDebug::set_stage_type(::apollo::planning::ScenarioConfig_StageType value) {
@@ -10240,6 +10284,152 @@ inline void ScenarioDebug::set_allocated_msg(std::string* msg) {
   msg_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), msg,
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:apollo.planning_internal.ScenarioDebug.msg)
+}
+
+// optional string scenario_plugin_type = 4;
+inline bool ScenarioDebug::_internal_has_scenario_plugin_type() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool ScenarioDebug::has_scenario_plugin_type() const {
+  return _internal_has_scenario_plugin_type();
+}
+inline void ScenarioDebug::clear_scenario_plugin_type() {
+  scenario_plugin_type_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& ScenarioDebug::scenario_plugin_type() const {
+  // @@protoc_insertion_point(field_get:apollo.planning_internal.ScenarioDebug.scenario_plugin_type)
+  return _internal_scenario_plugin_type();
+}
+inline void ScenarioDebug::set_scenario_plugin_type(const std::string& value) {
+  _internal_set_scenario_plugin_type(value);
+  // @@protoc_insertion_point(field_set:apollo.planning_internal.ScenarioDebug.scenario_plugin_type)
+}
+inline std::string* ScenarioDebug::mutable_scenario_plugin_type() {
+  // @@protoc_insertion_point(field_mutable:apollo.planning_internal.ScenarioDebug.scenario_plugin_type)
+  return _internal_mutable_scenario_plugin_type();
+}
+inline const std::string& ScenarioDebug::_internal_scenario_plugin_type() const {
+  return scenario_plugin_type_.Get();
+}
+inline void ScenarioDebug::_internal_set_scenario_plugin_type(const std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  scenario_plugin_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void ScenarioDebug::set_scenario_plugin_type(std::string&& value) {
+  _has_bits_[0] |= 0x00000002u;
+  scenario_plugin_type_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.planning_internal.ScenarioDebug.scenario_plugin_type)
+}
+inline void ScenarioDebug::set_scenario_plugin_type(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000002u;
+  scenario_plugin_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.planning_internal.ScenarioDebug.scenario_plugin_type)
+}
+inline void ScenarioDebug::set_scenario_plugin_type(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000002u;
+  scenario_plugin_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.planning_internal.ScenarioDebug.scenario_plugin_type)
+}
+inline std::string* ScenarioDebug::_internal_mutable_scenario_plugin_type() {
+  _has_bits_[0] |= 0x00000002u;
+  return scenario_plugin_type_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* ScenarioDebug::release_scenario_plugin_type() {
+  // @@protoc_insertion_point(field_release:apollo.planning_internal.ScenarioDebug.scenario_plugin_type)
+  if (!_internal_has_scenario_plugin_type()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  return scenario_plugin_type_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void ScenarioDebug::set_allocated_scenario_plugin_type(std::string* scenario_plugin_type) {
+  if (scenario_plugin_type != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  scenario_plugin_type_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), scenario_plugin_type,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.planning_internal.ScenarioDebug.scenario_plugin_type)
+}
+
+// optional string stage_plugin_type = 5;
+inline bool ScenarioDebug::_internal_has_stage_plugin_type() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool ScenarioDebug::has_stage_plugin_type() const {
+  return _internal_has_stage_plugin_type();
+}
+inline void ScenarioDebug::clear_stage_plugin_type() {
+  stage_plugin_type_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline const std::string& ScenarioDebug::stage_plugin_type() const {
+  // @@protoc_insertion_point(field_get:apollo.planning_internal.ScenarioDebug.stage_plugin_type)
+  return _internal_stage_plugin_type();
+}
+inline void ScenarioDebug::set_stage_plugin_type(const std::string& value) {
+  _internal_set_stage_plugin_type(value);
+  // @@protoc_insertion_point(field_set:apollo.planning_internal.ScenarioDebug.stage_plugin_type)
+}
+inline std::string* ScenarioDebug::mutable_stage_plugin_type() {
+  // @@protoc_insertion_point(field_mutable:apollo.planning_internal.ScenarioDebug.stage_plugin_type)
+  return _internal_mutable_stage_plugin_type();
+}
+inline const std::string& ScenarioDebug::_internal_stage_plugin_type() const {
+  return stage_plugin_type_.Get();
+}
+inline void ScenarioDebug::_internal_set_stage_plugin_type(const std::string& value) {
+  _has_bits_[0] |= 0x00000004u;
+  stage_plugin_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArena());
+}
+inline void ScenarioDebug::set_stage_plugin_type(std::string&& value) {
+  _has_bits_[0] |= 0x00000004u;
+  stage_plugin_type_.Set(
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:apollo.planning_internal.ScenarioDebug.stage_plugin_type)
+}
+inline void ScenarioDebug::set_stage_plugin_type(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000004u;
+  stage_plugin_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(value), GetArena());
+  // @@protoc_insertion_point(field_set_char:apollo.planning_internal.ScenarioDebug.stage_plugin_type)
+}
+inline void ScenarioDebug::set_stage_plugin_type(const char* value,
+    size_t size) {
+  _has_bits_[0] |= 0x00000004u;
+  stage_plugin_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:apollo.planning_internal.ScenarioDebug.stage_plugin_type)
+}
+inline std::string* ScenarioDebug::_internal_mutable_stage_plugin_type() {
+  _has_bits_[0] |= 0x00000004u;
+  return stage_plugin_type_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArena());
+}
+inline std::string* ScenarioDebug::release_stage_plugin_type() {
+  // @@protoc_insertion_point(field_release:apollo.planning_internal.ScenarioDebug.stage_plugin_type)
+  if (!_internal_has_stage_plugin_type()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000004u;
+  return stage_plugin_type_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void ScenarioDebug::set_allocated_stage_plugin_type(std::string* stage_plugin_type) {
+  if (stage_plugin_type != nullptr) {
+    _has_bits_[0] |= 0x00000004u;
+  } else {
+    _has_bits_[0] &= ~0x00000004u;
+  }
+  stage_plugin_type_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), stage_plugin_type,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:apollo.planning_internal.ScenarioDebug.stage_plugin_type)
 }
 
 // -------------------------------------------------------------------

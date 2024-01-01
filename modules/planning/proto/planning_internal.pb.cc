@@ -817,9 +817,13 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_modules_2fplanning_2fproto_2fp
   PROTOBUF_FIELD_OFFSET(::apollo::planning_internal::ScenarioDebug, scenario_type_),
   PROTOBUF_FIELD_OFFSET(::apollo::planning_internal::ScenarioDebug, stage_type_),
   PROTOBUF_FIELD_OFFSET(::apollo::planning_internal::ScenarioDebug, msg_),
+  PROTOBUF_FIELD_OFFSET(::apollo::planning_internal::ScenarioDebug, scenario_plugin_type_),
+  PROTOBUF_FIELD_OFFSET(::apollo::planning_internal::ScenarioDebug, stage_plugin_type_),
+  3,
+  4,
+  0,
   1,
   2,
-  0,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::apollo::planning_internal::Trajectories, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1048,20 +1052,20 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 153, 173, sizeof(::apollo::planning_internal::ReferenceLineDebug)},
   { 188, -1, sizeof(::apollo::planning_internal::SampleLayerDebug)},
   { 194, -1, sizeof(::apollo::planning_internal::DpPolyGraphDebug)},
-  { 201, 209, sizeof(::apollo::planning_internal::ScenarioDebug)},
-  { 212, -1, sizeof(::apollo::planning_internal::Trajectories)},
-  { 218, 243, sizeof(::apollo::planning_internal::OpenSpaceDebug)},
-  { 263, 271, sizeof(::apollo::planning_internal::SmootherDebug)},
-  { 274, 285, sizeof(::apollo::planning_internal::PullOverDebug)},
-  { 291, 319, sizeof(::apollo::planning_internal::PlanningData)},
-  { 342, 352, sizeof(::apollo::planning_internal::LatticeStPixel)},
-  { 357, 369, sizeof(::apollo::planning_internal::LatticeStTraining)},
-  { 376, -1, sizeof(::apollo::planning_internal::CostComponents)},
-  { 382, 389, sizeof(::apollo::planning_internal::AutoTuningTrainingData)},
-  { 391, -1, sizeof(::apollo::planning_internal::CloudReferenceLineRequest)},
-  { 397, 403, sizeof(::apollo::planning_internal::CloudReferenceLineRoutingRequest)},
-  { 404, -1, sizeof(::apollo::planning_internal::CloudReferenceLineResponse)},
-  { 410, 419, sizeof(::apollo::planning_internal::HybridModelDebug)},
+  { 201, 211, sizeof(::apollo::planning_internal::ScenarioDebug)},
+  { 216, -1, sizeof(::apollo::planning_internal::Trajectories)},
+  { 222, 247, sizeof(::apollo::planning_internal::OpenSpaceDebug)},
+  { 267, 275, sizeof(::apollo::planning_internal::SmootherDebug)},
+  { 278, 289, sizeof(::apollo::planning_internal::PullOverDebug)},
+  { 295, 323, sizeof(::apollo::planning_internal::PlanningData)},
+  { 346, 356, sizeof(::apollo::planning_internal::LatticeStPixel)},
+  { 361, 373, sizeof(::apollo::planning_internal::LatticeStTraining)},
+  { 380, -1, sizeof(::apollo::planning_internal::CostComponents)},
+  { 386, 393, sizeof(::apollo::planning_internal::AutoTuningTrainingData)},
+  { 395, -1, sizeof(::apollo::planning_internal::CloudReferenceLineRequest)},
+  { 401, 407, sizeof(::apollo::planning_internal::CloudReferenceLineRoutingRequest)},
+  { 408, -1, sizeof(::apollo::planning_internal::CloudReferenceLineResponse)},
+  { 414, 423, sizeof(::apollo::planning_internal::HybridModelDebug)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -1182,103 +1186,104 @@ const char descriptor_table_protodef_modules_2fplanning_2fproto_2fplanning_5fint
   "LPoint\"\204\001\n\020DpPolyGraphDebug\022@\n\014sample_la"
   "yer\030\001 \003(\0132*.apollo.planning_internal.Sam"
   "pleLayerDebug\022.\n\016min_cost_point\030\002 \003(\0132\026."
-  "apollo.common.SLPoint\"\240\001\n\rScenarioDebug\022"
+  "apollo.common.SLPoint\"\331\001\n\rScenarioDebug\022"
   "C\n\rscenario_type\030\001 \001(\0162,.apollo.planning"
   ".ScenarioConfig.ScenarioType\022=\n\nstage_ty"
   "pe\030\002 \001(\0162).apollo.planning.ScenarioConfi"
-  "g.StageType\022\013\n\003msg\030\003 \001(\t\"=\n\014Trajectories"
-  "\022-\n\ntrajectory\030\001 \003(\0132\031.apollo.common.Tra"
-  "jectory\"\325\007\n\016OpenSpaceDebug\022<\n\014trajectori"
-  "es\030\001 \001(\0132&.apollo.planning_internal.Traj"
-  "ectories\022;\n\025warm_start_trajectory\030\002 \001(\0132"
-  "\034.apollo.common.VehicleMotion\0229\n\023smoothe"
-  "d_trajectory\030\003 \001(\0132\034.apollo.common.Vehic"
-  "leMotion\022\036\n\026warm_start_dual_lambda\030\004 \003(\001"
-  "\022\033\n\023warm_start_dual_miu\030\005 \003(\001\022\035\n\025optimiz"
-  "ed_dual_lambda\030\006 \003(\001\022\032\n\022optimized_dual_m"
-  "iu\030\007 \003(\001\022\023\n\013xy_boundary\030\010 \003(\001\022:\n\tobstacl"
-  "es\030\t \003(\0132\'.apollo.planning_internal.Obst"
-  "acleDebug\0227\n\017roi_shift_point\030\n \001(\0132\036.apo"
-  "llo.common.TrajectoryPoint\0221\n\tend_point\030"
-  "\013 \001(\0132\036.apollo.common.TrajectoryPoint\022H\n"
-  "\030partitioned_trajectories\030\014 \001(\0132&.apollo"
-  ".planning_internal.Trajectories\022A\n\021chose"
-  "n_trajectory\030\r \001(\0132&.apollo.planning_int"
-  "ernal.Trajectories\022\036\n\026is_fallback_trajec"
-  "tory\030\016 \001(\010\022C\n\023fallback_trajectory\030\017 \001(\0132"
-  "&.apollo.planning_internal.Trajectories\022"
-  "B\n\032trajectory_stitching_point\030\020 \001(\0132\036.ap"
-  "ollo.common.TrajectoryPoint\022>\n\026future_co"
-  "llision_point\030\021 \001(\0132\036.apollo.common.Traj"
-  "ectoryPoint\022\027\n\014time_latency\030\022 \001(\001:\0010\022-\n\014"
-  "origin_point\030\023 \001(\0132\027.apollo.common.Point"
-  "ENU\022\032\n\022origin_heading_rad\030\024 \001(\001\"\303\001\n\rSmoo"
-  "therDebug\022\023\n\013is_smoothed\030\001 \001(\010\022Q\n\004type\030\002"
-  " \001(\01624.apollo.planning_internal.Smoother"
-  "Debug.SmootherType:\rSMOOTHER_NONE\022\016\n\006rea"
-  "son\030\003 \001(\t\":\n\014SmootherType\022\021\n\rSMOOTHER_NO"
-  "NE\020\001\022\027\n\023SMOOTHER_CLOSE_STOP\020\002\"\235\001\n\rPullOv"
-  "erDebug\022)\n\010position\030\001 \001(\0132\027.apollo.commo"
-  "n.PointENU\022\r\n\005theta\030\002 \001(\001\022\024\n\014length_fron"
-  "t\030\003 \001(\001\022\023\n\013length_back\030\004 \001(\001\022\022\n\nwidth_le"
-  "ft\030\005 \001(\001\022\023\n\013width_right\030\006 \001(\001\"\255\n\n\014Planni"
-  "ngData\022\?\n\014adc_position\030\007 \001(\0132).apollo.lo"
-  "calization.LocalizationEstimate\022\'\n\007chass"
-  "is\030\010 \001(\0132\026.apollo.canbus.Chassis\0220\n\007rout"
-  "ing\030\t \001(\0132\037.apollo.routing.RoutingRespon"
-  "se\0222\n\ninit_point\030\n \001(\0132\036.apollo.common.T"
-  "rajectoryPoint\022!\n\004path\030\006 \003(\0132\023.apollo.co"
-  "mmon.Path\0227\n\nspeed_plan\030\r \003(\0132#.apollo.p"
-  "lanning_internal.SpeedPlan\0228\n\010st_graph\030\016"
-  " \003(\0132&.apollo.planning_internal.STGraphD"
-  "ebug\0228\n\010sl_frame\030\017 \003(\0132&.apollo.planning"
-  "_internal.SLFrameDebug\0220\n\021prediction_hea"
-  "der\030\020 \001(\0132\025.apollo.common.Header\022@\n\014sign"
-  "al_light\030\021 \001(\0132*.apollo.planning_interna"
-  "l.SignalLightDebug\0229\n\010obstacle\030\022 \003(\0132\'.a"
-  "pollo.planning_internal.ObstacleDebug\022D\n"
-  "\016reference_line\030\023 \003(\0132,.apollo.planning_"
-  "internal.ReferenceLineDebug\022A\n\rdp_poly_g"
-  "raph\030\024 \001(\0132*.apollo.planning_internal.Dp"
-  "PolyGraphDebug\022E\n\020lattice_st_image\030\025 \001(\013"
-  "2+.apollo.planning_internal.LatticeStTra"
-  "ining\0221\n\014relative_map\030\026 \001(\0132\033.apollo.rel"
-  "ative_map.MapMsg\022S\n\031auto_tuning_training"
-  "_data\030\027 \001(\01320.apollo.planning_internal.A"
-  "utoTuningTrainingData\022\034\n\024front_clear_dis"
-  "tance\030\030 \001(\001\022&\n\005chart\030\031 \003(\0132\027.apollo.drea"
-  "mview.Chart\0229\n\010scenario\030\032 \001(\0132\'.apollo.p"
-  "lanning_internal.ScenarioDebug\022<\n\nopen_s"
-  "pace\030\033 \001(\0132(.apollo.planning_internal.Op"
-  "enSpaceDebug\0229\n\010smoother\030\034 \001(\0132\'.apollo."
-  "planning_internal.SmootherDebug\022:\n\tpull_"
-  "over\030\035 \001(\0132\'.apollo.planning_internal.Pu"
-  "llOverDebug\022@\n\014hybrid_model\030\036 \001(\0132*.apol"
-  "lo.planning_internal.HybridModelDebug\"G\n"
-  "\016LatticeStPixel\022\t\n\001s\030\001 \001(\005\022\t\n\001t\030\002 \001(\005\022\t\n"
-  "\001r\030\003 \001(\r\022\t\n\001g\030\004 \001(\r\022\t\n\001b\030\005 \001(\r\"\311\001\n\021Latti"
-  "ceStTraining\0227\n\005pixel\030\001 \003(\0132(.apollo.pla"
-  "nning_internal.LatticeStPixel\022\021\n\ttimesta"
-  "mp\030\002 \001(\001\022\022\n\nannotation\030\003 \001(\t\022\023\n\013num_s_gr"
-  "ids\030\004 \001(\r\022\023\n\013num_t_grids\030\005 \001(\r\022\024\n\014s_reso"
-  "lution\030\006 \001(\001\022\024\n\014t_resolution\030\007 \001(\001\"(\n\016Co"
-  "stComponents\022\026\n\016cost_component\030\001 \003(\001\"\242\001\n"
-  "\026AutoTuningTrainingData\022C\n\021teacher_compo"
-  "nent\030\001 \001(\0132(.apollo.planning_internal.Co"
-  "stComponents\022C\n\021student_component\030\002 \001(\0132"
-  "(.apollo.planning_internal.CostComponent"
-  "s\"N\n\031CloudReferenceLineRequest\0221\n\014lane_s"
-  "egment\030\001 \003(\0132\033.apollo.routing.LaneSegmen"
-  "t\"T\n CloudReferenceLineRoutingRequest\0220\n"
-  "\007routing\030\001 \001(\0132\037.apollo.routing.RoutingR"
-  "esponse\"B\n\032CloudReferenceLineResponse\022$\n"
-  "\007segment\030\001 \003(\0132\023.apollo.common.Path\"\313\001\n\020"
-  "HybridModelDebug\022*\n\033using_learning_model"
-  "_output\030\001 \001(\010:\005false\022)\n!learning_model_o"
-  "utput_usage_ratio\030\002 \001(\001\022)\n!learning_mode"
-  "l_output_fail_reason\030\003 \001(\t\0225\n\030evaluated_"
-  "path_reference\030\004 \001(\0132\023.apollo.common.Pat"
-  "h"
+  "g.StageType\022\013\n\003msg\030\003 \001(\t\022\034\n\024scenario_plu"
+  "gin_type\030\004 \001(\t\022\031\n\021stage_plugin_type\030\005 \001("
+  "\t\"=\n\014Trajectories\022-\n\ntrajectory\030\001 \003(\0132\031."
+  "apollo.common.Trajectory\"\325\007\n\016OpenSpaceDe"
+  "bug\022<\n\014trajectories\030\001 \001(\0132&.apollo.plann"
+  "ing_internal.Trajectories\022;\n\025warm_start_"
+  "trajectory\030\002 \001(\0132\034.apollo.common.Vehicle"
+  "Motion\0229\n\023smoothed_trajectory\030\003 \001(\0132\034.ap"
+  "ollo.common.VehicleMotion\022\036\n\026warm_start_"
+  "dual_lambda\030\004 \003(\001\022\033\n\023warm_start_dual_miu"
+  "\030\005 \003(\001\022\035\n\025optimized_dual_lambda\030\006 \003(\001\022\032\n"
+  "\022optimized_dual_miu\030\007 \003(\001\022\023\n\013xy_boundary"
+  "\030\010 \003(\001\022:\n\tobstacles\030\t \003(\0132\'.apollo.plann"
+  "ing_internal.ObstacleDebug\0227\n\017roi_shift_"
+  "point\030\n \001(\0132\036.apollo.common.TrajectoryPo"
+  "int\0221\n\tend_point\030\013 \001(\0132\036.apollo.common.T"
+  "rajectoryPoint\022H\n\030partitioned_trajectori"
+  "es\030\014 \001(\0132&.apollo.planning_internal.Traj"
+  "ectories\022A\n\021chosen_trajectory\030\r \001(\0132&.ap"
+  "ollo.planning_internal.Trajectories\022\036\n\026i"
+  "s_fallback_trajectory\030\016 \001(\010\022C\n\023fallback_"
+  "trajectory\030\017 \001(\0132&.apollo.planning_inter"
+  "nal.Trajectories\022B\n\032trajectory_stitching"
+  "_point\030\020 \001(\0132\036.apollo.common.TrajectoryP"
+  "oint\022>\n\026future_collision_point\030\021 \001(\0132\036.a"
+  "pollo.common.TrajectoryPoint\022\027\n\014time_lat"
+  "ency\030\022 \001(\001:\0010\022-\n\014origin_point\030\023 \001(\0132\027.ap"
+  "ollo.common.PointENU\022\032\n\022origin_heading_r"
+  "ad\030\024 \001(\001\"\303\001\n\rSmootherDebug\022\023\n\013is_smoothe"
+  "d\030\001 \001(\010\022Q\n\004type\030\002 \001(\01624.apollo.planning_"
+  "internal.SmootherDebug.SmootherType:\rSMO"
+  "OTHER_NONE\022\016\n\006reason\030\003 \001(\t\":\n\014SmootherTy"
+  "pe\022\021\n\rSMOOTHER_NONE\020\001\022\027\n\023SMOOTHER_CLOSE_"
+  "STOP\020\002\"\235\001\n\rPullOverDebug\022)\n\010position\030\001 \001"
+  "(\0132\027.apollo.common.PointENU\022\r\n\005theta\030\002 \001"
+  "(\001\022\024\n\014length_front\030\003 \001(\001\022\023\n\013length_back\030"
+  "\004 \001(\001\022\022\n\nwidth_left\030\005 \001(\001\022\023\n\013width_right"
+  "\030\006 \001(\001\"\255\n\n\014PlanningData\022\?\n\014adc_position\030"
+  "\007 \001(\0132).apollo.localization.Localization"
+  "Estimate\022\'\n\007chassis\030\010 \001(\0132\026.apollo.canbu"
+  "s.Chassis\0220\n\007routing\030\t \001(\0132\037.apollo.rout"
+  "ing.RoutingResponse\0222\n\ninit_point\030\n \001(\0132"
+  "\036.apollo.common.TrajectoryPoint\022!\n\004path\030"
+  "\006 \003(\0132\023.apollo.common.Path\0227\n\nspeed_plan"
+  "\030\r \003(\0132#.apollo.planning_internal.SpeedP"
+  "lan\0228\n\010st_graph\030\016 \003(\0132&.apollo.planning_"
+  "internal.STGraphDebug\0228\n\010sl_frame\030\017 \003(\0132"
+  "&.apollo.planning_internal.SLFrameDebug\022"
+  "0\n\021prediction_header\030\020 \001(\0132\025.apollo.comm"
+  "on.Header\022@\n\014signal_light\030\021 \001(\0132*.apollo"
+  ".planning_internal.SignalLightDebug\0229\n\010o"
+  "bstacle\030\022 \003(\0132\'.apollo.planning_internal"
+  ".ObstacleDebug\022D\n\016reference_line\030\023 \003(\0132,"
+  ".apollo.planning_internal.ReferenceLineD"
+  "ebug\022A\n\rdp_poly_graph\030\024 \001(\0132*.apollo.pla"
+  "nning_internal.DpPolyGraphDebug\022E\n\020latti"
+  "ce_st_image\030\025 \001(\0132+.apollo.planning_inte"
+  "rnal.LatticeStTraining\0221\n\014relative_map\030\026"
+  " \001(\0132\033.apollo.relative_map.MapMsg\022S\n\031aut"
+  "o_tuning_training_data\030\027 \001(\01320.apollo.pl"
+  "anning_internal.AutoTuningTrainingData\022\034"
+  "\n\024front_clear_distance\030\030 \001(\001\022&\n\005chart\030\031 "
+  "\003(\0132\027.apollo.dreamview.Chart\0229\n\010scenario"
+  "\030\032 \001(\0132\'.apollo.planning_internal.Scenar"
+  "ioDebug\022<\n\nopen_space\030\033 \001(\0132(.apollo.pla"
+  "nning_internal.OpenSpaceDebug\0229\n\010smoothe"
+  "r\030\034 \001(\0132\'.apollo.planning_internal.Smoot"
+  "herDebug\022:\n\tpull_over\030\035 \001(\0132\'.apollo.pla"
+  "nning_internal.PullOverDebug\022@\n\014hybrid_m"
+  "odel\030\036 \001(\0132*.apollo.planning_internal.Hy"
+  "bridModelDebug\"G\n\016LatticeStPixel\022\t\n\001s\030\001 "
+  "\001(\005\022\t\n\001t\030\002 \001(\005\022\t\n\001r\030\003 \001(\r\022\t\n\001g\030\004 \001(\r\022\t\n\001"
+  "b\030\005 \001(\r\"\311\001\n\021LatticeStTraining\0227\n\005pixel\030\001"
+  " \003(\0132(.apollo.planning_internal.LatticeS"
+  "tPixel\022\021\n\ttimestamp\030\002 \001(\001\022\022\n\nannotation\030"
+  "\003 \001(\t\022\023\n\013num_s_grids\030\004 \001(\r\022\023\n\013num_t_grid"
+  "s\030\005 \001(\r\022\024\n\014s_resolution\030\006 \001(\001\022\024\n\014t_resol"
+  "ution\030\007 \001(\001\"(\n\016CostComponents\022\026\n\016cost_co"
+  "mponent\030\001 \003(\001\"\242\001\n\026AutoTuningTrainingData"
+  "\022C\n\021teacher_component\030\001 \001(\0132(.apollo.pla"
+  "nning_internal.CostComponents\022C\n\021student"
+  "_component\030\002 \001(\0132(.apollo.planning_inter"
+  "nal.CostComponents\"N\n\031CloudReferenceLine"
+  "Request\0221\n\014lane_segment\030\001 \003(\0132\033.apollo.r"
+  "outing.LaneSegment\"T\n CloudReferenceLine"
+  "RoutingRequest\0220\n\007routing\030\001 \001(\0132\037.apollo"
+  ".routing.RoutingResponse\"B\n\032CloudReferen"
+  "ceLineResponse\022$\n\007segment\030\001 \003(\0132\023.apollo"
+  ".common.Path\"\313\001\n\020HybridModelDebug\022*\n\033usi"
+  "ng_learning_model_output\030\001 \001(\010:\005false\022)\n"
+  "!learning_model_output_usage_ratio\030\002 \001(\001"
+  "\022)\n!learning_model_output_fail_reason\030\003 "
+  "\001(\t\0225\n\030evaluated_path_reference\030\004 \001(\0132\023."
+  "apollo.common.Path"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_modules_2fplanning_2fproto_2fplanning_5finternal_2eproto_deps[12] = {
   &::descriptor_table_modules_2fcanbus_2fproto_2fchassis_2eproto,
@@ -1327,7 +1332,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_mod
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_modules_2fplanning_2fproto_2fplanning_5finternal_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_modules_2fplanning_2fproto_2fplanning_5finternal_2eproto = {
-  false, false, descriptor_table_protodef_modules_2fplanning_2fproto_2fplanning_5finternal_2eproto, "modules/planning/proto/planning_internal.proto", 7241,
+  false, false, descriptor_table_protodef_modules_2fplanning_2fproto_2fplanning_5finternal_2eproto, "modules/planning/proto/planning_internal.proto", 7298,
   &descriptor_table_modules_2fplanning_2fproto_2fplanning_5finternal_2eproto_once, descriptor_table_modules_2fplanning_2fproto_2fplanning_5finternal_2eproto_sccs, descriptor_table_modules_2fplanning_2fproto_2fplanning_5finternal_2eproto_deps, 29, 12,
   schemas, file_default_instances, TableStruct_modules_2fplanning_2fproto_2fplanning_5finternal_2eproto::offsets,
   file_level_metadata_modules_2fplanning_2fproto_2fplanning_5finternal_2eproto, 29, file_level_enum_descriptors_modules_2fplanning_2fproto_2fplanning_5finternal_2eproto, file_level_service_descriptors_modules_2fplanning_2fproto_2fplanning_5finternal_2eproto,
@@ -6435,13 +6440,19 @@ class ScenarioDebug::_Internal {
  public:
   using HasBits = decltype(std::declval<ScenarioDebug>()._has_bits_);
   static void set_has_scenario_type(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
+    (*has_bits)[0] |= 8u;
   }
   static void set_has_stage_type(HasBits* has_bits) {
-    (*has_bits)[0] |= 4u;
+    (*has_bits)[0] |= 16u;
   }
   static void set_has_msg(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
+  }
+  static void set_has_scenario_plugin_type(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_stage_plugin_type(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
   }
 };
 
@@ -6460,6 +6471,16 @@ ScenarioDebug::ScenarioDebug(const ScenarioDebug& from)
     msg_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_msg(), 
       GetArena());
   }
+  scenario_plugin_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_scenario_plugin_type()) {
+    scenario_plugin_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_scenario_plugin_type(), 
+      GetArena());
+  }
+  stage_plugin_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (from._internal_has_stage_plugin_type()) {
+    stage_plugin_type_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_stage_plugin_type(), 
+      GetArena());
+  }
   ::memcpy(&scenario_type_, &from.scenario_type_,
     static_cast<size_t>(reinterpret_cast<char*>(&stage_type_) -
     reinterpret_cast<char*>(&scenario_type_)) + sizeof(stage_type_));
@@ -6469,6 +6490,8 @@ ScenarioDebug::ScenarioDebug(const ScenarioDebug& from)
 void ScenarioDebug::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ScenarioDebug_modules_2fplanning_2fproto_2fplanning_5finternal_2eproto.base);
   msg_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  scenario_plugin_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  stage_plugin_type_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
       reinterpret_cast<char*>(&scenario_type_) - reinterpret_cast<char*>(this)),
       0, static_cast<size_t>(reinterpret_cast<char*>(&stage_type_) -
@@ -6484,6 +6507,8 @@ ScenarioDebug::~ScenarioDebug() {
 void ScenarioDebug::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
   msg_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  scenario_plugin_type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  stage_plugin_type_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void ScenarioDebug::ArenaDtor(void* object) {
@@ -6508,10 +6533,18 @@ void ScenarioDebug::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    msg_.ClearNonDefaultToEmpty();
+  if (cached_has_bits & 0x00000007u) {
+    if (cached_has_bits & 0x00000001u) {
+      msg_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      scenario_plugin_type_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000004u) {
+      stage_plugin_type_.ClearNonDefaultToEmpty();
+    }
   }
-  if (cached_has_bits & 0x00000006u) {
+  if (cached_has_bits & 0x00000018u) {
     ::memset(&scenario_type_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&stage_type_) -
         reinterpret_cast<char*>(&scenario_type_)) + sizeof(stage_type_));
@@ -6563,6 +6596,28 @@ const char* ScenarioDebug::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
+      // optional string scenario_plugin_type = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          auto str = _internal_mutable_scenario_plugin_type();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          #ifndef NDEBUG
+          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "apollo.planning_internal.ScenarioDebug.scenario_plugin_type");
+          #endif  // !NDEBUG
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // optional string stage_plugin_type = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          auto str = _internal_mutable_stage_plugin_type();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          #ifndef NDEBUG
+          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "apollo.planning_internal.ScenarioDebug.stage_plugin_type");
+          #endif  // !NDEBUG
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
@@ -6594,14 +6649,14 @@ failure:
 
   cached_has_bits = _has_bits_[0];
   // optional .apollo.planning.ScenarioConfig.ScenarioType scenario_type = 1;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000008u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
       1, this->_internal_scenario_type(), target);
   }
 
   // optional .apollo.planning.ScenarioConfig.StageType stage_type = 2;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000010u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
       2, this->_internal_stage_type(), target);
@@ -6615,6 +6670,26 @@ failure:
       "apollo.planning_internal.ScenarioDebug.msg");
     target = stream->WriteStringMaybeAliased(
         3, this->_internal_msg(), target);
+  }
+
+  // optional string scenario_plugin_type = 4;
+  if (cached_has_bits & 0x00000002u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_scenario_plugin_type().data(), static_cast<int>(this->_internal_scenario_plugin_type().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "apollo.planning_internal.ScenarioDebug.scenario_plugin_type");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_scenario_plugin_type(), target);
+  }
+
+  // optional string stage_plugin_type = 5;
+  if (cached_has_bits & 0x00000004u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_stage_plugin_type().data(), static_cast<int>(this->_internal_stage_plugin_type().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "apollo.planning_internal.ScenarioDebug.stage_plugin_type");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_stage_plugin_type(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -6634,7 +6709,7 @@ size_t ScenarioDebug::ByteSizeLong() const {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000001fu) {
     // optional string msg = 3;
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
@@ -6642,14 +6717,28 @@ size_t ScenarioDebug::ByteSizeLong() const {
           this->_internal_msg());
     }
 
-    // optional .apollo.planning.ScenarioConfig.ScenarioType scenario_type = 1;
+    // optional string scenario_plugin_type = 4;
     if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_scenario_plugin_type());
+    }
+
+    // optional string stage_plugin_type = 5;
+    if (cached_has_bits & 0x00000004u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_stage_plugin_type());
+    }
+
+    // optional .apollo.planning.ScenarioConfig.ScenarioType scenario_type = 1;
+    if (cached_has_bits & 0x00000008u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_scenario_type());
     }
 
     // optional .apollo.planning.ScenarioConfig.StageType stage_type = 2;
-    if (cached_has_bits & 0x00000004u) {
+    if (cached_has_bits & 0x00000010u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_stage_type());
     }
@@ -6687,14 +6776,20 @@ void ScenarioDebug::MergeFrom(const ScenarioDebug& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000001fu) {
     if (cached_has_bits & 0x00000001u) {
       _internal_set_msg(from._internal_msg());
     }
     if (cached_has_bits & 0x00000002u) {
-      scenario_type_ = from.scenario_type_;
+      _internal_set_scenario_plugin_type(from._internal_scenario_plugin_type());
     }
     if (cached_has_bits & 0x00000004u) {
+      _internal_set_stage_plugin_type(from._internal_stage_plugin_type());
+    }
+    if (cached_has_bits & 0x00000008u) {
+      scenario_type_ = from.scenario_type_;
+    }
+    if (cached_has_bits & 0x00000010u) {
       stage_type_ = from.stage_type_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -6724,6 +6819,8 @@ void ScenarioDebug::InternalSwap(ScenarioDebug* other) {
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   msg_.Swap(&other->msg_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  scenario_plugin_type_.Swap(&other->scenario_plugin_type_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  stage_plugin_type_.Swap(&other->stage_plugin_type_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ScenarioDebug, stage_type_)
       + sizeof(ScenarioDebug::stage_type_)

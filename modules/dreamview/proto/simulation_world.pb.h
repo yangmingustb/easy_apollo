@@ -38,6 +38,7 @@
 #include "modules/canbus/proto/chassis.pb.h"
 #include "modules/common/monitor_log/proto/monitor_log.pb.h"
 #include "modules/common/proto/pnc_point.pb.h"
+#include "modules/common/configs/proto/vehicle_config.pb.h"
 #include "modules/perception/proto/perception_obstacle.pb.h"
 #include "modules/planning/proto/planning_internal.pb.h"
 #include "modules/prediction/proto/feature.pb.h"
@@ -3677,6 +3678,7 @@ class SimulationWorld PROTOBUF_FINAL :
     kLaneMarkerFieldNumber = 22,
     kControlDataFieldNumber = 23,
     kShadowLocalizationFieldNumber = 26,
+    kVehicleParamFieldNumber = 31,
     kTimestampFieldNumber = 1,
     kRoutingTimeFieldNumber = 7,
     kSpeedLimitFieldNumber = 11,
@@ -4081,6 +4083,24 @@ class SimulationWorld PROTOBUF_FINAL :
       ::apollo::dreamview::Object* shadow_localization);
   ::apollo::dreamview::Object* unsafe_arena_release_shadow_localization();
 
+  // optional .apollo.common.VehicleParam vehicle_param = 31;
+  bool has_vehicle_param() const;
+  private:
+  bool _internal_has_vehicle_param() const;
+  public:
+  void clear_vehicle_param();
+  const ::apollo::common::VehicleParam& vehicle_param() const;
+  ::apollo::common::VehicleParam* release_vehicle_param();
+  ::apollo::common::VehicleParam* mutable_vehicle_param();
+  void set_allocated_vehicle_param(::apollo::common::VehicleParam* vehicle_param);
+  private:
+  const ::apollo::common::VehicleParam& _internal_vehicle_param() const;
+  ::apollo::common::VehicleParam* _internal_mutable_vehicle_param();
+  public:
+  void unsafe_arena_set_allocated_vehicle_param(
+      ::apollo::common::VehicleParam* vehicle_param);
+  ::apollo::common::VehicleParam* unsafe_arena_release_vehicle_param();
+
   // optional double timestamp = 1;
   bool has_timestamp() const;
   private:
@@ -4228,6 +4248,7 @@ class SimulationWorld PROTOBUF_FINAL :
   ::apollo::perception::LaneMarkers* lane_marker_;
   ::apollo::dreamview::ControlData* control_data_;
   ::apollo::dreamview::Object* shadow_localization_;
+  ::apollo::common::VehicleParam* vehicle_param_;
   double timestamp_;
   double routing_time_;
   double speed_limit_;
@@ -7844,7 +7865,7 @@ SensorMeasurements::sensor_measurement() const {
 
 // optional double timestamp = 1;
 inline bool SimulationWorld::_internal_has_timestamp() const {
-  bool value = (_has_bits_[0] & 0x00002000u) != 0;
+  bool value = (_has_bits_[0] & 0x00004000u) != 0;
   return value;
 }
 inline bool SimulationWorld::has_timestamp() const {
@@ -7852,7 +7873,7 @@ inline bool SimulationWorld::has_timestamp() const {
 }
 inline void SimulationWorld::clear_timestamp() {
   timestamp_ = 0;
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline double SimulationWorld::_internal_timestamp() const {
   return timestamp_;
@@ -7862,7 +7883,7 @@ inline double SimulationWorld::timestamp() const {
   return _internal_timestamp();
 }
 inline void SimulationWorld::_internal_set_timestamp(double value) {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00004000u;
   timestamp_ = value;
 }
 inline void SimulationWorld::set_timestamp(double value) {
@@ -7872,7 +7893,7 @@ inline void SimulationWorld::set_timestamp(double value) {
 
 // optional uint32 sequence_num = 2;
 inline bool SimulationWorld::_internal_has_sequence_num() const {
-  bool value = (_has_bits_[0] & 0x00010000u) != 0;
+  bool value = (_has_bits_[0] & 0x00020000u) != 0;
   return value;
 }
 inline bool SimulationWorld::has_sequence_num() const {
@@ -7880,7 +7901,7 @@ inline bool SimulationWorld::has_sequence_num() const {
 }
 inline void SimulationWorld::clear_sequence_num() {
   sequence_num_ = 0u;
-  _has_bits_[0] &= ~0x00010000u;
+  _has_bits_[0] &= ~0x00020000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint32 SimulationWorld::_internal_sequence_num() const {
   return sequence_num_;
@@ -7890,7 +7911,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint32 SimulationWorld::sequence_num() const {
   return _internal_sequence_num();
 }
 inline void SimulationWorld::_internal_set_sequence_num(::PROTOBUF_NAMESPACE_ID::uint32 value) {
-  _has_bits_[0] |= 0x00010000u;
+  _has_bits_[0] |= 0x00020000u;
   sequence_num_ = value;
 }
 inline void SimulationWorld::set_sequence_num(::PROTOBUF_NAMESPACE_ID::uint32 value) {
@@ -8144,7 +8165,7 @@ SimulationWorld::route_path() const {
 
 // optional double routing_time = 7;
 inline bool SimulationWorld::_internal_has_routing_time() const {
-  bool value = (_has_bits_[0] & 0x00004000u) != 0;
+  bool value = (_has_bits_[0] & 0x00008000u) != 0;
   return value;
 }
 inline bool SimulationWorld::has_routing_time() const {
@@ -8152,7 +8173,7 @@ inline bool SimulationWorld::has_routing_time() const {
 }
 inline void SimulationWorld::clear_routing_time() {
   routing_time_ = 0;
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline double SimulationWorld::_internal_routing_time() const {
   return routing_time_;
@@ -8162,7 +8183,7 @@ inline double SimulationWorld::routing_time() const {
   return _internal_routing_time();
 }
 inline void SimulationWorld::_internal_set_routing_time(double value) {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00008000u;
   routing_time_ = value;
 }
 inline void SimulationWorld::set_routing_time(double value) {
@@ -8377,7 +8398,7 @@ inline void SimulationWorld::set_allocated_main_decision(::apollo::dreamview::Ob
 
 // optional double speed_limit = 11;
 inline bool SimulationWorld::_internal_has_speed_limit() const {
-  bool value = (_has_bits_[0] & 0x00008000u) != 0;
+  bool value = (_has_bits_[0] & 0x00010000u) != 0;
   return value;
 }
 inline bool SimulationWorld::has_speed_limit() const {
@@ -8385,7 +8406,7 @@ inline bool SimulationWorld::has_speed_limit() const {
 }
 inline void SimulationWorld::clear_speed_limit() {
   speed_limit_ = 0;
-  _has_bits_[0] &= ~0x00008000u;
+  _has_bits_[0] &= ~0x00010000u;
 }
 inline double SimulationWorld::_internal_speed_limit() const {
   return speed_limit_;
@@ -8395,7 +8416,7 @@ inline double SimulationWorld::speed_limit() const {
   return _internal_speed_limit();
 }
 inline void SimulationWorld::_internal_set_speed_limit(double value) {
-  _has_bits_[0] |= 0x00008000u;
+  _has_bits_[0] |= 0x00010000u;
   speed_limit_ = value;
 }
 inline void SimulationWorld::set_speed_limit(double value) {
@@ -8791,7 +8812,7 @@ inline void SimulationWorld::set_allocated_map_element_ids(::apollo::dreamview::
 
 // optional uint64 map_hash = 18;
 inline bool SimulationWorld::_internal_has_map_hash() const {
-  bool value = (_has_bits_[0] & 0x00040000u) != 0;
+  bool value = (_has_bits_[0] & 0x00080000u) != 0;
   return value;
 }
 inline bool SimulationWorld::has_map_hash() const {
@@ -8799,7 +8820,7 @@ inline bool SimulationWorld::has_map_hash() const {
 }
 inline void SimulationWorld::clear_map_hash() {
   map_hash_ = PROTOBUF_ULONGLONG(0);
-  _has_bits_[0] &= ~0x00040000u;
+  _has_bits_[0] &= ~0x00080000u;
 }
 inline ::PROTOBUF_NAMESPACE_ID::uint64 SimulationWorld::_internal_map_hash() const {
   return map_hash_;
@@ -8809,7 +8830,7 @@ inline ::PROTOBUF_NAMESPACE_ID::uint64 SimulationWorld::map_hash() const {
   return _internal_map_hash();
 }
 inline void SimulationWorld::_internal_set_map_hash(::PROTOBUF_NAMESPACE_ID::uint64 value) {
-  _has_bits_[0] |= 0x00040000u;
+  _has_bits_[0] |= 0x00080000u;
   map_hash_ = value;
 }
 inline void SimulationWorld::set_map_hash(::PROTOBUF_NAMESPACE_ID::uint64 value) {
@@ -8819,7 +8840,7 @@ inline void SimulationWorld::set_map_hash(::PROTOBUF_NAMESPACE_ID::uint64 value)
 
 // optional double map_radius = 19;
 inline bool SimulationWorld::_internal_has_map_radius() const {
-  bool value = (_has_bits_[0] & 0x00080000u) != 0;
+  bool value = (_has_bits_[0] & 0x00100000u) != 0;
   return value;
 }
 inline bool SimulationWorld::has_map_radius() const {
@@ -8827,7 +8848,7 @@ inline bool SimulationWorld::has_map_radius() const {
 }
 inline void SimulationWorld::clear_map_radius() {
   map_radius_ = 0;
-  _has_bits_[0] &= ~0x00080000u;
+  _has_bits_[0] &= ~0x00100000u;
 }
 inline double SimulationWorld::_internal_map_radius() const {
   return map_radius_;
@@ -8837,7 +8858,7 @@ inline double SimulationWorld::map_radius() const {
   return _internal_map_radius();
 }
 inline void SimulationWorld::_internal_set_map_radius(double value) {
-  _has_bits_[0] |= 0x00080000u;
+  _has_bits_[0] |= 0x00100000u;
   map_radius_ = value;
 }
 inline void SimulationWorld::set_map_radius(double value) {
@@ -9207,7 +9228,7 @@ SimulationWorld::navigation_path() const {
 
 // optional bool is_rss_safe = 25 [default = true];
 inline bool SimulationWorld::_internal_has_is_rss_safe() const {
-  bool value = (_has_bits_[0] & 0x00100000u) != 0;
+  bool value = (_has_bits_[0] & 0x00200000u) != 0;
   return value;
 }
 inline bool SimulationWorld::has_is_rss_safe() const {
@@ -9215,7 +9236,7 @@ inline bool SimulationWorld::has_is_rss_safe() const {
 }
 inline void SimulationWorld::clear_is_rss_safe() {
   is_rss_safe_ = true;
-  _has_bits_[0] &= ~0x00100000u;
+  _has_bits_[0] &= ~0x00200000u;
 }
 inline bool SimulationWorld::_internal_is_rss_safe() const {
   return is_rss_safe_;
@@ -9225,7 +9246,7 @@ inline bool SimulationWorld::is_rss_safe() const {
   return _internal_is_rss_safe();
 }
 inline void SimulationWorld::_internal_set_is_rss_safe(bool value) {
-  _has_bits_[0] |= 0x00100000u;
+  _has_bits_[0] |= 0x00200000u;
   is_rss_safe_ = value;
 }
 inline void SimulationWorld::set_is_rss_safe(bool value) {
@@ -9415,7 +9436,7 @@ SimulationWorld::mutable_sensor_measurements() {
 
 // optional bool is_siren_on = 30 [default = false];
 inline bool SimulationWorld::_internal_has_is_siren_on() const {
-  bool value = (_has_bits_[0] & 0x00020000u) != 0;
+  bool value = (_has_bits_[0] & 0x00040000u) != 0;
   return value;
 }
 inline bool SimulationWorld::has_is_siren_on() const {
@@ -9423,7 +9444,7 @@ inline bool SimulationWorld::has_is_siren_on() const {
 }
 inline void SimulationWorld::clear_is_siren_on() {
   is_siren_on_ = false;
-  _has_bits_[0] &= ~0x00020000u;
+  _has_bits_[0] &= ~0x00040000u;
 }
 inline bool SimulationWorld::_internal_is_siren_on() const {
   return is_siren_on_;
@@ -9433,12 +9454,91 @@ inline bool SimulationWorld::is_siren_on() const {
   return _internal_is_siren_on();
 }
 inline void SimulationWorld::_internal_set_is_siren_on(bool value) {
-  _has_bits_[0] |= 0x00020000u;
+  _has_bits_[0] |= 0x00040000u;
   is_siren_on_ = value;
 }
 inline void SimulationWorld::set_is_siren_on(bool value) {
   _internal_set_is_siren_on(value);
   // @@protoc_insertion_point(field_set:apollo.dreamview.SimulationWorld.is_siren_on)
+}
+
+// optional .apollo.common.VehicleParam vehicle_param = 31;
+inline bool SimulationWorld::_internal_has_vehicle_param() const {
+  bool value = (_has_bits_[0] & 0x00002000u) != 0;
+  PROTOBUF_ASSUME(!value || vehicle_param_ != nullptr);
+  return value;
+}
+inline bool SimulationWorld::has_vehicle_param() const {
+  return _internal_has_vehicle_param();
+}
+inline const ::apollo::common::VehicleParam& SimulationWorld::_internal_vehicle_param() const {
+  const ::apollo::common::VehicleParam* p = vehicle_param_;
+  return p != nullptr ? *p : reinterpret_cast<const ::apollo::common::VehicleParam&>(
+      ::apollo::common::_VehicleParam_default_instance_);
+}
+inline const ::apollo::common::VehicleParam& SimulationWorld::vehicle_param() const {
+  // @@protoc_insertion_point(field_get:apollo.dreamview.SimulationWorld.vehicle_param)
+  return _internal_vehicle_param();
+}
+inline void SimulationWorld::unsafe_arena_set_allocated_vehicle_param(
+    ::apollo::common::VehicleParam* vehicle_param) {
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(vehicle_param_);
+  }
+  vehicle_param_ = vehicle_param;
+  if (vehicle_param) {
+    _has_bits_[0] |= 0x00002000u;
+  } else {
+    _has_bits_[0] &= ~0x00002000u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:apollo.dreamview.SimulationWorld.vehicle_param)
+}
+inline ::apollo::common::VehicleParam* SimulationWorld::release_vehicle_param() {
+  _has_bits_[0] &= ~0x00002000u;
+  ::apollo::common::VehicleParam* temp = vehicle_param_;
+  vehicle_param_ = nullptr;
+  if (GetArena() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::apollo::common::VehicleParam* SimulationWorld::unsafe_arena_release_vehicle_param() {
+  // @@protoc_insertion_point(field_release:apollo.dreamview.SimulationWorld.vehicle_param)
+  _has_bits_[0] &= ~0x00002000u;
+  ::apollo::common::VehicleParam* temp = vehicle_param_;
+  vehicle_param_ = nullptr;
+  return temp;
+}
+inline ::apollo::common::VehicleParam* SimulationWorld::_internal_mutable_vehicle_param() {
+  _has_bits_[0] |= 0x00002000u;
+  if (vehicle_param_ == nullptr) {
+    auto* p = CreateMaybeMessage<::apollo::common::VehicleParam>(GetArena());
+    vehicle_param_ = p;
+  }
+  return vehicle_param_;
+}
+inline ::apollo::common::VehicleParam* SimulationWorld::mutable_vehicle_param() {
+  // @@protoc_insertion_point(field_mutable:apollo.dreamview.SimulationWorld.vehicle_param)
+  return _internal_mutable_vehicle_param();
+}
+inline void SimulationWorld::set_allocated_vehicle_param(::apollo::common::VehicleParam* vehicle_param) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(vehicle_param_);
+  }
+  if (vehicle_param) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(vehicle_param)->GetArena();
+    if (message_arena != submessage_arena) {
+      vehicle_param = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, vehicle_param, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00002000u;
+  } else {
+    _has_bits_[0] &= ~0x00002000u;
+  }
+  vehicle_param_ = vehicle_param;
+  // @@protoc_insertion_point(field_set_allocated:apollo.dreamview.SimulationWorld.vehicle_param)
 }
 
 #ifdef __GNUC__
