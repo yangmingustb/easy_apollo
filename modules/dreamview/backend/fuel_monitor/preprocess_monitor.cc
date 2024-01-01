@@ -27,7 +27,7 @@
 #include "modules/common/configs/vehicle_config_helper.h"
 #include "modules/dreamview/backend/common/dreamview_gflags.h"
 #include "modules/dreamview/backend/fuel_monitor/fuel_monitor_gflags.h"
-#include "modules/dreamview/backend/hmi/vehicle_manager.h"
+#include "modules/dreamview/backend/common/vehicle_manager/vehicle_manager.h"
 
 namespace apollo {
 namespace dreamview {

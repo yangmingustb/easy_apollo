@@ -78,7 +78,6 @@ target_link_libraries(dv_map PUBLIC
 add_library(apollo_hmi  ${BUILD_TYPE}  
 backend/hmi/hmi_worker.cc
 backend/hmi/hmi.cc
-backend/hmi/vehicle_manager.cc
 
 
 
@@ -108,6 +107,7 @@ message("dreamview source: ${dreamview_common_file}")
 
 add_library(dreamview_common  ${BUILD_TYPE}
       ${dreamview_common_file}
+      backend/common/vehicle_manager/vehicle_manager.cc
         )
 target_include_directories(dreamview_common PUBLIC
 ${CMAKE_CURRENT_SOURCE_DIR}

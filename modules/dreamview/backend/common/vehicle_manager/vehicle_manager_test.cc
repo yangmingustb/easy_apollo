@@ -13,20 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *****************************************************************************/
-#include "modules/dreamview/backend/hmi/vehicle_manager.h"
-
+#include "modules/dreamview/backend/common/vehicle_manager/vehicle_manager.h"
+#include "modules/dreamview/backend/common/dreamview_gflags.h"
 #include "absl/strings/str_cat.h"
 #include "cyber/common/file.h"
-#include "gflags/gflags.h"
 #include "gtest/gtest.h"
-
-// DECLARE_string(vehicle_data_config_filename);
 
 namespace apollo {
 namespace dreamview {
 
 static const char kTestVehicle[] =
-    "modules/dreamview/backend/hmi/testdata/vehicle";
+    "modules/dreamview/backend/common/vehicle_manager/testdata/vehicle";
 static const char kTargetDir[] = "/tmp/vehicle";
 
 class VehicleManagerTest : public ::testing::Test {

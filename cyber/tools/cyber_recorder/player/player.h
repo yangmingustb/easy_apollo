@@ -88,6 +88,9 @@ private:
     TaskBufferPtr task_buffer_;
     std::shared_ptr<std::thread> term_thread_ = nullptr;
     static const uint64_t kSleepIntervalMiliSec;
+
+    // add nohup_play_th_ to allow background play record
+    // std::shared_ptr<std::thread> nohup_play_th_ = nullptr;
 };
 
 }  // namespace record

@@ -14,18 +14,16 @@
  * limitations under the License.
  *****************************************************************************/
 
-#include "modules/dreamview/backend/hmi/vehicle_manager.h"
+#include "modules/dreamview/backend/common/vehicle_manager/vehicle_manager.h"
+
+#include <cstdlib>
 
 #include "absl/strings/str_cat.h"
+
 #include "cyber/common/file.h"
 #include "cyber/common/log.h"
-#include "gflags/gflags.h"
 #include "modules/common/configs/vehicle_config_helper.h"
 #include "modules/dreamview/backend/common/dreamview_gflags.h"
-
-// DEFINE_string(vehicle_data_config_filename,
-//               "./../modules/dreamview/conf/vehicle_data.pb.txt",
-//               "Vehicle data config file.");
 
 namespace apollo {
 namespace dreamview {
@@ -43,6 +41,15 @@ const std::string &VehicleManager::GetVehicleDataPath() const {
 }
 
 bool VehicleManager::UseVehicle(const std::string &vehicle_data_path) {
+  if (FLAGS_vehicle_changed_use_copy_mode) {
+    return UseVehicleUseCopyMode(vehicle_data_path);
+  } else {
+    return UseVehicleUseSymlinkMode(vehicle_data_path);
+  }
+}
+
+bool VehicleManager::UseVehicleUseCopyMode(
+    const std::string &vehicle_data_path) {
   if (!cyber::common::DirectoryExists(vehicle_data_path)) {
     AERROR << "Cannot find vehicle data: " << vehicle_data_path;
     return false;
@@ -57,11 +64,34 @@ bool VehicleManager::UseVehicle(const std::string &vehicle_data_path) {
     const bool ret = cyber::common::Copy(source_path, dest_path);
     AINFO_IF(ret) << "Copied " << source_path << " to " << dest_path;
   }
+  AINFO << "Use vehice [" << vehicle_data_path << "] copy config successfully.";
 
   // Reload vehicle config for current process.
   apollo::common::VehicleConfigHelper::Init();
 
   return true;
+}
+
+bool VehicleManager::UseVehicleUseSymlinkMode(
+    const std::string &vehicle_data_path) {
+  std::string vehicle_type = vehicle_data_path;
+  auto pos = vehicle_data_path.find_last_of('/');
+  if (pos != std::string::npos) {
+    vehicle_type = vehicle_data_path.substr(pos + 1);
+  }
+  std::string cmd = "aem profile use " + vehicle_type;
+  AINFO << "Use vehicle by cmd: " << cmd;
+  const int ret = std::system(cmd.data());
+  if (ret == 0) {
+    AINFO << "SUCCESS: use vehicle " << vehicle_type;
+
+    // Reload vehicle config for current process.
+    apollo::common::VehicleConfigHelper::Init();
+    return true;
+  } else {
+    AERROR << "FAILED: use vehicle " << vehicle_type;
+    return false;
+  }
 }
 
 }  // namespace dreamview
