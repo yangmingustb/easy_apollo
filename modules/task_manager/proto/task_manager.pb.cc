@@ -15,9 +15,11 @@
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 extern PROTOBUF_INTERNAL_EXPORT_modules_2fcommon_2fproto_2fheader_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Header_modules_2fcommon_2fproto_2fheader_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_modules_2fcommon_5fmsgs_2fexternal_5fcommand_5fmsgs_2flane_5ffollow_5fcommand_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<3> scc_info_LaneFollowCommand_modules_2fcommon_5fmsgs_2fexternal_5fcommand_5fmsgs_2flane_5ffollow_5fcommand_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2frouting_2fproto_2frouting_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<6> scc_info_RoutingRequest_modules_2frouting_2fproto_2frouting_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_CycleRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_CycleRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DeadEndRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ParkGoRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ParkingRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto;
 namespace apollo {
 namespace task_manager {
@@ -33,6 +35,10 @@ class DeadEndRoutingTaskDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<DeadEndRoutingTask> _instance;
 } _DeadEndRoutingTask_default_instance_;
+class ParkGoRoutingTaskDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ParkGoRoutingTask> _instance;
+} _ParkGoRoutingTask_default_instance_;
 class TaskDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Task> _instance;
@@ -49,9 +55,10 @@ static void InitDefaultsscc_info_CycleRoutingTask_modules_2ftask_5fmanager_2fpro
   }
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_CycleRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_CycleRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto}, {
-      &scc_info_RoutingRequest_modules_2frouting_2fproto_2frouting_2eproto.base,}};
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_CycleRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, 0, InitDefaultsscc_info_CycleRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto}, {
+      &scc_info_RoutingRequest_modules_2frouting_2fproto_2frouting_2eproto.base,
+      &scc_info_LaneFollowCommand_modules_2fcommon_5fmsgs_2fexternal_5fcommand_5fmsgs_2flane_5ffollow_5fcommand_2eproto.base,}};
 
 static void InitDefaultsscc_info_DeadEndRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -65,6 +72,20 @@ static void InitDefaultsscc_info_DeadEndRoutingTask_modules_2ftask_5fmanager_2fp
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_DeadEndRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_DeadEndRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto}, {
+      &scc_info_RoutingRequest_modules_2frouting_2fproto_2frouting_2eproto.base,}};
+
+static void InitDefaultsscc_info_ParkGoRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::apollo::task_manager::_ParkGoRoutingTask_default_instance_;
+    new (ptr) ::apollo::task_manager::ParkGoRoutingTask();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_ParkGoRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_ParkGoRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto}, {
       &scc_info_RoutingRequest_modules_2frouting_2fproto_2frouting_2eproto.base,}};
 
 static void InitDefaultsscc_info_ParkingRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto() {
@@ -91,14 +112,15 @@ static void InitDefaultsscc_info_Task_modules_2ftask_5fmanager_2fproto_2ftask_5f
   }
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<4> scc_info_Task_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 4, 0, InitDefaultsscc_info_Task_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto}, {
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<5> scc_info_Task_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 5, 0, InitDefaultsscc_info_Task_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto}, {
       &scc_info_Header_modules_2fcommon_2fproto_2fheader_2eproto.base,
       &scc_info_CycleRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto.base,
       &scc_info_ParkingRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto.base,
-      &scc_info_DeadEndRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto.base,}};
+      &scc_info_DeadEndRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto.base,
+      &scc_info_ParkGoRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto.base,}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto[4];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto[5];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto[2];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto = nullptr;
 
@@ -110,8 +132,10 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_modules_2ftask_5fmanager_2fpro
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::apollo::task_manager::CycleRoutingTask, cycle_num_),
   PROTOBUF_FIELD_OFFSET(::apollo::task_manager::CycleRoutingTask, routing_request_),
-  1,
+  PROTOBUF_FIELD_OFFSET(::apollo::task_manager::CycleRoutingTask, lane_follow_command_),
+  2,
   0,
+  1,
   PROTOBUF_FIELD_OFFSET(::apollo::task_manager::ParkingRoutingTask, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::apollo::task_manager::ParkingRoutingTask, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -130,6 +154,15 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_modules_2ftask_5fmanager_2fpro
   PROTOBUF_FIELD_OFFSET(::apollo::task_manager::DeadEndRoutingTask, routing_request_out_),
   0,
   1,
+  PROTOBUF_FIELD_OFFSET(::apollo::task_manager::ParkGoRoutingTask, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::apollo::task_manager::ParkGoRoutingTask, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::apollo::task_manager::ParkGoRoutingTask, park_time_),
+  PROTOBUF_FIELD_OFFSET(::apollo::task_manager::ParkGoRoutingTask, routing_request_),
+  1,
+  0,
   PROTOBUF_FIELD_OFFSET(::apollo::task_manager::Task, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::apollo::task_manager::Task, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -141,6 +174,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_modules_2ftask_5fmanager_2fpro
   ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
   ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
   ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
+  ::PROTOBUF_NAMESPACE_ID::internal::kInvalidFieldOffsetTag,
   PROTOBUF_FIELD_OFFSET(::apollo::task_manager::Task, routing_task_),
   1,
   0,
@@ -148,18 +182,21 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_modules_2ftask_5fmanager_2fpro
   ~0u,
   ~0u,
   ~0u,
+  ~0u,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 7, sizeof(::apollo::task_manager::CycleRoutingTask)},
-  { 9, 16, sizeof(::apollo::task_manager::ParkingRoutingTask)},
-  { 18, 25, sizeof(::apollo::task_manager::DeadEndRoutingTask)},
-  { 27, 39, sizeof(::apollo::task_manager::Task)},
+  { 0, 8, sizeof(::apollo::task_manager::CycleRoutingTask)},
+  { 11, 18, sizeof(::apollo::task_manager::ParkingRoutingTask)},
+  { 20, 27, sizeof(::apollo::task_manager::DeadEndRoutingTask)},
+  { 29, 36, sizeof(::apollo::task_manager::ParkGoRoutingTask)},
+  { 38, 51, sizeof(::apollo::task_manager::Task)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::task_manager::_CycleRoutingTask_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::task_manager::_ParkingRoutingTask_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::task_manager::_DeadEndRoutingTask_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::task_manager::_ParkGoRoutingTask_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::apollo::task_manager::_Task_default_instance_),
 };
 
@@ -167,48 +204,55 @@ const char descriptor_table_protodef_modules_2ftask_5fmanager_2fproto_2ftask_5fm
   "\n-modules/task_manager/proto/task_manage"
   "r.proto\022\023apollo.task_manager\032!modules/co"
   "mmon/proto/header.proto\032#modules/routing"
-  "/proto/routing.proto\032)modules/map/proto/"
-  "map_parking_space.proto\"^\n\020CycleRoutingT"
-  "ask\022\021\n\tcycle_num\030\001 \001(\005\0227\n\017routing_reques"
+  "/proto/routing.proto\032Cmodules/common_msg"
+  "s/external_command_msgs/lane_follow_comm"
+  "and.proto\"\247\001\n\020CycleRoutingTask\022\021\n\tcycle_"
+  "num\030\001 \001(\005\0227\n\017routing_request\030\002 \001(\0132\036.apo"
+  "llo.routing.RoutingRequest\022G\n\023lane_follo"
+  "w_command\030\003 \001(\0132*.apollo.external_comman"
+  "d.LaneFollowCommand\"a\n\022ParkingRoutingTas"
+  "k\022\022\n\nlane_width\030\001 \001(\001\0227\n\017routing_request"
+  "\030\002 \001(\0132\036.apollo.routing.RoutingRequest\"\215"
+  "\001\n\022DeadEndRoutingTask\022:\n\022routing_request"
+  "_in\030\002 \001(\0132\036.apollo.routing.RoutingReques"
+  "t\022;\n\023routing_request_out\030\003 \001(\0132\036.apollo."
+  "routing.RoutingRequest\"_\n\021ParkGoRoutingT"
+  "ask\022\021\n\tpark_time\030\001 \001(\005\0227\n\017routing_reques"
   "t\030\002 \001(\0132\036.apollo.routing.RoutingRequest\""
-  "a\n\022ParkingRoutingTask\022\022\n\nlane_width\030\001 \001("
-  "\001\0227\n\017routing_request\030\002 \001(\0132\036.apollo.rout"
-  "ing.RoutingRequest\"\215\001\n\022DeadEndRoutingTas"
-  "k\022:\n\022routing_request_in\030\002 \001(\0132\036.apollo.r"
-  "outing.RoutingRequest\022;\n\023routing_request"
-  "_out\030\003 \001(\0132\036.apollo.routing.RoutingReque"
-  "st\"\332\002\n\004Task\022%\n\006header\030\001 \001(\0132\025.apollo.com"
-  "mon.Header\022\021\n\ttask_name\030\002 \001(\t\0220\n\ttask_ty"
-  "pe\030\003 \001(\0162\035.apollo.task_manager.TaskType\022"
-  "C\n\022cycle_routing_task\030\004 \001(\0132%.apollo.tas"
-  "k_manager.CycleRoutingTaskH\000\022G\n\024parking_"
-  "routing_task\030\005 \001(\0132\'.apollo.task_manager"
-  ".ParkingRoutingTaskH\000\022H\n\025dead_end_routin"
-  "g_task\030\006 \001(\0132\'.apollo.task_manager.DeadE"
-  "ndRoutingTaskH\000B\016\n\014routing_task*H\n\010TaskT"
-  "ype\022\021\n\rCYCLE_ROUTING\020\000\022\023\n\017PARKING_ROUTIN"
-  "G\020\001\022\024\n\020DEAD_END_ROUTING\020\003*d\n\014JunctionTyp"
-  "e\022\013\n\007UNKNOWN\020\000\022\013\n\007IN_ROAD\020\001\022\016\n\nCROSS_ROA"
-  "D\020\002\022\r\n\tFORK_ROAD\020\003\022\r\n\tMAIN_SIDE\020\004\022\014\n\010DEA"
-  "D_END\020\005"
+  "\242\003\n\004Task\022%\n\006header\030\001 \001(\0132\025.apollo.common"
+  ".Header\022\021\n\ttask_name\030\002 \001(\t\0220\n\ttask_type\030"
+  "\003 \001(\0162\035.apollo.task_manager.TaskType\022C\n\022"
+  "cycle_routing_task\030\004 \001(\0132%.apollo.task_m"
+  "anager.CycleRoutingTaskH\000\022G\n\024parking_rou"
+  "ting_task\030\005 \001(\0132\'.apollo.task_manager.Pa"
+  "rkingRoutingTaskH\000\022H\n\025dead_end_routing_t"
+  "ask\030\006 \001(\0132\'.apollo.task_manager.DeadEndR"
+  "outingTaskH\000\022F\n\024park_go_routing_task\030\007 \001"
+  "(\0132&.apollo.task_manager.ParkGoRoutingTa"
+  "skH\000B\016\n\014routing_task*H\n\010TaskType\022\021\n\rCYCL"
+  "E_ROUTING\020\000\022\023\n\017PARKING_ROUTING\020\001\022\024\n\020DEAD"
+  "_END_ROUTING\020\003*d\n\014JunctionType\022\013\n\007UNKNOW"
+  "N\020\000\022\013\n\007IN_ROAD\020\001\022\016\n\nCROSS_ROAD\020\002\022\r\n\tFORK"
+  "_ROAD\020\003\022\r\n\tMAIN_SIDE\020\004\022\014\n\010DEAD_END\020\005"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto_deps[3] = {
   &::descriptor_table_modules_2fcommon_2fproto_2fheader_2eproto,
-  &::descriptor_table_modules_2fmap_2fproto_2fmap_5fparking_5fspace_2eproto,
+  &::descriptor_table_modules_2fcommon_5fmsgs_2fexternal_5fcommand_5fmsgs_2flane_5ffollow_5fcommand_2eproto,
   &::descriptor_table_modules_2frouting_2fproto_2frouting_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto_sccs[4] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto_sccs[5] = {
   &scc_info_CycleRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto.base,
   &scc_info_DeadEndRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto.base,
+  &scc_info_ParkGoRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto.base,
   &scc_info_ParkingRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto.base,
   &scc_info_Task_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto = {
-  false, false, descriptor_table_protodef_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto, "modules/task_manager/proto/task_manager.proto", 1047,
-  &descriptor_table_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto_once, descriptor_table_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto_sccs, descriptor_table_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto_deps, 4, 3,
+  false, false, descriptor_table_protodef_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto, "modules/task_manager/proto/task_manager.proto", 1316,
+  &descriptor_table_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto_once, descriptor_table_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto_sccs, descriptor_table_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto_deps, 5, 3,
   schemas, file_default_instances, TableStruct_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto::offsets,
-  file_level_metadata_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto, 4, file_level_enum_descriptors_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto, file_level_service_descriptors_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto,
+  file_level_metadata_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto, 5, file_level_enum_descriptors_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto, file_level_service_descriptors_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -255,11 +299,15 @@ class CycleRoutingTask::_Internal {
  public:
   using HasBits = decltype(std::declval<CycleRoutingTask>()._has_bits_);
   static void set_has_cycle_num(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
+    (*has_bits)[0] |= 4u;
   }
   static const ::apollo::routing::RoutingRequest& routing_request(const CycleRoutingTask* msg);
   static void set_has_routing_request(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
+  }
+  static const ::apollo::external_command::LaneFollowCommand& lane_follow_command(const CycleRoutingTask* msg);
+  static void set_has_lane_follow_command(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
   }
 };
 
@@ -267,9 +315,17 @@ const ::apollo::routing::RoutingRequest&
 CycleRoutingTask::_Internal::routing_request(const CycleRoutingTask* msg) {
   return *msg->routing_request_;
 }
+const ::apollo::external_command::LaneFollowCommand&
+CycleRoutingTask::_Internal::lane_follow_command(const CycleRoutingTask* msg) {
+  return *msg->lane_follow_command_;
+}
 void CycleRoutingTask::clear_routing_request() {
   if (routing_request_ != nullptr) routing_request_->Clear();
   _has_bits_[0] &= ~0x00000001u;
+}
+void CycleRoutingTask::clear_lane_follow_command() {
+  if (lane_follow_command_ != nullptr) lane_follow_command_->Clear();
+  _has_bits_[0] &= ~0x00000002u;
 }
 CycleRoutingTask::CycleRoutingTask(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
@@ -285,6 +341,11 @@ CycleRoutingTask::CycleRoutingTask(const CycleRoutingTask& from)
     routing_request_ = new ::apollo::routing::RoutingRequest(*from.routing_request_);
   } else {
     routing_request_ = nullptr;
+  }
+  if (from._internal_has_lane_follow_command()) {
+    lane_follow_command_ = new ::apollo::external_command::LaneFollowCommand(*from.lane_follow_command_);
+  } else {
+    lane_follow_command_ = nullptr;
   }
   cycle_num_ = from.cycle_num_;
   // @@protoc_insertion_point(copy_constructor:apollo.task_manager.CycleRoutingTask)
@@ -307,6 +368,7 @@ CycleRoutingTask::~CycleRoutingTask() {
 void CycleRoutingTask::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
   if (this != internal_default_instance()) delete routing_request_;
+  if (this != internal_default_instance()) delete lane_follow_command_;
 }
 
 void CycleRoutingTask::ArenaDtor(void* object) {
@@ -331,9 +393,15 @@ void CycleRoutingTask::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(routing_request_ != nullptr);
-    routing_request_->Clear();
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      GOOGLE_DCHECK(routing_request_ != nullptr);
+      routing_request_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      GOOGLE_DCHECK(lane_follow_command_ != nullptr);
+      lane_follow_command_->Clear();
+    }
   }
   cycle_num_ = 0;
   _has_bits_.Clear();
@@ -360,6 +428,13 @@ const char* CycleRoutingTask::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_routing_request(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // optional .apollo.external_command.LaneFollowCommand lane_follow_command = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_lane_follow_command(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -394,7 +469,7 @@ failure:
 
   cached_has_bits = _has_bits_[0];
   // optional int32 cycle_num = 1;
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_cycle_num(), target);
   }
@@ -405,6 +480,14 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
         2, _Internal::routing_request(this), target, stream);
+  }
+
+  // optional .apollo.external_command.LaneFollowCommand lane_follow_command = 3;
+  if (cached_has_bits & 0x00000002u) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        3, _Internal::lane_follow_command(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -424,7 +507,7 @@ size_t CycleRoutingTask::ByteSizeLong() const {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     // optional .apollo.routing.RoutingRequest routing_request = 2;
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
@@ -432,8 +515,15 @@ size_t CycleRoutingTask::ByteSizeLong() const {
           *routing_request_);
     }
 
-    // optional int32 cycle_num = 1;
+    // optional .apollo.external_command.LaneFollowCommand lane_follow_command = 3;
     if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *lane_follow_command_);
+    }
+
+    // optional int32 cycle_num = 1;
+    if (cached_has_bits & 0x00000004u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
           this->_internal_cycle_num());
@@ -472,11 +562,14 @@ void CycleRoutingTask::MergeFrom(const CycleRoutingTask& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       _internal_mutable_routing_request()->::apollo::routing::RoutingRequest::MergeFrom(from._internal_routing_request());
     }
     if (cached_has_bits & 0x00000002u) {
+      _internal_mutable_lane_follow_command()->::apollo::external_command::LaneFollowCommand::MergeFrom(from._internal_lane_follow_command());
+    }
+    if (cached_has_bits & 0x00000004u) {
       cycle_num_ = from.cycle_num_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -498,6 +591,9 @@ void CycleRoutingTask::CopyFrom(const CycleRoutingTask& from) {
 }
 
 bool CycleRoutingTask::IsInitialized() const {
+  if (_internal_has_lane_follow_command()) {
+    if (!lane_follow_command_->IsInitialized()) return false;
+  }
   return true;
 }
 
@@ -1075,6 +1171,275 @@ void DeadEndRoutingTask::InternalSwap(DeadEndRoutingTask* other) {
 
 // ===================================================================
 
+class ParkGoRoutingTask::_Internal {
+ public:
+  using HasBits = decltype(std::declval<ParkGoRoutingTask>()._has_bits_);
+  static void set_has_park_time(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static const ::apollo::routing::RoutingRequest& routing_request(const ParkGoRoutingTask* msg);
+  static void set_has_routing_request(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::apollo::routing::RoutingRequest&
+ParkGoRoutingTask::_Internal::routing_request(const ParkGoRoutingTask* msg) {
+  return *msg->routing_request_;
+}
+void ParkGoRoutingTask::clear_routing_request() {
+  if (routing_request_ != nullptr) routing_request_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+ParkGoRoutingTask::ParkGoRoutingTask(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:apollo.task_manager.ParkGoRoutingTask)
+}
+ParkGoRoutingTask::ParkGoRoutingTask(const ParkGoRoutingTask& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_routing_request()) {
+    routing_request_ = new ::apollo::routing::RoutingRequest(*from.routing_request_);
+  } else {
+    routing_request_ = nullptr;
+  }
+  park_time_ = from.park_time_;
+  // @@protoc_insertion_point(copy_constructor:apollo.task_manager.ParkGoRoutingTask)
+}
+
+void ParkGoRoutingTask::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ParkGoRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto.base);
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&routing_request_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&park_time_) -
+      reinterpret_cast<char*>(&routing_request_)) + sizeof(park_time_));
+}
+
+ParkGoRoutingTask::~ParkGoRoutingTask() {
+  // @@protoc_insertion_point(destructor:apollo.task_manager.ParkGoRoutingTask)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void ParkGoRoutingTask::SharedDtor() {
+  GOOGLE_DCHECK(GetArena() == nullptr);
+  if (this != internal_default_instance()) delete routing_request_;
+}
+
+void ParkGoRoutingTask::ArenaDtor(void* object) {
+  ParkGoRoutingTask* _this = reinterpret_cast< ParkGoRoutingTask* >(object);
+  (void)_this;
+}
+void ParkGoRoutingTask::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void ParkGoRoutingTask::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ParkGoRoutingTask& ParkGoRoutingTask::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ParkGoRoutingTask_modules_2ftask_5fmanager_2fproto_2ftask_5fmanager_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void ParkGoRoutingTask::Clear() {
+// @@protoc_insertion_point(message_clear_start:apollo.task_manager.ParkGoRoutingTask)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(routing_request_ != nullptr);
+    routing_request_->Clear();
+  }
+  park_time_ = 0;
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ParkGoRoutingTask::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // optional int32 park_time = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          _Internal::set_has_park_time(&has_bits);
+          park_time_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // optional .apollo.routing.RoutingRequest routing_request = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_routing_request(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* ParkGoRoutingTask::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:apollo.task_manager.ParkGoRoutingTask)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // optional int32 park_time = 1;
+  if (cached_has_bits & 0x00000002u) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_park_time(), target);
+  }
+
+  // optional .apollo.routing.RoutingRequest routing_request = 2;
+  if (cached_has_bits & 0x00000001u) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        2, _Internal::routing_request(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:apollo.task_manager.ParkGoRoutingTask)
+  return target;
+}
+
+size_t ParkGoRoutingTask::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:apollo.task_manager.ParkGoRoutingTask)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // optional .apollo.routing.RoutingRequest routing_request = 2;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *routing_request_);
+    }
+
+    // optional int32 park_time = 1;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+          this->_internal_park_time());
+    }
+
+  }
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void ParkGoRoutingTask::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:apollo.task_manager.ParkGoRoutingTask)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ParkGoRoutingTask* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ParkGoRoutingTask>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:apollo.task_manager.ParkGoRoutingTask)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:apollo.task_manager.ParkGoRoutingTask)
+    MergeFrom(*source);
+  }
+}
+
+void ParkGoRoutingTask::MergeFrom(const ParkGoRoutingTask& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:apollo.task_manager.ParkGoRoutingTask)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _internal_mutable_routing_request()->::apollo::routing::RoutingRequest::MergeFrom(from._internal_routing_request());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      park_time_ = from.park_time_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+}
+
+void ParkGoRoutingTask::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:apollo.task_manager.ParkGoRoutingTask)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void ParkGoRoutingTask::CopyFrom(const ParkGoRoutingTask& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:apollo.task_manager.ParkGoRoutingTask)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ParkGoRoutingTask::IsInitialized() const {
+  return true;
+}
+
+void ParkGoRoutingTask::InternalSwap(ParkGoRoutingTask* other) {
+  using std::swap;
+  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ParkGoRoutingTask, park_time_)
+      + sizeof(ParkGoRoutingTask::park_time_)
+      - PROTOBUF_FIELD_OFFSET(ParkGoRoutingTask, routing_request_)>(
+          reinterpret_cast<char*>(&routing_request_),
+          reinterpret_cast<char*>(&other->routing_request_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ParkGoRoutingTask::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 class Task::_Internal {
  public:
   using HasBits = decltype(std::declval<Task>()._has_bits_);
@@ -1091,6 +1456,7 @@ class Task::_Internal {
   static const ::apollo::task_manager::CycleRoutingTask& cycle_routing_task(const Task* msg);
   static const ::apollo::task_manager::ParkingRoutingTask& parking_routing_task(const Task* msg);
   static const ::apollo::task_manager::DeadEndRoutingTask& dead_end_routing_task(const Task* msg);
+  static const ::apollo::task_manager::ParkGoRoutingTask& park_go_routing_task(const Task* msg);
 };
 
 const ::apollo::common::Header&
@@ -1108,6 +1474,10 @@ Task::_Internal::parking_routing_task(const Task* msg) {
 const ::apollo::task_manager::DeadEndRoutingTask&
 Task::_Internal::dead_end_routing_task(const Task* msg) {
   return *msg->routing_task_.dead_end_routing_task_;
+}
+const ::apollo::task_manager::ParkGoRoutingTask&
+Task::_Internal::park_go_routing_task(const Task* msg) {
+  return *msg->routing_task_.park_go_routing_task_;
 }
 void Task::clear_header() {
   if (header_ != nullptr) header_->Clear();
@@ -1158,6 +1528,21 @@ void Task::set_allocated_dead_end_routing_task(::apollo::task_manager::DeadEndRo
   }
   // @@protoc_insertion_point(field_set_allocated:apollo.task_manager.Task.dead_end_routing_task)
 }
+void Task::set_allocated_park_go_routing_task(::apollo::task_manager::ParkGoRoutingTask* park_go_routing_task) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArena();
+  clear_routing_task();
+  if (park_go_routing_task) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::GetArena(park_go_routing_task);
+    if (message_arena != submessage_arena) {
+      park_go_routing_task = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, park_go_routing_task, submessage_arena);
+    }
+    set_has_park_go_routing_task();
+    routing_task_.park_go_routing_task_ = park_go_routing_task;
+  }
+  // @@protoc_insertion_point(field_set_allocated:apollo.task_manager.Task.park_go_routing_task)
+}
 Task::Task(::PROTOBUF_NAMESPACE_ID::Arena* arena)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
@@ -1191,6 +1576,10 @@ Task::Task(const Task& from)
     }
     case kDeadEndRoutingTask: {
       _internal_mutable_dead_end_routing_task()->::apollo::task_manager::DeadEndRoutingTask::MergeFrom(from._internal_dead_end_routing_task());
+      break;
+    }
+    case kParkGoRoutingTask: {
+      _internal_mutable_park_go_routing_task()->::apollo::task_manager::ParkGoRoutingTask::MergeFrom(from._internal_park_go_routing_task());
       break;
     }
     case ROUTING_TASK_NOT_SET: {
@@ -1258,6 +1647,12 @@ void Task::clear_routing_task() {
     case kDeadEndRoutingTask: {
       if (GetArena() == nullptr) {
         delete routing_task_.dead_end_routing_task_;
+      }
+      break;
+    }
+    case kParkGoRoutingTask: {
+      if (GetArena() == nullptr) {
+        delete routing_task_.park_go_routing_task_;
       }
       break;
     }
@@ -1350,6 +1745,13 @@ const char* Task::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::inter
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
+      // .apollo.task_manager.ParkGoRoutingTask park_go_routing_task = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
+          ptr = ctx->ParseMessage(_internal_mutable_park_go_routing_task(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
@@ -1427,6 +1829,13 @@ failure:
           6, _Internal::dead_end_routing_task(this), target, stream);
       break;
     }
+    case kParkGoRoutingTask: {
+      target = stream->EnsureSpace(target);
+      target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(
+          7, _Internal::park_go_routing_task(this), target, stream);
+      break;
+    }
     default: ;
   }
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1490,6 +1899,13 @@ size_t Task::ByteSizeLong() const {
           *routing_task_.dead_end_routing_task_);
       break;
     }
+    // .apollo.task_manager.ParkGoRoutingTask park_go_routing_task = 7;
+    case kParkGoRoutingTask: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *routing_task_.park_go_routing_task_);
+      break;
+    }
     case ROUTING_TASK_NOT_SET: {
       break;
     }
@@ -1551,6 +1967,10 @@ void Task::MergeFrom(const Task& from) {
       _internal_mutable_dead_end_routing_task()->::apollo::task_manager::DeadEndRoutingTask::MergeFrom(from._internal_dead_end_routing_task());
       break;
     }
+    case kParkGoRoutingTask: {
+      _internal_mutable_park_go_routing_task()->::apollo::task_manager::ParkGoRoutingTask::MergeFrom(from._internal_park_go_routing_task());
+      break;
+    }
     case ROUTING_TASK_NOT_SET: {
       break;
     }
@@ -1572,6 +1992,26 @@ void Task::CopyFrom(const Task& from) {
 }
 
 bool Task::IsInitialized() const {
+  switch (routing_task_case()) {
+    case kCycleRoutingTask: {
+      if (has_cycle_routing_task()) {
+        if (!this->cycle_routing_task().IsInitialized()) return false;
+      }
+      break;
+    }
+    case kParkingRoutingTask: {
+      break;
+    }
+    case kDeadEndRoutingTask: {
+      break;
+    }
+    case kParkGoRoutingTask: {
+      break;
+    }
+    case ROUTING_TASK_NOT_SET: {
+      break;
+    }
+  }
   return true;
 }
 
@@ -1607,6 +2047,9 @@ template<> PROTOBUF_NOINLINE ::apollo::task_manager::ParkingRoutingTask* Arena::
 }
 template<> PROTOBUF_NOINLINE ::apollo::task_manager::DeadEndRoutingTask* Arena::CreateMaybeMessage< ::apollo::task_manager::DeadEndRoutingTask >(Arena* arena) {
   return Arena::CreateMessageInternal< ::apollo::task_manager::DeadEndRoutingTask >(arena);
+}
+template<> PROTOBUF_NOINLINE ::apollo::task_manager::ParkGoRoutingTask* Arena::CreateMaybeMessage< ::apollo::task_manager::ParkGoRoutingTask >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::apollo::task_manager::ParkGoRoutingTask >(arena);
 }
 template<> PROTOBUF_NOINLINE ::apollo::task_manager::Task* Arena::CreateMaybeMessage< ::apollo::task_manager::Task >(Arena* arena) {
   return Arena::CreateMessageInternal< ::apollo::task_manager::Task >(arena);

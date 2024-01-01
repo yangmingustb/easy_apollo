@@ -196,6 +196,7 @@ class Landmark PROTOBUF_FINAL :
     kNameFieldNumber = 1,
     kParkingSpaceIdFieldNumber = 3,
     kParkingInfoFieldNumber = 4,
+    kCycleNumberFieldNumber = 5,
   };
   // repeated .apollo.routing.LaneWaypoint waypoint = 2;
   int waypoint_size() const;
@@ -273,6 +274,19 @@ class Landmark PROTOBUF_FINAL :
       ::apollo::routing::ParkingInfo* parking_info);
   ::apollo::routing::ParkingInfo* unsafe_arena_release_parking_info();
 
+  // optional int32 cycle_number = 5;
+  bool has_cycle_number() const;
+  private:
+  bool _internal_has_cycle_number() const;
+  public:
+  void clear_cycle_number();
+  ::PROTOBUF_NAMESPACE_ID::int32 cycle_number() const;
+  void set_cycle_number(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_cycle_number() const;
+  void _internal_set_cycle_number(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:apollo.routing.Landmark)
  private:
   class _Internal;
@@ -286,6 +300,7 @@ class Landmark PROTOBUF_FINAL :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr parking_space_id_;
   ::apollo::routing::ParkingInfo* parking_info_;
+  ::PROTOBUF_NAMESPACE_ID::int32 cycle_number_;
   friend struct ::TableStruct_modules_2frouting_2fproto_2fpoi_2eproto;
 };
 // -------------------------------------------------------------------
@@ -710,6 +725,34 @@ inline void Landmark::set_allocated_parking_info(::apollo::routing::ParkingInfo*
   }
   parking_info_ = parking_info;
   // @@protoc_insertion_point(field_set_allocated:apollo.routing.Landmark.parking_info)
+}
+
+// optional int32 cycle_number = 5;
+inline bool Landmark::_internal_has_cycle_number() const {
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool Landmark::has_cycle_number() const {
+  return _internal_has_cycle_number();
+}
+inline void Landmark::clear_cycle_number() {
+  cycle_number_ = 0;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Landmark::_internal_cycle_number() const {
+  return cycle_number_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Landmark::cycle_number() const {
+  // @@protoc_insertion_point(field_get:apollo.routing.Landmark.cycle_number)
+  return _internal_cycle_number();
+}
+inline void Landmark::_internal_set_cycle_number(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _has_bits_[0] |= 0x00000008u;
+  cycle_number_ = value;
+}
+inline void Landmark::set_cycle_number(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_cycle_number(value);
+  // @@protoc_insertion_point(field_set:apollo.routing.Landmark.cycle_number)
 }
 
 // -------------------------------------------------------------------

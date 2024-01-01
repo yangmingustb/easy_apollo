@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto2',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1fmodules/routing/proto/poi.proto\x12\x0e\x61pollo.routing\x1a#modules/routing/proto/routing.proto\"\x99\x01\n\x08Landmark\x12\x0c\n\x04name\x18\x01 \x01(\t\x12.\n\x08waypoint\x18\x02 \x03(\x0b\x32\x1c.apollo.routing.LaneWaypoint\x12\x1c\n\x10parking_space_id\x18\x03 \x01(\tB\x02\x18\x01\x12\x31\n\x0cparking_info\x18\x04 \x01(\x0b\x32\x1b.apollo.routing.ParkingInfo\"1\n\x03POI\x12*\n\x08landmark\x18\x01 \x03(\x0b\x32\x18.apollo.routing.Landmark'
+  serialized_pb=b'\n\x1fmodules/routing/proto/poi.proto\x12\x0e\x61pollo.routing\x1a#modules/routing/proto/routing.proto\"\xaf\x01\n\x08Landmark\x12\x0c\n\x04name\x18\x01 \x01(\t\x12.\n\x08waypoint\x18\x02 \x03(\x0b\x32\x1c.apollo.routing.LaneWaypoint\x12\x1c\n\x10parking_space_id\x18\x03 \x01(\tB\x02\x18\x01\x12\x31\n\x0cparking_info\x18\x04 \x01(\x0b\x32\x1b.apollo.routing.ParkingInfo\x12\x14\n\x0c\x63ycle_number\x18\x05 \x01(\x05\"1\n\x03POI\x12*\n\x08landmark\x18\x01 \x03(\x0b\x32\x18.apollo.routing.Landmark'
   ,
   dependencies=[modules_dot_routing_dot_proto_dot_routing__pb2.DESCRIPTOR,])
 
@@ -63,6 +63,13 @@ _LANDMARK = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='cycle_number', full_name='apollo.routing.Landmark.cycle_number', index=4,
+      number=5, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -76,7 +83,7 @@ _LANDMARK = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=89,
-  serialized_end=242,
+  serialized_end=264,
 )
 
 
@@ -107,8 +114,8 @@ _POI = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=244,
-  serialized_end=293,
+  serialized_start=266,
+  serialized_end=315,
 )
 
 _LANDMARK.fields_by_name['waypoint'].message_type = modules_dot_routing_dot_proto_dot_routing__pb2._LANEWAYPOINT

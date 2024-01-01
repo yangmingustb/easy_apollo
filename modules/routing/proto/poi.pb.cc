@@ -72,10 +72,12 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_modules_2frouting_2fproto_2fpo
   PROTOBUF_FIELD_OFFSET(::apollo::routing::Landmark, waypoint_),
   PROTOBUF_FIELD_OFFSET(::apollo::routing::Landmark, parking_space_id_),
   PROTOBUF_FIELD_OFFSET(::apollo::routing::Landmark, parking_info_),
+  PROTOBUF_FIELD_OFFSET(::apollo::routing::Landmark, cycle_number_),
   0,
   ~0u,
   1,
   2,
+  3,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::apollo::routing::POI, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -84,8 +86,8 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_modules_2frouting_2fproto_2fpo
   PROTOBUF_FIELD_OFFSET(::apollo::routing::POI, landmark_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 9, sizeof(::apollo::routing::Landmark)},
-  { 13, -1, sizeof(::apollo::routing::POI)},
+  { 0, 10, sizeof(::apollo::routing::Landmark)},
+  { 15, -1, sizeof(::apollo::routing::POI)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -96,12 +98,12 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_modules_2frouting_2fproto_2fpoi_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\037modules/routing/proto/poi.proto\022\016apoll"
   "o.routing\032#modules/routing/proto/routing"
-  ".proto\"\231\001\n\010Landmark\022\014\n\004name\030\001 \001(\t\022.\n\010way"
+  ".proto\"\257\001\n\010Landmark\022\014\n\004name\030\001 \001(\t\022.\n\010way"
   "point\030\002 \003(\0132\034.apollo.routing.LaneWaypoin"
   "t\022\034\n\020parking_space_id\030\003 \001(\tB\002\030\001\0221\n\014parki"
   "ng_info\030\004 \001(\0132\033.apollo.routing.ParkingIn"
-  "fo\"1\n\003POI\022*\n\010landmark\030\001 \003(\0132\030.apollo.rou"
-  "ting.Landmark"
+  "fo\022\024\n\014cycle_number\030\005 \001(\005\"1\n\003POI\022*\n\010landm"
+  "ark\030\001 \003(\0132\030.apollo.routing.Landmark"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_modules_2frouting_2fproto_2fpoi_2eproto_deps[1] = {
   &::descriptor_table_modules_2frouting_2fproto_2frouting_2eproto,
@@ -112,7 +114,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_mod
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_modules_2frouting_2fproto_2fpoi_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_modules_2frouting_2fproto_2fpoi_2eproto = {
-  false, false, descriptor_table_protodef_modules_2frouting_2fproto_2fpoi_2eproto, "modules/routing/proto/poi.proto", 293,
+  false, false, descriptor_table_protodef_modules_2frouting_2fproto_2fpoi_2eproto, "modules/routing/proto/poi.proto", 315,
   &descriptor_table_modules_2frouting_2fproto_2fpoi_2eproto_once, descriptor_table_modules_2frouting_2fproto_2fpoi_2eproto_sccs, descriptor_table_modules_2frouting_2fproto_2fpoi_2eproto_deps, 2, 1,
   schemas, file_default_instances, TableStruct_modules_2frouting_2fproto_2fpoi_2eproto::offsets,
   file_level_metadata_modules_2frouting_2fproto_2fpoi_2eproto, 2, file_level_enum_descriptors_modules_2frouting_2fproto_2fpoi_2eproto, file_level_service_descriptors_modules_2frouting_2fproto_2fpoi_2eproto,
@@ -137,6 +139,9 @@ class Landmark::_Internal {
   static const ::apollo::routing::ParkingInfo& parking_info(const Landmark* msg);
   static void set_has_parking_info(HasBits* has_bits) {
     (*has_bits)[0] |= 4u;
+  }
+  static void set_has_cycle_number(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
   }
 };
 
@@ -178,6 +183,7 @@ Landmark::Landmark(const Landmark& from)
   } else {
     parking_info_ = nullptr;
   }
+  cycle_number_ = from.cycle_number_;
   // @@protoc_insertion_point(copy_constructor:apollo.routing.Landmark)
 }
 
@@ -185,7 +191,10 @@ void Landmark::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Landmark_modules_2frouting_2fproto_2fpoi_2eproto.base);
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   parking_space_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  parking_info_ = nullptr;
+  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+      reinterpret_cast<char*>(&parking_info_) - reinterpret_cast<char*>(this)),
+      0, static_cast<size_t>(reinterpret_cast<char*>(&cycle_number_) -
+      reinterpret_cast<char*>(&parking_info_)) + sizeof(cycle_number_));
 }
 
 Landmark::~Landmark() {
@@ -236,6 +245,7 @@ void Landmark::Clear() {
       parking_info_->Clear();
     }
   }
+  cycle_number_ = 0;
   _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -286,6 +296,14 @@ const char* Landmark::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
           ptr = ctx->ParseMessage(_internal_mutable_parking_info(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // optional int32 cycle_number = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
+          _Internal::set_has_cycle_number(&has_bits);
+          cycle_number_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -355,6 +373,12 @@ failure:
         4, _Internal::parking_info(this), target, stream);
   }
 
+  // optional int32 cycle_number = 5;
+  if (cached_has_bits & 0x00000008u) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_cycle_number(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -379,7 +403,7 @@ size_t Landmark::ByteSizeLong() const {
   }
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     // optional string name = 1;
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
@@ -399,6 +423,13 @@ size_t Landmark::ByteSizeLong() const {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *parking_info_);
+    }
+
+    // optional int32 cycle_number = 5;
+    if (cached_has_bits & 0x00000008u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+          this->_internal_cycle_number());
     }
 
   }
@@ -435,7 +466,7 @@ void Landmark::MergeFrom(const Landmark& from) {
 
   waypoint_.MergeFrom(from.waypoint_);
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       _internal_set_name(from._internal_name());
     }
@@ -445,6 +476,10 @@ void Landmark::MergeFrom(const Landmark& from) {
     if (cached_has_bits & 0x00000004u) {
       _internal_mutable_parking_info()->::apollo::routing::ParkingInfo::MergeFrom(from._internal_parking_info());
     }
+    if (cached_has_bits & 0x00000008u) {
+      cycle_number_ = from.cycle_number_;
+    }
+    _has_bits_[0] |= cached_has_bits;
   }
 }
 
@@ -473,7 +508,12 @@ void Landmark::InternalSwap(Landmark* other) {
   waypoint_.InternalSwap(&other->waypoint_);
   name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   parking_space_id_.Swap(&other->parking_space_id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  swap(parking_info_, other->parking_info_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Landmark, cycle_number_)
+      + sizeof(Landmark::cycle_number_)
+      - PROTOBUF_FIELD_OFFSET(Landmark, parking_info_)>(
+          reinterpret_cast<char*>(&parking_info_),
+          reinterpret_cast<char*>(&other->parking_info_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Landmark::GetMetadata() const {

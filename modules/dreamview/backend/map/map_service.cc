@@ -682,5 +682,68 @@ bool MapService::PointIsValid(const double x, const double y) const {
   return (ids.ByteSizeLong() != 0);
 }
 
+double MapService::GetLaneHeading(const std::string &id_str, double s) {
+  auto *hdmap = HDMap();
+  CHECK(hdmap) << "Failed to get hdmap";
+
+  Id id;
+  id.set_id(id_str);
+  LaneInfoConstPtr lane_ptr = hdmap->GetLaneById(id);
+  if (lane_ptr != nullptr) {
+    return lane_ptr->Heading(s);
+  }
+  return 0.0;
+}
+
+
+std::string MapService::GetParkingSpaceId(const double x,
+                                          const double y) const {
+  PointENU point;
+  point.set_x(x);
+  point.set_y(y);
+  static constexpr double kSearchRadius = 3.0;
+  std::vector<ParkingSpaceInfoConstPtr> parking_spaces;
+
+  // Find parking spaces nearby
+  if (HDMap()->GetParkingSpaces(point, kSearchRadius, &parking_spaces) != 0) {
+    AERROR << "Fail to get parking space from sim_map.";
+    return "-1";
+  }
+
+  // Determine whether the point is in a neighboring parking space
+  for (const auto &parking_sapce : parking_spaces) {
+    if (!parking_sapce->polygon().is_convex()) {
+      AERROR << "The parking space information is incorrect and is not a "
+                "convex hull.";
+      return "-1";
+    }
+    apollo::common::math::Vec2d checked_point(x, y);
+    if (parking_sapce->polygon().IsPointIn(checked_point)) {
+      return parking_sapce->id().id();
+    }
+  }
+  return "-1";
+}
+
+bool MapService::CheckRoutingPointWithHeading(const double x, const double y,
+                                              const double heading) const
+{
+    double s, l;
+    LaneInfoConstPtr lane;
+    if (!GetNearestLaneWithHeading(x, y, &lane, &s, &l, heading))
+    {
+        if (GetParkingSpaceId(x, y) != "-1")
+        {
+            return true;
+        }
+        return false;
+    }
+    if (!CheckRoutingPointLaneType(lane))
+    {
+        return false;
+    }
+    return true;
+}
+
 }  // namespace dreamview
 }  // namespace apollo
