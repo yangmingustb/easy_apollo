@@ -21,6 +21,7 @@
 * 跟车不使用单一的跟车距离，引入了st point of interest,来生成可变的可行驶区域;
 * 限速优化，限速构成的边界考虑到车辆速度，不然速度优化经常无解；
 * 修复routing lane change的bug；
+* 增加dream view plus；
 
 
 
