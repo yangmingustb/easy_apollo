@@ -1,31 +1,22 @@
-#include "modules/viz2d/viz_window.h"
-#include "viz2d_component.h"
-#include "modules/viz2d/display_config.pb.h"
 #include "modules/chassis/virtual_chassis.h"
-#include "modules/common/status/system_state.h"
+#include "display_config.pb.h"
+#include "viz3d_component.h"
 #include "modules/common/configs/vehicle_config_helper.h"
 
 using namespace apollo;
-using namespace apollo::prediction;
-using namespace apollo::common;
-using namespace apollo::routing;
-using apollo::cyber::Rate;
 
-/** virutal localization
- * virtual chasis
- *
- * planner get virtual localization,virtual chasis;
- */
-
+// 和替他模块不同，每一帧循环的时间依赖cyber rt, viz3d的循环依赖open
+// gl本身的计时器
 int main(int argc, char** argv)
 {
-    // apollo::cyber::Clock::SetMode(apollo::cyber::proto::MODE_MOCK);
+    double cur_time = apollo::cyber::Time::Now().ToSecond();
+
     // apollo::cyber::Clock::SetNowInSeconds(curr_time_stamp);
     // todo, 将来所有数据的时钟都需要改称apollo cyber时钟
 
     google::ParseCommandLineFlags(&argc, &argv, true);
 
-    apollo::cyber::binary::SetName("display2d");
+    apollo::cyber::binary::SetName("display3d");
 
     // init cyber framework
     apollo::cyber::Init(apollo::cyber::binary::GetName().c_str());
@@ -36,7 +27,6 @@ int main(int argc, char** argv)
 
     // init apollo module
     std::string base_dir = "./../modules";
-    viz2d_window_read_config(base_dir);
 
 
     FLAGS_vehicle_config_path =
@@ -44,6 +34,10 @@ int main(int argc, char** argv)
 
     FLAGS_vehicle_model_config_filename = "./../modules/common/vehicle_model/"
                                           "conf/vehicle_model_config.pb.txt";
+
+
+    viz3d_component viz3d_;
+    viz3d_.init();
 
     // reader
 
@@ -54,27 +48,28 @@ int main(int argc, char** argv)
     running_time_debug_info();
 
     // vis
-    apollo::viz2d_component viz2d;
-    viz2d.init();
 
     int key_value;
 
-    // 10毫秒一个周期
-    double interval_time = 20.0;
+    // 100毫秒一个周期
+    double interval_time = 100.0;
     double history_time;
     double current_time;
     double delta_time;
     history_time = apollo::cyber::Time::Now().ToSecond();
 
-    common::VehicleConfig vehicle_config_;
+    unsigned int mode;
 
-    //
-    vehicle_config_ = apollo::common::VehicleConfigHelper::GetConfig();
+    // veh params
+    apollo::common::VehicleConfig vehicle_config =
+            apollo::common::VehicleConfigHelper::GetConfig();
 
-    double max_steering_wheel_angle_ =
-            vehicle_config_.vehicle_param().max_steer_angle();
+    const apollo::common::VehicleParam& apollo_veh =
+            vehicle_config.vehicle_param();
 
-    max_steering_wheel_angle_ = max_steering_wheel_angle_ * 180 / M_PI;
+    double max_front_wheel_angle;
+    max_front_wheel_angle =
+            apollo_veh.max_steer_angle() / apollo_veh.steer_ratio();
 
     while (apollo::cyber::OK())
     {
@@ -88,7 +83,7 @@ int main(int argc, char** argv)
 
         AINFO << "frame interval (ms): " << delta_time;
 
-        viz2d.process(max_steering_wheel_angle_);
+        viz3d_.process();
 
         const apollo::RunningTimeDebug *debug = apollo::get_debug_info();
 
@@ -100,7 +95,7 @@ int main(int argc, char** argv)
     }
 
     // terminate
-    viz2d.close();
+    viz3d_.close();
     apollo::cyber::Clear();
 
     google::ShutDownCommandLineFlags();
