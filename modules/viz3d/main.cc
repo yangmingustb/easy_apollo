@@ -71,6 +71,10 @@ int main(int argc, char** argv)
     max_front_wheel_angle =
             apollo_veh.max_steer_angle() / apollo_veh.steer_ratio();
 
+    double max_steering_wheel_angle_ = apollo_veh.max_steer_angle();
+
+    max_steering_wheel_angle_ = max_steering_wheel_angle_ * 180 / M_PI;
+
     while (apollo::cyber::OK())
     {
         double cur_time = apollo::cyber::Time::Now().ToSecond();
@@ -83,7 +87,7 @@ int main(int argc, char** argv)
 
         AINFO << "frame interval (ms): " << delta_time;
 
-        viz3d_.process();
+        viz3d_.process(max_steering_wheel_angle_);
 
         const apollo::RunningTimeDebug *debug = apollo::get_debug_info();
 
