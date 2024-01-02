@@ -22,7 +22,7 @@ TARGET_ARCH="$(uname -m)"
 # libtorch_cpu
 
 if [[ "${TARGET_ARCH}" == "x86_64" ]]; then
-    # https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-2.1.2%2Bcpu.zip
+    # https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.7.0%2Bcpu.zip
     VERSION="1.7.0-2"
     CHECKSUM="02fd4f30e97ce8911ef933d0516660892392e95e6768b50f591f4727f6224390"
 elif [[ "${TARGET_ARCH}" == "aarch64" ]]; then

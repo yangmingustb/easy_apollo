@@ -97,6 +97,14 @@ target_link_libraries(viz2d_component_main PUBLIC
                                                 opencv_wrapper
                                                 pthread
                                                 viz2d_proto
+                                                apollo_storytelling
+                                                apollo_prediction
+                                                apollo_routing
+                                                apollo_map
+                                                apollo_common
+                                                apollo_planning
+                                                apollo_control
+                                                apollo_perception
                                                 )
 
 

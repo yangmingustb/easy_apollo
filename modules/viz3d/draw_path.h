@@ -3,6 +3,7 @@
 #include "modules/planning/common/reference_line_info.h"
 
 #include "modules/planning/proto/planning.pb.h"
+
 #include <pcl/point_types.h>
 #include <pcl/visualization/pcl_visualizer.h>
 

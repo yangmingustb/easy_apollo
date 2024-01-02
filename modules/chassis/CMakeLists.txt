@@ -39,6 +39,14 @@ target_link_libraries(virtual_chassis_component_main PUBLIC
                                                 opencv_wrapper
                                                 auto_virtual_chassis
                                                 pthread
+                                                apollo_storytelling
+                                                apollo_prediction
+                                                apollo_routing
+                                                apollo_map
+                                                apollo_common
+                                                apollo_perception
+                                                apollo_control
+                                                apollo_planning
                                                 )
 
 

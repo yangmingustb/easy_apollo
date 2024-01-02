@@ -128,6 +128,7 @@ target_link_libraries(planning_proto PUBLIC
                                          apollo_common
                                          common_proto
                                          apollo_dreamview_proto
+                                         apollo_perception
                                          )
 
 add_library(apollo_planning  ${BUILD_TYPE}                       
@@ -151,11 +152,11 @@ add_library(apollo_planning  ${BUILD_TYPE}
                                         ${apollo_planning_openspace}
                                         ${apollo_planning_learning}
                                         )
-target_include_directories(apollo_planning PRIVATE
+target_include_directories(apollo_planning PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${OpenCV_INCLUDE_DIRS}
         )
-target_link_libraries(apollo_planning PRIVATE
+target_link_libraries(apollo_planning PUBLIC
                                          ${PROTOBUF_LIBRARIES}
                                          cyber
                                          apollo_common
@@ -189,6 +190,12 @@ target_link_libraries(planning_component_main PUBLIC
                                         ${TORCH_LIBRARIES}
                                         pthread
                                         apollo_storytelling
+                                        apollo_prediction
+                                        apollo_routing
+                                        apollo_map
+                                        apollo_common
+                                        apollo_perception
+                                        apollo_planning
 )
 
 

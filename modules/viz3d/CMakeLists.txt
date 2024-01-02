@@ -31,7 +31,9 @@ target_link_libraries(viz3d PUBLIC
         #     apollo_common
         #     cyber
         #     viz2d_proto
-            opencv_wrapper
+
+            # opencv_wrapper
+            dv_map
             ${PCL_LIBRARIES}
             
             )

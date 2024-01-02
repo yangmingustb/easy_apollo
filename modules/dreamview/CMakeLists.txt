@@ -72,6 +72,8 @@ target_link_libraries(dv_map PUBLIC
 					apollo_common
 					apollo_map
 					apollo_dreamview_proto
+                    # boost_filesystem
+                    boost_thread
 )
 
 # lib
