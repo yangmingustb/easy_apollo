@@ -9,26 +9,30 @@ find_package(Protobuf REQUIRED)
 
 add_library(viz3d ${BUILD_TYPE} 
                     viz3d_component.cc
+                    draw_path.cc
+                    pcl_viz.cc
 )
 
 target_include_directories(viz3d PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     )
 target_link_libraries(viz3d PUBLIC 
-            apollo_dreamview_lib
-            fast_collision_detection
-            apollo_planning
-            apollo_control
-            apollo_map
-            localization_common
-            apollo_perception
-            apollo_routing
-            localization_proto
-            localization_pose
-            apollo_prediction
-            apollo_common
-            cyber
-            viz2d_proto
+        #     apollo_dreamview_lib
+        #     fast_collision_detection
+        #     apollo_planning
+        #     apollo_control
+        #     apollo_map
+        #     localization_common
+        #     apollo_perception
+        #     apollo_routing
+        #     localization_proto
+        #     localization_pose
+        #     apollo_prediction
+        #     apollo_common
+        #     cyber
+        #     viz2d_proto
+            opencv_wrapper
+            ${PCL_LIBRARIES}
             
             )
 
@@ -38,7 +42,9 @@ add_executable(viz3d_component_main
                 ${CMAKE_CURRENT_SOURCE_DIR}/main.cc
                 )
 target_link_libraries(viz3d_component_main PUBLIC
-viz3d)
+viz3d
+cyber
+)
 
 
 install(

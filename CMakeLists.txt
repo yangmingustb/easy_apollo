@@ -103,8 +103,8 @@ link_directories(${THIRD_LIB_DIR}/libtorch_cpu/lib)
 # set(DEP_LIBS ${DEP_LIBS} #torch_cpu # torch_global_deps torch)
 add_definitions(-DC10_USE_GLOG)
 
-message(STATUS "Torch_LIBRARIES: ${TORCH_LIBRARIES}")
-message(STATUS "Torch_INCLUDE_DIRS: ${TORCH_INCLUDE_DIRS}")
+# message(STATUS "Torch_LIBRARIES: ${TORCH_LIBRARIES}")
+# message(STATUS "Torch_INCLUDE_DIRS: ${TORCH_INCLUDE_DIRS}")
 
 # ubuntu 1804
 include_directories(/usr/include/python3.6)
@@ -121,13 +121,6 @@ link_directories(${THIRD_LIB_DIR}/ad_rss_lib/lib)
 #find_package(ad-rss-lib)
 #include_directories(${AD-RSS-LIB_INCLUDE_DIRS})
 #message(STATUS "ad-rss-lib_INCLUDEDIR: ${AD-RSS-LIB_INCLUDE_DIRS}")
-
-# set(DEP_LIBS ${DEP_LIBS} ipopt boost_system boost_filesystem boost_thread
-#         ColPack
-#         adolc
-#         sqlite3
-#         gtest
-# )
 
 
 # opencv
@@ -217,6 +210,11 @@ install(FILES ${CMAKE_BINARY_DIR}/launch_real.bash
 
 configure_file("launch_simulation.sh" "${CMAKE_BINARY_DIR}/launch_simulation.sh" @ONLY)
 install(FILES ${CMAKE_BINARY_DIR}/launch_simulation.sh
+  DESTINATION .
+)
+
+configure_file("launch_simulation3d.sh" "${CMAKE_BINARY_DIR}/launch_simulation3d.sh" @ONLY)
+install(FILES ${CMAKE_BINARY_DIR}/launch_simulation3d.sh
   DESTINATION .
 )
 

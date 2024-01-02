@@ -25,7 +25,7 @@ target_include_directories(apollo_prediction PUBLIC
         )
 
 target_compile_options(apollo_prediction PRIVATE -Wno-deprecated-declarations)
-target_link_libraries(apollo_prediction PUBLIC
+target_link_libraries(apollo_prediction PRIVATE
                                          ${PROTOBUF_LIBRARIES}
                                          ${OpenCV_LIBRARIES}
                                          ${PYTHON_LIBRARIES}

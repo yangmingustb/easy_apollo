@@ -20,8 +20,10 @@ target_link_libraries(test_routing PUBLIC
 
 add_executable(test_talker talker.cc
                         ./../cyber/examples/proto/examples.pb.cc)
-target_link_libraries(test_talker cyber apollo
-${TORCH_LIBRARIES})
+target_link_libraries(test_talker cyber
+# apollo
+# ${torch_cpu_LIBRARIES}
+)
 
 add_executable(test_listener listener.cc
                                 ./../cyber/examples/proto/examples.pb.cc)
@@ -31,8 +33,9 @@ target_link_libraries(test_listener cyber)
 add_executable(test_talker_null test_publish_null_msg.cc
                         ./../cyber/examples/proto/examples.pb.cc)
 target_link_libraries(test_talker_null cyber
-apollo
-${TORCH_LIBRARIES})
+# apollo
+# ${torch_cpu_LIBRARIES}
+)
 
 add_executable(test_listener_null test_subscribe_null_msg.cc
                                 ./../cyber/examples/proto/examples.pb.cc)

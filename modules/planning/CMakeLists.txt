@@ -151,11 +151,11 @@ add_library(apollo_planning  ${BUILD_TYPE}
                                         ${apollo_planning_openspace}
                                         ${apollo_planning_learning}
                                         )
-target_include_directories(apollo_planning PUBLIC
+target_include_directories(apollo_planning PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${OpenCV_INCLUDE_DIRS}
         )
-target_link_libraries(apollo_planning PUBLIC
+target_link_libraries(apollo_planning PRIVATE
                                          ${PROTOBUF_LIBRARIES}
                                          cyber
                                          apollo_common
@@ -167,7 +167,7 @@ target_link_libraries(apollo_planning PUBLIC
                                          ${OpenCV_LIBRARIES}
 
                                         ipopt
-                                        boost_system
+                                        # boost_system
                                         boost_filesystem
                                         boost_thread
 
