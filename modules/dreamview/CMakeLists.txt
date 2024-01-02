@@ -207,6 +207,7 @@ target_link_libraries(dv_point_cloud PUBLIC
 					apollo_map
 					apollo_dreamview_proto
                     yaml-cpp
+                    ${PCL_LIBRARIES}
 )
 
 
@@ -278,7 +279,7 @@ target_link_libraries(apollo_dreamview_lib PUBLIC
                     dv_simulation_world
                     dv_point_cloud
                     dv_sim_control_manager
-                    ${PCL_LIBRARIES}
+                    
                     ${civetweb_LIBRARIES}
                     libcivetweb-cpp.so
                     libcivetweb.so
