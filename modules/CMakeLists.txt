@@ -25,6 +25,7 @@ add_subdirectory(v2x)
 add_subdirectory(chassis)
 add_subdirectory(viz2d)
 add_subdirectory(common_msgs)
+add_subdirectory(viz3d)
 
 add_subdirectory(dreamview)
 # add_subdirectory(tools)
