@@ -51,6 +51,8 @@ target_include_directories(test_visualization PUBLIC
 ${PCL_INCLUDE_DIRS}
 )
 
+add_subdirectory(test_pcl_viz)
+
 install(
         TARGETS 
                 test_routing
