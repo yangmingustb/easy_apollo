@@ -182,9 +182,11 @@ int viz3d_component::init()
     manual_traffic_light_generator_.Init();
     manual_traffic_light_color_ = perception::TrafficLight::UNKNOWN;
 
-    decision_safe_buffer_ = FLAGS_static_obstacle_nudge_l_buffer;
+    decision_safe_buffer_ = 0.8;
+    // decision_safe_buffer_ = FLAGS_static_obstacle_nudge_l_buffer;
 
-    path_bound_safe_buffer_ = FLAGS_obstacle_lat_buffer;
+    path_bound_safe_buffer_ = 0.8;
+    // path_bound_safe_buffer_ = FLAGS_obstacle_lat_buffer;
 
     lane_borrow_manual_changed_ = false;
 

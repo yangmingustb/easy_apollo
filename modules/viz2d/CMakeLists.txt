@@ -60,15 +60,15 @@ target_link_libraries(opencv_wrapper PUBLIC
             ${OpenCV_LIBRARIES}
             apollo_dreamview_lib
             fast_collision_detection
-            apollo_planning
-            apollo_control
+            planning_proto
+            control_proto
             apollo_map
             localization_common
             apollo_perception
-            apollo_routing
+            routing_proto
             localization_proto
             localization_pose
-            apollo_prediction
+            prediction_proto
             apollo_common
             cyber
             viz2d_proto
@@ -97,6 +97,14 @@ target_link_libraries(viz2d_component_main PUBLIC
                                                 opencv_wrapper
                                                 pthread
                                                 viz2d_proto
+                                                apollo_storytelling
+                                                apollo_prediction
+                                                apollo_routing
+                                                apollo_map
+                                                apollo_common
+                                                apollo_planning
+                                                apollo_control
+                                                apollo_perception
                                                 )
 
 

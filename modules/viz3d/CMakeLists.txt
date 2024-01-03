@@ -6,6 +6,7 @@ set(BUILD_TYPE "STATIC")
 add_compile_options(-fPIC)
 
 find_package(Protobuf REQUIRED)
+find_package(PCL)
 
 add_library(viz3d ${BUILD_TYPE} 
                     viz3d_component.cc
@@ -25,13 +26,20 @@ target_link_libraries(viz3d PUBLIC
         #     localization_common
         #     apollo_perception
         #     apollo_routing
-        #     localization_proto
+            localization_proto
         #     localization_pose
         #     apollo_prediction
         #     apollo_common
         #     cyber
-        #     viz2d_proto
+        
+            viz2d_proto
+            apollo_map
+            routing_proto
+            prediction_proto
+            control_proto
+            planning_proto
             opencv_wrapper
+            dv_map
             ${PCL_LIBRARIES}
             
             )

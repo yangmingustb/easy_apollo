@@ -48,8 +48,18 @@ data/G*
 data/h*
 data/j*
 data/T*
-data/l*
-data/*
+data/a*
+data/b*
+data/d*
+# data/g*
+data/N*
+data/p*
+data/s*
+data/t*
+data/y*
+data/log/*
+data/g2*
+data/gao*
 
 install/bin/*
 install/e*

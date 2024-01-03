@@ -1,0 +1,15 @@
+landmark {
+    name: "default",
+    waypoint {
+        pose {
+            x: -10112.61
+            y: 12659.83
+        }
+    }
+    waypoint {
+        pose {
+            x: -6920.53
+            y: -449.41
+        }
+    }
+}

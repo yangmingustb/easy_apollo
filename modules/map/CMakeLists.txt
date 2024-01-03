@@ -40,6 +40,7 @@ target_link_libraries(apollo_map PUBLIC
                                          absl_base
                                          absl_throw_delegate
                                          absl_str_format_internal
+                                         planning_gflags
                                          )
         
 

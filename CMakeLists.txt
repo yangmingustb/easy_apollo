@@ -159,32 +159,11 @@ include(GNUInstallDirs)
 include_directories(
   include
   ${CMAKE_CURRENT_SOURCE_DIR}
-  /usr/local/pcl-1.10
   )
 
 
 add_subdirectory(cyber)
 add_subdirectory(modules)
-
-add_library(apollo INTERFACE)
-target_link_libraries(apollo INTERFACE
-                apollo_control
-                apollo_planning
-                
-                localization_common
-                localization_proto
-
-                apollo_perception
-                apollo_map
-                apollo_routing
-                apollo_prediction
-                apollo_common
-                apollo_canbus
-                apollo_storytelling
-        )
-
-
-
 add_subdirectory(test)
 
 

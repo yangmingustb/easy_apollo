@@ -5,7 +5,9 @@
 #include "cyber/time/time.h"
 
 #include "modules/canbus/proto/chassis.pb.h"
+
 #include "modules/common/monitor_log/monitor_log_buffer.h"
+
 #include "modules/control/proto/control_cmd.pb.h"
 #include "modules/control/proto/control_conf.pb.h"
 #include "modules/control/proto/pad_msg.pb.h"
@@ -14,15 +16,17 @@
 
 #include "modules/common/util/util.h"
 #include "modules/common/util/debug_mode.h"
-#include "modules/control/common/dependency_injector.h"
-#include "modules/control/controller/controller_agent.h"
-#include "modules/control/proto/preprocessor.pb.h"
-#include "modules/control/submodules/preprocessor_submodule.h"
+
+// #include "modules/control/common/dependency_injector.h"
+// #include "modules/control/controller/controller_agent.h"
+// #include "modules/control/proto/preprocessor.pb.h"
+// #include "modules/control/submodules/preprocessor_submodule.h"
 
 #include "modules/prediction/proto/prediction_obstacle.pb.h"
 
 
 #include "modules/dreamview/backend/map/map_service.h"
+
 #include "cyber/proto/run_mode_conf.pb.h"
 #include "cyber/proto/record.pb.h"
 
@@ -31,8 +35,10 @@
 #include "modules/viz2d/viz2d_traffic_light.h"
 
 #include "modules/planning/common/path/discretized_path.h"
+
 #include "modules/common/math/polygon_base.h"
 #include "modules/common/status/system_state.h"
+
 #include "modules/planning/reference_line/reference_line.h"
 
 #include <pcl/point_types.h>

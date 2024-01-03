@@ -28,7 +28,7 @@ stage_config: {
       model_type: CNN_LSTM
       cpu_model_file: "./../modules/planning/data/model/cpu_test_model_cnn_lstm.pt"
       gpu_model_file: "./../modules/planning/data/model/gpu_test_model_cnn_lstm.pt"
-      use_cuda: true
+      use_cuda: false
       allow_empty_learning_based_data: true
       allow_empty_output_trajectory: true
     }
