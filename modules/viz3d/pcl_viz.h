@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+#include <string>
 
 namespace apollo
 {
@@ -27,6 +29,7 @@ enum pcl_color_index
     pcl_colors_lightblue,
     pcl_colors_dodgerblue1,
     pcl_colors_black_gray,
+    pcl_colors_jackie_blue,
     pcl_colors_num
 };
 
@@ -38,6 +41,12 @@ struct pcl_color
 };
 
 int pcl_get_color(pcl_color *Color, pcl_color_index color_index);
+
+int64_t get_pcl_object_id();
+
+std::string get_pcl_object_string_id();
+
+void reset_object_id();
 
 } // namespace apollo
 

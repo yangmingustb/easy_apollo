@@ -47,6 +47,9 @@
 
 namespace apollo
 {
+
+// 使用pcl坐标, east-north-up
+// 并且，所有数据都需要转换成vehicle 坐标系，vehicle 坐标系是right-front-up
 class viz3d_component
 {
 private:
@@ -214,5 +217,9 @@ public:
                       apollo::planning::DiscretizedPath& lat_path);
 
     int close();
+
+    int reset_viz();
+
+    void set_camera();
 };
 }  // namespace apollo

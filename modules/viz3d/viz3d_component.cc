@@ -9,6 +9,7 @@
 
 #include "modules/viz2d/viz2d_map_elements.h"
 #include "draw_path.h"
+#include "modules/viz3d/draw_geometry.h"
 
 
 namespace apollo
@@ -160,10 +161,8 @@ int viz3d_component::init()
     // set initial vehicle state by cmd
     // need to sleep, because advertised channel is not ready immediately
     // simple test shows a short delay of 80 ms or so
-    AINFO << "Control resetting vehicle state, sleeping for 1000 ms ...";
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-
-    AINFO << "viz component init finish";
+    AINFO << "viewer resetting vehicle state, sleeping for 10 ms ...";
+    std::this_thread::sleep_for(std::chrono::milliseconds(10));
 
     auto& global_conf = apollo::cyber::common::GlobalData::Instance()->Config();
 
@@ -198,6 +197,7 @@ int viz3d_component::init()
     pcl_get_color(&back_color, pcl_colors_dark_blue);
     window_->setBackgroundColor(back_color.r, back_color.g, back_color.b);
 
+    AINFO << "viz component init finish";
     return 0;
 }
 
@@ -487,19 +487,32 @@ int viz3d_component::process(double max_steering_wheel_angle_)
 
     apollo::planning::DiscretizedPath lateral_path_;
 
+    double start_time = apollo::cyber::Time::Now().ToSecond();
     data_tanslate(max_steering_wheel_angle_, lateral_path_);
+
+    reset_viz();
+
+    set_camera();
+
+    double end_time = apollo::cyber::Time::Now().ToSecond();
+
+    AINFO << "data receive time (ms): " << (end_time - start_time) * 1000;
 
     veh_global_pose.pos.x = veh_pose_.position().x();
     veh_global_pose.pos.y = veh_pose_.position().y();
     veh_global_pose.theta = veh_pose_.heading();
 
+    draw_coordinate_system(window_, pcl_colors_red, &veh_global_pose);
+
     cvt_local_polygon_to_global(&veh_global_polygon, &veh_local_polygon,
                                 &veh_global_pose);
 
     // draw planning
-    pcl_color color;
-    pcl_get_color(&color, pcl_colors_cyan);
-    draw_trajectory(window_, &viz_subscribe_.traj, color,
+
+    // AINFO << "point size " << viz_subscribe_.traj.trajectory_point_size()
+        //   << "header " << viz_subscribe_.traj.header().DebugString();
+
+    draw_trajectory(window_, &viz_subscribe_.traj, pcl_colors_cyan,
                     &veh_global_pose, &veh_local_polygon);
 
     // viz2d_draw_xy_axis(main_window_);
@@ -931,9 +944,35 @@ int viz3d_component::process(double max_steering_wheel_angle_)
     // viz2d_show_result_in_per_frame(main_window_);
     // viz2d_show_result_in_per_frame(hmap_window_);
 
-    window_->spinOnce(30);
+    window_->spinOnce(100);
 
     return 0;
+}
+
+int viz3d_component::reset_viz()
+{
+    window_->removeAllShapes();
+
+    reset_object_id();
+
+    pcl_color back_color;
+    pcl_get_color(&back_color, pcl_colors_jackie_blue);
+    window_->setBackgroundColor(back_color.r, back_color.g, back_color.b);
+
+    return 0;
+}
+
+void viz3d_component::set_camera()
+{
+    double camera_pos[3] = {0, -15, 15};
+    double view_pos[3] = {0, 10, 0};
+
+    AINFO << "camera_pos " << camera_pos[0] << " " << camera_pos[1];
+
+    window_->setCameraPosition(camera_pos[0], camera_pos[1], camera_pos[2],
+                               view_pos[0], view_pos[1], view_pos[2], 0, 0, 0);
+
+    return;
 }
 
 }  // namespace apollo
