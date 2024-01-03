@@ -192,14 +192,15 @@ int viz3d_component::init()
 
     window_ = new pcl::visualization::PCLVisualizer("Viewer");
 
-    window_->addCoordinateSystem(0.5, "base_frame");
+    window_->addCoordinateSystem(0.2, "base_frame");
     window_->initCameraParameters();
     window_->setSize(1500, 1000);
+    // 窗口位置
     // window_->setPosition(750, 500);
 
 
     pcl_color back_color;
-    pcl_get_color(&back_color, pcl_colors_jackie_blue);
+    pcl_get_color(&back_color, pcl_colors_black);
     window_->setBackgroundColor(back_color.r, back_color.g, back_color.b);
 
     set_camera();
@@ -989,9 +990,9 @@ void viz3d_component::set_camera()
 void viz3d_component::refresh_in_per_frame()
 {
     // window_->spinOnce(100);
-    window_->spinOnce(20, true);
+    window_->spinOnce(10, true);
 
-    sleep(0.01);
+    // sleep(0.01);
 
     // reset_viz();
     return;

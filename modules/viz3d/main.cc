@@ -73,7 +73,7 @@ int main(int argc, char** argv)
 
     max_steering_wheel_angle_ = max_steering_wheel_angle_ * 180 / M_PI;
 
-    while (!viz3d_.pcl_viz_stopped())
+    while (apollo::cyber::OK())
     {
         double cur_time = apollo::cyber::Time::Now().ToSecond();
         delta_time = (cur_time - history_time) * 1000.0;

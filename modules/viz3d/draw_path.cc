@@ -27,21 +27,47 @@ int draw_trajectory(pcl::visualization::PCLVisualizer *viz,
     traj_local_polygon = *veh_local_polygon;
 
     // 为了美观，不需要画出整个车体，画出车宽即可
-    traj_local_polygon.vertexes[0].y = 0.3;
-    traj_local_polygon.vertexes[1].y = 0.3;
-    traj_local_polygon.vertexes[2].y = -0.3;
-    traj_local_polygon.vertexes[3].y = -0.3;
+    double traj_point_len = 0.3;
+
+    traj_local_polygon.vertexes[0].y = traj_point_len;
+    traj_local_polygon.vertexes[1].y = traj_point_len;
+    traj_local_polygon.vertexes[2].y = -traj_point_len;
+    traj_local_polygon.vertexes[3].y = -traj_point_len;
 
     if (traj->trajectory_point_size() == 0)
     {
         return -1;
     }
 
-    for (i = 0; i < traj->trajectory_point_size(); i++)
+    double cur_point_s;
+    double next_point_s;
+    double delta_point_s;
+
+    for (i = 0; i < traj->trajectory_point_size() - 1; i++)
     {
         global_pose.pos.x = traj->trajectory_point(i).path_point().x();
         global_pose.pos.y = traj->trajectory_point(i).path_point().y();
         global_pose.theta = traj->trajectory_point(i).path_point().theta();
+
+        cur_point_s = traj->trajectory_point(i).path_point().s();
+        next_point_s = traj->trajectory_point(i + 1).path_point().s();
+
+        delta_point_s = next_point_s - cur_point_s;
+
+        if (delta_point_s > traj_point_len)
+        {
+            traj_local_polygon.vertexes[0].y = delta_point_s;
+            traj_local_polygon.vertexes[1].y = delta_point_s;
+            traj_local_polygon.vertexes[2].y = -delta_point_s;
+            traj_local_polygon.vertexes[3].y = -delta_point_s;
+        }
+        else
+        {
+            traj_local_polygon.vertexes[0].y = traj_point_len;
+            traj_local_polygon.vertexes[1].y = traj_point_len;
+            traj_local_polygon.vertexes[2].y = -traj_point_len;
+            traj_local_polygon.vertexes[3].y = -traj_point_len;
+        }
 
         cvt_local_polygon_to_global(&global_polygon, &traj_local_polygon,
                                     &global_pose);
