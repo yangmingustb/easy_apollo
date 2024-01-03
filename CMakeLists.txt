@@ -159,7 +159,6 @@ include(GNUInstallDirs)
 include_directories(
   include
   ${CMAKE_CURRENT_SOURCE_DIR}
-  /usr/include/pcl-1.10
   )
 
 

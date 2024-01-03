@@ -1,25 +1,31 @@
 cmake_minimum_required(VERSION 3.5)
 
 
-#----------------------------------
-
-#apollo modules
-file(GLOB_RECURSE APOLLO_MODULES_SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.cc")
-
-
-#换行打印
-# message(STATUS "apollo modules： ")
-# foreach(_var ${APOLLO_MODULES_SOURCE_FILES})
-#    message("   ${_var}")
-# endforeach()
-
-
-#------------------------------
-# complie apollo
-
 set(BUILD_TYPE "STATIC")
 
-add_library(apollo_control  ${BUILD_TYPE}  ${APOLLO_MODULES_SOURCE_FILES})
+
+file(GLOB control_proto_file "proto/*.cc"
+                                "proto/math/*.cc" 
+                                )
+add_library(control_proto  STATIC  ${control_proto_file})
+target_include_directories(control_proto PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        )
+target_link_libraries(control_proto PUBLIC
+                                         ${PROTOBUF_LIBRARIES}
+                                         common_proto
+                                         apollo_dreamview_proto
+                                         )
+
+
+
+file(GLOB control_file "common/*.cc"
+                        "controller/*.cc" 
+                        "submodules/*.cc" 
+                        "tools/*.cc" 
+)
+
+add_library(apollo_control  ${BUILD_TYPE}  ${control_file})
 target_include_directories(apollo_control PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
         )
@@ -27,6 +33,8 @@ target_link_libraries(apollo_control PUBLIC
                                         apollo_planning
                                         apollo_common
                                          ${PROTOBUF_LIBRARIES}
+                                         control_proto
+
                                          )
 
 
@@ -45,12 +53,14 @@ target_link_libraries(control_component_main PUBLIC
                                                 localization_proto
                                                 localization_pose
                                                 apollo_common
+                                                
                                                 )
 
 install(TARGETS
         
         control_component_main
         apollo_control
+        control_proto
         
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib

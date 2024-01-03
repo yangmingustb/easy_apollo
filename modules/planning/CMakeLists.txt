@@ -1,7 +1,41 @@
 cmake_minimum_required(VERSION 3.5)
 
+set(BUILD_TYPE "STATIC")
 
-file(GLOB apollo_planning_common "common/*.cc"
+
+
+add_library(planning_gflags  ${BUILD_TYPE}                       
+common/planning_gflags.cc
+                                        )
+target_include_directories(planning_gflags PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        )
+target_link_libraries(planning_gflags PUBLIC
+gflags
+                                        )
+
+file(GLOB apollo_planning_common 
+                                "common/decision_data.cc"
+                                "common/ego_info.cc"
+                                "common/frame.cc"
+                                "common/feature_output.cc"
+                                "common/history.cc"
+                                "common/learning_based_data.cc"
+                                "common/message_process.cc"
+                                "common/obstacle_blocking_analyzer.cc"
+                                "common/obstacle.cc"
+                                "common/open_space_info.cc"
+                                "common/path_boundary.cc"
+                                "common/path_decision.cc"
+                                "common/planning_context.cc"
+                                "common/reference_line_info.cc"
+                                "common/sl_boundary.cc"
+                                "common/speed_limit.cc"
+                                "common/speed_profile_generator.cc"
+                                "common/st_graph_data.cc"
+                                "common/trajectory_evaluator.cc"
+                                "common/trajectory_stitcher.cc"
+
                                 "common/path/*.cc"
                                 "common/smoothers/*.cc"
                                 "common/speed/*.cc"
@@ -115,7 +149,7 @@ file(GLOB apollo_planning_tuning "tuning/*.cc"
 
 
 
-set(BUILD_TYPE "STATIC")
+
 
 
 
@@ -129,6 +163,9 @@ target_link_libraries(planning_proto PUBLIC
                                          common_proto
                                          apollo_dreamview_proto
                                          apollo_perception
+                                         routing_proto
+                                         apollo_map
+                                         apollo_canbus
                                          )
 
 add_library(apollo_planning  ${BUILD_TYPE}                       
@@ -178,6 +215,7 @@ target_link_libraries(apollo_planning PUBLIC
                                         osqp
                                         # ${PYTHON_LIBRARIES}
                                         fast_collision_detection
+                                        planning_gflags
                                         
                                         )
 
@@ -204,6 +242,7 @@ TARGETS
 apollo_planning
         planning_proto
         planning_component_main
+        planning_gflags
 LIBRARY DESTINATION lib
 ARCHIVE DESTINATION lib
 RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}

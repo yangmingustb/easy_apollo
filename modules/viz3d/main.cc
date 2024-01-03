@@ -1,4 +1,3 @@
-#include "modules/chassis/virtual_chassis.h"
 #include "viz3d_component.h"
 #include "modules/common/configs/vehicle_config_helper.h"
 

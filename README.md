@@ -21,7 +21,7 @@
 * 跟车不使用单一的跟车距离，引入了st point of interest,来生成可变的可行驶区域;
 * 限速优化，限速构成的边界考虑到车辆速度，不然速度优化经常无解；
 * 修复routing lane change的bug；
-* 增加dream view plus；
+* 增加dream view plus(这个模块是apollo9.0引入的，不知道是不是没有配置正确，还不能正确显示系统状态)；
 
 
 
@@ -147,19 +147,20 @@ cd build
 apollo 7.0使用protobuf格式作为消息格式
 
 # HMI
-自动驾驶交互界面需要开发成3d版本，并且易于交互，三维可视化常见的API包括：open scene graph，opencv 3d, open3d, rviz。
-rviz是一个很方便的选择，但是依赖ros开发。剩下的包括：osg, opencv viz, open3d。opencv viz和open 3d是比较活跃的社区，
-而这2个库我都没有使用过，暂时选择opencv viz开发。
+目前可以选择的hmi包括：
+* opencv viz3d,维护者较少，不更新了，文档也少，但是代码结构清晰；
+* rviz依赖ros，不推荐；
+* open 3d，持续更新，有python版本，可以利用cyber rt开发一个python版本的hmi；
+* im gui，带gui的架构，但是对于显示系统状态来说有一点大了？
+* osg，古老的api，最近不更新；
+* opengl：比较原始，api少；
+* opencv，开发简单，但是只能2d显示，且不能旋转缩放；
+* pcl viz，文档多，持续更新，可以尝试；
 
-
+暂时开发一个2d版本的hmi，等以后有时间开始尝试open3d python版本或者pcl viz，来搞一个3d的hmi，现在dreamview/drewview plus对于不熟悉前后端开发者太不友好了，想调试自己的系统状态非常需要一个轻量级的hmi！
 ![](docs/viz2d.png)
 
-* opencv viz3d,维护者较少，不推荐；
-* rviz依赖ros，不推荐；
-* open 3d，todo
-* im gui, todo
-* osg，古老的api，不推荐；
-* opengl：正在使用，install_opengl.sh
+
 
 * speed planning debug tool: matplot
 
