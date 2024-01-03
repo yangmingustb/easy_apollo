@@ -14,7 +14,7 @@ int main(int argc, char** argv)
 
     google::ParseCommandLineFlags(&argc, &argv, true);
 
-    apollo::cyber::binary::SetName("display3d");
+    apollo::cyber::binary::SetName("viewer");
 
     // init cyber framework
     apollo::cyber::Init(apollo::cyber::binary::GetName().c_str());
@@ -50,7 +50,7 @@ int main(int argc, char** argv)
     int key_value;
 
     // 100毫秒一个周期
-    double interval_time = 100.0;
+    double interval_time = 50.0;
     double history_time;
     double current_time;
     double delta_time;
