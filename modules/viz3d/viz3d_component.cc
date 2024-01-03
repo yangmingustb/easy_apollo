@@ -191,10 +191,14 @@ int viz3d_component::init()
 
     window_ = new pcl::visualization::PCLVisualizer("Viewer");
 
-    window_->addCoordinateSystem(1.0);
+    window_->addCoordinateSystem(0.5, "base_frame");
+    window_->initCameraParameters();
+    window_->setSize(1500, 1000);
+    // window_->setPosition(750, 500);
+
 
     pcl_color back_color;
-    pcl_get_color(&back_color, pcl_colors_dark_blue);
+    pcl_get_color(&back_color, pcl_colors_jackie_blue);
     window_->setBackgroundColor(back_color.r, back_color.g, back_color.b);
 
     AINFO << "viz component init finish";
@@ -944,7 +948,8 @@ int viz3d_component::process(double max_steering_wheel_angle_)
     // viz2d_show_result_in_per_frame(main_window_);
     // viz2d_show_result_in_per_frame(hmap_window_);
 
-    window_->spinOnce(100);
+    // window_->spinOnce(100);
+    window_->spinOnce();
 
     return 0;
 }
@@ -952,6 +957,7 @@ int viz3d_component::process(double max_steering_wheel_angle_)
 int viz3d_component::reset_viz()
 {
     window_->removeAllShapes();
+    window_->removeAllPointClouds();
 
     reset_object_id();
 
