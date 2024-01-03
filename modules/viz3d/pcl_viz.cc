@@ -5,6 +5,8 @@
 namespace apollo
 {
 
+#define max_pcl_object_id (1000000000)
+
 static pcl_color pcl_color_list[pcl_colors_num] = {
         {0.0, 0.0, 0.0},       {255.0, 0.0, 0.0},     {42.0, 42.0, 165.0},
         {255.0, 255.0, 0.0},   {0.0, 215.0, 255.0},   {128.0, 128.0, 128.0},
@@ -37,6 +39,11 @@ int pcl_get_color(pcl_color *Color, pcl_color_index color_index)
 int64_t get_pcl_object_id()
 {
     pcl_object_id++;
+
+    if (pcl_object_id > max_pcl_object_id)
+    {
+        pcl_object_id = 0;
+    }
     return pcl_object_id;
 }
 
@@ -44,6 +51,11 @@ std::string get_pcl_object_string_id()
 {
     pcl_object_id++;
 
+    if (pcl_object_id > max_pcl_object_id)
+    {
+        pcl_object_id = 0;
+    }
+    
     return "id_" + std::to_string(pcl_object_id);
 }
 

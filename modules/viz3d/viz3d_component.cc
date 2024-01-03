@@ -10,6 +10,7 @@
 #include "modules/viz2d/viz2d_map_elements.h"
 #include "draw_path.h"
 #include "modules/viz3d/draw_geometry.h"
+#include "cyber/cyber.h"
 
 
 namespace apollo
@@ -201,6 +202,8 @@ int viz3d_component::init()
     pcl_get_color(&back_color, pcl_colors_jackie_blue);
     window_->setBackgroundColor(back_color.r, back_color.g, back_color.b);
 
+    set_camera();
+
     AINFO << "viz component init finish";
     return 0;
 }
@@ -208,7 +211,9 @@ int viz3d_component::init()
 int viz3d_component::close()
 {
     window_->close();
+
     delete window_;
+
     return 0;
 }
 
@@ -494,10 +499,6 @@ int viz3d_component::process(double max_steering_wheel_angle_)
     double start_time = apollo::cyber::Time::Now().ToSecond();
     data_tanslate(max_steering_wheel_angle_, lateral_path_);
 
-    reset_viz();
-
-    set_camera();
-
     double end_time = apollo::cyber::Time::Now().ToSecond();
 
     AINFO << "data receive time (ms): " << (end_time - start_time) * 1000;
@@ -506,10 +507,15 @@ int viz3d_component::process(double max_steering_wheel_angle_)
     veh_global_pose.pos.y = veh_pose_.position().y();
     veh_global_pose.theta = veh_pose_.heading();
 
-    draw_coordinate_system(window_, pcl_colors_red, &veh_global_pose);
-
     cvt_local_polygon_to_global(&veh_global_polygon, &veh_local_polygon,
                                 &veh_global_pose);
+
+    // reset
+    reset_viz();
+
+    // set_camera();
+
+    draw_coordinate_system(window_, pcl_colors_red, &veh_global_pose);
 
     // draw planning
 
@@ -948,8 +954,7 @@ int viz3d_component::process(double max_steering_wheel_angle_)
     // viz2d_show_result_in_per_frame(main_window_);
     // viz2d_show_result_in_per_frame(hmap_window_);
 
-    // window_->spinOnce(100);
-    window_->spinOnce();
+
 
     return 0;
 }
@@ -961,9 +966,9 @@ int viz3d_component::reset_viz()
 
     reset_object_id();
 
-    pcl_color back_color;
-    pcl_get_color(&back_color, pcl_colors_jackie_blue);
-    window_->setBackgroundColor(back_color.r, back_color.g, back_color.b);
+    // pcl_color back_color;
+    // pcl_get_color(&back_color, pcl_colors_jackie_blue);
+    // window_->setBackgroundColor(back_color.r, back_color.g, back_color.b);
 
     return 0;
 }
@@ -980,5 +985,18 @@ void viz3d_component::set_camera()
 
     return;
 }
+
+void viz3d_component::refresh_in_per_frame()
+{
+    // window_->spinOnce(100);
+    window_->spinOnce(20, true);
+
+    sleep(0.01);
+
+    // reset_viz();
+    return;
+}
+
+bool viz3d_component::pcl_viz_stopped() { return window_->wasStopped(); }
 
 }  // namespace apollo

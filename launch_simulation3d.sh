@@ -9,7 +9,8 @@ source ./setup.bash
 
 
 
-start_procs="viz2d_component_main
+start_procs="
+viz2d_component_main
 control_component_main
 virtual_chassis_component_main
 planning_component_main

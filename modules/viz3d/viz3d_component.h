@@ -221,5 +221,9 @@ public:
     int reset_viz();
 
     void set_camera();
+
+    void refresh_in_per_frame();
+
+    bool pcl_viz_stopped();
 };
 }  // namespace apollo

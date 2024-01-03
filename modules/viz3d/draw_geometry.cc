@@ -27,8 +27,11 @@ int draw_global_polygon_frame(pcl::visualization::PCLVisualizer *viz,
         (*pcl_polygon)[i].z = 0.0;
     }
 
+    std::string obj_id = get_pcl_object_string_id();
     viz->addPolygon<pcl::PointXYZ>(pcl_polygon, color.r, color.g, color.b,
-                                   "polygon");
+                                   obj_id);
+    viz->setShapeRenderingProperties(
+            pcl::visualization::PCL_VISUALIZER_LINE_WIDTH, 1, obj_id);
 
     return 0;
 }
@@ -58,7 +61,7 @@ int draw_global_polygon_frame(pcl::visualization::PCLVisualizer *viz,
                                    obj_id);
 
     viz->setShapeRenderingProperties(
-            pcl::visualization::PCL_VISUALIZER_LINE_WIDTH, 5, obj_id);
+            pcl::visualization::PCL_VISUALIZER_LINE_WIDTH, 1, obj_id);
 
     return 0;
 }
@@ -89,8 +92,7 @@ int draw_global_polygon_plane(pcl::visualization::PCLVisualizer *viz,
 
     viz->setShapeRenderingProperties(
             pcl::visualization::PCL_VISUALIZER_REPRESENTATION,
-            pcl::visualization::PCL_VISUALIZER_REPRESENTATION_SURFACE, obj_id,
-            0);
+            pcl::visualization::PCL_VISUALIZER_REPRESENTATION_SURFACE, obj_id);
 
     return 0;
 }
