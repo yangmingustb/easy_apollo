@@ -22,6 +22,7 @@
 * 限速优化，限速构成的边界考虑到车辆速度，不然速度优化经常无解；
 * 修复routing lane change的bug；
 * 增加dream view plus(这个模块是apollo9.0引入的，不知道是不是没有配置正确，还不能正确显示系统状态)；
+* 增加路由配置文件，自动在default_end_way_point.txt文件配置waypoint，自动读取并解析，生成route。
 
 
 
