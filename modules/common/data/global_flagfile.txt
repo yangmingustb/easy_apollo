@@ -24,7 +24,7 @@
 # --map_dir=./../data/g2_sanhuan
 # --map_dir=./../data/yuanqu
 # --map_dir=./../data/jiapulin_9_20_double
-# --map_dir=./../data/jiapuling_intersection
+# --map_dir=./../data/map_traffic_light
 # --map_dir=./../data/shuiku_backward
 # --map_dir=./../data/gaoxin_dadao
 # --map_dir=./../data/NOA_forward_12_11_no_line_label
