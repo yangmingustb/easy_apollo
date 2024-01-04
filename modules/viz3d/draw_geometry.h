@@ -35,4 +35,9 @@ int draw_local_polygon3d_frame(pcl::visualization::PCLVisualizer *viz,
                               double height,
                               pcl_color_index color_index,
                               const Pose2D *veh_pose);
+
+int draw_local_polygon2d_frame(pcl::visualization::PCLVisualizer *viz,
+                              Polygon2D *poly,
+                              pcl_color_index color_index,
+                              const Pose2D *veh_pose);
 }

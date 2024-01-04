@@ -42,6 +42,7 @@ target_link_libraries(viz3d PUBLIC
             opencv_wrapper
             dv_map
             ${PCL_LIBRARIES}
+            planning_gflags
             
             )
 

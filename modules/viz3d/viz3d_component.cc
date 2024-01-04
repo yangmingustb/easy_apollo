@@ -182,11 +182,11 @@ int viz3d_component::init()
     manual_traffic_light_generator_.Init();
     manual_traffic_light_color_ = perception::TrafficLight::UNKNOWN;
 
-    decision_safe_buffer_ = 0.8;
-    // decision_safe_buffer_ = FLAGS_static_obstacle_nudge_l_buffer;
+    // decision_safe_buffer_ = 0.8;
+    decision_safe_buffer_ = FLAGS_static_obstacle_nudge_l_buffer;
 
-    path_bound_safe_buffer_ = 0.8;
-    // path_bound_safe_buffer_ = FLAGS_obstacle_lat_buffer;
+    // path_bound_safe_buffer_ = 0.8;
+    path_bound_safe_buffer_ = FLAGS_obstacle_lat_buffer;
 
     lane_borrow_manual_changed_ = false;
 
@@ -533,16 +533,12 @@ int viz3d_component::process(double max_steering_wheel_angle_)
 
     // // draw safe buffer, 注意：横向决策buffer 和纵向决策buffer是一致的。path
     // // bound safe buffer是FLAGS_obstacle_lat_buffer
-    // Polygon2D safe_adc_local_polygon;
-    // Polygon2D safe_adc_global_polygon;
-    // extend_adv_box_by_width(&safe_adc_local_polygon, decision_safe_buffer_,
-    //                         &veh_local_polygon);
+    Polygon2D safe_adc_local_polygon;
+    extend_adv_box_by_width(&safe_adc_local_polygon, decision_safe_buffer_,
+                            &veh_local_polygon);
 
-    // cvt_local_polygon_to_global(&safe_adc_global_polygon,
-    //                             &safe_adc_local_polygon, &veh_global_pose);
-
-    // viz2d_draw_polygon(main_window_, &safe_adc_global_polygon,
-    //                                 &veh_global_pose, viz2d_colors_orange);
+    draw_local_polygon2d_frame(window_, &safe_adc_local_polygon,
+                               pcl_colors_lightgreen, &veh_global_pose);
 
     // // hdmap
     // // viz2d_draw_hdmap(viz2d, &veh_global_pose, false);
