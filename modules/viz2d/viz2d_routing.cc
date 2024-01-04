@@ -13,7 +13,7 @@ int viz2d_draw_route(viz2d_image *viz2d,
     int ret;
     CvPoint point1, point2;
     std::size_t i, feasible_size;
-    double truncated_dist;
+     
     CvScalar color;
 
     if (ref_line.size() == 0 || base_pose == nullptr || viz2d == nullptr)
@@ -127,7 +127,7 @@ int viz2d_draw_route(viz2d_image *viz2d,
     int ret;
     CvPoint point1, point2;
     std::size_t i, feasible_size;
-    double truncated_dist;
+     
     CvScalar color;
 
     if (ref_line.size() == 0 || base_pose == nullptr || viz2d == nullptr)
