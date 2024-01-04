@@ -150,4 +150,70 @@ int draw_coordinate_system(pcl::visualization::PCLVisualizer *viz,
     return 0;
 }
 
+int draw_local_polygon3d_frame(pcl::visualization::PCLVisualizer *viz,
+                              Polygon2D *poly,
+                              double height,
+                              pcl_color_index color_index,
+                              const Pose2D *veh_pose)
+{
+    pcl_color color;
+    pcl_get_color(&color, color_index);
+
+    pcl::PointCloud<pcl::PointXYZ>::Ptr pcl_polygon(
+            new pcl::PointCloud<pcl::PointXYZ>);
+
+    pcl_polygon->points.resize(poly->vertex_num);
+
+    // lower
+    for (int i = 0; i < poly->vertex_num; i++)
+    {
+        (*pcl_polygon)[i].x = poly->vertexes[i].x;
+        (*pcl_polygon)[i].y = poly->vertexes[i].y;
+        (*pcl_polygon)[i].z = 0.0;
+    }
+
+    std::string obj_id = get_pcl_object_string_id();
+    viz->addPolygon<pcl::PointXYZ>(pcl_polygon, color.r, color.g, color.b,
+                                   obj_id);
+
+
+    viz->setShapeRenderingProperties(
+            pcl::visualization::PCL_VISUALIZER_LINE_WIDTH, 1, obj_id);
+
+    // upper
+    for (int i = 0; i < poly->vertex_num; i++)
+    {
+        (*pcl_polygon)[i].z += height;
+    }
+
+    obj_id = get_pcl_object_string_id();
+    viz->addPolygon<pcl::PointXYZ>(pcl_polygon, color.r, color.g, color.b,
+                                   obj_id);
+
+    viz->setShapeRenderingProperties(
+            pcl::visualization::PCL_VISUALIZER_LINE_WIDTH, 1, obj_id);
+
+
+    // line
+    pcl::PointXYZ start;
+    pcl::PointXYZ end;
+
+    for (int i = 0; i < poly->vertex_num; i++)
+    {
+        start.x = poly->vertexes[i].x;
+        start.y = poly->vertexes[i].y;
+        start.z = 0;
+
+        end.x = start.x;
+        end.y = start.y;
+        end.z = start.z + height;
+
+        obj_id = get_pcl_object_string_id();
+
+        viz->addLine(start, end, color.r, color.g, color.b, obj_id);
+    }
+
+    return 0;
+}
+
 }  // namespace apollo

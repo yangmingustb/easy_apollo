@@ -526,12 +526,10 @@ int viz3d_component::process(double max_steering_wheel_angle_)
     draw_trajectory(window_, &viz_subscribe_.traj, pcl_colors_cyan,
                     &veh_global_pose, &veh_local_polygon);
 
-    // viz2d_draw_xy_axis(main_window_);
-    // viz2d_draw_xy_axis(hmap_window_);
-
     // // draw localization polygon
-    // cv_draw_polygon(main_window_, &veh_global_polygon, &veh_global_pose,
-    //                 viz2d_colors_orange, 2);
+    draw_local_polygon3d_frame(window_, &veh_local_polygon,
+                               vehicle_config.vehicle_param().height(),
+                               pcl_colors_yellow, &veh_global_pose);
 
     // // draw safe buffer, 注意：横向决策buffer 和纵向决策buffer是一致的。path
     // // bound safe buffer是FLAGS_obstacle_lat_buffer
