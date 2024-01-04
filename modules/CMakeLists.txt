@@ -28,6 +28,7 @@ add_subdirectory(common_msgs)
 add_subdirectory(viz3d)
 
 add_subdirectory(dreamview)
+add_subdirectory(gui)
 # add_subdirectory(tools)
 
 add_subdirectory(dreamview_plus)
