@@ -226,7 +226,7 @@ int viz2d_draw_path(viz2d_image *viz2d,
     int ret;
     CvPoint point1, point2;
     std::size_t i, feasible_size;
-    double truncated_dist;
+     
     CvScalar color;
     CvScalar circle_color;
 
@@ -376,7 +376,7 @@ int cv_draw_trajectory(viz2d_image *viz2d,
     int ret;
     CvPoint point1, point2;
     int i, feasible_size;
-    double truncated_dist;
+     
     CvScalar color;
 
     Pose2D base_pose;
@@ -422,7 +422,7 @@ int viz2d_draw_global_trajectory(
     int ret;
     CvPoint point1, point2;
     std::size_t i, feasible_size;
-    double truncated_dist;
+     
     CvScalar color;
     Polygon2D global_polygon;
     Polygon2D traj_local_polygon;
@@ -486,7 +486,7 @@ int viz2d_draw_ref_line(viz2d_image *viz2d,
     int ret;
     CvPoint point1, point2;
     std::size_t i, feasible_size;
-    double truncated_dist;
+     
     CvScalar color;
 
     if (ref_lines == nullptr || base_pose == nullptr || viz2d == nullptr)

@@ -244,4 +244,82 @@ int draw_local_polygon3d_frame(pcl::visualization::PCLVisualizer *viz,
     return 0;
 }
 
+
+int draw_local_grid(
+        pcl::visualization::PCLVisualizer *viz,
+        double left ,double right, double front, double back,
+        const Pose2D*base_pose, pcl_color_index color_index, int line_width)
+{
+
+    pcl_color color;
+    pcl_get_color(&color, color_index);
+
+    pcl::PointXYZ start;
+    pcl::PointXYZ end;
+
+    Position2D local_pose, global_pose;
+
+    Position2D left_point;
+    left_point.x = -left;
+    left_point.y = -back;
+
+    Position2D right_point;
+    right_point.x = right;
+    right_point.y = -back;
+
+    double delta_y = 10;
+    double delta_x = 10;
+
+    std::string obj_id;
+
+    while (left_point.y < front)
+    {
+        start.x = left_point.x;
+        start.y = left_point.y;
+        start.z = 0;
+
+        end.x = right_point.x;
+        end.y = right_point.y;
+        end.z = 0;
+
+        obj_id = get_pcl_object_string_id();
+
+        viz->addLine(start, end, color.r, color.g, color.b, obj_id);
+
+        left_point.y += delta_y;
+        right_point.y+= delta_y;
+    }
+
+
+
+    Position2D front_point;
+    front_point.x = -left;
+    front_point.y = front;
+
+    Position2D back_point;
+    back_point.x = -left;
+    back_point.y = -back;
+
+
+    while (front_point.x < right)
+    {
+        start.x = front_point.x;
+        start.y = front_point.y;
+        start.z = 0;
+
+        end.x = back_point.x;
+        end.y = back_point.y;
+        end.z = 0;
+
+        obj_id = get_pcl_object_string_id();
+
+        viz->addLine(start, end, color.r, color.g, color.b, obj_id);
+
+        front_point.x+= delta_x;
+        back_point.x += delta_x;
+    }
+
+    return 1;
+}
+
 }  // namespace apollo

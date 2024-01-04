@@ -110,7 +110,6 @@ int viz2d_draw_system_state(viz2d_image *viz2d, const SystemState &states,
 {
     CvPoint point1, point2;
     std::size_t i, feasible_size;
-    double truncated_dist;
     CvScalar success_color;
     CvScalar unkown_color;
     CvScalar error_color;
@@ -198,7 +197,6 @@ int viz2d_draw_rtk_state(viz2d_image *viz2d,
 {
     CvPoint point1, point2;
     std::size_t i, feasible_size;
-    double truncated_dist;
     CvScalar success_color;
     CvScalar unkown_color;
     CvScalar error_color;
@@ -274,7 +272,7 @@ int viz2d_draw_pause_state(viz2d_image *viz2d,
 {
     CvPoint point1, point2;
     std::size_t i, feasible_size;
-    double truncated_dist;
+     
     CvScalar success_color;
     CvScalar unkown_color;
     CvScalar error_color;
@@ -349,7 +347,7 @@ int viz2d_draw_drive_mode(viz2d_image *viz2d,
 {
     CvPoint point1, point2;
     std::size_t i, feasible_size;
-    double truncated_dist;
+     
     CvScalar success_color;
     CvScalar unkown_color;
     CvScalar error_color;
@@ -425,7 +423,7 @@ int viz2d_draw_run_mode(viz2d_image *viz2d,
 {
     CvPoint point1, point2;
     std::size_t i, feasible_size;
-    double truncated_dist;
+     
     CvScalar success_color;
     CvScalar unkown_color;
     CvScalar error_color;
@@ -492,7 +490,7 @@ int viz2d_draw_localization_time(viz2d_image *viz2d, double time_stamp)
 {
     CvPoint point1, point2;
     std::size_t i, feasible_size;
-    double truncated_dist;
+     
     CvScalar success_color;
     CvScalar unkown_color;
     CvScalar error_color;
@@ -608,7 +606,7 @@ int viz2d_draw_chassis_feedback(viz2d_image *viz2d, double v, double wheel)
 {
     CvPoint point1, point2;
     std::size_t i, feasible_size;
-    double truncated_dist;
+     
     CvScalar text_color;
 
     viz2d_color text_color_index = viz2d_colors_white;
@@ -721,7 +719,7 @@ int viz2d_draw_control_commond_info(viz2d_image *viz2d, double acc,
 {
     CvPoint point1, point2;
     std::size_t i, feasible_size;
-    double truncated_dist;
+     
     CvScalar text_color;
 
     viz2d_color text_color_index = viz2d_colors_white;

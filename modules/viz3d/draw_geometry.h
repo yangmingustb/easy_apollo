@@ -40,4 +40,9 @@ int draw_local_polygon2d_frame(pcl::visualization::PCLVisualizer *viz,
                               Polygon2D *poly,
                               pcl_color_index color_index,
                               const Pose2D *veh_pose);
+
+int draw_local_grid(pcl::visualization::PCLVisualizer *viz, double left,
+                    double right, double front, double back,
+                    const Pose2D *base_pose, pcl_color_index color_index,
+                    int line_width);
 }

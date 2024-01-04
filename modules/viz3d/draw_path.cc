@@ -13,7 +13,7 @@ int draw_trajectory(pcl::visualization::PCLVisualizer *viz,
 {
     int ret;
     int i, feasible_size;
-    double truncated_dist;
+     
 
     Pose2D base_pose;
     Pose2D global_pose;

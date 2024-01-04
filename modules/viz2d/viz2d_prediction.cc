@@ -11,7 +11,7 @@ int viz2d_draw_prediction(
     int ret;
     CvPoint point1, point2;
     std::size_t i, feasible_size;
-    double truncated_dist;
+     
     CvScalar color;
 
     if (obstacle_list.size() == 0 || base_pose == nullptr || viz2d == nullptr)

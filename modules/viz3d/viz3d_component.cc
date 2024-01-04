@@ -880,8 +880,8 @@ int viz3d_component::process(double max_steering_wheel_angle_)
     // viz2d_draw_path(main_window_, lateral_path_, &veh_global_pose,
     //                 viz2d_colors_purple, 4);
 
-    // viz2d_draw_grid(main_window_, 100, 100, 100, 100, &veh_global_pose,
-    //                 viz2d_colors_gray, 1);
+    draw_local_grid(window_, 100, 100, 100, 100, &veh_global_pose,
+                    pcl_colors_gray, 1);
 
     // history_control_data_ = control_data_;
 
