@@ -10,6 +10,7 @@
 #include "modules/viz2d/viz2d_map_elements.h"
 #include "draw_path.h"
 #include "modules/viz3d/draw_geometry.h"
+#include "modules/viz3d/draw_map.h"
 #include "cyber/cyber.h"
 
 
@@ -523,8 +524,13 @@ int viz3d_component::process(double max_steering_wheel_angle_)
     // AINFO << "point size " << viz_subscribe_.traj.trajectory_point_size()
         //   << "header " << viz_subscribe_.traj.header().DebugString();
 
+    double traj_start_time = apollo::cyber::Time::Now().ToSecond();
     draw_trajectory(window_, &viz_subscribe_.traj, pcl_colors_cyan,
                     &veh_global_pose, &veh_local_polygon);
+
+    double traj_end_time = apollo::cyber::Time::Now().ToSecond();
+
+    AINFO << "draw traj time (ms): " << (traj_end_time - traj_start_time) * 1000;
 
     // // draw localization polygon
     draw_local_polygon3d_frame(window_, &veh_local_polygon,
@@ -541,11 +547,9 @@ int viz3d_component::process(double max_steering_wheel_angle_)
                                pcl_colors_lightgreen, &veh_global_pose);
 
     // // hdmap
-    // // viz2d_draw_hdmap(viz2d, &veh_global_pose, false);
-    // viz2d_draw_simple_hdmap(main_window_, &veh_global_pose);
+    draw_simple_hdmap(window_, &veh_global_pose);
 
     // // draw full hmap in map window
-    // // viz2d_draw_hdmap(hmap_viz2d, &hmap_base_pose, true);
     // viz2d_draw_full_simple_hdmap(hmap_window_, &hmap_base_pose);
 
     // int ret;
@@ -881,7 +885,7 @@ int viz3d_component::process(double max_steering_wheel_angle_)
     //                 viz2d_colors_purple, 4);
 
     draw_local_grid(window_, 100, 100, 100, 100, &veh_global_pose,
-                    pcl_colors_gray, 1);
+                    pcl_colors_lightgreen, 1);
 
     // history_control_data_ = control_data_;
 
@@ -950,6 +954,9 @@ int viz3d_component::process(double max_steering_wheel_angle_)
     // viz2d_show_result_in_per_frame(hmap_window_);
 
 
+    double draw_data_time = apollo::cyber::Time::Now().ToSecond();
+
+    AINFO << "data draw time (ms): " << (draw_data_time - end_time) * 1000;
 
     return 0;
 }

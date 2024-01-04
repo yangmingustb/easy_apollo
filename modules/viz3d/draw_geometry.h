@@ -9,6 +9,7 @@
 
 #include "pcl_viz.h"
 #include "modules/common/math/polygon_base.h"
+#include "modules/common/proto/geometry.pb.h"
 
 namespace apollo
 {
@@ -45,4 +46,7 @@ int draw_local_grid(pcl::visualization::PCLVisualizer *viz, double left,
                     double right, double front, double back,
                     const Pose2D *base_pose, pcl_color_index color_index,
                     int line_width);
+
+int draw_local_line(pcl::visualization::PCLVisualizer *viz, common::Point3D *start,
+                    common::Point3D *end, pcl_color_index color_index);
 }

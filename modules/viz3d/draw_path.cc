@@ -75,10 +75,16 @@ int draw_trajectory(pcl::visualization::PCLVisualizer *viz,
         cvt_global_polygon_to_local(&local_polygon_to_veh, &global_polygon,
                                     veh_pose);
 
+        
         // dump_polygon(&global_polygon);
 
         draw_global_polygon_plane(viz, &local_polygon_to_veh, color, veh_pose);
     }
+
+    // viz->updatePolygonMesh<pcl::PointXYZ>(cloud, polygon_list, "traj");
+
+    // viz->setShapeRenderingProperties(pcl::visualization::PCL_VISUALIZER_COLOR,
+    //  color.r, color.g, color.b, "traj", 0);
 
     return 0;
 }
