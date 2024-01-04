@@ -6,6 +6,34 @@
 namespace apollo
 {
 
+int draw_local_polygon2d_frame(pcl::visualization::PCLVisualizer *viz,
+                               Polygon2D *poly,
+                               pcl_color_index color_index,
+                               const Pose2D *veh_pose)
+{
+    pcl_color color;
+    pcl_get_color(&color, color_index);
+
+    pcl::PointCloud<pcl::PointXYZ>::Ptr pcl_polygon(
+            new pcl::PointCloud<pcl::PointXYZ>);
+
+    pcl_polygon->points.resize(poly->vertex_num);
+
+    for (int i = 0; i < poly->vertex_num; i++)
+    {
+        (*pcl_polygon)[i].x = poly->vertexes[i].x;
+        (*pcl_polygon)[i].y = poly->vertexes[i].y;
+        (*pcl_polygon)[i].z = 0.0;
+    }
+
+    std::string obj_id = get_pcl_object_string_id();
+    viz->addPolygon<pcl::PointXYZ>(pcl_polygon, color.r, color.g, color.b,
+                                   obj_id);
+    viz->setShapeRenderingProperties(
+            pcl::visualization::PCL_VISUALIZER_LINE_WIDTH, 1, obj_id);
+
+    return 0;
+}
 
 int draw_global_polygon_frame(pcl::visualization::PCLVisualizer *viz,
                               Polygon2D *global_poly,
