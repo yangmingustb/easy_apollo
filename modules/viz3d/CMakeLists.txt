@@ -12,6 +12,7 @@ add_library(viz3d ${BUILD_TYPE}
                     viz3d_component.cc
                     draw_path.cc
                     draw_geometry.cc
+                    draw_map.cc
                     pcl_viz.cc
 )
 

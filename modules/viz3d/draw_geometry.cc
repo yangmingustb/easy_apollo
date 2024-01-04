@@ -178,6 +178,37 @@ int draw_coordinate_system(pcl::visualization::PCLVisualizer *viz,
     return 0;
 }
 
+int draw_local_line(pcl::visualization::PCLVisualizer *viz,
+                    common::Point3D *start, common::Point3D *end,
+                    pcl_color_index color_index)
+{
+    double len = 10.0;
+
+    pcl_color color;
+    pcl_get_color(&color, color_index);
+
+
+    pcl::PointXYZ line_start;
+    pcl::PointXYZ line_end;
+
+
+    line_start.x = start->x();
+    line_start.y = start->y();
+    line_start.z = start->z();
+
+    line_end.x = end->x();
+    line_end.y = end->y();
+    line_end.z = end->z();
+
+    std::string obj_id;
+    obj_id = get_pcl_object_string_id();
+
+    viz->addLine(line_start, line_end, color.r, color.g, color.b, obj_id);
+
+
+    return 0;
+}
+
 int draw_local_polygon3d_frame(pcl::visualization::PCLVisualizer *viz,
                               Polygon2D *poly,
                               double height,
